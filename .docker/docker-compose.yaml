@@ -1,0 +1,36 @@
+services:
+  db:
+    container_name: db
+    image: postgres:12
+    restart: always
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - 15432:5432
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    volumes:
+      - ./../source/:/var/www
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d/:/etc/nginx/conf.d
+    depends_on:
+      - php-fpm
+    ports:
+      - 8090:80
+
+  php-fpm:
+    container_name: php-fpm
+    build:
+      context: ./php-fpm
+    ports:
+      - 9000:9000
+    volumes:
+      - ./../source:/var/www
+
+networks:
+  test-network:
