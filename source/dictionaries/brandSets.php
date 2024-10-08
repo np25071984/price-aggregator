@@ -26,7 +26,8 @@ return [
         "(tropiques+madagascar+antilles+tahiti+mexique )" => "5 x 30ml (Tropiques + Madagascar + Antilles + Tahiti + Mexique) шкатулка"
     ],
     "Maison Francis Kurkdjian" => [
-        "(коробка декодирована, миниатюры с кодом)" => "3 * 11ml (коробка декодирована, миниатюры c кодом)"
+        "oud silk mood extrait 3*11ml travel" => "Oud Silk Mood extrait 3 x 11ml Travel Set (коробка декодирована, миниатюры с кодом)",
+        "baccarat rouge 540 extrait de parfum 3*11ml travel" => "Baccarat Rouge 540 Extrait de Parfum 3 x 11ml Travel Set (коробка декодирована, миниатюры с кодом)"
     ],
     "Ariana Grande" => [
         "100ml + 100ml b/s + 100ml s/g" => "100ml + 100ml B/S + 100ml S/G"
@@ -48,9 +49,10 @@ return [
         "edt (w) 125ml + 15ml" => "edt (w) 125ml + 15ml",
         "edp (w) 50ml + 5ml + 75ml b/l" => "edp (w) 50ml + 5ml + 75ml B/L",
     ],
-    "Hermes Un Jardin" => [
+    "Hermes" => [
         "edt (w) 100ml + 7.5ml + 50g soap" => "edt (w) 100ml + 7.5ml + 50g soap",
         "edt (w) 50ml + 40ml sh/g + 40ml b/l" => "edt (w) 50ml + 40ml SH/G + 40ml B/L",
+        "sur le nil edt (w)" => "Sur Le Nil edt (w) 100ml + 15ml + 40ml sh/g",
     ],
     "Juliette Has A Gun" => [
         "discovery edp (w) 7*1.7ml пробник + 5ml not a perfume" => "DISCOVERY edp (w) 7 x 1.7ml пробник + 5ml NOT A PERFUME"
@@ -72,6 +74,22 @@ return [
     ],
     "Serge Lutens" => [
         "edp 50ml + 10ml" => "edp 50ml + 10ml",
+    ],
+    "Vince Camuto" => [
+        "edp (w) 100ml + 10ml + 10ml mini" => "edp (w) 100ml + 10ml + 10ml mini",
+        "edp (w) 100ml + 6ml + 150ml bc" => "edp (w) 100ml + 6ml + 150ml BC",
+        "edt (m) 100ml + deo 71g + hair & bw 150ml" => "edt (m) 100ml + deo 71g + hair + bw 150ml"
+    ],
+    "Yves Saint Laurent" => [
+        "edp (w) 90ml + 10ml +2ml lash clash" => "edp (w) 90ml + 10ml + 2ml Lash Clash",
+        "edp (w) 90ml + 10ml + 50ml b/b" => "edp (w) 90ml + 10ml + 50ml B/B",
+    ],
+    "Chanel" => [
+        "bleu de chanel" => "Bleu De Chanel 3 x 20ml edt",
+        "coco mademoiselle edp (w)" => "Coco Mademoiselle edp (w) 3 x 20ml",
+    ],
+    "Creed" => [
+        "spring flower edp (w)" => "Spring Flower edp (w) 3 x 10ml",
     ],
 ];
 

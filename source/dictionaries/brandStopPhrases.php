@@ -10,7 +10,4 @@ return [
     "Cult" => [
         "perfume cult"
     ],
-    "Hermes" => [
-        "hermes un jardin",
-    ],
 ];
