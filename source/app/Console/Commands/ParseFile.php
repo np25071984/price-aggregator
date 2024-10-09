@@ -24,7 +24,6 @@ class ParseFile extends Command
     private array $volumes;
     private array $types;
     private array $testerFlags;
-    private array $sets;
     private array $brandLines;
     private array $brandSets;
     private array $oldDesignFlags;
@@ -32,16 +31,36 @@ class ParseFile extends Command
     private array $markingFlags;
     private array $sex;
     private array $damageFlags;
-
+    private array $fillerWords;
 
     private array $files = [
         [
+            "index_article" => 0,
+            "index_title" => 1,
+            "index_price" => 3,
             "first_row" => 2,
             "file_name" => "1.xlsx",
         ],
         [
+            "index_article" => 0,
+            "index_title" => 1,
+            "index_price" => 2,
             "first_row" => 10,
             "file_name" => "AllScent.xlsx",
+        ],
+        [
+            "index_article" => 1,
+            "index_title" => 2,
+            "index_price" => 3,
+            "first_row" => 14,
+            "file_name" => "ninche_perfume.xlsx",
+        ],
+        [
+            "index_article" => 1,
+            "index_title" => 2,
+            "index_price" => 4,
+            "first_row" => 5,
+            "file_name" => "PRC_202410030154.xlsx",
         ],
     ];
     /**
@@ -63,19 +82,45 @@ class ParseFile extends Command
     public function __construct() {
         parent::__construct();
 
-        $this->brands = include __DIR__ . "/../../../dictionaries/brands.php";
+        // we want to sort all associative dictionaries by key length to avoid false hits
+        $brands = include __DIR__ . "/../../../dictionaries/brands.php";
+        uksort($brands, function($a, $b) {
+            return mb_strlen($b) <=> mb_strlen($a);
+        });
+        $this->brands = $brands;
+
+        $brandLines = include __DIR__ . "/../../../dictionaries/brandLines.php";
+        $brandLinesSorted = [];
+        foreach($brandLines as $brand => $items) {
+            uksort($items, function($a, $b) {
+                return mb_strlen($b) <=> mb_strlen($a);
+            });
+            $brandLinesSorted[$brand] = $items;
+        }
+        unset($brandLines);
+        $this->brandLines = $brandLinesSorted;
+
+        $brandSets = include __DIR__ . "/../../../dictionaries/brandSets.php";
+        $brandSetsSorted = [];
+        foreach($brandSets as $brand => $items) {
+            uksort($items, function($a, $b) {
+                return mb_strlen($b) <=> mb_strlen($a);
+            });
+            $brandSetsSorted[$brand] = $items;
+        }
+        unset($brandSets);
+        $this->brandSets = $brandSetsSorted;
+
         $this->brandStopPhrases = include __DIR__ . "/../../../dictionaries/brandStopPhrases.php";
         $this->volumes = include __DIR__ . "/../../../dictionaries/volumes.php";
         $this->types = include __DIR__ . "/../../../dictionaries/types.php";
         $this->testerFlags = include __DIR__ . "/../../../dictionaries/testerFlags.php";
-        $this->sets = include __DIR__ . "/../../../dictionaries/setFlags.php";
-        $this->brandLines = include __DIR__ . "/../../../dictionaries/brandLines.php";
-        $this->brandSets = include __DIR__ . "/../../../dictionaries/brandSets.php";
         $this->oldDesignFlags = include __DIR__ . "/../../../dictionaries/oldDesignFlags.php";
         $this->artisanalBottlingFlags = include __DIR__ . "/../../../dictionaries/artisanalBottlingFlags.php";
         $this->markingFlags = include __DIR__ . "/../../../dictionaries/markingFlags.php";
         $this->sex = include __DIR__ . "/../../../dictionaries/sex.php";
         $this->damageFlags = include __DIR__ . "/../../../dictionaries/damageFlags.php";
+        $this->fillerWords = include __DIR__ . "/../../../dictionaries/fillerWords.php";
     }
 
     /**
@@ -85,52 +130,49 @@ class ParseFile extends Command
     {
         $reader = IOFactory::createReader("Xlsx");
         $data = [];
+        $b = [];
         foreach ($this->files as $fileData) {
             $spreadsheet = $reader->load(__DIR__ . "/../../../files/{$fileData["file_name"]}");
             $activeSheet = $spreadsheet->getActiveSheet();
             $highestRow = $activeSheet->getHighestRow();
-            $rows = $activeSheet->rangeToArray("A{$fileData["first_row"]}:C{$highestRow}");
-            // $rows = [[0, "HOLLISTER WAVE X FOR HER edp (w) 30ml"]];
-            // $b = [];
+            $rows = $activeSheet->rangeToArray("A{$fileData["first_row"]}:F{$highestRow}");
+            // $rows = [[0, "12 parfumeurs francais  Fontainebleau  10мл отливант"]];
+            $indexArticle = $fileData["index_article"];
+            $indexTitle = $fileData["index_title"];
+            $indexPrice = $fileData["index_price"];
+            $item = null;
             foreach ($rows as $r) {
-                if (empty($r[1])) {
+                if (empty($r[$indexArticle]) || empty($r[$indexTitle]) || $r[$indexArticle] === "НФ-00001873") {
                     continue;
                 }
-                echo "Original title: ", $r[1], PHP_EOL;
+                echo "Original title: ", $r[$indexTitle], PHP_EOL;
 
-                $normolizedItemName = $this->normolizeString($r[1]);
+                $normolizedItemName = $this->normolizeString($r[$indexTitle]);
+
+                // remove filler words
+                foreach ($this->fillerWords as $word) {
+                    $fillerWordScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, [$word]);
+                    $itemBrand = $this->processScanResult($fillerWordScanResult, $normolizedItemName);
+                }
 
                 // determine brand
                 $itemBrandScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->brands, $this->brandStopPhrases);
                 $itemBrand = $this->processScanResult($itemBrandScanResult, $normolizedItemName, $this->brands);
 
-                // is set
-                $itemIsSetScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->sets);
-                $itemIsSet = $this->processScanResult($itemIsSetScanResult, $normolizedItemName, $this->sets);
+                // determine set
+                $itemSetLineScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->brandSets[$itemBrand] ?? []);
+                $itemSetLine = $this->processScanResult($itemSetLineScanResult, $normolizedItemName, $this->brandSets[$itemBrand] ?? []);
 
-                if (!is_null($itemIsSet)) {
-                    // determine set
-                    $itemSetContentScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->brandSets[$itemBrand] ?? []);
-                    $itemSetContent = $this->processScanResult($itemSetContentScanResult, $normolizedItemName, $this->brandSets[$itemBrand] ?? []);
-
-                    if (is_null($itemSetContent)) {
-                        echo "Brand: ", $itemBrand, PHP_EOL;
-                        echo $r[1], PHP_EOL;
-                        exit;
-                    }
+                if (!is_null($itemSetLine)) {
 
                     echo "    brand: ", $itemBrand ?? "<unknown>", PHP_EOL;
-                    echo "    set: ", $itemSetContent ?? "<unknown>", PHP_EOL;
-                    $itemSet = new ItemSet(
-                        originalValue: $r[1],
-                        brand: $itemBrand,
-                        line: $itemSetContent,
+                    echo "    set line: ", $itemSetLine ?? "<unknown>", PHP_EOL;
+                    $item = new ItemSet(
+                        originalValue: $r[$indexTitle],
                         provider: $fileData["file_name"],
+                        brand: $itemBrand,
+                        line: $itemSetLine,
                     );
-                    $title = $this->generateTitle($itemSet);
-                    $data[$itemBrand][$title][] = $itemSet;
-
-
                 } else {
                     // determine brand line
                     $itemLine = null;
@@ -149,19 +191,19 @@ class ParseFile extends Command
 
                     // is artisan bottling
                     $itemArtisanalBottlinScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->artisanalBottlingFlags);
-                    $itemIsArtisanalBottling = $this->processScanResult($itemArtisanalBottlinScanResult, $normolizedItemName, $this->artisanalBottlingFlags);
+                    $itemIsArtisanalBottling = $this->processScanResult($itemArtisanalBottlinScanResult, $normolizedItemName);
 
                     // is merking
                     $itemMarkingScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->markingFlags);
-                    $itemHasMarking = $this->processScanResult($itemMarkingScanResult, $normolizedItemName, $this->markingFlags);
+                    $itemHasMarking = $this->processScanResult($itemMarkingScanResult, $normolizedItemName);
 
                     // is tester
                     $itemIsTesterScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->testerFlags);
-                    $itemIsTester = $this->processScanResult($itemIsTesterScanResult, $normolizedItemName, $this->testerFlags);
+                    $itemIsTester = $this->processScanResult($itemIsTesterScanResult, $normolizedItemName);
 
                     // is old design
                     $itemIsOldDesignScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->oldDesignFlags);
-                    $itemIsOldDesign = $this->processScanResult($itemIsOldDesignScanResult, $normolizedItemName, $this->oldDesignFlags);
+                    $itemIsOldDesign = $this->processScanResult($itemIsOldDesignScanResult, $normolizedItemName);
 
                     // sex
                     $itemSexScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->sex);
@@ -169,50 +211,53 @@ class ParseFile extends Command
 
                     // is damaged
                     $itemIsDamagedScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->damageFlags);
-                    $itemIsDamaged = $this->processScanResult($itemIsDamagedScanResult, $normolizedItemName, $this->damageFlags);
+                    $itemIsDamaged = $this->processScanResult($itemIsDamagedScanResult, $normolizedItemName);
 
                     echo "    brand: ", $itemBrand ?? "<unknown>", PHP_EOL;
                     echo "    line: ", $itemLine ?? "<unknown>", PHP_EOL;
                     echo "    volume: ", $itemVolume ?? "<unknown>", PHP_EOL;
                     echo "    type: ", $itemType ?? "<unknown>", PHP_EOL;
-                    echo "    artisanal bottling: ", $itemIsArtisanalBottling ?? "NO", PHP_EOL;
-                    echo "    has marking: ", $itemHasMarking ?? "NO", PHP_EOL;
-                    echo "    is tester: ", $itemIsTester ?? "NO", PHP_EOL;
-                    echo "    is old design: ", $itemIsOldDesign ?? "NO", PHP_EOL;
+                    echo "    artisanal bottling: ", $itemIsArtisanalBottling ? "YES" : "NO", PHP_EOL;
+                    echo "    has marking: ", $itemHasMarking ? "YES" : "NO", PHP_EOL;
+                    echo "    is tester: ", $itemIsTester ? "YES" : "NO", PHP_EOL;
+                    echo "    is old design: ", $itemIsOldDesign ? "YES" : "NO", PHP_EOL;
                     echo "    sex: ", $itemSex ?? "<unknown>", PHP_EOL;
-                    echo "    is damaged: ", $itemIsDamaged ?? "NO", PHP_EOL;
+                    echo "    is damaged: ", $itemIsDamaged ? "YES" : "NO", PHP_EOL;
 
                     $item = new Item(
-                        originalValue: $r[1],
+                        originalValue: $r[$indexTitle],
+                        provider: $fileData["file_name"],
                         brand: $itemBrand,
                         line: $itemLine,
                         volume: $itemVolume,
                         type: $itemType,
                         sex: $itemSex,
-                        isArtisanalBottling: !is_null($itemIsArtisanalBottling),
-                        hasMarking: !is_null($itemHasMarking),
-                        isTester: !is_null($itemIsTester),
-                        isOldDesign: !is_null($itemIsOldDesign),
-                        isDamaged: !is_null($itemIsDamaged),
-                        provider: $fileData["file_name"],
+                        isArtisanalBottling: $itemIsArtisanalBottling,
+                        hasMarking: $itemHasMarking,
+                        isTester: $itemIsTester,
+                        isOldDesign: $itemIsOldDesign,
+                        isDamaged: $itemIsDamaged,
                     );
-                    $title = $this->generateTitle($item);
-                    $data[$itemBrand][$title][] = $item;
 
-                    // if (is_null($itemLine)) {
-                    //     $b[$itemBrand][trim($normolizedItemName)] = 1;
-                    // }
+                    if (is_null($itemLine)) {
+                        $finalItemName = trim($normolizedItemName);
+                        if (mb_strlen($finalItemName) > 0) {
+                            $b[$itemBrand][$finalItemName] = 1;
+                        }
+                    }
                 }
+                $title = $this->generateTitle($item);
+                $data[$itemBrand][$title][] = $item;
             }
-            // foreach ($b as $brand => $items) {
-            //     if (true) { //!isset($this->brandLines[$brand])) {
-            //         echo "\"", $brand, "\" => [", PHP_EOL;
-            //         foreach (array_keys($items) as $item) {
-            //             echo "    \"", $item, "\" => \"" . ucwords($item) . "\",",PHP_EOL;
-            //         }
-            //         echo "],", PHP_EOL;
-            //     }
-            // }
+        }
+        foreach ($b as $brand => $items) {
+            if (true) { //!isset($this->brandLines[$brand])) {
+                echo "\"", $brand, "\" => [", PHP_EOL;
+                foreach (array_keys($items) as $item) {
+                    echo "    \"", $item, "\" => \"" . ucwords($item) . "\",",PHP_EOL;
+                }
+                echo "],", PHP_EOL;
+            }
         }
 
         $this->writeResult($data);
@@ -267,7 +312,7 @@ class ParseFile extends Command
                 $sheet->setCellValue("F{$currentLine}", count($providers));
                 $providerOriginalValuesString = "";
                 foreach ($providers as $provider) {
-                    $providerOriginalValuesString .= "{$provider->provider}: {$provider->originalValue}" . PHP_EOL;
+                    $providerOriginalValuesString .= "{$provider->provider}: " . trim($provider->originalValue) . PHP_EOL;
                 }
                 $sheet->setCellValue("G{$currentLine}", trim($providerOriginalValuesString));
                 $currentLine++;
@@ -316,10 +361,10 @@ class ParseFile extends Command
         return $title;
     }
 
-    private function processScanResult(?ScanResult $result, string &$itemTitle, array $dictionary): ?string
+    private function processScanResult(?ScanResult $result, string &$itemTitle, ?array $dictionary = null): null|bool|string
     {
         if (is_null($result)) {
-            return null;
+            return is_null($dictionary) ? false : null;
         }
 
         // update itemTitle
@@ -339,35 +384,53 @@ class ParseFile extends Command
         $pattern = "/" . preg_quote($str, "/") . "/";
         $itemTitle = preg_replace($pattern, "", $itemTitle, 1);
 
-        return $dictionary[$result->dictionaryValue];
+        return is_null($dictionary) ? true : $dictionary[$result->dictionaryValue];
     }
 
     private function sacnStringForDictionaryValue(string $targetString, array $dictionary, array $stopPhrases = []): ?ScanResult
     {
-        // echo "target string: ", $targetString, PHP_EOL;
         $targetStringSize = mb_strlen($targetString);
-        foreach ($dictionary as $dictionaryValue => $unifiedValue) {
-            // echo "dict string: ", $dictionaryValue, PHP_EOL;
-            $dictionaryValueSize = mb_strlen($dictionaryValue);
+        if (array_is_list($dictionary)) {
+            foreach ($dictionary as $dictionaryValue) {
+                $dictionaryValueSize = mb_strlen($dictionaryValue);
 
-            // if the stgings are equal
-            if (($dictionaryValueSize === $targetStringSize) && ($targetString === $dictionaryValue)) {
-                return new ScanResult($dictionaryValue, SubStringPositionEnum::Match);
-            }
+                // if the stgings are equal
+                if (($dictionaryValueSize === $targetStringSize) && ($targetString === $dictionaryValue)) {
+                    return new ScanResult($dictionaryValue, SubStringPositionEnum::Match);
+                }
 
-            // they aren't equal and the search one is longer; early exit
-            if ($dictionaryValueSize >= $targetStringSize) {
-                continue;
-            }
-
-            $position = $this->findSubStringPosition($targetString, $dictionaryValue);
-            if (!is_null($position)) {
-                if ($this->isInStopList($targetString, $unifiedValue, $stopPhrases)) {
+                // they aren't equal and the search one is longer; early exit
+                if ($dictionaryValueSize >= $targetStringSize) {
                     continue;
                 }
 
-                return new ScanResult($dictionaryValue, $position);
-                break;
+                $position = $this->findSubStringPosition($targetString, $dictionaryValue);
+                if (!is_null($position)) {
+                    return new ScanResult($dictionaryValue, $position);
+                }
+            }
+        } else {
+            foreach ($dictionary as $dictionaryValue => $unifiedValue) {
+                $dictionaryValueSize = mb_strlen($dictionaryValue);
+
+                // if the stgings are equal
+                if (($dictionaryValueSize === $targetStringSize) && ($targetString === $dictionaryValue)) {
+                    return new ScanResult($dictionaryValue, SubStringPositionEnum::Match);
+                }
+
+                // they aren't equal and the search one is longer; early exit
+                if ($dictionaryValueSize >= $targetStringSize) {
+                    continue;
+                }
+
+                $position = $this->findSubStringPosition($targetString, $dictionaryValue);
+                if (!is_null($position)) {
+                    if ($this->isInStopList($targetString, $unifiedValue, $stopPhrases)) {
+                        continue;
+                    }
+
+                    return new ScanResult($dictionaryValue, $position);
+                }
             }
         }
 
@@ -422,13 +485,20 @@ class ParseFile extends Command
 
     private function normolizeString(string $string): string
     {
-        $string = str_replace(" ", " ", $string);
-
         $string = mb_strtolower($string);
+
+        /**
+         * little data hacks
+         * TODO: possible multibyte issue; replace str_replace function
+         */
+        $string = str_replace(" ", " ", $string);
         $string = preg_replace('/\s{2,}/', " ", $string);
 
-        // little hacks for ВП 03.10.24.xlsx
         $string = str_replace("ml отливант5", "5ml отливант", $string);
+        $string = str_replace(" mltest", " ml test", $string);
+        $string = str_replace("ПАКЕТ AJMAL CRAFTING MEMORIES", "AJMAL CRAFTING MEMORIES ПАКЕТ", $string);
+        $string = str_replace("ПАКЕТ AJMAL SIGNATURE", "AJMAL SIGNATURE ПАКЕТ", $string);
+        $string = str_replace("ПАКЕТ PHILLY PHILL", "PHILLY PHILL ПАКЕТ", $string);
 
         return $string;
     }
