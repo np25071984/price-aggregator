@@ -15,7 +15,9 @@ readonly class Item
         public bool $isArtisanalBottling,
         public bool $hasMarking,
         public bool $isTester,
+        public bool $isSample,
         public bool $isOldDesign,
+        public bool $isRefill,
         public bool $isDamaged,
     ) {
     }

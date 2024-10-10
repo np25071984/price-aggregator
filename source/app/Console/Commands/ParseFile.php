@@ -12,7 +12,11 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use App\Entities\Item;
 use App\Entities\ItemSet;
-use RuntimeException;
+use App\PriceListReader;
+use App\DirectoryReader;
+use Psy\Readline\Hoa\FileRead;
+use App\PriceListIdentifier;
+use App\Converters\PriceListConverterFactory;
 
 define("OUTPUT_FOLE_NAME", "output.xlsx",);
 define("FORMAT_CURRENCY_RUB_INTEGER", '#,##0_-'); // '#,##0_-[$руб]'
@@ -24,6 +28,7 @@ class ParseFile extends Command
     private array $volumes;
     private array $types;
     private array $testerFlags;
+    private array $sampleFlags;
     private array $brandLines;
     private array $brandSets;
     private array $oldDesignFlags;
@@ -31,43 +36,16 @@ class ParseFile extends Command
     private array $markingFlags;
     private array $sex;
     private array $damageFlags;
+    private array $refillFlags;
     private array $fillerWords;
 
-    private array $files = [
-        [
-            "index_article" => 0,
-            "index_title" => 1,
-            "index_price" => 3,
-            "first_row" => 2,
-            "file_name" => "1.xlsx",
-        ],
-        [
-            "index_article" => 0,
-            "index_title" => 1,
-            "index_price" => 2,
-            "first_row" => 10,
-            "file_name" => "AllScent.xlsx",
-        ],
-        [
-            "index_article" => 1,
-            "index_title" => 2,
-            "index_price" => 3,
-            "first_row" => 14,
-            "file_name" => "ninche_perfume.xlsx",
-        ],
-        [
-            "index_article" => 1,
-            "index_title" => 2,
-            "index_price" => 4,
-            "first_row" => 5,
-            "file_name" => "PRC_202410030154.xlsx",
-        ],
-    ];
     /**
-     * + refill
      * + box/no box
      * + is a bag?
      * + is cream?
+     * + is lotion?
+     * + candle
+     * + laundry
      */
 
     protected $signature = 'app:parse-file';
@@ -115,11 +93,13 @@ class ParseFile extends Command
         $this->volumes = include __DIR__ . "/../../../dictionaries/volumes.php";
         $this->types = include __DIR__ . "/../../../dictionaries/types.php";
         $this->testerFlags = include __DIR__ . "/../../../dictionaries/testerFlags.php";
+        $this->sampleFlags = include __DIR__ . "/../../../dictionaries/sampleFlags.php";
         $this->oldDesignFlags = include __DIR__ . "/../../../dictionaries/oldDesignFlags.php";
         $this->artisanalBottlingFlags = include __DIR__ . "/../../../dictionaries/artisanalBottlingFlags.php";
         $this->markingFlags = include __DIR__ . "/../../../dictionaries/markingFlags.php";
         $this->sex = include __DIR__ . "/../../../dictionaries/sex.php";
         $this->damageFlags = include __DIR__ . "/../../../dictionaries/damageFlags.php";
+        $this->refillFlags = include __DIR__ . "/../../../dictionaries/refillFlags.php";
         $this->fillerWords = include __DIR__ . "/../../../dictionaries/fillerWords.php";
     }
 
@@ -128,195 +108,255 @@ class ParseFile extends Command
      */
     public function handle()
     {
-        $reader = IOFactory::createReader("Xlsx");
+        $directoryReader = new DirectoryReader(__DIR__ . "/../../../files/");
+        $priceListIdentifier = new PriceListIdentifier();
+        $priceListConverterFactory = new PriceListConverterFactory();
         $data = [];
-        $b = [];
-        foreach ($this->files as $fileData) {
-            $spreadsheet = $reader->load(__DIR__ . "/../../../files/{$fileData["file_name"]}");
-            $activeSheet = $spreadsheet->getActiveSheet();
-            $highestRow = $activeSheet->getHighestRow();
-            $rows = $activeSheet->rangeToArray("A{$fileData["first_row"]}:F{$highestRow}");
-            // $rows = [[0, "12 parfumeurs francais  Fontainebleau  10мл отливант"]];
-            $indexArticle = $fileData["index_article"];
-            $indexTitle = $fileData["index_title"];
-            $indexPrice = $fileData["index_price"];
-            $item = null;
-            foreach ($rows as $r) {
-                if (empty($r[$indexArticle]) || empty($r[$indexTitle]) || $r[$indexArticle] === "НФ-00001873") {
-                    continue;
-                }
-                echo "Original title: ", $r[$indexTitle], PHP_EOL;
+        foreach ($directoryReader->read(["xlsx", "xls"]) as $filePathName => $extension) {
+            echo $filePathName, PHP_EOL;
+            $reader = IOFactory::createReader($extension);
+            $spreadsheet = $reader->load($filePathName);
 
-                $normolizedItemName = $this->normolizeString($r[$indexTitle]);
-
-                // remove filler words
-                foreach ($this->fillerWords as $word) {
-                    $fillerWordScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, [$word]);
-                    $itemBrand = $this->processScanResult($fillerWordScanResult, $normolizedItemName);
-                }
-
-                // determine brand
-                $itemBrandScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->brands, $this->brandStopPhrases);
-                $itemBrand = $this->processScanResult($itemBrandScanResult, $normolizedItemName, $this->brands);
-
-                // determine set
-                $itemSetLineScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->brandSets[$itemBrand] ?? []);
-                $itemSetLine = $this->processScanResult($itemSetLineScanResult, $normolizedItemName, $this->brandSets[$itemBrand] ?? []);
-
-                if (!is_null($itemSetLine)) {
-
-                    echo "    brand: ", $itemBrand ?? "<unknown>", PHP_EOL;
-                    echo "    set line: ", $itemSetLine ?? "<unknown>", PHP_EOL;
-                    $item = new ItemSet(
-                        originalValue: $r[$indexTitle],
-                        provider: $fileData["file_name"],
-                        brand: $itemBrand,
-                        line: $itemSetLine,
-                    );
-                } else {
-                    // determine brand line
-                    $itemLine = null;
-                    if (!is_null($itemBrand)) {
-                        $itemLineScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->brandLines[$itemBrand] ?? []);
-                        $itemLine = $this->processScanResult($itemLineScanResult, $normolizedItemName, $this->brandLines[$itemBrand] ?? []);
-                    }
-
-                    // determine volume
-                    $itemVolumeScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->volumes);
-                    $itemVolume = $this->processScanResult($itemVolumeScanResult, $normolizedItemName, $this->volumes);
-
-                    // determine type
-                    $itemTypeScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->types);
-                    $itemType = $this->processScanResult($itemTypeScanResult, $normolizedItemName, $this->types);
-
-                    // is artisan bottling
-                    $itemArtisanalBottlinScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->artisanalBottlingFlags);
-                    $itemIsArtisanalBottling = $this->processScanResult($itemArtisanalBottlinScanResult, $normolizedItemName);
-
-                    // is merking
-                    $itemMarkingScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->markingFlags);
-                    $itemHasMarking = $this->processScanResult($itemMarkingScanResult, $normolizedItemName);
-
-                    // is tester
-                    $itemIsTesterScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->testerFlags);
-                    $itemIsTester = $this->processScanResult($itemIsTesterScanResult, $normolizedItemName);
-
-                    // is old design
-                    $itemIsOldDesignScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->oldDesignFlags);
-                    $itemIsOldDesign = $this->processScanResult($itemIsOldDesignScanResult, $normolizedItemName);
-
-                    // sex
-                    $itemSexScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->sex);
-                    $itemSex = $this->processScanResult($itemSexScanResult, $normolizedItemName, $this->sex);
-
-                    // is damaged
-                    $itemIsDamagedScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->damageFlags);
-                    $itemIsDamaged = $this->processScanResult($itemIsDamagedScanResult, $normolizedItemName);
-
-                    echo "    brand: ", $itemBrand ?? "<unknown>", PHP_EOL;
-                    echo "    line: ", $itemLine ?? "<unknown>", PHP_EOL;
-                    echo "    volume: ", $itemVolume ?? "<unknown>", PHP_EOL;
-                    echo "    type: ", $itemType ?? "<unknown>", PHP_EOL;
-                    echo "    artisanal bottling: ", $itemIsArtisanalBottling ? "YES" : "NO", PHP_EOL;
-                    echo "    has marking: ", $itemHasMarking ? "YES" : "NO", PHP_EOL;
-                    echo "    is tester: ", $itemIsTester ? "YES" : "NO", PHP_EOL;
-                    echo "    is old design: ", $itemIsOldDesign ? "YES" : "NO", PHP_EOL;
-                    echo "    sex: ", $itemSex ?? "<unknown>", PHP_EOL;
-                    echo "    is damaged: ", $itemIsDamaged ? "YES" : "NO", PHP_EOL;
-
-                    $item = new Item(
-                        originalValue: $r[$indexTitle],
-                        provider: $fileData["file_name"],
-                        brand: $itemBrand,
-                        line: $itemLine,
-                        volume: $itemVolume,
-                        type: $itemType,
-                        sex: $itemSex,
-                        isArtisanalBottling: $itemIsArtisanalBottling,
-                        hasMarking: $itemHasMarking,
-                        isTester: $itemIsTester,
-                        isOldDesign: $itemIsOldDesign,
-                        isDamaged: $itemIsDamaged,
-                    );
-
-                    if (is_null($itemLine)) {
-                        $finalItemName = trim($normolizedItemName);
-                        if (mb_strlen($finalItemName) > 0) {
-                            $b[$itemBrand][$finalItemName] = 1;
-                        }
-                    }
-                }
-                $title = $this->generateTitle($item);
-                $data[$itemBrand][$title][] = $item;
-            }
+            // identify price list
+            $priceId = $priceListIdentifier->identiry($spreadsheet);
+            // var_dump($priceId);
+            $converter = $priceListConverterFactory->getConverter($priceId);
+            $data = array_merge($data, $converter->convert($spreadsheet, basename($filePathName)));
+            unset($reader);
+            unset($spreadsheet);
         }
-        foreach ($b as $brand => $items) {
-            if (true) { //!isset($this->brandLines[$brand])) {
-                echo "\"", $brand, "\" => [", PHP_EOL;
-                foreach (array_keys($items) as $item) {
-                    echo "    \"", $item, "\" => \"" . ucwords($item) . "\",",PHP_EOL;
-                }
-                echo "],", PHP_EOL;
-            }
-        }
+//         $reader = IOFactory::createReader("Xlsx");
+//         $data = [];
+//         $b = [];
+//         foreach ($this->files as $fileData) {
+//             $spreadsheet = $reader->load(__DIR__ . "/../../../files/{$fileData["file_name"]}");
+//             $activeSheet = $spreadsheet->getActiveSheet();
+//             $highestRow = $activeSheet->getHighestRow();
+//             $rows = $activeSheet->rangeToArray("A{$fileData["first_row"]}:F{$highestRow}");
+//             $rows = [[1, "ср Ф-ка Алые Паруса г.Николаев Свидание духи 1986г."]];
+//             $indexArticle = $fileData["index_article"];
+//             $indexTitle = $fileData["index_title"];
+//             $indexPrice = $fileData["index_price"];
+//             $item = null;
+//             foreach ($rows as $r) {
+//                 if (empty($r[$indexArticle]) || empty($r[$indexTitle]) || $r[$indexArticle] === "НФ-00001873") {
+//                     continue;
+//                 }
+//                 echo "Original title: ", $r[$indexTitle], PHP_EOL;
+
+//                 $normolizedItemName = $this->normolizeString($r[$indexTitle]);
+
+//                 // remove filler words
+//                 foreach ($this->fillerWords as $word) {
+//                     $fillerWordScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, [$word]);
+//                     $itemBrand = $this->processScanResult($fillerWordScanResult, $normolizedItemName);
+//                 }
+
+//                 // determine brand
+//                 $itemBrandScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->brands, $this->brandStopPhrases);
+//                 $itemBrand = $this->processScanResult($itemBrandScanResult, $normolizedItemName, $this->brands);
+
+// if (is_null($itemBrand) && (
+//     (mb_strpos($normolizedItemName, "fabulous") !== false) ||
+//     (mb_strpos($normolizedItemName, "boudicсa") !== false) ||
+//     (mb_strpos($normolizedItemName, "aeria") !== false) ||
+//     (mb_strpos($normolizedItemName, "alchemico") !== false) ||
+//     (mb_strpos($normolizedItemName, "daligramme") !== false)
+// )) {
+//     continue;
+// }
+
+// if (is_null($itemBrand)) {
+//     exit;
+// }
+//                 // determine set
+//                 $itemSetLineScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->brandSets[$itemBrand] ?? []);
+//                 $itemSetLine = $this->processScanResult($itemSetLineScanResult, $normolizedItemName, $this->brandSets[$itemBrand] ?? []);
+
+//                 if (!is_null($itemSetLine)) {
+
+//                     echo "    brand: ", $itemBrand ?? "<unknown>", PHP_EOL;
+//                     echo "    set line: ", $itemSetLine ?? "<unknown>", PHP_EOL;
+//                     $item = new ItemSet(
+//                         originalValue: $r[$indexTitle],
+//                         provider: $fileData["file_name"],
+//                         brand: $itemBrand,
+//                         line: $itemSetLine,
+//                     );
+//                 } else {
+//                     // determine brand line
+//                     $itemLine = null;
+//                     if (!is_null($itemBrand)) {
+//                         $itemLineScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->brandLines[$itemBrand] ?? []);
+//                         $itemLine = $this->processScanResult($itemLineScanResult, $normolizedItemName, $this->brandLines[$itemBrand] ?? []);
+//                     }
+
+//                     // determine volume
+//                     $itemVolumeScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->volumes);
+//                     $itemVolume = $this->processScanResult($itemVolumeScanResult, $normolizedItemName, $this->volumes);
+
+//                     // determine type
+//                     $itemTypeScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->types);
+//                     $itemType = $this->processScanResult($itemTypeScanResult, $normolizedItemName, $this->types);
+
+//                     // is artisan bottling
+//                     $itemArtisanalBottlinScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->artisanalBottlingFlags);
+//                     $itemIsArtisanalBottling = $this->processScanResult($itemArtisanalBottlinScanResult, $normolizedItemName);
+
+//                     // is merking
+//                     $itemMarkingScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->markingFlags);
+//                     $itemHasMarking = $this->processScanResult($itemMarkingScanResult, $normolizedItemName);
+
+//                     // is tester
+//                     $itemIsTesterScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->testerFlags);
+//                     $itemIsTester = $this->processScanResult($itemIsTesterScanResult, $normolizedItemName);
+
+//                     // is sample
+//                     $itemIsSampleScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->sampleFlags);
+//                     $itemIsSample = $this->processScanResult($itemIsSampleScanResult, $normolizedItemName);
+
+//                     // is old design
+//                     $itemIsOldDesignScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->oldDesignFlags);
+//                     $itemIsOldDesign = $this->processScanResult($itemIsOldDesignScanResult, $normolizedItemName);
+
+//                     // sex
+//                     $itemSexScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->sex);
+//                     $itemSex = $this->processScanResult($itemSexScanResult, $normolizedItemName, $this->sex);
+
+//                     // is refill
+//                     $itemIsRefillScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->refillFlags);
+//                     $itemIsRefill = $this->processScanResult($itemIsRefillScanResult, $normolizedItemName);
+
+//                     // is damaged
+//                     $itemIsDamagedScanResult = $this->sacnStringForDictionaryValue($normolizedItemName, $this->damageFlags);
+//                     $itemIsDamaged = $this->processScanResult($itemIsDamagedScanResult, $normolizedItemName);
+
+//                     echo "    brand: ", $itemBrand ?? "<unknown>", PHP_EOL;
+//                     echo "    line: ", $itemLine ?? "<unknown>", PHP_EOL;
+//                     echo "    volume: ", $itemVolume ?? "<unknown>", PHP_EOL;
+//                     echo "    type: ", $itemType ?? "<unknown>", PHP_EOL;
+//                     echo "    artisanal bottling: ", $itemIsArtisanalBottling ? "YES" : "NO", PHP_EOL;
+//                     echo "    has marking: ", $itemHasMarking ? "YES" : "NO", PHP_EOL;
+//                     echo "    is tester: ", $itemIsTester ? "YES" : "NO", PHP_EOL;
+//                     echo "    is sample: ", $itemIsSample ? "YES" : "NO", PHP_EOL;
+//                     echo "    is old design: ", $itemIsOldDesign ? "YES" : "NO", PHP_EOL;
+//                     echo "    sex: ", $itemSex ?? "<unknown>", PHP_EOL;
+//                     echo "    is refill: ", $itemIsRefill ? "YES" : "NO", PHP_EOL;
+//                     echo "    is damaged: ", $itemIsDamaged ? "YES" : "NO", PHP_EOL;
+//                     echo "    provider: ", $fileData["file_name"], PHP_EOL;
+
+//                     $item = new Item(
+//                         originalValue: $r[$indexTitle],
+//                         provider: $fileData["file_name"],
+//                         brand: $itemBrand,
+//                         line: $itemLine,
+//                         volume: $itemVolume,
+//                         type: $itemType,
+//                         sex: $itemSex,
+//                         isArtisanalBottling: $itemIsArtisanalBottling,
+//                         hasMarking: $itemHasMarking,
+//                         isTester: $itemIsTester,
+//                         isSample: $itemIsSample,
+//                         isOldDesign: $itemIsOldDesign,
+//                         isRefill: $itemIsRefill,
+//                         isDamaged: $itemIsDamaged,
+//                     );
+
+//                     if (is_null($itemLine)) {
+//                         $finalItemName = trim($normolizedItemName);
+//                         if (mb_strlen($finalItemName) > 0) {
+//                             $b[$itemBrand][$finalItemName] = 1;
+//                         }
+//                     }
+//                 }
+//                 $title = $this->generateTitle($item);
+//                 $data[$itemBrand][$title][] = $item;
+//             }
+//         }
+//         foreach ($b as $brand => $items) {
+//             if (!isset($this->brandLines[$brand])) {
+//                 echo "\"", $brand, "\" => [", PHP_EOL;
+//                 foreach (array_keys($items) as $item) {
+//                     echo "    \"", $item, "\" => \"" . ucwords($item) . "\",",PHP_EOL;
+//                 }
+//                 echo "],", PHP_EOL;
+//             }
+//         }
 
         $this->writeResult($data);
+        echo "done", PHP_EOL;
     }
 
     private function writeResult(array $data): void
     {
+        // if (file_exists(OUTPUT_FOLE_NAME)) {
+        //     unlink(OUTPUT_FOLE_NAME);
+        // }
+
+        // $spreadsheet = new Spreadsheet();
+        // $sheet = $spreadsheet->getActiveSheet();
+        // $sheet->setTitle(mb_substr("Прайс", 0, Worksheet::SHEET_TITLE_MAXIMUM_LENGTH, 'utf-8'));
+        // $sheet->getStyle("A:A")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        // $sheet->getStyle("C:C")->getNumberFormat()->setFormatCode(FORMAT_CURRENCY_RUB_INTEGER);
+
+        // $sheet->getColumnDimension('A')->setWidth(16.5);
+        // $sheet->getColumnDimension('B')->setWidth(89);
+        // $sheet->getColumnDimension('C')->setWidth(22.5);
+        // $sheet->getColumnDimension('D')->setWidth(22.5);
+        // $sheet->getStyle("A1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        // $sheet->setCellValue("A1", "Артикул");
+        // $sheet->getStyle("B1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        // $sheet->setCellValue("B1", "Наименование");
+        // $sheet->getStyle("C1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        // $sheet->setCellValue("C1", "Цена");
+        // $sheet->getStyle("D1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        // $sheet->setCellValue("D1", "Заказ");
+
+        // $sheet->getColumnDimension('F')->setWidth(14);
+        // $sheet->setCellValue("F1", "Кол-во аналогов");
+        // $sheet->getStyle("F:F")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        // $sheet->getStyle("G1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        // $sheet->getStyle("G:G")->getAlignment()->setWrapText(true);
+        // $sheet->setCellValue("G1", "Оригинальные значения");
+        // $sheet->getColumnDimension('G')->setWidth(120);
+
+        // $currentLine = 2;
+        // foreach ($data as $brand => $items) {
+        //     $sheet->mergeCells("A{$currentLine}:D{$currentLine}");
+        //     $sheet->getStyle("A{$currentLine}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        //     $sheet->getStyle("A{$currentLine}")->applyFromArray(['font' => [
+        //         'bold' => true,
+        //     ]]);
+        //     $sheet->setCellValue("A{$currentLine}", $brand);
+        //     $currentLine++;
+        //     foreach ($items as $title => $providers) {
+        //         $sheet->setCellValue("A{$currentLine}", "aaa");
+        //         $sheet->setCellValue("B{$currentLine}", $title);
+        //         $sheet->setCellValue("C{$currentLine}", 999.33);
+        //         $sheet->setCellValue("F{$currentLine}", count($providers));
+        //         $providerOriginalValuesString = "";
+        //         foreach ($providers as $provider) {
+        //             $providerOriginalValuesString .= "{$provider->provider}: " . trim($provider->originalValue) . PHP_EOL;
+        //         }
+        //         $sheet->setCellValue("G{$currentLine}", trim($providerOriginalValuesString));
+        //         $currentLine++;
+        //     }
+        // }
+        // $writer = new Xlsx($spreadsheet);
+
         if (file_exists(OUTPUT_FOLE_NAME)) {
             unlink(OUTPUT_FOLE_NAME);
         }
 
+        $currentLine = 1;
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
-        $sheet->setTitle(mb_substr("Прайс", 0, Worksheet::SHEET_TITLE_MAXIMUM_LENGTH, 'utf-8'));
-        $sheet->getStyle("A:A")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("C:C")->getNumberFormat()->setFormatCode(FORMAT_CURRENCY_RUB_INTEGER);
-
-        $sheet->getColumnDimension('A')->setWidth(16.5);
-        $sheet->getColumnDimension('B')->setWidth(89);
-        $sheet->getColumnDimension('C')->setWidth(22.5);
-        $sheet->getColumnDimension('D')->setWidth(22.5);
-        $sheet->getStyle("A1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->setCellValue("A1", "Артикул");
-        $sheet->getStyle("B1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->setCellValue("B1", "Наименование");
-        $sheet->getStyle("C1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->setCellValue("C1", "Цена");
-        $sheet->getStyle("D1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->setCellValue("D1", "Заказ");
-
-        $sheet->getColumnDimension('F')->setWidth(14);
-        $sheet->setCellValue("F1", "Кол-во аналогов");
-        $sheet->getStyle("F:F")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("G1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("G:G")->getAlignment()->setWrapText(true);
-        $sheet->setCellValue("G1", "Оригинальные значения");
-        $sheet->getColumnDimension('G')->setWidth(120);
-
-        $currentLine = 2;
-        foreach ($data as $brand => $items) {
-            $sheet->mergeCells("A{$currentLine}:D{$currentLine}");
-            $sheet->getStyle("A{$currentLine}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-            $sheet->getStyle("A{$currentLine}")->applyFromArray(['font' => [
-                'bold' => true,
-            ]]);
-            $sheet->setCellValue("A{$currentLine}", $brand);
+        foreach ($data as $items) {
+            $sheet->setCellValue("A{$currentLine}", $items[0]);
+            $sheet->setCellValue("B{$currentLine}", $items[1]);
+            $sheet->setCellValue("C{$currentLine}", $items[2]);
+            $sheet->setCellValue("D{$currentLine}", $items[3]);
             $currentLine++;
-            foreach ($items as $title => $providers) {
-                $sheet->setCellValue("A{$currentLine}", "aaa");
-                $sheet->setCellValue("B{$currentLine}", $title);
-                $sheet->setCellValue("C{$currentLine}", 999.33);
-                $sheet->setCellValue("F{$currentLine}", count($providers));
-                $providerOriginalValuesString = "";
-                foreach ($providers as $provider) {
-                    $providerOriginalValuesString .= "{$provider->provider}: " . trim($provider->originalValue) . PHP_EOL;
-                }
-                $sheet->setCellValue("G{$currentLine}", trim($providerOriginalValuesString));
-                $currentLine++;
-            }
         }
         $writer = new Xlsx($spreadsheet);
 
@@ -343,7 +383,7 @@ class ParseFile extends Command
             $title .= " {$item->sex}";
         }
         if ($item->isArtisanalBottling) {
-            $title .= " разливант";
+            $title .= " отливант";
         }
         if ($item->hasMarking) {
             $title .= " маркировка";
@@ -351,8 +391,14 @@ class ParseFile extends Command
         if ($item->isTester) {
             $title .= " тестер";
         }
+        if ($item->isSample) {
+            $title .= " sample";
+        }
         if ($item->isOldDesign) {
             $title .= " старый дезайн";
+        }
+        if ($item->isRefill) {
+            $title .= " refill";
         }
         if ($item->isDamaged) {
             $title .= " поврежден";
@@ -439,21 +485,19 @@ class ParseFile extends Command
 
     private function findSubStringPosition(string $haystack, string $needle): ?SubStringPositionEnum
     {
-        $needleSize = mb_strlen($needle);
-
         /**
          * Spaces are very important because of business rules of creating price lists
          *
          * Firstly, let's check if the search string + space is located in the beginning of the haystack
          */
         $needleRightSpace = $needle . " ";
-        if (mb_substr($haystack, 0, $needleSize + 1) === $needleRightSpace) {
+        if (mb_substr($haystack, 0, mb_strlen($needleRightSpace)) === $needleRightSpace) {
             return SubStringPositionEnum::Beginning;
         }
 
         // Secondly, let's check if space + the search string is located in the end of the haystack
         $needleLeftSpace = " " . $needle;
-        if (mb_substr($haystack, -1 * ($needleSize + 1)) === $needleLeftSpace) {
+        if (mb_substr($haystack, -1 * mb_strlen($needleLeftSpace)) === $needleLeftSpace) {
             return SubStringPositionEnum::End;
         }
 
@@ -496,9 +540,19 @@ class ParseFile extends Command
 
         $string = str_replace("ml отливант5", "5ml отливант", $string);
         $string = str_replace(" mltest", " ml test", $string);
-        $string = str_replace("ПАКЕТ AJMAL CRAFTING MEMORIES", "AJMAL CRAFTING MEMORIES ПАКЕТ", $string);
-        $string = str_replace("ПАКЕТ AJMAL SIGNATURE", "AJMAL SIGNATURE ПАКЕТ", $string);
-        $string = str_replace("ПАКЕТ PHILLY PHILL", "PHILLY PHILL ПАКЕТ", $string);
+
+        // brand - line order normalization
+        $string = str_replace("пакет ajmal crafting memories", "ajmal crafting memories пакет", $string);
+        $string = str_replace("пакет ajmal signature", "ajmal signature пакет", $string);
+        $string = str_replace("пакет philly phill", "philly phill пакет", $string);
+        $string = str_replace("пакет - guerlain", "guerlain пакет", $string);
+        $string = str_replace("пакет - il profvmo", "il profvmo пакет", $string);
+        $string = str_replace("пакет - jo malone", "jo malone пакет", $string);
+        $string = str_replace("пакет - kilian большой", "kilian пакет большой", $string);
+        $string = str_replace("пакет - l artisan", "l artisan пакет", $string);
+        $string = str_replace("пакет - laurent mazzone lm", "laurent mazzone lm пакет", $string);
+        $string = str_replace("пакет - oros", "oros пакет", $string);
+        $string = str_replace("пакет - wood incense", "wood incense пакет", $string);
 
         return $string;
     }

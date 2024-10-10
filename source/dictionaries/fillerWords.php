@@ -5,6 +5,6 @@
  * without appropriate keyword
  */
 return [
-    "набор",
-    "set",
+    // "набор",
+    // "set",
 ];

@@ -30,21 +30,21 @@ return [
         "4*7.5 ml ( bamboo,kologne shield, moonlight,vodka.кофр)" => "The Fresh Citrus Discovery 4 x 7.5ml (Bamboo, Kologne Shield, Moonlight, Vodka Kофр)",
         "forbidden games travel" => "Forbidden Games Travel 4 x 7.5ml",
         "black phantom, memento mori 4*7,5ml travel" => "Black Phantom, Memento Mori 4 x 7.5ml travel",
-        "the liquors 5*10ml (angels', roses, l'heure, apple, vodka)" => "The Liquors 5 x 10ml (Angels', Roses, L'heure, Apple, Vodka)",
-        "the liquors eau de parfum 4*7,5ml (roses, apple, angels', vodka)" => "The Liquors eau 4 x 7,5ml (Roses, Apple, Angels', Vodka)",
-
+        "the liquors 5*10ml set (angels', roses, l'heure, apple, vodka)" => "The Liquors 5 x 10ml (Angels', Roses, L'heure, Apple, Vodka)",
+        "the liquors eau de parfum 4*7,5ml set (roses, apple, angels', vodka)" => "The Liquors eau 4 x 7,5ml (Roses, Apple, Angels', Vodka)",
     ],
     "La Maison De La Vanille" => [
         "5 x30 ml деревянная шкатулка (blue oia + arty positano + belle rencontre + nuit a + noir toscane)" => "5 x 30ml (Blue Oia + Arty Positano + Belle Rencontre + Nuit A + Noir Toscane) шкатулка",
         "5x30 деревянная шкатулка (tropiques+madagascar+antilles+tahiti+mexique )" => "5 x 30ml (Tropiques + Madagascar + Antilles + Tahiti + Mexique) шкатулка"
     ],
     "Maison Francis Kurkdjian" => [
-        "oud silk mood extrait 3*11ml travel" => "Oud Silk Mood extrait 3 x 11ml Travel Set (коробка декодирована, миниатюры с кодом)",
-        "baccarat rouge 540 extrait de parfum 3*11ml travel" => "Baccarat Rouge 540 Extrait de Parfum 3 x 11ml Travel Set (коробка декодирована, миниатюры с кодом)",
+        "oud silk mood extrait 3*11ml travel set (коробка декодирована, миниатюры с кодом)" => "Oud Silk Mood extrait 3 x 11ml Travel Set (коробка декодирована, миниатюры c кодом)",
+        "baccarat rouge 540 extrait de parfum 3*11ml tester travel set (decoded)" => "Baccarat Rouge 540 Extrait de Parfum 3 x 11ml Travel Set (коробка декодирована, миниатюры с кодом)",
         "baccarat rouge 540 extrait 5*11 ml" => "Baccarat Rouge 540 extrait 5 x 11ml",
-        "aqua collection cologne forte eau de parfum 3*2ml" => "Aqua Collection Cologne Forte 3 x 2ml",
-        "aqua collection cologne forte eau de parfum 4*2ml" => "Aqua Collection Cologne Forte 4 x 2ml",
-        "oud fragrance wardrobe 6*11ml travel" => "Oud Fragrance Wardrobe 6 x 11ml Travel",
+        "aqua collection cologne forte eau de parfum 3*2ml sample set" => "Aqua Collection Cologne Forte 3 x 2ml",
+        "aqua collection cologne forte eau de parfum 4*2ml sample set" => "Aqua Collection Cologne Forte 4 x 2ml",
+        "oud fragrance wardrobe 6*11ml travel set" => "Oud Fragrance Wardrobe 6 x 11ml Travel",
+        "aqua universalis eau de toilette 3*11ml tester travel set (decoded)" => "Aqua Universalis Eau De Toilette 3 x 11ml tester travel set (decoded)",
     ],
     "Ariana Grande" => [
         "sweet like candy edp (w) 100ml + 100ml b/s + 100ml s/g" => "100ml + 100ml B/S + 100ml S/G"
@@ -150,6 +150,9 @@ return [
         "saffron superfluide edp 3x11 ml cartouchiere" => "Saffron Superfluide edp Cartouchiere",
     ],
     "Ormonde Jayne" => [
+        "evernia eau de parfum 5*8ml travel set" => "Evernia Eau de Parfum 5 x 8ml Travel",
+        "ormonde woman eau de parfum 5*8ml travel set" => "Ormonde Woman Eau de Parfum 5 x 8ml Travel",
+        "ormonde woman eau de parfum 5*8ml travel set tester" => "Ormonde Woman Eau de Parfum 5*8ml Travel Tester",
         "evernia parfum 5 x 8 ml" => "Evernia Parfum 5 x 8ml",
         "evernia parfum 4 x 10 ml" => "Evernia Parfum 4 x 10 ml",
         "nawab of oudh edp 5 x 8 ml" => "Nawab of Oudh edp 5 x 8ml",
