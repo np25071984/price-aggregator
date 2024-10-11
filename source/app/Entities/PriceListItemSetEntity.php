@@ -2,7 +2,7 @@
 
 namespace App\Entities;
 
-readonly class ItemSet
+readonly class PriceListItemSetEntity
 {
     public function __construct(
         public string $originalValue,

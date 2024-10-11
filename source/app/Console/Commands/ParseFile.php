@@ -4,22 +4,21 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use PhpOffice\PhpSpreadsheet\IOFactory;
-use App\ScanResult;
+use App\Entities\ScanResultEntity;
 use App\Enums\SubStringPositionEnum;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
-use App\Entities\Item;
-use App\Entities\ItemSet;
+use App\Entities\PriceListItemEntity;
+use App\Entities\PriceListItemSetEntity;
 use App\PriceListReader;
 use App\DirectoryReader;
 use Psy\Readline\Hoa\FileRead;
 use App\PriceListIdentifier;
 use App\Converters\PriceListConverterFactory;
-
-define("OUTPUT_FOLE_NAME", "output.xlsx",);
-define("FORMAT_CURRENCY_RUB_INTEGER", '#,##0_-'); // '#,##0_-[$руб]'
+use App\Enums\PriceListProviderEnum;
+use App\FileWriter;
 
 class ParseFile extends Command
 {
@@ -108,6 +107,8 @@ class ParseFile extends Command
      */
     public function handle()
     {
+        ini_set('memory_limit', '512M');
+
         $directoryReader = new DirectoryReader(__DIR__ . "/../../../files/");
         $priceListIdentifier = new PriceListIdentifier();
         $priceListConverterFactory = new PriceListConverterFactory();
@@ -119,12 +120,17 @@ class ParseFile extends Command
 
             // identify price list
             $priceId = $priceListIdentifier->identiry($spreadsheet);
-            // var_dump($priceId);
+            echo "    ", $priceId->value, PHP_EOL;
             $converter = $priceListConverterFactory->getConverter($priceId);
+            echo "    ", $converter::class, PHP_EOL;
             $data = array_merge($data, $converter->convert($spreadsheet, basename($filePathName)));
             unset($reader);
             unset($spreadsheet);
         }
+
+        $writer = new FileWriter();
+        $writer->save("output.xlsx", $data);
+
 //         $reader = IOFactory::createReader("Xlsx");
 //         $data = [];
 //         $b = [];
@@ -283,89 +289,13 @@ class ParseFile extends Command
 //             }
 //         }
 
-        $this->writeResult($data);
+        // $this->writeResult($data);
         echo "done", PHP_EOL;
     }
 
-    private function writeResult(array $data): void
+    private function generateTitle(PriceListItemEntity|PriceListItemSetEntity $item): string
     {
-        // if (file_exists(OUTPUT_FOLE_NAME)) {
-        //     unlink(OUTPUT_FOLE_NAME);
-        // }
-
-        // $spreadsheet = new Spreadsheet();
-        // $sheet = $spreadsheet->getActiveSheet();
-        // $sheet->setTitle(mb_substr("Прайс", 0, Worksheet::SHEET_TITLE_MAXIMUM_LENGTH, 'utf-8'));
-        // $sheet->getStyle("A:A")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        // $sheet->getStyle("C:C")->getNumberFormat()->setFormatCode(FORMAT_CURRENCY_RUB_INTEGER);
-
-        // $sheet->getColumnDimension('A')->setWidth(16.5);
-        // $sheet->getColumnDimension('B')->setWidth(89);
-        // $sheet->getColumnDimension('C')->setWidth(22.5);
-        // $sheet->getColumnDimension('D')->setWidth(22.5);
-        // $sheet->getStyle("A1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        // $sheet->setCellValue("A1", "Артикул");
-        // $sheet->getStyle("B1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        // $sheet->setCellValue("B1", "Наименование");
-        // $sheet->getStyle("C1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        // $sheet->setCellValue("C1", "Цена");
-        // $sheet->getStyle("D1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        // $sheet->setCellValue("D1", "Заказ");
-
-        // $sheet->getColumnDimension('F')->setWidth(14);
-        // $sheet->setCellValue("F1", "Кол-во аналогов");
-        // $sheet->getStyle("F:F")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        // $sheet->getStyle("G1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        // $sheet->getStyle("G:G")->getAlignment()->setWrapText(true);
-        // $sheet->setCellValue("G1", "Оригинальные значения");
-        // $sheet->getColumnDimension('G')->setWidth(120);
-
-        // $currentLine = 2;
-        // foreach ($data as $brand => $items) {
-        //     $sheet->mergeCells("A{$currentLine}:D{$currentLine}");
-        //     $sheet->getStyle("A{$currentLine}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        //     $sheet->getStyle("A{$currentLine}")->applyFromArray(['font' => [
-        //         'bold' => true,
-        //     ]]);
-        //     $sheet->setCellValue("A{$currentLine}", $brand);
-        //     $currentLine++;
-        //     foreach ($items as $title => $providers) {
-        //         $sheet->setCellValue("A{$currentLine}", "aaa");
-        //         $sheet->setCellValue("B{$currentLine}", $title);
-        //         $sheet->setCellValue("C{$currentLine}", 999.33);
-        //         $sheet->setCellValue("F{$currentLine}", count($providers));
-        //         $providerOriginalValuesString = "";
-        //         foreach ($providers as $provider) {
-        //             $providerOriginalValuesString .= "{$provider->provider}: " . trim($provider->originalValue) . PHP_EOL;
-        //         }
-        //         $sheet->setCellValue("G{$currentLine}", trim($providerOriginalValuesString));
-        //         $currentLine++;
-        //     }
-        // }
-        // $writer = new Xlsx($spreadsheet);
-
-        if (file_exists(OUTPUT_FOLE_NAME)) {
-            unlink(OUTPUT_FOLE_NAME);
-        }
-
-        $currentLine = 1;
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-        foreach ($data as $items) {
-            $sheet->setCellValue("A{$currentLine}", $items[0]);
-            $sheet->setCellValue("B{$currentLine}", $items[1]);
-            $sheet->setCellValue("C{$currentLine}", $items[2]);
-            $sheet->setCellValue("D{$currentLine}", $items[3]);
-            $currentLine++;
-        }
-        $writer = new Xlsx($spreadsheet);
-
-        $writer->save(OUTPUT_FOLE_NAME);
-    }
-
-    private function generateTitle(Item|ItemSet $item): string
-    {
-        if ($item instanceof ItemSet) {
+        if ($item instanceof PriceListItemSetEntity) {
             return "{$item->brand} {$item->line} набор";
         }
 
@@ -407,7 +337,7 @@ class ParseFile extends Command
         return $title;
     }
 
-    private function processScanResult(?ScanResult $result, string &$itemTitle, ?array $dictionary = null): null|bool|string
+    private function processScanResult(?ScanResultEntity $result, string &$itemTitle, ?array $dictionary = null): null|bool|string
     {
         if (is_null($result)) {
             return is_null($dictionary) ? false : null;
@@ -433,7 +363,7 @@ class ParseFile extends Command
         return is_null($dictionary) ? true : $dictionary[$result->dictionaryValue];
     }
 
-    private function sacnStringForDictionaryValue(string $targetString, array $dictionary, array $stopPhrases = []): ?ScanResult
+    private function sacnStringForDictionaryValue(string $targetString, array $dictionary, array $stopPhrases = []): ?ScanResultEntity
     {
         $targetStringSize = mb_strlen($targetString);
         if (array_is_list($dictionary)) {
@@ -442,7 +372,7 @@ class ParseFile extends Command
 
                 // if the stgings are equal
                 if (($dictionaryValueSize === $targetStringSize) && ($targetString === $dictionaryValue)) {
-                    return new ScanResult($dictionaryValue, SubStringPositionEnum::Match);
+                    return new ScanResultEntity($dictionaryValue, SubStringPositionEnum::Match);
                 }
 
                 // they aren't equal and the search one is longer; early exit
@@ -452,7 +382,7 @@ class ParseFile extends Command
 
                 $position = $this->findSubStringPosition($targetString, $dictionaryValue);
                 if (!is_null($position)) {
-                    return new ScanResult($dictionaryValue, $position);
+                    return new ScanResultEntity($dictionaryValue, $position);
                 }
             }
         } else {
@@ -461,7 +391,7 @@ class ParseFile extends Command
 
                 // if the stgings are equal
                 if (($dictionaryValueSize === $targetStringSize) && ($targetString === $dictionaryValue)) {
-                    return new ScanResult($dictionaryValue, SubStringPositionEnum::Match);
+                    return new ScanResultEntity($dictionaryValue, SubStringPositionEnum::Match);
                 }
 
                 // they aren't equal and the search one is longer; early exit
@@ -475,7 +405,7 @@ class ParseFile extends Command
                         continue;
                     }
 
-                    return new ScanResult($dictionaryValue, $position);
+                    return new ScanResultEntity($dictionaryValue, $position);
                 }
             }
         }
@@ -527,33 +457,33 @@ class ParseFile extends Command
         return false;
     }
 
-    private function normolizeString(string $string): string
-    {
-        $string = mb_strtolower($string);
+    // private function normolizeString(string $string): string
+    // {
+    //     $string = mb_strtolower($string);
 
-        /**
-         * little data hacks
-         * TODO: possible multibyte issue; replace str_replace function
-         */
-        $string = str_replace(" ", " ", $string);
-        $string = preg_replace('/\s{2,}/', " ", $string);
+    //     /**
+    //      * little data hacks
+    //      * TODO: possible multibyte issue; replace str_replace function
+    //      */
+    //     $string = str_replace(" ", " ", $string);
+    //     $string = preg_replace('/\s{2,}/', " ", $string);
 
-        $string = str_replace("ml отливант5", "5ml отливант", $string);
-        $string = str_replace(" mltest", " ml test", $string);
+    //     $string = str_replace("ml отливант5", "5ml отливант", $string);
+    //     $string = str_replace(" mltest", " ml test", $string);
 
-        // brand - line order normalization
-        $string = str_replace("пакет ajmal crafting memories", "ajmal crafting memories пакет", $string);
-        $string = str_replace("пакет ajmal signature", "ajmal signature пакет", $string);
-        $string = str_replace("пакет philly phill", "philly phill пакет", $string);
-        $string = str_replace("пакет - guerlain", "guerlain пакет", $string);
-        $string = str_replace("пакет - il profvmo", "il profvmo пакет", $string);
-        $string = str_replace("пакет - jo malone", "jo malone пакет", $string);
-        $string = str_replace("пакет - kilian большой", "kilian пакет большой", $string);
-        $string = str_replace("пакет - l artisan", "l artisan пакет", $string);
-        $string = str_replace("пакет - laurent mazzone lm", "laurent mazzone lm пакет", $string);
-        $string = str_replace("пакет - oros", "oros пакет", $string);
-        $string = str_replace("пакет - wood incense", "wood incense пакет", $string);
+    //     // brand - line order normalization
+    //     $string = str_replace("пакет ajmal crafting memories", "ajmal crafting memories пакет", $string);
+    //     $string = str_replace("пакет ajmal signature", "ajmal signature пакет", $string);
+    //     $string = str_replace("пакет philly phill", "philly phill пакет", $string);
+    //     $string = str_replace("пакет - guerlain", "guerlain пакет", $string);
+    //     $string = str_replace("пакет - il profvmo", "il profvmo пакет", $string);
+    //     $string = str_replace("пакет - jo malone", "jo malone пакет", $string);
+    //     $string = str_replace("пакет - kilian большой", "kilian пакет большой", $string);
+    //     $string = str_replace("пакет - l artisan", "l artisan пакет", $string);
+    //     $string = str_replace("пакет - laurent mazzone lm", "laurent mazzone lm пакет", $string);
+    //     $string = str_replace("пакет - oros", "oros пакет", $string);
+    //     $string = str_replace("пакет - wood incense", "wood incense пакет", $string);
 
-        return $string;
-    }
+    //     return $string;
+    // }
 }

@@ -10,19 +10,50 @@ class PriceListIdentifier
     public function identiry(Spreadsheet $spreadsheet): PriceListProviderEnum
     {
         switch (true) {
-            case $this->isNichePerfumeRuPriceList($spreadsheet):
-                return PriceListProviderEnum::NichePerfumeRu;
+            case $this->isPrice1310UsdPriceList($spreadsheet):
+                return PriceListProviderEnum::Price1310Usd;
             case $this->isNichePerfumeUsdPriceList($spreadsheet):
                 return PriceListProviderEnum::NichePerfumeUsd;
-            case $this->isKurzinaRuPriceList($spreadsheet):
-                return PriceListProviderEnum::KurzinaRu;
+            case $this->isKurzinaUsdPriceList($spreadsheet):
+                return PriceListProviderEnum::KurzinaUsd;
             case $this->isAllScentUsdPriceList($spreadsheet):
                 return PriceListProviderEnum::AllScentUsd;
-            case $this->isBeautyParfumRuPriceList($spreadsheet):
-                return PriceListProviderEnum::BeautyPerfumeRu;
+            case $this->isBeautyParfumUsdPriceList($spreadsheet):
+                return PriceListProviderEnum::BeautyPerfumeUsd;
+            case $this->isPricePRCUsdPriceList($spreadsheet);
+                return PriceListProviderEnum::PricePRCUsd;
+            case $this->isPriceParfumUsdPriceList($spreadsheet);
+                return PriceListProviderEnum::PriceParfumUsd;
+            case $this->isPafumStockUsdPriceList($spreadsheet);
+                return PriceListProviderEnum::PafumStockUsd;
             default:
                 return PriceListProviderEnum::Unknown;
         }
+    }
+
+    private function isPrice1310UsdPriceList(Spreadsheet $spreadsheet): bool
+    {
+        $sheet = $spreadsheet->getActiveSheet();
+        if ($sheet->getCell('B1')->getValue() !== "Прайс-лист") {
+            return false;
+        }
+        if ($sheet->getCell('B5')->getValue() !== "В валютах цен.") {
+            return false;
+        }
+        if (mb_substr($sheet->getCell('B6')->getValue(), 0, mb_strlen("Цены указаны на")) !== "Цены указаны на") {
+            return false;
+        }
+        if ($sheet->getCell('B9')->getValue() !== "Код") {
+            return false;
+        }
+        if ($sheet->getCell('C9')->getValue() !== "Ценовая группа/ Номенклатура/ Характеристика номенклатуры") {
+            return false;
+        }
+        if ($sheet->getCell('D9')->getValue() !== "Оптовая") {
+            return false;
+        }
+
+        return true;
     }
 
     private function isNichePerfumeUsdPriceList(Spreadsheet $spreadsheet): bool
@@ -53,32 +84,7 @@ class PriceListIdentifier
         return true;
     }
 
-    private function isNichePerfumeRuPriceList(Spreadsheet $spreadsheet): bool
-    {
-        $sheet = $spreadsheet->getActiveSheet();
-        if ($sheet->getCell('B1')->getValue() !== "Прайс-лист") {
-            return false;
-        }
-        if ($sheet->getCell('B5')->getValue() !== "В валютах цен.") {
-            return false;
-        }
-        if (mb_substr($sheet->getCell('B6')->getValue(), 0, mb_strlen("Цены указаны на")) !== "Цены указаны на") {
-            return false;
-        }
-        if ($sheet->getCell('B9')->getValue() !== "Код") {
-            return false;
-        }
-        if ($sheet->getCell('C9')->getValue() !== "Ценовая группа/ Номенклатура/ Характеристика номенклатуры") {
-            return false;
-        }
-        if ($sheet->getCell('D9')->getValue() !== "Оптовая") {
-            return false;
-        }
-
-        return true;
-    }
-
-    private function isKurzinaRuPriceList(Spreadsheet $spreadsheet): bool
+    private function isKurzinaUsdPriceList(Spreadsheet $spreadsheet): bool
     {
         $sheet = $spreadsheet->getActiveSheet();
         if ($sheet->getCell('A1')->getValue() !== "артикул") {
@@ -93,7 +99,7 @@ class PriceListIdentifier
         if ($sheet->getCell('E1')->getValue() !== "заказ") {
             return false;
         }
-        if ($spreadsheet->getSheetNames() == ["Лиcт2"]) {
+        if ($spreadsheet->getSheetNames() !== ["Лист2"]) {
             return false;
         }
 
@@ -134,7 +140,7 @@ class PriceListIdentifier
         return true;
     }
 
-    private function isBeautyParfumRuPriceList(Spreadsheet $spreadsheet): bool
+    private function isBeautyParfumUsdPriceList(Spreadsheet $spreadsheet): bool
     {
         $sheet = $spreadsheet->getActiveSheet();
         if ($sheet->getCell('A2')->getValue() !== "Код") {
@@ -149,7 +155,79 @@ class PriceListIdentifier
         if ($sheet->getCell('D2')->getValue() !== "Заказ") {
             return false;
         }
-        if ($spreadsheet->getSheetNames() == ["Лиcт2"]) {
+        if ($spreadsheet->getSheetNames() !== ["Лист1"]) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private function isPricePRCUsdPriceList(Spreadsheet $spreadsheet): bool
+    {
+        $sheet = $spreadsheet->getActiveSheet();
+        if ($sheet->getCell('B2')->getValue() !== "Прайс-лист") {
+            return false;
+        }
+        if ($sheet->getCell('B3')->getValue() !== "Код") {
+            return false;
+        }
+        if ($sheet->getCell('C3')->getValue() !== "Наименование") {
+            return false;
+        }
+        if ($sheet->getCell('D3')->getValue() !== "Оптовая цена") {
+            return false;
+        }
+        if ($spreadsheet->getSheetNames() !== ["Лист_1"]) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private function isPriceParfumUsdPriceList(Spreadsheet $spreadsheet): bool
+    {
+        $sheet = $spreadsheet->getActiveSheet();
+        if ($sheet->getCell('A1')->getValue() !== "Прайс Раритет. +7(985)363-99-11") {
+            return false;
+        }
+        if ($sheet->getCell('A2')->getValue() !== "Код") {
+            return false;
+        }
+        if ($sheet->getCell('B2')->getValue() !== "Наименование") {
+            return false;
+        }
+        if ($sheet->getCell('D2')->getValue() !== "Цена") {
+            return false;
+        }
+        if ($sheet->getCell('E2')->getValue() !== "Заказ") {
+            return false;
+        }
+        if ($spreadsheet->getSheetNames() !== ["Лист1", "Лист2", "Лист3"]) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private function isPafumStockUsdPriceList(Spreadsheet $spreadsheet): bool
+    {
+        $sheet = $spreadsheet->getActiveSheet();
+        if ($sheet->getCell('A1')->getValue() !== "ПАРФЮМ СТОК ") {
+            return false;
+        }
+        if ($sheet->getCell('B2')->getValue() !== "НАИМЕНОВАНИЕ") {
+            return false;
+        }
+        if ($sheet->getCell('C2')->getValue() !== "Прайс-лист") {
+            return false;
+        }
+        if ($sheet->getCell('C3')->getValue() !== "Цена") {
+            return false;
+        }
+        if ($sheet->getCell('D3')->getValue() !== "Заказ") {
+            return false;
+        }
+        if ($spreadsheet->getSheetNames() !== ["TDSheet"]) {
             return false;
         }
 

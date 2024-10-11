@@ -4,12 +4,12 @@ namespace App\Converters;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-readonly class AllScentUsdConverter extends AbstractConverter
+readonly class ParfumStockUsdConverter extends AbstractConverter
 {
     private const int INDEX_ARTICLE = 0;
     private const int INDEX_TITLE = 1;
     private const int INDEX_PRICE = 2;
-    private const int FIRST_ROW = 10;
+    private const int FIRST_ROW = 4;
 
     public function convert(Spreadsheet $spreadsheet, string $firstColumnValue): array
     {
@@ -18,9 +18,6 @@ readonly class AllScentUsdConverter extends AbstractConverter
         $highestRow = $activeSheet->getHighestRow();
         $rows = $activeSheet->rangeToArray(sprintf("A%d:C%d", self::FIRST_ROW, $highestRow));
         foreach ($rows as $r) {
-            if (empty($r[self::INDEX_ARTICLE]) || empty($r[self::INDEX_TITLE])) {
-                continue;
-            }
             $data[] = [
                 $firstColumnValue,
                 trim($r[self::INDEX_ARTICLE]),

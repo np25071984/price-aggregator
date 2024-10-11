@@ -2,15 +2,14 @@
 
 namespace App\Converters;
 
-use App\Enums\PriceListProviderEnum;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-readonly class NichePerfumeRuConverter implements ConverterInterface
+readonly class PriceParfumUsdConverter extends AbstractConverter
 {
-    private const int INDEX_ARTICLE = 1;
-    private const int INDEX_TITLE = 2;
+    private const int INDEX_ARTICLE = 0;
+    private const int INDEX_TITLE = 1;
     private const int INDEX_PRICE = 3;
-    private const int FIRST_ROW = 12;
+    private const int FIRST_ROW = 3;
 
     public function convert(Spreadsheet $spreadsheet, string $firstColumnValue): array
     {
@@ -18,14 +17,16 @@ readonly class NichePerfumeRuConverter implements ConverterInterface
         $activeSheet = $spreadsheet->getActiveSheet();
         $highestRow = $activeSheet->getHighestRow();
         $rows = $activeSheet->rangeToArray(sprintf("A%d:D%d", self::FIRST_ROW, $highestRow));
+        $currentBrand = null;
         foreach ($rows as $r) {
-            if (empty($r[self::INDEX_ARTICLE]) || empty($r[self::INDEX_TITLE])) {
+            if (empty($r[self::INDEX_ARTICLE])) {
+                $currentBrand = $r[self::INDEX_TITLE];
                 continue;
             }
             $data[] = [
                 $firstColumnValue,
                 trim($r[self::INDEX_ARTICLE]),
-                trim($r[self::INDEX_TITLE]),
+                $this->normolizeString($r[self::INDEX_TITLE]),
                 trim($r[self::INDEX_PRICE]),
             ];
         }

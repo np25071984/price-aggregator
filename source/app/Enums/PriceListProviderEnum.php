@@ -2,14 +2,15 @@
 
 namespace App\Enums;
 
-enum PriceListProviderEnum
+enum PriceListProviderEnum: string
 {
-    case NichePerfumeRu;
-    case NichePerfumeUsd;
-    case KurzinaRu;
-    case KurzinaUsd;
-    case AllScentRu;
-    case AllScentUsd;
-    case BeautyPerfumeRu;
-    case Unknown;
+    case Price1310Usd = "Price1310Usd";
+    case PricePRCUsd = "PricePRCUsd";
+    case NichePerfumeUsd = "NichePerfumeUsd";
+    case PriceParfumUsd = "PriceParfumUsd";
+    case KurzinaUsd = "KurzinaUsd";
+    case PafumStockUsd = "ParfumStockUsd";
+    case AllScentUsd = "AllScentUsd";
+    case BeautyPerfumeUsd = "BeautyPerfumeUsd";
+    case Unknown = "Unknown";
 }

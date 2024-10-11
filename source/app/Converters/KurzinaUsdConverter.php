@@ -4,12 +4,12 @@ namespace App\Converters;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-readonly class NichePerfumeUsdConverter extends AbstractConverter
+readonly class KurzinaUsdConverter extends AbstractConverter
 {
-    private const int INDEX_ARTICLE = 1;
-    private const int INDEX_TITLE = 2;
+    private const int INDEX_ARTICLE = 0;
+    private const int INDEX_TITLE = 1;
     private const int INDEX_PRICE = 3;
-    private const int FIRST_ROW = 14;
+    private const int FIRST_ROW = 2;
 
     public function convert(Spreadsheet $spreadsheet, string $firstColumnValue): array
     {
@@ -24,7 +24,6 @@ readonly class NichePerfumeUsdConverter extends AbstractConverter
 
             $title = $this->normolizeString($r[self::INDEX_TITLE]);
             $title = $this->fixData($title);
-
             $data[] = [
                 $firstColumnValue,
                 trim($r[self::INDEX_ARTICLE]),
@@ -37,6 +36,6 @@ readonly class NichePerfumeUsdConverter extends AbstractConverter
 
     private function fixData(string $string): string
     {
-        return str_replace(" mltest", " ml test", $string);
+        return str_replace("ml отливант5", "5ml отливант", $string);
     }
 }

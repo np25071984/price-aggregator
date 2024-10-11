@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Entities;
 
 use App\Enums\SubStringPositionEnum;
 
-readonly class ScanResult
+readonly class ScanResultEntity
 {
     public function __construct(
         public string $dictionaryValue,
