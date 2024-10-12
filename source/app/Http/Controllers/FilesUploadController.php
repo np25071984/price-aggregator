@@ -19,7 +19,6 @@ class FilesUploadController extends Controller
         }
         MergePriceListsJob::dispatchSync($mergeId);
 
-        file_put_contents("/tmp/price-aggregator.txt", "redirect to: /storage/{$mergeId}/combined.xlsx" . PHP_EOL, FILE_APPEND);
         return redirect("/storage/{$mergeId}/combined.xlsx");
     }
 }

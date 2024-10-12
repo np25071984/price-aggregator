@@ -4,22 +4,21 @@ namespace App\Converters;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-readonly class PricePRCUsdConverter extends AbstractConverter
+readonly class ZubarUsdConverter extends AbstractConverter
 {
     private const int INDEX_ARTICLE = 0;
     private const int INDEX_TITLE = 1;
     private const int INDEX_PRICE = 3;
-    private const int FIRST_ROW = 2;
+    private const int FIRST_ROW = 4;
 
     public function convert(Spreadsheet $spreadsheet, string $firstColumnValue): array
     {
         $data = [];
         $activeSheet = $spreadsheet->getActiveSheet();
         $highestRow = $activeSheet->getHighestRow();
-        $rows = $activeSheet->rangeToArray(sprintf("B%d:E%d", self::FIRST_ROW, $highestRow));
+        $rows = $activeSheet->rangeToArray(sprintf("A%d:D%d", self::FIRST_ROW, $highestRow));
         foreach ($rows as $r) {
-            // we don' know what НФ-00001873 item means
-            if (empty($r[self::INDEX_TITLE]) || ($r[self::INDEX_TITLE] === "НФ-00001873")) {
+            if (empty($r[self::INDEX_ARTICLE])) {
                 continue;
             }
             $data[] = [

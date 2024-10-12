@@ -4,12 +4,12 @@ namespace App\Converters;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-readonly class BeautyPerfumeUsdConverter extends AbstractConverter
+readonly class RagimovaDianaUsdConverter extends AbstractConverter
 {
     private const int INDEX_ARTICLE = 0;
     private const int INDEX_TITLE = 1;
     private const int INDEX_PRICE = 2;
-    private const int FIRST_ROW = 4;
+    private const int FIRST_ROW = 5;
 
     public function convert(Spreadsheet $spreadsheet, string $firstColumnValue): array
     {

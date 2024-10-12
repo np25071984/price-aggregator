@@ -9,6 +9,7 @@ use App\DirectoryReader;
 use App\PriceListIdentifier;
 use App\Converters\PriceListConverterFactory;
 use App\FileWriter;
+use App\Enums\PriceListProviderEnum;
 
 class MergePriceListsJob implements ShouldQueue
 {
@@ -99,10 +100,12 @@ class MergePriceListsJob implements ShouldQueue
             $reader = IOFactory::createReader($extension);
             $spreadsheet = $reader->load($filePathName);
             $priceId = $priceListIdentifier->identiry($spreadsheet);
+            if ($priceId === PriceListProviderEnum::Unknown) {
+                // TODO: log this
+                continue;
+            }
             $converter = $priceListConverterFactory->getConverter($priceId);
             $data = array_merge($data, $converter->convert($spreadsheet, basename($filePathName)));
-            unset($reader);
-            unset($spreadsheet);
         }
 
         $writer = new FileWriter();

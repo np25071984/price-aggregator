@@ -4,21 +4,21 @@ namespace App\Converters;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-readonly class Price1310UsdConverter extends AbstractConverter
+readonly class GevorgUsdConverter extends AbstractConverter
 {
-    private const int INDEX_ARTICLE = 1;
-    private const int INDEX_TITLE = 2;
-    private const int INDEX_PRICE = 3;
-    private const int FIRST_ROW = 12;
+    private const int INDEX_ARTICLE = 0;
+    private const int INDEX_TITLE = 5;
+    private const int INDEX_PRICE = 13;
+    private const int FIRST_ROW = 3;
 
     public function convert(Spreadsheet $spreadsheet, string $firstColumnValue): array
     {
         $data = [];
         $activeSheet = $spreadsheet->getActiveSheet();
         $highestRow = $activeSheet->getHighestRow();
-        $rows = $activeSheet->rangeToArray(sprintf("A%d:D%d", self::FIRST_ROW, $highestRow));
+        $rows = $activeSheet->rangeToArray(sprintf("B%d:N%d", self::FIRST_ROW, $highestRow));
         foreach ($rows as $r) {
-            if (empty($r[self::INDEX_ARTICLE]) || empty($r[self::INDEX_TITLE])) {
+            if (empty($r[self::INDEX_ARTICLE])) {
                 continue;
             }
             $data[] = [

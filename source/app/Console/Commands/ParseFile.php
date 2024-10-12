@@ -107,8 +107,6 @@ class ParseFile extends Command
      */
     public function handle()
     {
-        ini_set('memory_limit', '512M');
-
         $directoryReader = new DirectoryReader(__DIR__ . "/../../../files/");
         $priceListIdentifier = new PriceListIdentifier();
         $priceListConverterFactory = new PriceListConverterFactory();
@@ -123,7 +121,7 @@ class ParseFile extends Command
             echo "    ", $priceId->value, PHP_EOL;
             $converter = $priceListConverterFactory->getConverter($priceId);
             echo "    ", $converter::class, PHP_EOL;
-            $data = array_merge($data, $converter->convert($spreadsheet, basename($filePathName)));
+            // $data = array_merge($data, $converter->convert($spreadsheet, basename($filePathName)));
             unset($reader);
             unset($spreadsheet);
         }
