@@ -162,8 +162,8 @@ return [
         "sweet like candy" => "Sweet Like Candy",
         "thank u next" => "Thank U Next",
     ],
-    "Armaf Niche" => [
-        "black onyx" => "Black Onyx",
+    "Armaf" => [
+        "niche black onyx" => "niche Black Onyx",
     ],
     "Art De Parfum" => [
         "le joker" => "Le Joker",

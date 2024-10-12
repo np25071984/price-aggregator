@@ -2,13 +2,23 @@
 
 namespace App\Entities;
 
-readonly class PriceListItemSetEntity
+use App\Enums\PriceListProviderEnum;
+
+readonly class PriceListItemSetEntity extends AbstractPriceListItemEntity
 {
     public function __construct(
-        public string $originalValue,
-        public string $provider,
+        string $article,
+        string $originalTitle,
+        float $price,
+        PriceListProviderEnum $provider,
         public string $brand,
         public string $line,
     ) {
+        parent::__construct(
+            $article,
+            $originalTitle,
+            $price,
+            $provider,
+        );
     }
 }

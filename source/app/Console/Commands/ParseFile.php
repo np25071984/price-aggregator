@@ -127,7 +127,7 @@ class ParseFile extends Command
         }
 
         $writer = new FileWriter();
-        $writer->save("output.xlsx", $data);
+        // $writer->save("output.xlsx", $data);
 
 //         $reader = IOFactory::createReader("Xlsx");
 //         $data = [];

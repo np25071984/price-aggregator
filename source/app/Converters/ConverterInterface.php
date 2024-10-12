@@ -6,5 +6,8 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 interface ConverterInterface
 {
-    public function convert(Spreadsheet $spreadsheet, string $firstColumnValue): array;
+    /**
+     * @return RawPriceListItem[]
+     */
+    public function convert(Spreadsheet $spreadsheet): array;
 }

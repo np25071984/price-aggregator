@@ -3,6 +3,7 @@
 namespace App\Converters;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use App\Entities\RawPriceListItem;
 
 readonly class KurzinaUsdConverter extends AbstractConverter
 {
@@ -11,7 +12,7 @@ readonly class KurzinaUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 3;
     private const int FIRST_ROW = 2;
 
-    public function convert(Spreadsheet $spreadsheet, string $firstColumnValue): array
+    public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
         $activeSheet = $spreadsheet->getActiveSheet();
@@ -21,15 +22,14 @@ readonly class KurzinaUsdConverter extends AbstractConverter
             if (empty($r[self::INDEX_ARTICLE]) || empty($r[self::INDEX_TITLE])) {
                 continue;
             }
-
             $title = $this->normolizeString($r[self::INDEX_TITLE]);
             $title = $this->fixData($title);
-            $data[] = [
-                $firstColumnValue,
-                trim($r[self::INDEX_ARTICLE]),
-                $title,
-                trim($r[self::INDEX_PRICE]),
-            ];
+            $price = (float)trim($r[self::INDEX_PRICE]);
+            $data[] = new RawPriceListItem(
+                article: trim($r[self::INDEX_ARTICLE]),
+                title: $title,
+                price: $price,
+            );
         }
         return $data;
     }

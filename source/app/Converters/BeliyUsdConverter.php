@@ -3,6 +3,7 @@
 namespace App\Converters;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use App\Entities\RawPriceListItem;
 
 readonly class BeliyUsdConverter extends AbstractConverter
 {
@@ -11,19 +12,19 @@ readonly class BeliyUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 2;
     private const int FIRST_ROW = 15;
 
-    public function convert(Spreadsheet $spreadsheet, string $firstColumnValue): array
+    public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
         $activeSheet = $spreadsheet->getActiveSheet();
         $highestRow = $activeSheet->getHighestRow();
         $rows = $activeSheet->rangeToArray(sprintf("A%d:C%d", self::FIRST_ROW, $highestRow));
         foreach ($rows as $r) {
-            $data[] = [
-                $firstColumnValue,
-                trim($r[self::INDEX_ARTICLE]),
-                $this->normolizeString($r[self::INDEX_TITLE]),
-                trim($r[self::INDEX_PRICE]),
-            ];
+            $price = (float)trim($r[self::INDEX_PRICE]);
+            $data[] = new RawPriceListItem(
+                article: trim($r[self::INDEX_ARTICLE]),
+                title: $this->normolizeString($r[self::INDEX_TITLE]),
+                price: $price,
+            );
         }
         return $data;
     }

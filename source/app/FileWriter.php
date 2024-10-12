@@ -6,11 +6,14 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use App\Entities\AbstractPriceListItemEntity;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 readonly class FileWriter
 {
-    private const string FORMAT_CURRENCY_RUB_INTEGER = '#,##0_-';  // '#,##0_-[$руб]'
-
+    /**
+     * @param AbstractPriceListItemEntity[] $data
+     */
     public function save(string $fileName, array $data): void
     {
         if (file_exists($fileName)) {
@@ -21,7 +24,7 @@ readonly class FileWriter
         $sheet = $spreadsheet->getActiveSheet();
         $sheet->setTitle(mb_substr("Прайс", 0, Worksheet::SHEET_TITLE_MAXIMUM_LENGTH, 'utf-8'));
         $sheet->getStyle("A:A")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("C:C")->getNumberFormat()->setFormatCode(self::FORMAT_CURRENCY_RUB_INTEGER);
+        $sheet->getStyle("C:C")->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_USD);
 
         $sheet->getColumnDimension('A')->setWidth(16.5);
         $sheet->getColumnDimension('B')->setWidth(89);
@@ -38,11 +41,12 @@ readonly class FileWriter
         $sheet->setCellValue("D1", "Заказ");
 
         $currentLine = 2;
-        foreach ($data as $items) {
-            $sheet->setCellValue("A{$currentLine}", $items[1]);
-            $sheet->setCellValue("B{$currentLine}", $items[2]);
-            $sheet->setCellValue("C{$currentLine}", $items[3]);
-            $sheet->setCellValue("F{$currentLine}", $items[0]);
+        foreach ($data as $item) {
+            $sheet->setCellValue("A{$currentLine}", $item->article);
+            $sheet->setCellValue("B{$currentLine}", $item->originalTitle);
+            $sheet->setCellValue("C{$currentLine}", $item->price);
+            $sheet->setCellValue("F{$currentLine}", $item->provider->value);
+            $sheet->setCellValue("G{$currentLine}", $item->brand);
             $currentLine++;
         }
         $writer = new Xlsx($spreadsheet);
