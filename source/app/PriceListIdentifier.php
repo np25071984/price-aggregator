@@ -20,8 +20,8 @@ class PriceListIdentifier
                 return PriceListProviderEnum::BeliyUsd;
             case $this->isGevorgUsdPriceList($spreadsheet):
                 return PriceListProviderEnum::GevorgUsd;
-            case $this->isGuldenUsdPriceList($spreadsheet):
-                return PriceListProviderEnum::GuldenUsd;
+            case $this->isGuldenRuPriceList($spreadsheet):
+                return PriceListProviderEnum::GuldenRu;
             case $this->isZubarUsdPriceList($spreadsheet);
                 return PriceListProviderEnum::ZubarUsd;
             case $this->isNashaFirmaUsdPriceList($spreadsheet);
@@ -201,7 +201,7 @@ class PriceListIdentifier
         return true;
     }
 
-    private function isGuldenUsdPriceList(Spreadsheet $spreadsheet): bool
+    private function isGuldenRuPriceList(Spreadsheet $spreadsheet): bool
     {
         $sheet = $spreadsheet->getActiveSheet();
         if ($sheet->getCell('D1')->getValue() !== "Прайс-лист") {
