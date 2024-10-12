@@ -16,9 +16,6 @@ RUN docker-php-ext-install gd
 
 RUN apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
-# RUN sed -i "s/session.cookie_lifetime = 0/session.cookie_lifetime = 1800/g" /usr/local/etc/php/php.ini
-
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
