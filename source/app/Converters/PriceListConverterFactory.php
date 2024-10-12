@@ -25,12 +25,10 @@ class PriceListConverterFactory
                 return new PriceParfumUsdConverter();
             case PriceListProviderEnum::PafumStockUsd:
                 return new ParfumStockUsdConverter();
-
             case PriceListProviderEnum::BeautyPerfumeUsd:
                 return new BeautyPerfumeUsdConverter();
-
             case PriceListProviderEnum::Unknown:
-                throw new RuntimeException("Couldn't create config for provider");
+                throw new RuntimeException("Couldn't create config for provider " . $providerType->value);
         }
     }
 }
