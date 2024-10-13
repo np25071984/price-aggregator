@@ -16,4 +16,7 @@ return [
     "Anfas" => [
         "anfas alkhaleej",
     ],
+    "Divine" => [
+        "figue divine",
+    ],
 ];

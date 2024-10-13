@@ -5,7 +5,7 @@ namespace App\Converters;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Entities\RawPriceListItem;
 
-readonly class ZubarUsdConverter extends AbstractConverter
+readonly class ZurabUsdConverter extends AbstractConverter
 {
     private const int INDEX_ARTICLE = 0;
     private const int INDEX_TITLE = 1;

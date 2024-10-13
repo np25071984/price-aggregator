@@ -22,8 +22,8 @@ class PriceListIdentifier
                 return PriceListProviderEnum::GevorgUsd;
             case $this->isGuldenRuPriceList($spreadsheet):
                 return PriceListProviderEnum::GuldenRu;
-            case $this->isZubarUsdPriceList($spreadsheet);
-                return PriceListProviderEnum::ZubarUsd;
+            case $this->isZurabUsdPriceList($spreadsheet);
+                return PriceListProviderEnum::ZurabUsd;
             case $this->isNashaFirmaUsdPriceList($spreadsheet);
                 return PriceListProviderEnum::NashaFirmaUsd;
             case $this->isOrabelUsdPriceList($spreadsheet);
@@ -230,7 +230,7 @@ class PriceListIdentifier
         return true;
     }
 
-    private function isZubarUsdPriceList(Spreadsheet $spreadsheet): bool
+    private function isZurabUsdPriceList(Spreadsheet $spreadsheet): bool
     {
         $sheet = $spreadsheet->getActiveSheet();
         if ($sheet->getCell('A1')->getValue() !== "Прайс Раритет. +7(985)363-99-11") {

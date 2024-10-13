@@ -23,8 +23,8 @@ class PriceListConverterFactory
                 return new GevorgUsdConverter();
             case PriceListProviderEnum::GuldenRu:
                 return new GuldenRuConverter();
-            case PriceListProviderEnum::ZubarUsd:
-                return new ZubarUsdConverter();
+            case PriceListProviderEnum::ZurabUsd:
+                return new ZurabUsdConverter();
             case PriceListProviderEnum::NashaFirmaUsd:
                 return new NashaFirmaUsdConverter();
             case PriceListProviderEnum::OrabelUsd:

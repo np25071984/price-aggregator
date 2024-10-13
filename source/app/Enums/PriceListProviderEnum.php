@@ -10,7 +10,7 @@ enum PriceListProviderEnum: string
     case BeliyUsd = "BeliyUsd";
     case GevorgUsd = "GevorgUsd";
     case GuldenRu = "GuldenRu";
-    case ZubarUsd = "ZubarUsd";
+    case ZurabUsd = "ZurabUsd";
     case NashaFirmaUsd = "NashaFirmaUsd";
     case OrabelUsd = "OrabelUsd";
     case RagimovaDianaUsd = "RagimovaDianaUsd";
