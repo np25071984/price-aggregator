@@ -17,7 +17,7 @@ readonly class GevorgUsdConverter extends AbstractConverter
         $data = [];
         $activeSheet = $spreadsheet->getActiveSheet();
         $highestRow = $activeSheet->getHighestRow();
-        $rows = $activeSheet->rangeToArray(sprintf("B%d:N%d", self::FIRST_ROW, $highestRow));
+        $rows = $activeSheet->rangeToArray(sprintf("A%d:N%d", self::FIRST_ROW, $highestRow));
         foreach ($rows as $r) {
             if (empty($r[self::INDEX_ARTICLE])) {
                 continue;
