@@ -13,4 +13,7 @@ return [
     "Versace" => [
         "atelier versace",
     ],
+    "Anfas" => [
+        "anfas alkhaleej",
+    ],
 ];
