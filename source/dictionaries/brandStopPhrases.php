@@ -18,5 +18,45 @@ return [
     ],
     "Divine" => [
         "figue divine",
+        "divine blossom",
+    ],
+    "Jenny Glow" => [
+        "armaf jenny glow series",
+    ],
+    "Ispahan" => [
+        "oud ispahan",
+        "privee oud ispahan",
+    ],
+    "Lamar" => [
+        "kajal - lamar",
+    ],
+    "Signature" => [
+        "a.dunhill signature collection",
+        "dominant collections signature",
+    ],
+    "Casamorati" => [
+        "xerjoff casamorati",
+    ],
+    "Aramis" => [
+        "e.l. aramis",
+    ],
+    "Clinique" => [
+        "e.l. clinique",
+    ],
+    "DKNY" => [
+        "e.l. dkny",
+    ],
+    "Iceberg" => [
+        "red iceberg",
+    ],
+    "Mango" => [
+        "mango crush",
+    ],
+    "Baldessarini" => [
+        "boss baldessarini",
+        "boss del mar baldessarini",
+    ],
+    "Swarovski" => [
+        "perle di bianca whit swarovski",
     ],
 ];

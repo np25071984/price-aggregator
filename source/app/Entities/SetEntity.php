@@ -4,7 +4,7 @@ namespace App\Entities;
 
 use App\Enums\PriceListProviderEnum;
 
-readonly class PriceListItemSetEntity extends AbstractPriceListItemEntity
+readonly class SetEntity extends AbstractProductEntity
 {
     public function __construct(
         string $article,

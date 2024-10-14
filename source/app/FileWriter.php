@@ -6,13 +6,13 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
-use App\Entities\AbstractPriceListItemEntity;
+use App\Entities\AbstractProductEntity;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 readonly class FileWriter
 {
     /**
-     * @param AbstractPriceListItemEntity[] $data
+     * @param AbstractProductEntity[] $data
      */
     public function save(string $fileName, array $data): void
     {
@@ -46,6 +46,7 @@ readonly class FileWriter
             $sheet->setCellValue("B{$currentLine}", $item->originalTitle);
             $sheet->setCellValue("C{$currentLine}", $item->price);
             $sheet->setCellValue("F{$currentLine}", $item->provider->value);
+            /** @var PerfumeEntity $item */
             $sheet->setCellValue("G{$currentLine}", $item->brand);
             $currentLine++;
         }

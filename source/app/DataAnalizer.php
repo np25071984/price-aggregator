@@ -3,8 +3,8 @@
 namespace App;
 
 use App\Enums\PriceListProviderEnum;
-use App\Entities\AbstractPriceListItemEntity;
-use App\Entities\PriceListItemEntity;
+use App\Entities\AbstractProductEntity;
+use App\Entities\PerfumeEntity;
 use App\Entities\RawPriceListItem;
 use App\Entities\ScanResultEntity;
 use App\Enums\SubStringPositionEnum;
@@ -73,7 +73,7 @@ readonly class DataAnalizer
     }
 
     /**
-     * @return AbstractPriceListItemEntity[]
+     * @return AbstractProductEntity[]
      */
     public function analyze(array $rawPriceData, PriceListProviderEnum $dataProvider): array
     {
@@ -85,7 +85,7 @@ readonly class DataAnalizer
             $itemBrandScanResult = $this->sacnStringForDictionaryValue($title, $this->brands, $this->brandStopPhrases);
             $itemBrand = $this->processScanResult($itemBrandScanResult, $title, $this->brands);
 
-            $data[] = new PriceListItemEntity(
+            $data[] = new PerfumeEntity(
                 article: $row->article,
                 originalTitle: $row->title,
                 price: $row->price,

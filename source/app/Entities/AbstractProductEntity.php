@@ -3,7 +3,7 @@
 namespace App\Entities;
 use App\Enums\PriceListProviderEnum;
 
-abstract readonly class AbstractPriceListItemEntity
+abstract readonly class AbstractProductEntity
 {
     public function __construct(
         public string $article,

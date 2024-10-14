@@ -19,13 +19,23 @@ readonly class BeliyUsdConverter extends AbstractConverter
         $highestRow = $activeSheet->getHighestRow();
         $rows = $activeSheet->rangeToArray(sprintf("A%d:C%d", self::FIRST_ROW, $highestRow));
         foreach ($rows as $r) {
+            $title = $this->normolizeString($r[self::INDEX_TITLE]);
+            $title = $this->fixData($title);
             $price = (float)trim($r[self::INDEX_PRICE]);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
-                title: $this->normolizeString($r[self::INDEX_TITLE]),
+                title: $title,
                 price: $price,
             );
         }
         return $data;
+    }
+
+    private function fixData(string $string): string
+    {
+        $string = str_replace("e.l.set(", "e.l. set(", $string);
+        $string = str_replace("kenzo\"ca", "kenzo \"ca", $string);
+
+        return $string;
     }
 }

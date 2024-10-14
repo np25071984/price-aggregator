@@ -17,6 +17,17 @@ Besides the articles don't overlap they don't hardly ever are changed. We can us
 3. ML model
 Teach ML model in order to understand all those titles and be able to distince all required properties from it with high enough precision.
 
+In a number of reasons we decided to kick off with solution No 1 (dictionaries). At least for POC.
+
+## Milestones
+
+1. Upload a desired number of price-lists, simply combine all their data into a _output document_ and let customers to download it.
+2. Enrich the _output  document_ with metadata
+    2.1 brand
+    2.1 product type (perfume, soup, candle, etc)
+    2.3 TBD
+3. Group the products by _brand_ and leave the best price analogue only
+
 ## TODO
 
 * UploadFilesRequest validator give more miningful errors description
