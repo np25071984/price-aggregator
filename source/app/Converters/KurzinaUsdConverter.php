@@ -10,7 +10,7 @@ readonly class KurzinaUsdConverter extends AbstractConverter
     private const int INDEX_ARTICLE = 0;
     private const int INDEX_TITLE = 1;
     private const int INDEX_PRICE = 2;
-    private const int FIRST_ROW = 2;
+    private const int FIRST_ROW = 3;
 
     public function convert(Spreadsheet $spreadsheet): array
     {
