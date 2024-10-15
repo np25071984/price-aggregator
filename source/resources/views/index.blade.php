@@ -8,7 +8,12 @@
     </head>
     <body>
         <div class="container">
-            <h1 class="text-center mt-5">Слияние прайс-листов</h1>
+            <div class="row float-end">
+                <small class="align-end">v{{ config('app.version') }}</small>
+            </div>
+            <div class="row">
+                <h1 class="mt-5 text-center">Слияние прайс-листов</h1>
+            </div>
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     <div class="alert alert-danger" role="alert">{{ $error }}</div>
@@ -21,7 +26,7 @@
                     <input class="form-control" type="file" id="files" name="files[]" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" multiple>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Отправить на слияние</button>
+                <button type="submit" class="btn btn-primary float-end">Отправить на слияние</button>
             </form>
         </div>
     </body>
