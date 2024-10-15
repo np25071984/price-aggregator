@@ -11,6 +11,7 @@ use App\Entities\Products\BagEntity;
 use App\Entities\Products\CandleEntity;
 use App\Entities\Products\PerfumeEntity;
 use App\Entities\Products\ShampooAndGelEntity;
+use App\Entities\Products\UnknownProductEntity;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 readonly class FileWriter
@@ -77,6 +78,10 @@ readonly class FileWriter
                 case $item instanceof ShampooAndGelEntity:
                     $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Шампунь и гель");
+                    break;
+                case $item instanceof UnknownProductEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Нераспознанный продукт");
                     break;
                 case $item instanceof PerfumeEntity:
                     $sheet->setCellValue("G{$currentLine}", $item->brand);

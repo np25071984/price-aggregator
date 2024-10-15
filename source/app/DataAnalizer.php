@@ -8,6 +8,7 @@ use App\Entities\Products\PerfumeEntity;
 use App\Entities\Products\BagEntity;
 use App\Entities\Products\CandleEntity;
 use App\Entities\Products\ShampooAndGelEntity;
+use App\Entities\Products\UnknownProductEntity;
 use App\Entities\RawPriceListItem;
 use App\Entities\ScanResultEntity;
 use App\Entities\ScanResultFullEntity;
@@ -125,20 +126,28 @@ readonly class DataAnalizer
                 continue;
             }
 
+            // determine type
+            $perfumeType = null;
+            $perfumeTypeScanResult = $this->sacnStringForDictionaryValues($title, $this->perfumeTypes);
+            if (is_null($perfumeTypeScanResult)) {
+                $data[] = new UnknownProductEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+            $title = $this->removeResultFromString($perfumeTypeScanResult, $title);
+            $perfumeType = $perfumeTypeScanResult->unifiedValue;
+
             // determine brand
             $brand = null;
             $brandScanResult = $this->sacnStringForDictionaryValues($title, $this->brands, $this->brandStopPhrases);
             if (!is_null($brandScanResult)) {
                 $title = $this->removeResultFromString($brandScanResult, $title);
                 $brand = $brandScanResult->unifiedValue;
-            }
-
-            // determine type
-            $perfumeType = null;
-            $perfumeTypeScanResult = $this->sacnStringForDictionaryValues($title, $this->perfumeTypes);
-            if (!is_null($perfumeTypeScanResult)) {
-                $title = $this->removeResultFromString($perfumeTypeScanResult, $title);
-                $perfumeType = $perfumeTypeScanResult->unifiedValue;
             }
 
             // determine volume
