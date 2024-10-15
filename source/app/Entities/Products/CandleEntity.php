@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Entities;
+namespace App\Entities\Products;
 
 use App\Enums\PriceListProviderEnum;
 
-readonly class BagEntity extends AbstractProductEntity
+readonly class CandleEntity extends AbstractProductEntity
 {
     public function __construct(
         string $article,

@@ -6,9 +6,11 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
-use App\Entities\AbstractProductEntity;
-use App\Entities\BagEntity;
-use App\Entities\PerfumeEntity;
+use App\Entities\Products\AbstractProductEntity;
+use App\Entities\Products\BagEntity;
+use App\Entities\Products\CandleEntity;
+use App\Entities\Products\PerfumeEntity;
+use App\Entities\Products\ShampooAndGelEntity;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 readonly class FileWriter
@@ -67,6 +69,14 @@ readonly class FileWriter
                 case $item instanceof BagEntity:
                     $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "упаковка");
+                    break;
+                case $item instanceof CandleEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "свеча");
+                    break;
+                case $item instanceof ShampooAndGelEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Шампунь и гель");
                     break;
                 case $item instanceof PerfumeEntity:
                     $sheet->setCellValue("G{$currentLine}", $item->brand);

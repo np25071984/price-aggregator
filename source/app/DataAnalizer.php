@@ -3,9 +3,11 @@
 namespace App;
 
 use App\Enums\PriceListProviderEnum;
-use App\Entities\AbstractProductEntity;
-use App\Entities\PerfumeEntity;
-use App\Entities\BagEntity;
+use App\Entities\Products\AbstractProductEntity;
+use App\Entities\Products\PerfumeEntity;
+use App\Entities\Products\BagEntity;
+use App\Entities\Products\CandleEntity;
+use App\Entities\Products\ShampooAndGelEntity;
 use App\Entities\RawPriceListItem;
 use App\Entities\ScanResultEntity;
 use App\Entities\ScanResultFullEntity;
@@ -84,12 +86,36 @@ readonly class DataAnalizer
         foreach ($rawPriceData as $row) {
             $title = $row->title;
 
-            // determine if bag
+            // determine if a bag
             $isBagScanResult = $this->sacnStringForListValues($title, $this->bags);
             if (!is_null($isBagScanResult)) {
-                $title = $this->removeResultFromString($isBagScanResult, $title);
-
                 $data[] = new BagEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+
+            // determine if a candle
+            $isCandleScanResult = $this->sacnStringForListValues($title, ["свеча", "candle"]);
+            if (!is_null($isCandleScanResult)) {
+                $data[] = new CandleEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+
+            // determine if a shampoo & gel
+            $isShGelScanResult = $this->sacnStringForListValues($title, ["sh/gel", "sh/g"]);
+            if (!is_null($isShGelScanResult)) {
+                $data[] = new ShampooAndGelEntity(
                     article: $row->article,
                     originalTitle: $row->title,
                     price: $row->price,

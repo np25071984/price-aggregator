@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Entities;
+namespace App\Entities\Products;
+
 use App\Enums\PriceListProviderEnum;
 
 abstract readonly class AbstractProductEntity
