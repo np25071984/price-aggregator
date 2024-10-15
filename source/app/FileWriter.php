@@ -7,6 +7,8 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use App\Entities\AbstractProductEntity;
+use App\Entities\BagEntity;
+use App\Entities\PerfumeEntity;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 readonly class FileWriter
@@ -43,7 +45,6 @@ readonly class FileWriter
 
         $sheet->setCellValue("F1", "Поставщик");
         $sheet->setCellValue("G1", "Бренд");
-        $sheet->setCellValue("G1", "Бренд");
         $sheet->setCellValue("H1", "Тип");
         $sheet->setCellValue("I1", "Объем");
         $sheet->setCellValue("J1", "Тестер");
@@ -61,18 +62,27 @@ readonly class FileWriter
             $sheet->setCellValue("B{$currentLine}", $item->originalTitle);
             $sheet->setCellValue("C{$currentLine}", $item->price);
             $sheet->setCellValue("F{$currentLine}", $item->provider->value);
-            /** @var PerfumeEntity $item */
-            $sheet->setCellValue("G{$currentLine}", $item->brand);
-            $sheet->setCellValue("H{$currentLine}", $item->type);
-            $sheet->setCellValue("I{$currentLine}", $item->volume);
-            $sheet->setCellValue("J{$currentLine}", $item->isTester ? "tester" : "");
-            $sheet->setCellValue("K{$currentLine}", $item->isSample ? "sample" : "");
-            $sheet->setCellValue("L{$currentLine}", $item->isOldDesign ? "old design" : "");
-            $sheet->setCellValue("M{$currentLine}", $item->isArtisanalBottling ? "разливант" : "");
-            $sheet->setCellValue("N{$currentLine}", $item->hasMarking ? "маркировка" : "");
-            $sheet->setCellValue("O{$currentLine}", $item->isRefill ? "refill" : "");
-            $sheet->setCellValue("P{$currentLine}", $item->isDamaged ? "поврежден" : "");
-            $sheet->setCellValue("Q{$currentLine}", $item->sex);
+
+            switch (true) {
+                case $item instanceof BagEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "упаковка");
+                    break;
+                case $item instanceof PerfumeEntity:
+                    $sheet->setCellValue("G{$currentLine}", $item->brand);
+                    $sheet->setCellValue("H{$currentLine}", $item->type);
+                    $sheet->setCellValue("I{$currentLine}", $item->volume);
+                    $sheet->setCellValue("J{$currentLine}", $item->isTester ? "tester" : "");
+                    $sheet->setCellValue("K{$currentLine}", $item->isSample ? "sample" : "");
+                    $sheet->setCellValue("L{$currentLine}", $item->isOldDesign ? "old design" : "");
+                    $sheet->setCellValue("M{$currentLine}", $item->isArtisanalBottling ? "разливант" : "");
+                    $sheet->setCellValue("N{$currentLine}", $item->hasMarking ? "маркировка" : "");
+                    $sheet->setCellValue("O{$currentLine}", $item->isRefill ? "refill" : "");
+                    $sheet->setCellValue("P{$currentLine}", $item->isDamaged ? "поврежден" : "");
+                    $sheet->setCellValue("Q{$currentLine}", $item->sex);
+                    break;
+            }
+
             $currentLine++;
         }
         $writer = new Xlsx($spreadsheet);

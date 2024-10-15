@@ -3,6 +3,8 @@
 return [
     "(w)" => "woman",
     "(m)" => "man",
+    "(муж)" => "man",
+    "женский" => "woman",
     "for her" => "woman",
     "for him" => "man",
     "for men" => "man",

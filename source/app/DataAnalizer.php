@@ -5,6 +5,7 @@ namespace App;
 use App\Enums\PriceListProviderEnum;
 use App\Entities\AbstractProductEntity;
 use App\Entities\PerfumeEntity;
+use App\Entities\BagEntity;
 use App\Entities\RawPriceListItem;
 use App\Entities\ScanResultEntity;
 use App\Entities\ScanResultFullEntity;
@@ -12,6 +13,7 @@ use App\Enums\SubStringPositionEnum;
 
 readonly class DataAnalizer
 {
+    private array $bags;
     private array $brands;
     private array $brandStopPhrases;
     private array $perfumeTypes;
@@ -29,6 +31,8 @@ readonly class DataAnalizer
 
     public function __construct()
     {
+        $this->bags = include __DIR__ . "/../dictionaries/productTypes/bags.php";
+
         // we want to sort all associative dictionaries by key length to avoid false hits
         $brands = include __DIR__ . "/../dictionaries/brands.php";
         uksort($brands, function($a, $b) {
@@ -79,6 +83,21 @@ readonly class DataAnalizer
         /** @var RawPriceListItem $row */
         foreach ($rawPriceData as $row) {
             $title = $row->title;
+
+            // determine if bag
+            $isBagScanResult = $this->sacnStringForListValues($title, $this->bags);
+            if (!is_null($isBagScanResult)) {
+                $title = $this->removeResultFromString($isBagScanResult, $title);
+
+                $data[] = new BagEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
 
             // determine brand
             $brand = null;
