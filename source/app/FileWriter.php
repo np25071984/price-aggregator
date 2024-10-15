@@ -40,6 +40,21 @@ readonly class FileWriter
         $sheet->getStyle("D1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         $sheet->setCellValue("D1", "Заказ");
 
+
+        $sheet->setCellValue("F1", "Поставщик");
+        $sheet->setCellValue("G1", "Бренд");
+        $sheet->setCellValue("G1", "Бренд");
+        $sheet->setCellValue("H1", "Тип");
+        $sheet->setCellValue("I1", "Объем");
+        $sheet->setCellValue("J1", "Тестер");
+        $sheet->setCellValue("K1", "Сэмпл");
+        $sheet->setCellValue("L1", "Старый дизайн");
+        $sheet->setCellValue("M1", "Разливант");
+        $sheet->setCellValue("N1", "Маркировка");
+        $sheet->setCellValue("O1", "Рефилл");
+        $sheet->setCellValue("P1", "Повреждение");
+        $sheet->setCellValue("Q1", "Пол");
+
         $currentLine = 2;
         foreach ($data as $item) {
             $sheet->setCellValue("A{$currentLine}", $item->article);
@@ -48,6 +63,16 @@ readonly class FileWriter
             $sheet->setCellValue("F{$currentLine}", $item->provider->value);
             /** @var PerfumeEntity $item */
             $sheet->setCellValue("G{$currentLine}", $item->brand);
+            $sheet->setCellValue("H{$currentLine}", $item->type);
+            $sheet->setCellValue("I{$currentLine}", $item->volume);
+            $sheet->setCellValue("J{$currentLine}", $item->isTester ? "tester" : "");
+            $sheet->setCellValue("K{$currentLine}", $item->isSample ? "sample" : "");
+            $sheet->setCellValue("L{$currentLine}", $item->isOldDesign ? "old design" : "");
+            $sheet->setCellValue("M{$currentLine}", $item->isArtisanalBottling ? "разливант" : "");
+            $sheet->setCellValue("N{$currentLine}", $item->hasMarking ? "маркировка" : "");
+            $sheet->setCellValue("O{$currentLine}", $item->isRefill ? "refill" : "");
+            $sheet->setCellValue("P{$currentLine}", $item->isDamaged ? "поврежден" : "");
+            $sheet->setCellValue("Q{$currentLine}", $item->sex);
             $currentLine++;
         }
         $writer = new Xlsx($spreadsheet);
