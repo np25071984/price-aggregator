@@ -59,4 +59,7 @@ return [
     "Swarovski" => [
         "perle di bianca whit swarovski",
     ],
+    "Daligramme Ma" => [
+        "dali",
+    ],
 ];
