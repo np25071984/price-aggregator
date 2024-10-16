@@ -8,6 +8,18 @@ use App\Entities\Products\PerfumeEntity;
 use App\Entities\Products\BagEntity;
 use App\Entities\Products\CandleEntity;
 use App\Entities\Products\ShampooAndGelEntity;
+use App\Entities\Products\BodyLotionEntity;
+use App\Entities\Products\BodyOilEntity;
+use App\Entities\Products\HandCreamEntity;
+use App\Entities\Products\BodyCreamEntity;
+use App\Entities\Products\BathCreamEntity;
+use App\Entities\Products\CableEntity;
+use App\Entities\Products\AtomiserEntity;
+use App\Entities\Products\LaundryDetergentEntity;
+use App\Entities\Products\DeoStickEntity;
+use App\Entities\Products\OtherProductEntity;
+use App\Entities\Products\ShowerGelEntity;
+use App\Entities\Products\SoapEntity;
 use App\Entities\Products\UnknownProductEntity;
 use App\Entities\RawPriceListItem;
 use App\Entities\ScanResultEntity;
@@ -17,24 +29,23 @@ use App\Enums\SubStringPositionEnum;
 readonly class DataAnalizer
 {
     private array $bags;
+    private array $others;
     private array $brands;
     private array $brandStopPhrases;
     private array $perfumeTypes;
     private array $volumes;
     private array $testerFlags;
-    private array $sampleFlags;
-    private array $oldDesignFlags;
     private array $artisanalBottlingFlags;
     private array $markingFlags;
     private array $brandLines;
     private array $brandSets;
     private array $sex;
     private array $damageFlags;
-    private array $refillFlags;
 
     public function __construct()
     {
         $this->bags = include __DIR__ . "/../dictionaries/productTypes/bags.php";
+        $this->others = include __DIR__ . "/../dictionaries/productTypes/others.php";
 
         // we want to sort all associative dictionaries by key length to avoid false hits
         $brands = include __DIR__ . "/../dictionaries/brands.php";
@@ -46,12 +57,9 @@ readonly class DataAnalizer
         $this->perfumeTypes = include __DIR__ . "/../dictionaries/perfumeTypes.php";
         $this->volumes = include __DIR__ . "/../dictionaries/volumes.php";
         $this->testerFlags = include __DIR__ . "/../dictionaries/testerFlags.php";
-        $this->sampleFlags = include __DIR__ . "/../dictionaries/sampleFlags.php";
-        $this->oldDesignFlags = include __DIR__ . "/../dictionaries/oldDesignFlags.php";
         $this->artisanalBottlingFlags = include __DIR__ . "/../dictionaries/artisanalBottlingFlags.php";
         $this->markingFlags = include __DIR__ . "/../dictionaries/markingFlags.php";
         $this->damageFlags = include __DIR__ . "/../dictionaries/damageFlags.php";
-        $this->refillFlags = include __DIR__ . "/../dictionaries/refillFlags.php";
         $this->sex = include __DIR__ . "/../dictionaries/sex.php";
 
         // $brandLines = include __DIR__ . "/../dictionaries/brandLines.php";
@@ -87,7 +95,7 @@ readonly class DataAnalizer
         foreach ($rawPriceData as $row) {
             $title = $row->title;
 
-            // determine if a bag
+            // determine if a Bag
             $isBagScanResult = $this->sacnStringForListValues($title, $this->bags);
             if (!is_null($isBagScanResult)) {
                 $data[] = new BagEntity(
@@ -100,7 +108,7 @@ readonly class DataAnalizer
                 continue;
             }
 
-            // determine if a candle
+            // determine if a Candle
             $isCandleScanResult = $this->sacnStringForListValues($title, ["свеча", "candle"]);
             if (!is_null($isCandleScanResult)) {
                 $data[] = new CandleEntity(
@@ -113,7 +121,7 @@ readonly class DataAnalizer
                 continue;
             }
 
-            // determine if a shampoo & gel
+            // determine if a Shampoo & Gel
             $isShGelScanResult = $this->sacnStringForListValues($title, ["sh/gel", "sh/g"]);
             if (!is_null($isShGelScanResult)) {
                 $data[] = new ShampooAndGelEntity(
@@ -126,11 +134,10 @@ readonly class DataAnalizer
                 continue;
             }
 
-            // determine type
-            $perfumeType = null;
-            $perfumeTypeScanResult = $this->sacnStringForDictionaryValues($title, $this->perfumeTypes);
-            if (is_null($perfumeTypeScanResult)) {
-                $data[] = new UnknownProductEntity(
+            // determine if a Body Lotion
+            $isBodyLotionScanResult = $this->sacnStringForListValues($title, ["body lotion", "b/lotion"]);
+            if (!is_null($isBodyLotionScanResult)) {
+                $data[] = new BodyLotionEntity(
                     article: $row->article,
                     originalTitle: $row->title,
                     price: $row->price,
@@ -139,8 +146,166 @@ readonly class DataAnalizer
 
                 continue;
             }
-            $title = $this->removeResultFromString($perfumeTypeScanResult, $title);
-            $perfumeType = $perfumeTypeScanResult->unifiedValue;
+
+            // determine if a Body Oil
+            $isBodyOilScanResult = $this->sacnStringForListValues($title, ["body oil"]);
+            if (!is_null($isBodyOilScanResult)) {
+                $data[] = new BodyOilEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+
+            // determine if a Cable
+            $isCableScanResult = $this->sacnStringForListValues($title, ["шнур"]);
+            if (!is_null($isCableScanResult)) {
+                $data[] = new CableEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+
+            // determine if a Hand Cream
+            $isHandCreamScanResult = $this->sacnStringForListValues($title, ["hand cream", "крем для рук"]);
+            if (!is_null($isHandCreamScanResult)) {
+                $data[] = new HandCreamEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+
+            // determine if a Body Cream
+            $isBodyCreamScanResult = $this->sacnStringForListValues($title, ["body cream", "крем для тела"]);
+            if (!is_null($isBodyCreamScanResult)) {
+                $data[] = new BodyCreamEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+
+            // determine if a Bath Cream
+            $isBathCreamScanResult = $this->sacnStringForListValues($title, ["bath cream"]);
+            if (!is_null($isBathCreamScanResult)) {
+                $data[] = new BathCreamEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+
+            // determine if an Atomiser
+            $isAtomiserScanResult = $this->sacnStringForListValues($title, ["atomiser", "atomiseur", "атомайзер"]);
+            if (!is_null($isAtomiserScanResult)) {
+                $data[] = new AtomiserEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+
+            // determine if an Hand Soap
+            $isHandSoapScanResult = $this->sacnStringForListValues($title, ["hand and body soap", "hand soap", "hand&body soap", "liquide soap", "жидкое мыло", "soap"]);
+            if (!is_null($isHandSoapScanResult)) {
+                $data[] = new SoapEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+
+            // determine if an Laundry Detergent
+            $isLaundryDetergentScanResult = $this->sacnStringForListValues($title, ["парфюмированное моющее средство для стирки", "жидкий порошок"]);
+            if (!is_null($isLaundryDetergentScanResult)) {
+                $data[] = new LaundryDetergentEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+
+            // determine if a Deo Stick
+            $isDeoStockScanResult = $this->sacnStringForListValues($title, ["deo stick"]);
+            if (!is_null($isDeoStockScanResult)) {
+                $data[] = new DeoStickEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+
+            // determine if a Shower Gel
+            $isShowerGelScanResult = $this->sacnStringForListValues($title, ["shower gel"]);
+            if (!is_null($isShowerGelScanResult)) {
+                $data[] = new ShowerGelEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+
+            // determine if Other category
+            $isOtherCategorycanResult = $this->sacnStringForListValues($title, $this->others);
+            if (!is_null($isOtherCategorycanResult)) {
+                $data[] = new OtherProductEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
+
+                continue;
+            }
+
+            // $data[] = new UnknownProductEntity(
+            //     article: $row->article,
+            //     originalTitle: $row->title,
+            //     price: $row->price,
+            //     provider: $dataProvider,
+            // );
+
+            // continue;
+
+            // determine perfume type
+            $perfumeType = "perfume";
+            $perfumeTypeScanResult = $this->sacnStringForDictionaryValues($title, $this->perfumeTypes);
+            if (!is_null($perfumeTypeScanResult)) {
+                $title = $this->removeResultFromString($perfumeTypeScanResult, $title);
+                $perfumeType = $perfumeTypeScanResult->unifiedValue;
+            }
 
             // determine brand
             $brand = null;
@@ -168,7 +333,7 @@ readonly class DataAnalizer
 
             // determine if sample
             $isSample = false;
-            $isSampleScanResult = $this->sacnStringForListValues($title, $this->sampleFlags);
+            $isSampleScanResult = $this->sacnStringForListValues($title, ["sample"]);
             if (!is_null($isSampleScanResult)) {
                 $title = $this->removeResultFromString($isSampleScanResult, $title);
                 $isSample = true;
@@ -176,7 +341,7 @@ readonly class DataAnalizer
 
             // determine if old design
             $isOldDesign = false;
-            $isOldDesignScanResult = $this->sacnStringForListValues($title, $this->oldDesignFlags);
+            $isOldDesignScanResult = $this->sacnStringForListValues($title, ["старый дизайн", "old design"]);
             if (!is_null($isOldDesignScanResult)) {
                 $title = $this->removeResultFromString($isOldDesignScanResult, $title);
                 $isOldDesign = true;
@@ -200,7 +365,7 @@ readonly class DataAnalizer
 
             // determine if refill
             $isRefill = false;
-            $isRefillScanResult = $this->sacnStringForListValues($title, $this->refillFlags);
+            $isRefillScanResult = $this->sacnStringForListValues($title, ["refill", "рефилл"]);
             if (!is_null($isRefillScanResult)) {
                 $title = $this->removeResultFromString($isRefillScanResult, $title);
                 $isRefill = true;
@@ -351,17 +516,22 @@ readonly class DataAnalizer
         switch ($result->positionInScannedString) {
             case SubStringPositionEnum::Match:
                 $str = $result->dictionaryValue;
+                $replace = "";
                 break;
             case SubStringPositionEnum::Beginning:
                 $str = $result->dictionaryValue . " ";
+                $replace = "";
                 break;
             case SubStringPositionEnum::End:
-            case SubStringPositionEnum::Middle:
                 $str = " " . $result->dictionaryValue;
+                $replace = "";
                 break;
-
+            case SubStringPositionEnum::Middle:
+                $str = " " . $result->dictionaryValue . " ";
+                $replace = " ";
+                break;
         }
         $pattern = "/" . preg_quote($str, "/") . "/";
-        return preg_replace($pattern, "", $string, 1);
+        return preg_replace($pattern, $replace, $string, 1);
     }
 }

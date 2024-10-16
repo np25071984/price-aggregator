@@ -109,29 +109,29 @@ class ParseFile extends Command
      */
     public function handle()
     {
-        // $dataAnalizer = new DataAnalizer();
-        // $data = [new RawPriceListItem("aa", mb_strtolower("AFFINESSENCE - Bergamote - Racines 100 ml EDP"), 2.222)];
-        // $result = $dataAnalizer->analyze($data, PriceListProviderEnum::Unknown);
-        // var_dump($result);
+        $dataAnalizer = new DataAnalizer();
+        $data = [new RawPriceListItem("aa", mb_strtolower("arabesque parfumes bacara parfum 50ml tester"), 2.222)];
+        $result = $dataAnalizer->analyze($data, PriceListProviderEnum::Unknown);
+        var_dump($result);
 
-        $directoryReader = new DirectoryReader(__DIR__ . "/../../../files/");
-        $priceListIdentifier = new PriceListIdentifier();
-        $priceListConverterFactory = new PriceListConverterFactory();
-        $data = [];
-        foreach ($directoryReader->read(["xlsx", "xls"]) as $filePathName => $extension) {
-            echo $filePathName, PHP_EOL;
-            $reader = IOFactory::createReader($extension);
-            $spreadsheet = $reader->load($filePathName);
+        // $directoryReader = new DirectoryReader(__DIR__ . "/../../../files/");
+        // $priceListIdentifier = new PriceListIdentifier();
+        // $priceListConverterFactory = new PriceListConverterFactory();
+        // $data = [];
+        // foreach ($directoryReader->read(["xlsx", "xls"]) as $filePathName => $extension) {
+        //     echo $filePathName, PHP_EOL;
+        //     $reader = IOFactory::createReader($extension);
+        //     $spreadsheet = $reader->load($filePathName);
 
-            // identify price list
-            $priceId = $priceListIdentifier->identiry($spreadsheet);
-            echo "    ", $priceId->value, PHP_EOL;
-            $converter = $priceListConverterFactory->getConverter($priceId);
-            echo "    ", $converter::class, PHP_EOL;
-            // $data = array_merge($data, $converter->convert($spreadsheet, basename($filePathName)));
-            unset($reader);
-            unset($spreadsheet);
-        }
+        //     // identify price list
+        //     $priceId = $priceListIdentifier->identiry($spreadsheet);
+        //     echo "    ", $priceId->value, PHP_EOL;
+        //     $converter = $priceListConverterFactory->getConverter($priceId);
+        //     echo "    ", $converter::class, PHP_EOL;
+        //     // $data = array_merge($data, $converter->convert($spreadsheet, basename($filePathName)));
+        //     unset($reader);
+        //     unset($spreadsheet);
+        // }
 
         // $writer = new FileWriter();
         // $writer->save("output.xlsx", $data);

@@ -11,6 +11,18 @@ use App\Entities\Products\BagEntity;
 use App\Entities\Products\CandleEntity;
 use App\Entities\Products\PerfumeEntity;
 use App\Entities\Products\ShampooAndGelEntity;
+use App\Entities\Products\BodyLotionEntity;
+use App\Entities\Products\BodyOilEntity;
+use App\Entities\Products\CableEntity;
+use App\Entities\Products\HandCreamEntity;
+use App\Entities\Products\BodyCreamEntity;
+use App\Entities\Products\BathCreamEntity;
+use App\Entities\Products\SoapEntity;
+use App\Entities\Products\AtomiserEntity;
+use App\Entities\Products\LaundryDetergentEntity;
+use App\Entities\Products\DeoStickEntity;
+use App\Entities\Products\OtherProductEntity;
+use App\Entities\Products\ShowerGelEntity;
 use App\Entities\Products\UnknownProductEntity;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
@@ -78,6 +90,54 @@ readonly class FileWriter
                 case $item instanceof ShampooAndGelEntity:
                     $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Шампунь и гель");
+                    break;
+                case $item instanceof BodyLotionEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Лосьон для тела");
+                    break;
+                case $item instanceof BodyOilEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Масло для тела");
+                    break;
+                case $item instanceof CableEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Шнур");
+                    break;
+                case $item instanceof HandCreamEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Крем для рук");
+                    break;
+                case $item instanceof BodyCreamEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Крем для тела");
+                    break;
+                case $item instanceof BathCreamEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Крем для ванны");
+                    break;
+                case $item instanceof AtomiserEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Атомайзер");
+                    break;
+                case $item instanceof SoapEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Мыло");
+                    break;
+                case $item instanceof LaundryDetergentEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Жидкий порошок");
+                    break;
+                case $item instanceof DeoStickEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Деодорант");
+                    break;
+                case $item instanceof ShowerGelEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Гель для душа");
+                    break;
+                case $item instanceof OtherProductEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Другой продукт");
                     break;
                 case $item instanceof UnknownProductEntity:
                     $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
