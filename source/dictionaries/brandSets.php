@@ -22,6 +22,8 @@ return [
     "Chabaud Maison De Parfum" => [
         "4 x 7,5 ml (innoc.frag.,capr. de sophie,chic et boheme,vint.)" => "4 x 7,5ml (Innoc.Frag., Capr. De Sophie, Chic Et Boheme, Vint.)",
         "4x7,5 ml (concentree,de biscuit,et chocolate,de vanille)" => "4 x 7.5ml (Concentree, De Biscuit, Et Chocolate, De Vanille)",
+        "classical set (chic et boheme, innocente fragilite, vintage, caprice de sophie) (4*7,5 ml) edp" => "4 x 7.5ml edp classic set (Chic Et Boheme, Innocente Fragilite, Vintage, Caprice de Sophie)",
+        "gourmand set (lait de: chocolat, vanille, concentre, biscuit) (4*7,5 ml) edt" => "4 x 7.5ml edt gourmand set (Lait de: Chocolat, Vanille, Concentre, Biscuit)",
     ],
     "Kilian" => [
         "black phantom (memento mori) 50 ml + 7.5 ml the icons" => "Black Phantom (Memento Mori) 50 ml + 7.5 ml the Icons",
@@ -219,5 +221,8 @@ return [
     "BDK Parfums" => [
         "matieres eau de parfum 3*10ml (creme de cuir, tubereuse imperiale, velvet tonka)" => "Collection Matieres 3 x 10ml (Creme De Cuir, Tubereuse Imperiale, Velvet Tonka)",
         "parisienne eau de parfum 3*10ml (rouge smoking, pas сe soir, gris charnel)" => "Collection Parisienne 3 x 10ml (Rouge Smoking, Pas ce Soir, Gris Charnel)",
+    ],
+    "Louis Moente" => [
+        "6*50 ml set" => "6 x 50ml",
     ],
 ];

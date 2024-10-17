@@ -18,6 +18,7 @@ use App\Entities\Products\AtomiserEntity;
 use App\Entities\Products\LaundryDetergentEntity;
 use App\Entities\Products\DeoStickEntity;
 use App\Entities\Products\OtherProductEntity;
+use App\Entities\Products\SetEntity;
 use App\Entities\Products\ShowerGelEntity;
 use App\Entities\Products\SoapEntity;
 use App\Entities\Products\UnknownProductEntity;
@@ -73,16 +74,16 @@ readonly class DataAnalizer
         // unset($brandLines);
         // $this->brandLines = $brandLinesSorted;
 
-        // $brandSets = include __DIR__ . "/../dictionaries/brandSets.php";
-        // $brandSetsSorted = [];
-        // foreach($brandSets as $brand => $items) {
-        //     uksort($items, function($a, $b) {
-        //         return mb_strlen($b) <=> mb_strlen($a);
-        //     });
-        //     $brandSetsSorted[$brand] = $items;
-        // }
-        // unset($brandSets);
-        // $this->brandSets = $brandSetsSorted;
+        $brandSets = include __DIR__ . "/../dictionaries/brandSets.php";
+        $brandSetsSorted = [];
+        foreach($brandSets as $brand => $items) {
+            uksort($items, function($a, $b) {
+                return mb_strlen($b) <=> mb_strlen($a);
+            });
+            $brandSetsSorted[$brand] = $items;
+        }
+        unset($brandSets);
+        $this->brandSets = $brandSetsSorted;
     }
 
     /**
@@ -239,7 +240,7 @@ readonly class DataAnalizer
             }
 
             // determine if an Laundry Detergent
-            $isLaundryDetergentScanResult = $this->sacnStringForListValues($title, ["парфюмированное моющее средство для стирки", "жидкий порошок"]);
+            $isLaundryDetergentScanResult = $this->sacnStringForListValues($title, ["(парфюмированное моющее средство для стирки)", "парфюмированное моющее средство для стирки", "жидкий порошок"]);
             if (!is_null($isLaundryDetergentScanResult)) {
                 $data[] = new LaundryDetergentEntity(
                     article: $row->article,
@@ -299,20 +300,37 @@ readonly class DataAnalizer
 
             // continue;
 
-            // determine perfume type
-            $perfumeType = "perfume";
-            $perfumeTypeScanResult = $this->sacnStringForDictionaryValues($title, $this->perfumeTypes);
-            if (!is_null($perfumeTypeScanResult)) {
-                $title = $this->removeResultFromString($perfumeTypeScanResult, $title);
-                $perfumeType = $perfumeTypeScanResult->unifiedValue;
-            }
-
             // determine brand
             $brand = null;
             $brandScanResult = $this->sacnStringForDictionaryValues($title, $this->brands, $this->brandStopPhrases);
             if (!is_null($brandScanResult)) {
                 $title = $this->removeResultFromString($brandScanResult, $title);
                 $brand = $brandScanResult->unifiedValue;
+            }
+
+            // determine if set
+            if (!is_null($brand)) {
+                $setScanResult = $this->sacnStringForDictionaryValues($title, $this->brandSets[$brand] ?? []);
+                if (!is_null($setScanResult)) {
+                    $data[] = new SetEntity(
+                        article: $row->article,
+                        originalTitle: $row->title,
+                        price: $row->price,
+                        provider: $dataProvider,
+                        brand: $brand,
+                        line: $setScanResult->unifiedValue,
+                    );
+
+                    continue;
+                }
+            }
+
+            // determine perfume type
+            $perfumeType = "perfume";
+            $perfumeTypeScanResult = $this->sacnStringForDictionaryValues($title, $this->perfumeTypes);
+            if (!is_null($perfumeTypeScanResult)) {
+                $title = $this->removeResultFromString($perfumeTypeScanResult, $title);
+                $perfumeType = $perfumeTypeScanResult->unifiedValue;
             }
 
             // determine volume

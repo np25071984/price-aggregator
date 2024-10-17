@@ -22,6 +22,7 @@ use App\Entities\Products\AtomiserEntity;
 use App\Entities\Products\LaundryDetergentEntity;
 use App\Entities\Products\DeoStickEntity;
 use App\Entities\Products\OtherProductEntity;
+use App\Entities\Products\SetEntity;
 use App\Entities\Products\ShowerGelEntity;
 use App\Entities\Products\UnknownProductEntity;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
@@ -142,6 +143,11 @@ readonly class FileWriter
                 case $item instanceof UnknownProductEntity:
                     $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Нераспознанный продукт");
+                    break;
+                case $item instanceof SetEntity:
+                    $sheet->setCellValue("G{$currentLine}", $item->brand);
+                    $sheet->mergeCells("H{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("H{$currentLine}", $item->line);
                     break;
                 case $item instanceof PerfumeEntity:
                     $sheet->setCellValue("G{$currentLine}", $item->brand);

@@ -23,6 +23,8 @@ readonly class DePerfumesConverter extends AbstractConverter
                 continue;
             }
             $price = (float)trim($r[self::INDEX_PRICE]);
+            $title = $this->normolizeString($r[self::INDEX_TITLE]);
+            $title = $title = $this->fixData($title);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
                 title: $this->normolizeString($r[self::INDEX_TITLE]),
@@ -30,5 +32,12 @@ readonly class DePerfumesConverter extends AbstractConverter
             );
         }
         return $data;
+    }
+
+    private function fixData(string $string): string
+    {
+        $string = str_replace("1la(парфюмированное моющее средство для стирки)", "1la (парфюмированное моющее средство для стирки)", $string);
+
+        return $string;
     }
 }
