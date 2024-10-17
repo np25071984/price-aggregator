@@ -138,16 +138,15 @@ readonly class FileWriter
                     break;
                 case $item instanceof OtherProductEntity:
                     $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
-                    $sheet->setCellValue("G{$currentLine}", "Другой продукт");
+                    $sheet->setCellValue("G{$currentLine}", "Разное");
+                    break;
+                case $item instanceof SetEntity:
+                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("G{$currentLine}", "Набор");
                     break;
                 case $item instanceof UnknownProductEntity:
                     $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Нераспознанный продукт");
-                    break;
-                case $item instanceof SetEntity:
-                    $sheet->setCellValue("G{$currentLine}", $item->brand);
-                    $sheet->mergeCells("H{$currentLine}:Q{$currentLine}");
-                    $sheet->setCellValue("H{$currentLine}", $item->line);
                     break;
                 case $item instanceof PerfumeEntity:
                     $sheet->setCellValue("G{$currentLine}", $item->brand);

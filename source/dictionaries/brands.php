@@ -367,6 +367,7 @@ return [
     "lpdo" => "LPDO",
     "lulu castagnette" => "Lulu Castagnette",
     "lubin" => "Lubin",
+    "maurer & wirtz" => "Maurer & Wirtz",
     "match play" => "Match Play",
     "mango" => "Mango",
     "maori collection" => "Maori Collection",
