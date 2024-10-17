@@ -110,7 +110,7 @@ readonly class DataAnalizer
             }
 
             // determine if a Candle
-            $isCandleScanResult = $this->sacnStringForListValues($title, ["свеча", "candle"]);
+            $isCandleScanResult = $this->sacnStringForListValues($title, ["свеча", "candle"], ["свеча" => ["+35g. свеча"]]);
             if (!is_null($isCandleScanResult)) {
                 $data[] = new CandleEntity(
                     article: $row->article,
@@ -214,7 +214,7 @@ readonly class DataAnalizer
             }
 
             // determine if an Atomiser
-            $isAtomiserScanResult = $this->sacnStringForListValues($title, ["atomiser", "atomiseur", "атомайзер"]);
+            $isAtomiserScanResult = $this->sacnStringForListValues($title, ["atomiser", "atomiseur", "атомайзер"], ["atomiser" => ["with atomiser"]]);
             if (!is_null($isAtomiserScanResult)) {
                 $data[] = new AtomiserEntity(
                     article: $row->article,
@@ -427,7 +427,7 @@ readonly class DataAnalizer
         return $data;
     }
 
-    private function sacnStringForListValues(string $haystack, array $list): ?ScanResultEntity
+    private function sacnStringForListValues(string $haystack, array $list, array $stopList = []): ?ScanResultEntity
     {
         $haystackSize = mb_strlen($haystack);
         foreach ($list as $listValue) {
@@ -445,6 +445,12 @@ readonly class DataAnalizer
 
             $position = $this->findSubStringPosition($haystack, $listValue);
             if (!is_null($position)) {
+                if (isset($stopList[$listValue]) && !empty($stopList[$listValue])) {
+                    $stopListScanResult = $this->sacnStringForListValues($haystack, $stopList[$listValue]);
+                    if (!is_null($stopListScanResult)) {
+                        continue;
+                    }
+                }
                 return new ScanResultEntity($listValue, $position);
             }
         }
