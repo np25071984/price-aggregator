@@ -249,7 +249,7 @@ return [
         "champaca 5*8ml edp" => "Champaca edp 5 x 8ml woman",
         "jayne ormonde man 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml man",
         "jayne ormonde woman 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml woman",
-        "ormonde man 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml man",,
+        "ormonde man 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml man",
         "ormonde woman 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml woman",
 
     ],
