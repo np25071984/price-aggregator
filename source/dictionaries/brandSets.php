@@ -153,6 +153,7 @@ return [
         "bleu de chanel man 3*20ml edt" => "Bleu de Chanel edt 3 x 20ml",
         "chance eau tendre 3*20ml edt сменный блок" => "Chance Eau Tendre eau edt 3 x 20ml сменный блок",
         "coco mademoiselle 3*20ml edt сменный блок" => "Coco Mademoiselle edt 3 x 20ml сменный блок",
+        "chance 3*20ml edt сменный блок" => "Chance Eau Tendre eau edt 3 x 20ml сменный блок",
     ],
     "Creed" => [
         "spring flower edp (w) 3*10ml" => "Spring Flower edp (w) 3 x 10ml",
@@ -248,6 +249,9 @@ return [
         "champaca 5*8ml edp" => "Champaca edp 5 x 8ml woman",
         "jayne ormonde man 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml man",
         "jayne ormonde woman 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml woman",
+        "ormonde man 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml man",,
+        "ormonde woman 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml woman",
+
     ],
     "Tiziana Terenzi" => [
         "andromeda exdp 2 x 10 ml luxury box" => "Andromeda exdp 2 x 10ml Luxury box",
@@ -352,6 +356,9 @@ return [
         "nero collection summanus parfum 5x10ml refill" => "Nero Collection Summanus 5 x 10ml refill",
         "nero collection vixere parfum 3x10ml+gold/purple case" => "Nero Collection Vixere 3 x 10ml + gold/purple case",
         "nero collection vixere parfum 5x10ml refill" => "Nero Collection Vixere 5 x 10ml refill",
+        "emperor collection amber aquilaria parfum 3x10ml+gold/purple case" => "Emperor Collection Amber Aquilaria 3 x 10ml + gold/purple case",
+        "emperor collection amber aquilaria parfum 5x10ml refill" => "Emperor Collection Amber Aquilaria 5 x 10ml refill",
+
     ],
     "Essential Parfums" => [
         "discovery set 8*2 ml" => "Discovery Set 8 x 2ml",

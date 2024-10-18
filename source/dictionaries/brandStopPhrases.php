@@ -63,6 +63,6 @@ return [
         "dali",
     ],
     "Hugo Boss" => [
-        "boss baldessarini",
+        "p&g boss",
     ],
 ];

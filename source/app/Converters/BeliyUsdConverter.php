@@ -35,6 +35,11 @@ readonly class BeliyUsdConverter extends AbstractConverter
     {
         $string = str_replace("e.l.set(", "e.l. set(", $string);
         $string = str_replace("kenzo\"ca", "kenzo \"ca", $string);
+        $string = str_replace("eternelle100ml", "eternelle 100ml", $string);
+        $string = str_replace("pourpre100ml", "pourpre 100ml", $string);
+        $string = str_replace("stilll100ml", "still 100ml", $string);
+        $string = str_replace("30ml`без", "30ml без", $string);
+        $string = str_replace("cherry100ml", "cherry 100ml", $string);
 
         return $string;
     }

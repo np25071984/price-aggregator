@@ -4,6 +4,7 @@ return [
     "пакет",
     "пакеты",
     "(пакеты)",
+    "пакеты!",
     "shopping bags",
     "shopping bag",
     "shopper bag",

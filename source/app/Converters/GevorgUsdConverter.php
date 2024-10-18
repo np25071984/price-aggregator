@@ -22,6 +22,8 @@ readonly class GevorgUsdConverter extends AbstractConverter
             if (empty($r[self::INDEX_ARTICLE])) {
                 continue;
             }
+            $title = $this->normolizeString($r[self::INDEX_TITLE]);
+            $title = $this->fixData($title);
             $price = (float)trim($r[self::INDEX_PRICE]);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
@@ -30,5 +32,19 @@ readonly class GevorgUsdConverter extends AbstractConverter
             );
         }
         return $data;
+    }
+
+    private function fixData(string $string): string
+    {
+        $string = str_replace("100ml(в", "100ml (в", $string);
+        $string = str_replace("50ml(без", "50ml (без", $string);
+        $string = str_replace("50ml(в", "50ml (в", $string);
+        $string = str_replace("parfum120ml", "parfum 120ml", $string);
+        $string = str_replace("10m(в", "10ml (в", $string);
+        $string = str_replace("10mll(в", "10ml (в", $string);
+        $string = str_replace("10ml(в", "10ml (в", $string);
+        $string = str_replace("5ml(отливант)", "5ml (отливант)", $string);
+
+        return $string;
     }
 }

@@ -29,6 +29,7 @@ readonly class AvangardUsdConverter extends AbstractConverter
                 continue;
             }
             $title = $this->normolizeString($r[self::INDEX_TITLE]);
+            $title = $this->fixData($title);
             if (mb_substr($title, 0, mb_strlen($currentBrand)) !== $currentBrand) {
                 $title = $currentBrand . " " . $title;
             }
@@ -40,5 +41,12 @@ readonly class AvangardUsdConverter extends AbstractConverter
             );
         }
         return $data;
+    }
+
+    private function fixData(string $string): string
+    {
+        $string = str_replace("edition100ml", "edition 100ml", $string);
+
+        return $string;
     }
 }
