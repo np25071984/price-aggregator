@@ -12,6 +12,15 @@ readonly class DePerfumesConverter extends AbstractConverter
     private const int INDEX_PRICE = 2;
     private const int FIRST_ROW = 4;
 
+    protected function getFixes(): array
+    {
+        return [
+            preg_quote("1la(парфюмированное моющее средство для стирки)", "/") => "1la (парфюмированное моющее средство для стирки)",
+            preg_quote("1l(парфюмированное моющее средство для стирки)", "/") => "1l (парфюмированное моющее средство для стирки)",
+            " lys 10 edp " => " lys 10ml edp ",
+        ];
+    }
+
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
@@ -24,20 +33,12 @@ readonly class DePerfumesConverter extends AbstractConverter
             }
             $price = (float)trim($r[self::INDEX_PRICE]);
             $title = $this->normolizeString($r[self::INDEX_TITLE]);
-            $title = $title = $this->fixData($title);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
-                title: $this->normolizeString($r[self::INDEX_TITLE]),
+                title: $title,
                 price: $price,
             );
         }
         return $data;
-    }
-
-    private function fixData(string $string): string
-    {
-        $string = str_replace("1la(парфюмированное моющее средство для стирки)", "1la (парфюмированное моющее средство для стирки)", $string);
-
-        return $string;
     }
 }

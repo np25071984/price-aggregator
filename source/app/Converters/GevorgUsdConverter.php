@@ -12,6 +12,24 @@ readonly class GevorgUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 13;
     private const int FIRST_ROW = 3;
 
+    protected function getFixes(): array
+    {
+        return [
+            preg_quote("100ml(в", "/") =>"100ml (в",
+            preg_quote("50ml(без)", "/") => "50ml (без",
+            preg_quote("50ml(в", "/") => "50ml (в",
+            "parfum120ml" => "parfum 120ml",
+            preg_quote("10m(в", "/") => "10ml (в",
+            preg_quote("10mll(в", "/") => "10ml (в",
+            preg_quote("10ml(в", "/") => "10ml (в",
+            preg_quote("10ml(оригинал", "/") => "10ml (оригинал",
+            preg_quote("10ml(отливант)", "/") => "10ml (отливант)",
+            preg_quote("50ml(без", "/") => "50ml (без",
+            "roses on ice edp 50$" => "roses on ice edp 50ml",
+            preg_quote("parfum 5ml(отливант)", "/") . "$" => "parfum 5ml (отливант)",
+        ];
+    }
+
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
@@ -23,28 +41,13 @@ readonly class GevorgUsdConverter extends AbstractConverter
                 continue;
             }
             $title = $this->normolizeString($r[self::INDEX_TITLE]);
-            $title = $this->fixData($title);
             $price = (float)trim($r[self::INDEX_PRICE]);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
-                title: $this->normolizeString($r[self::INDEX_TITLE]),
+                title: $title,
                 price: $price,
             );
         }
         return $data;
-    }
-
-    private function fixData(string $string): string
-    {
-        $string = str_replace("100ml(в", "100ml (в", $string);
-        $string = str_replace("50ml(без", "50ml (без", $string);
-        $string = str_replace("50ml(в", "50ml (в", $string);
-        $string = str_replace("parfum120ml", "parfum 120ml", $string);
-        $string = str_replace("10m(в", "10ml (в", $string);
-        $string = str_replace("10mll(в", "10ml (в", $string);
-        $string = str_replace("10ml(в", "10ml (в", $string);
-        $string = str_replace("5ml(отливант)", "5ml (отливант)", $string);
-
-        return $string;
     }
 }

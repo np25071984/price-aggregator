@@ -10,11 +10,25 @@ abstract readonly class AbstractConverter implements ConverterInterface
 
         /**
          * little data hacks
-         * TODO: possible multibyte issue; replace str_replace function
          */
-        $string = str_replace(" ", " ", $string);
+        $string = mb_ereg_replace(preg_quote(" ", "/"), " ", $string);
         $string = preg_replace('/\s{2,}/', " ", $string);
+        $string = $this->fixData($string);
 
         return trim($string);
+    }
+
+    protected function getFixes(): array
+    {
+        return [];
+    }
+
+    private function fixData(string $string): string
+    {
+        foreach($this->getFixes() as $regExp => $fixedValue) {
+            $string = mb_ereg_replace($regExp, $fixedValue, $string);
+        }
+
+        return $string;
     }
 }

@@ -12,6 +12,13 @@ readonly class KurzinaUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 2;
     private const int FIRST_ROW = 3;
 
+    protected function getFixes(): array
+    {
+        return [
+            "ml отливант5" => "5ml отливант",
+        ];
+    }
+
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
@@ -23,7 +30,6 @@ readonly class KurzinaUsdConverter extends AbstractConverter
                 continue;
             }
             $title = $this->normolizeString($r[self::INDEX_TITLE]);
-            $title = $this->fixData($title);
             $price = (float)trim($r[self::INDEX_PRICE]);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
@@ -34,8 +40,4 @@ readonly class KurzinaUsdConverter extends AbstractConverter
         return $data;
     }
 
-    private function fixData(string $string): string
-    {
-        return str_replace("ml отливант5", "5ml отливант", $string);
-    }
 }

@@ -12,6 +12,19 @@ readonly class BeliyUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 2;
     private const int FIRST_ROW = 15;
 
+    protected function getFixes(): array
+    {
+        return [
+            preg_quote("e.l.set(", "/") => "e.l. set(",
+            preg_quote("kenzo\"ca", "/") => "kenzo \"ca",
+            "eternelle100ml" => "eternelle 100ml",
+            "pourpre100ml" => "pourpre 100ml",
+            "stilll100ml" => "still 100ml",
+            preg_quote("30ml`без", "/") => "30ml без",
+            "cherry100ml" => "cherry 100ml",
+        ];
+    }
+
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
@@ -20,7 +33,6 @@ readonly class BeliyUsdConverter extends AbstractConverter
         $rows = $activeSheet->rangeToArray(sprintf("A%d:C%d", self::FIRST_ROW, $highestRow));
         foreach ($rows as $r) {
             $title = $this->normolizeString($r[self::INDEX_TITLE]);
-            $title = $this->fixData($title);
             $price = (float)trim($r[self::INDEX_PRICE]);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
@@ -29,18 +41,5 @@ readonly class BeliyUsdConverter extends AbstractConverter
             );
         }
         return $data;
-    }
-
-    private function fixData(string $string): string
-    {
-        $string = str_replace("e.l.set(", "e.l. set(", $string);
-        $string = str_replace("kenzo\"ca", "kenzo \"ca", $string);
-        $string = str_replace("eternelle100ml", "eternelle 100ml", $string);
-        $string = str_replace("pourpre100ml", "pourpre 100ml", $string);
-        $string = str_replace("stilll100ml", "still 100ml", $string);
-        $string = str_replace("30ml`без", "30ml без", $string);
-        $string = str_replace("cherry100ml", "cherry 100ml", $string);
-
-        return $string;
     }
 }

@@ -12,6 +12,14 @@ readonly class NichePerfumeUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 3;
     private const int FIRST_ROW = 14;
 
+    protected function getFixes(): array
+    {
+        return [
+            " mltest" => " ml test",
+            " edp 50$" => " edp 50ml",
+        ];
+    }
+
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
@@ -23,7 +31,6 @@ readonly class NichePerfumeUsdConverter extends AbstractConverter
                 continue;
             }
             $title = $this->normolizeString($r[self::INDEX_TITLE]);
-            $title = $this->fixData($title);
             $price = str_replace(" USD", "", $r[self::INDEX_PRICE]); // rangeToArray returns currency
             $price = (float)trim($price);
             $data[] = new RawPriceListItem(
@@ -34,10 +41,5 @@ readonly class NichePerfumeUsdConverter extends AbstractConverter
 
         }
         return $data;
-    }
-
-    private function fixData(string $string): string
-    {
-        return str_replace(" mltest", " ml test", $string);
     }
 }

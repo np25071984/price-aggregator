@@ -12,6 +12,20 @@ readonly class ZurabUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 3;
     private const int FIRST_ROW = 4;
 
+    protected function getFixes(): array
+    {
+        return [
+            "edp100ml" => "edp 100ml",
+            preg_quote(" parfum1.5ml ", "/") => " parfum 1.5ml ",
+            " parfum100ml$" => " parfum 100ml",
+            " edt50ml$" => " edt 50ml",
+            " 100mlt tester$" => " 100ml tester",
+            "edt 50m б/спр$" => "edt 50ml б/спр",
+            " edp15ml$" => " edp 15ml",
+            " edp 1m$" => " edp 1ml",
+        ];
+    }
+
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
@@ -22,10 +36,11 @@ readonly class ZurabUsdConverter extends AbstractConverter
             if (empty($r[self::INDEX_ARTICLE])) {
                 continue;
             }
+            $title = $this->normolizeString($r[self::INDEX_TITLE]);
             $price = (float)trim($r[self::INDEX_PRICE]);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
-                title: $this->normolizeString($r[self::INDEX_TITLE]),
+                title: $title,
                 price: $price,
             );
         }
