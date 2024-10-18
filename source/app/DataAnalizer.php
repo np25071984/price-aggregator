@@ -240,7 +240,7 @@ readonly class DataAnalizer
             }
 
             // determine if an Laundry Detergent
-            $isLaundryDetergentScanResult = $this->sacnStringForListValues($title, ["(парфюмированное моющее средство для стирки)", "парфюмированное моющее средство для стирки", "жидкий порошок"]);
+            $isLaundryDetergentScanResult = $this->sacnStringForListValues($title, ["(парфюмированное моющее средство для стирки)", "парфюмированное моющее средство для стирки", "жидкий порошок", "laundry"]);
             if (!is_null($isLaundryDetergentScanResult)) {
                 $data[] = new LaundryDetergentEntity(
                     article: $row->article,

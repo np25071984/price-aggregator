@@ -62,4 +62,7 @@ return [
     "Daligramme Ma" => [
         "dali",
     ],
+    "Hugo Boss" => [
+        "boss baldessarini",
+    ],
 ];

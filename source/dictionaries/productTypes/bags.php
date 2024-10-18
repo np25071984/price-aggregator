@@ -3,6 +3,7 @@
 return [
     "пакет",
     "пакеты",
+    "(пакеты)",
     "shopping bags",
     "shopping bag",
     "shopper bag",
