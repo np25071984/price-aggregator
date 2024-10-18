@@ -13,9 +13,9 @@ abstract readonly class AbstractConverter implements ConverterInterface
          */
         $string = mb_ereg_replace(preg_quote(" ", "/"), " ", $string);
         $string = preg_replace('/\s{2,}/', " ", $string);
-        $string = $this->fixData($string);
+        $string = trim($string);
 
-        return trim($string);
+        return $this->fixData($string);
     }
 
     protected function getFixes(): array

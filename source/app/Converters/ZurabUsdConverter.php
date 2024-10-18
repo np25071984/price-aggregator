@@ -36,11 +36,10 @@ readonly class ZurabUsdConverter extends AbstractConverter
             if (empty($r[self::INDEX_ARTICLE])) {
                 continue;
             }
-            $title = $this->normolizeString($r[self::INDEX_TITLE]);
             $price = (float)trim($r[self::INDEX_PRICE]);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
-                title: $title,
+                title: $this->normolizeString($r[self::INDEX_TITLE]),
                 price: $price,
             );
         }

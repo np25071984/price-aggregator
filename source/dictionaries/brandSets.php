@@ -96,6 +96,7 @@ return [
         "heritage set (28.5ml edt+ 28.5 a/sh balm)" => "Heritage Set (28.5ml edt, 28.5ml a/sh balm)",
         "mon florale woman set ( 50ml edp + 8,5ml cils d'enfer so volume)" => "Mon Florale Woman Set (50ml edp, 8.5ml Cils d'Enfer So Volume)",
         "mon guerlain set (100ml edp + 15ml edp)" => "Mon Guerlain Set (100ml edp, 15ml edp)",
+        "l'instant de guerlain edp 2x20ml w подмятая" => "L'Instant de Guerlain edp 2 x 20ml woman подмятая",
     ],
     "Hermes" => [
         "edt (w) 100ml + 7.5ml + 50g soap" => "edt (w) 100ml + 7.5ml + 50g soap",
@@ -211,16 +212,30 @@ return [
         "venitien exdp 2x30 ml voyage collection" => "Venitien 2 x 30ml Voyage Collection",
     ],
     "Les Aaux Primordiales" => [
-        "cedre superfluide edp 3x11 ml cartouchiere" => "Eaux Primordiales Cedre Superfluide edp 3 x 11ml Cartouchiere",
-        "oud superfluide edp 3x11 ml cartouchiere" => "Oud Superfluide edp Cartouchiere",
-        "saffron superfluide edp 3x11 ml cartouchiere" => "Saffron Superfluide edp Cartouchiere",
+        "cedre superfluide edp 3x11 ml cartouchiere" => "Cedre Superfluide edp 3 x 11ml",
+        "oud superfluide edp 3x11 ml cartouchiere" => "Oud Superfluide edp 3 x 11ml",
+        "saffron superfluide edp 3x11 ml cartouchiere" => "Saffron Superfluide edp 3 x 11ml",
         "set edp 9*2.5ml" => "Set edp 9 x 2.5ml",
+        "ambre superfluide edp 3*11ml" => "Ambre Superfluide edp 3 x 11ml",
+        "cedre superfluide edp 3*11ml" => "Cedre Superfluide edp 3 x 11ml",
+        "couleur primaire edp 3*11ml" => "Couleur Primaire edp 3 x 11ml",
+        "magnolia supercritique edp 3*11ml" => "Magnolia Supercritique edp 3 x 11ml",
+        "mecanique intuitive edp 3*11ml" => "Mecanique Intuitive edp 3 x 11ml",
+        "mimosa supercritique edp 3*11ml" => "Mimosa Supercritique edp 3 x 11ml",
+        "neroli supercritique edp 3*11ml" => "Neroli Supercritique edp 3 x 11ml",
+        "oud superfluide edp 3*11ml" => "Oud Superfluide edp 3 x 11ml",
+        "rose supercritique edp 3*11ml" => "Rose Supercritique edp 3 x 11ml",
+        "rosewood superfluide edp 3*11ml" => "Rosewood Superfluide edp 3 x 11ml",
+        "saffron superfluide edp 3*11ml" => "Saffron Superfluide edp 3 x 11ml",
+        "santal superfluide edp 3*11ml" => "Santal Superfluide edp 3 x 11ml",
+        "tubereuse supercritique edp 3*11ml" => "Tubereuse Supercritique edp 3 x 11ml",
     ],
     "Ormonde Jayne" => [
         "evernia eau de parfum 5*8ml travel set" => "Evernia Eau de Parfum 5 x 8ml Travel",
         "ormonde woman eau de parfum 5*8ml travel set" => "Ormonde Woman Eau de Parfum 5 x 8ml Travel",
         "ormonde woman eau de parfum 5*8ml travel set tester" => "Ormonde Woman Eau de Parfum 5 x 8ml Travel Tester",
         "evernia parfum 5 x 8 ml" => "Evernia Parfum 5 x 8ml",
+        "evernia 5*8ml" => "Evernia Parfum 5 x 8ml",
         "evernia parfum 4 x 10 ml" => "Evernia Parfum 4 x 10 ml",
         "nawab of oudh edp 5 x 8 ml" => "Nawab of Oudh edp 5 x 8ml",
         "ormonde man parfum 4 x 10 ml" => "Jayne Ormonde edp 5 x 8ml man",
@@ -245,12 +260,15 @@ return [
         "ormonde man parfum 5 x 8 ml" => "Jayne Ormonde edp 5 x 8ml man",
         "set 5*8ml travel lab #2" => "Set 5 x 8ml Travel Lab #2",
         "champaca woman 5*8ml edp" => "Champaca edp 5 x 8ml woman",
-        "nawab of oudh 5*8ml edp" => "Nawab Of Oudh edp 5 x 8ml",
+        "nawab of oudh 5*8ml" => "Nawab Of Oudh edp 5 x 8ml",
         "champaca 5*8ml edp" => "Champaca edp 5 x 8ml woman",
         "jayne ormonde man 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml man",
         "jayne ormonde woman 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml woman",
-        "ormonde man 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml man",
-        "ormonde woman 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml woman",
+        "ormonde man 5*8ml" => "Jayne Ormonde edp 5 x 8ml man",
+        "ormonde woman 5*8ml" => "Jayne Ormonde edp 5 x 8ml woman",
+        "osmanthus 5*8ml" => "Osmanthus 5 x 8ml",
+        "ta if 5*8ml" => "Ta'if parfum 5 x 8ml",
+        "tolu 5*8ml" => "Tolu parfum 5 x 8ml",
 
     ],
     "Tiziana Terenzi" => [
@@ -429,6 +447,7 @@ return [
     "Paco Rabanne" => [
         "metal woman set (30ml edt+100g savon)" => "Metal Woman Set (30ml edt, 100g savon)",
         "paco men set (100ml edt + 30ml b/l + 30ml sh/g) old disign" => "Paco Men Set (100ml edt, 30ml b/l, 30ml sh/g) old disign",
+        "pour elle mini edp 5ml+broche" => "Pour Elle Mini edp 5ml + broche",
     ],
     "S.T. Dupont" => [
         "dupont signature set (woman 5ml edp + men 5ml edt)" => "Dupont Signature Set (woman 5ml edp, men 5ml edt)",
@@ -515,10 +534,11 @@ return [
     "Dorin" => [
         "la collection (set) rose, jasmin, fullah, tubereuse edp 4x8ml" => "La Collection Set edp 4 x 8ml (Rose, Jasmin, Fullah, Tubereuse)",
         "coffret duo amour 2x80ml (dorin dor pour madame, pour monsieur)" => "Coffret Duo Amour 2 x 80ml (Dorin Dor Pour Madame, Pour Monsieur)",
+        "coffret trio classique 3x80ml (dorin dor classique, pour madame, pour monsieur)" => "Coffret Trio Classique 3 x 80ml (Dorin Dor Classique, Pour Madame, Pour Monsieur)",
     ],
     "Etat Libre" => [
         "set 7x1.5ml dangerous complicity+fat electrician+fils de dieu du riz et des agrumes+jasmin et cigarette+like this;" => "Set 7 x 1.5ml (Dangerous Complicity, Fat Electrician, Fils de Dieu Du Riz Et Des Agrumes, Jasmin Et Cigarette, Like This)",
-        "libre set 8*2ml бестселлеры" => "Libre Set 8 x 2ml бестселлеры",
+        "set 8*2ml бестселлеры" => "Set 8 x 2ml бестселлеры",
     ],
     "Eutopie" => [
         "discovery deluxe set 5x10ml" => "Discovery Deluxe Set 5 x 10ml",
@@ -530,6 +550,7 @@ return [
         "set just extrait de parfum 100ml+married extrait de parfum 100ml" => "Set Extrait de Parfum 2 x 100ml (Just, Married)",
         "sugar set extrait de parfum 4x20ml" => "Sugar Set extrait de parfum 4 x 20ml",
         "vanille set edp 4x20ml" => "Vanille Set edp 4 x 20ml",
+        "addiction edp 100ml+20ml" => "Addiction edp 100 + 20ml",
     ],
     "Frapin" => [
         "set 7 x 2ml" => "set 7 x 2ml",
@@ -571,6 +592,15 @@ return [
     "M.INT" => [
         "azure haze travel set ( edp 20 ml + edp 20 ml refill )" => "Azure Haze Travel Set (edp 20ml + edp 20ml refill)",
         "no coward travel set ( edp 20 ml + edp 20 ml refill )" => "No Coward Travel Set (edp 20ml + edp 20ml refill)",
+        "affecting mind edp 2x20ml travel" => "Affecting Mind edp 2 x 20ml travel",
+        "azure haze edp 2x20ml travel" => "Azure Haze edp 2 x 20ml travel",
+        "fashion intervention edp 2x20ml" => "Fashion Intervention edp 2 x 20ml",
+        "flight mode edp 2x20ml" => "Flight Mode edp 2 x 20ml",
+        "hit the mark edp 2x20ml travel" => "Hit The Mark edp 2 x 20ml travel",
+        "meek passion edp 2x20ml travel" => "Meek Passion edp 2 x 20ml travel",
+        "mystic theasure edp 2x20ml travel" => "Mystic Theasure edp 2 x 20ml travel",
+        "no coward edp 2x20ml travel" => "No Coward edp 2 x 20ml travel",
+        "time to target edp 2x20ml travel" => "Time To Target edp 2 x 20ml travel",
     ],
     "Nicheend" => [
         "astronaut edp set 3*11 ml марка" => "Astronaut edp Set 3 x 11ml марка",
@@ -580,6 +610,7 @@ return [
     ],
     "Nobile 1942" => [
         "discovery set 8*2.2 ml" => "Discovery Set 8 x 2.2ml",
+        "cedro atlas 3*30ml (детские)" => "Cedro Atlas 3 x 30ml (детские)",
     ],
     "Initio" => [
         "set hedonist 3*1,5 ml (rehab/musk ter/paragon)" => "Hedonist Set 3 x 1.5ml (Rehab, Musk Ter, Paragon)",
@@ -683,5 +714,9 @@ return [
     ],
     "Cartier" => [
         "delices de cartier luxe 3 x15ml parfum" => "Delices de Cartier Luxe 3 x 15ml",
+    ],
+    "Laboratorio Olfattivo" => [
+        "sample kit (masters collection) 5x3ml черный" => "Sample Kit (Masters Collection) 5 x 3ml черный",
+        "sample kit 22x3ml" => "Sample Kit 22 x 3ml",
     ],
 ];
