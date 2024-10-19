@@ -22,6 +22,7 @@ readonly class BeliyUsdConverter extends AbstractConverter
             "stilll100ml" => "still 100ml",
             preg_quote("30ml`без", "/") => "30ml без",
             "cherry100ml" => "cherry 100ml",
+            " 75 edt$" => " 75ml edt",
         ];
     }
 

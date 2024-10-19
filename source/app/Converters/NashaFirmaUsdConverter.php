@@ -15,13 +15,24 @@ readonly class NashaFirmaUsdConverter extends AbstractConverter
     protected function getFixes(): array
     {
         return [
-            " 7,5 edp" => "7,5ml edp",
+            " 2[,\.]5 edp" => " 2,5ml edp",
+            " 7[,\.]5 edp" => " 7,5ml edp",
             " 15 ed([pt])" => " 15ml ed\\1",
             " 30 edp" => " 30ml edp",
+            " 30 parfum$" => " 30ml parfum",
+            " 35 parfum$" => " 35ml parfum",
+            " 50 extrait de parfum" => " 50ml extrait de parfum",
+            " 75 parfum$" => " 75ml parfum",
+            " 75 edp$" => " 75ml edp",
+            " 90 edp" => " 90ml edp",
             " 50 ed([pc])" => " 50ml ed\\1",
-            " 75 edp" => " 75ml edp",
             " 100 ed([tc])" => " 100ml ed\\1",
-            " 200 edt" => " 200ml edt",
+            " 125 edt$" => " 125ml edt",
+            " 200 ed([tp])" => " 200ml ed\\1",
+            " ([wm])7,5ml edp$" => " \\1 7,5ml edp",
+            " sky7,5ml edp$" => " sky 7,5ml edp",
+            " m 7.5 edp$" => " m 7,5ml edp",
+            " (chic|fever|venus|gate|intrigue|code|iceberg|sunmusk|power|dancer)7,5ml edp$" => " \\1 7,5ml edp",
         ];
     }
 

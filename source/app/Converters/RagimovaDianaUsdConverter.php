@@ -16,6 +16,7 @@ readonly class RagimovaDianaUsdConverter extends AbstractConverter
     {
         return [
             " parfum100ml " => " parfum 100ml ",
+            " 20m пр. франция$" => " 20ml пр. франция",
         ];
     }
 

@@ -78,8 +78,9 @@ return [
         "sweet like candy edp (w) 100ml + 100ml b/s + 100ml s/g" => "100ml + 100ml B/S + 100ml S/G"
     ],
     "Bois 1920" => [
-        "cannabis + cannabis fruttata + cannabis salata edp 3*18ml" => "3 x 18ml edp (Cannabis + Cannabis Fruttata + Cannabis Salata)",
-        "centenario + parana + oltremare edp 3*18ml" => "3 x 18ml edp (Centenario + Parana + Oltremare)",
+        "cannabis + cannabis fruttata + cannabis salata edp 3*18ml" => "edp 3 x 18ml (Cannabis + Cannabis Fruttata + Cannabis Salata)",
+        "centenario + parana + oltremare edp 3*18ml" => "edp 3 x 18ml (Centenario + Parana + Oltremare)",
+        "набор парфюмерной воды 3х18 мл (centenario,parana, oltremare)" => "edp 3 x 18ml (Centenario + Parana + Oltremare)",
     ],
     "Burberry" => [
         "edp (w) 50ml + 75ml b/l" => "edp (w) 50ml + 75ml b/l",
@@ -185,13 +186,16 @@ return [
         "private code (4*15 edp) set" => "Private Code Set 4 x 15 edp",
         "travel set body lotion for women 4*30ml travel set" => "Travel Set Body Lotion 4 x 30ml for women",
         "gift set 6*15 ml+4*7.5 ml+2*30 sh/g+2*30 b/l+3*35 g candle+key chanin" => "Gift Set 6 x 15ml + 4 x 7.5ml + 2 x 30 sh/g + 2x 30 b/l + 3 x 35 g candle + key chanin",
+        "подарочный набор (6x15ml+4x7.5ml+4x30ml+3x35g) календарь" => "подарочный набор: 6 x 15ml, 4 x 7.5ml, 4 x 30ml, 3 x 35g, календарь",
     ],
     "Parfums de Marly" => [
         "pegasus edp 3x10 ml" => "Pegasus edp 3 x 10ml",
-        "discovery collection feminine 4x10 ml oriana,delina,delina excl,valaya" => "Discovery Collection Feminine 4 x 10ml (Oriana, Delina, Delina Excl, Valaya)",
-        "discovery collection masculin 4x10 ml layton,percival,pegasus,haltane" => "Discovery Collection Masculin 4 x 10ml (Layton, Percival, Pegasus, Haltane)",
+        "discovery collection feminine 4x10 ml oriana,delina,delina excl,valaya" => "Discovery Collection edp 4 x 10ml (Oriana, Delina, Delina Excl, Valaya) woman",
+        "discovery collection masculin 4x10 ml layton,percival,pegasus,haltane" => "Discovery Collection edp 4 x 10ml (Layton, Percival, Pegasus, Haltane) man",
         "delina travel set (3*10 ml edp+чехол)" => "Delina Travel Set edp 3 x 10ml + чехол",
         "set 4*1,5 ml (valaya/delina/haltane/layton)" => "Set 4 x 1.5ml (Valaya, Delina, Haltane, Layton)",
+        "delina exclusif w (75 ml parfum + 30 parfum)" => "Delina Exclusif parfum 75 + 30ml woman",
+        "discovery collection m 4*10 ml edp spray(haltan,percival,layton,pegasus)" => "Discovery Collection edp 4 x 10ml (Layton, Percival, Pegasus, Haltane) man",
     ],
     "Puredistance" => [
         "black edp 17.5 + 60 ml" => "black edp 17.5ml + 60ml",
@@ -782,5 +786,15 @@ return [
     ],
     "House of Sillage" => [
         "whispers of truth духи 4х8мл. (refill)" => "Whispers Of Truth духи 4 x 8ml refill",
+        "emerald reign духи 4х9,5мл. ( travel )" => "Emerald Reign духи 4 x 9.5ml travel",
+    ],
+    "Jean Paul Gaultier" => [
+        "gaultier 2 eau d amour 2*60 ml edt tester" => "Gaultier 2 Eau d'Amour edt 2 x 60ml tester",
+    ],
+    "Love Tea Art" => [
+        "kir royal 4*10 ml edp" => "Kir Royal edp 4 x 10ml",
+        "orange carnaval 4*10 ml edp" => "Orange Carnaval edp 4 x 10ml",
+        "oriental dream 4*10 ml edp" => "Oriental Dream edp 4 x 10ml",
+        "sunny dimond 4*10 ml edp" => "Sunny Dimond edp 4 x 10ml",
     ],
 ];

@@ -16,8 +16,9 @@ readonly class OrabelUsdConverter extends AbstractConverter
     {
         return [
             " духи15 мл " => " духи 15ml ",
-            " (тестер) 50 vintage" => " (тестер) 50ml vintage",
-            " 50 (refill)" => " 50ml (refill)",
+            preg_quote(" (тестер) 50 vintage", "/") => " (тестер) 50ml vintage",
+            preg_quote(" 50 (refill)", "/") => " 50ml (refill)",
+            " 50 vintage$" => " 50ml vintage",
         ];
     }
 

@@ -41,4 +41,5 @@ return [
     "сумка серебряная",
     "solid perfume",
     "hexagone travel case (black)",
+    "футляр на магните",
 ];
