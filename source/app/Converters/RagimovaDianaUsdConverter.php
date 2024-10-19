@@ -12,6 +12,13 @@ readonly class RagimovaDianaUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 2;
     private const int FIRST_ROW = 5;
 
+    protected function getFixes(): array
+    {
+        return [
+            " parfum100ml " => " parfum 100ml ",
+        ];
+    }
+
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];

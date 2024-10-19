@@ -110,7 +110,7 @@ readonly class DataAnalizer
             }
 
             // determine if a Candle
-            $isCandleScanResult = $this->sacnStringForListValues($title, ["свеча", "candle"], ["свеча" => ["+35g. свеча"]]);
+            $isCandleScanResult = $this->sacnStringForListValues($title, ["свеча", "candle", "сandle"], ["свеча" => ["+35g. свеча"]]);
             if (!is_null($isCandleScanResult)) {
                 $data[] = new CandleEntity(
                     article: $row->article,
@@ -227,7 +227,7 @@ readonly class DataAnalizer
             }
 
             // determine if an Hand Soap
-            $isHandSoapScanResult = $this->sacnStringForListValues($title, ["hand and body soap", "hand soap", "hand&body soap", "liquide soap", "жидкое мыло", "soap"]);
+            $isHandSoapScanResult = $this->sacnStringForListValues($title, ["hand and body soap", "hand soap", "hand&body soap", "liquide soap", "жидкое мыло", "soap", "мыло"]);
             if (!is_null($isHandSoapScanResult)) {
                 $data[] = new SoapEntity(
                     article: $row->article,

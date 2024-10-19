@@ -16,6 +16,8 @@ readonly class KurzinaUsdConverter extends AbstractConverter
     {
         return [
             "ml отливант5" => "5ml отливант",
+            " edp100 ml tester$" => " edp 100ml tester",
+            " parfum100 ml tester$" => " parfum 100ml tester",
         ];
     }
 

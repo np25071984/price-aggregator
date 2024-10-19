@@ -12,6 +12,19 @@ readonly class NashaFirmaUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 3;
     private const int FIRST_ROW = 7;
 
+    protected function getFixes(): array
+    {
+        return [
+            " 7,5 edp" => "7,5ml edp",
+            " 15 ed([pt])" => " 15ml ed\\1",
+            " 30 edp" => " 30ml edp",
+            " 50 ed([pc])" => " 50ml ed\\1",
+            " 75 edp" => " 75ml edp",
+            " 100 ed([tc])" => " 100ml ed\\1",
+            " 200 edt" => " 200ml edt",
+        ];
+    }
+
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];

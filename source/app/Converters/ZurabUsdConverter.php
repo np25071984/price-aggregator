@@ -15,6 +15,8 @@ readonly class ZurabUsdConverter extends AbstractConverter
     protected function getFixes(): array
     {
         return [
+            " edt 100m w tester$" => " edt 100ml w tester",
+            " 50mll w tester$" => " 50ml w tester",
             "edp100ml" => "edp 100ml",
             preg_quote(" parfum1.5ml ", "/") => " parfum 1.5ml ",
             " parfum100ml$" => " parfum 100ml",

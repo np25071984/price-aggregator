@@ -12,6 +12,15 @@ readonly class OrabelUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 2;
     private const int FIRST_ROW = 4;
 
+    protected function getFixes(): array
+    {
+        return [
+            " духи15 мл " => " духи 15ml ",
+            " (тестер) 50 vintage" => " (тестер) 50ml vintage",
+            " 50 (refill)" => " 50ml (refill)",
+        ];
+    }
+
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
