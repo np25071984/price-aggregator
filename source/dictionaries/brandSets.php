@@ -19,7 +19,8 @@ return [
         "set mini candles trio 3 x 70gr" => "Set Mini Candles Trio 3 x 70gr",
     ],
     "Byredo" => [
-        "3*12ml edp\\bal d*afrique +blanche+gypsy\\" => "3 x 12ml (Bal d*Afrique + Blanche + Gypsy)"
+        "3*12ml edp\\bal d*afrique +blanche+gypsy\\" => "3 x 12ml (Bal d*Afrique + Blanche + Gypsy)",
+        "la sélection florale (blanche/ tulipe/ ronml) - набор парфюмерной воды 3*12 мл" => "La Selection Florale 3 x 12ml (Blanche, Tulipe, Ronml)",
     ],
     "Chabaud Maison De Parfum" => [
         "4 x 7,5 ml (innoc.frag.,capr. de sophie,chic et boheme,vint.)" => "4 x 7,5ml (Innoc.Frag., Capr. De Sophie, Chic Et Boheme, Vint.)",
@@ -43,6 +44,7 @@ return [
         "a taste of heaven absinthe verte 4*7.5ml edp travel" => "A Taste Of Heaven Absinthe Verte 4 x 7.5ml edp travel",
         "love and tears 4x7.5ml edp travel" => "Love And Tears 4 x 7.5ml edp travel",
         "straight to heaven,white crystal edp travel 4x7.5ml" => "Straight To Heaven White Crystal edp 4 x 7.5ml travel",
+        "in the city of sin парфюмерная вода 4*7,5" => "In The City Of Sin edp 4x 7.5ml",
     ],
     "La Maison De La Vanille" => [
         "5 x30 ml деревянная шкатулка (blue oia + arty positano + belle rencontre + nuit a + noir toscane)" => "5 x 30ml (Blue Oia + Arty Positano + Belle Rencontre + Nuit A + Noir Toscane) шкатулка",
@@ -108,6 +110,7 @@ return [
         "hermessence paprika brasil edt 2x4ml" => "Hermessence paprika Brasil edt 2 x 4ml",
         "hermessence santal massoia edt 2x4ml" => "Hermessence santal Massoia edt 2 x 4ml",
         "hermessence santal massoia edt 4x15ml" => "Hermessence santal Massoia edt 4 x 15ml",
+        "hermessence cedre sambac (4*15 edt)" => "Hermessence Cedre Sambac edt 4 x 15ml",
     ],
     "Juliette Has A Gun" => [
         "discovery edp (w) 7*1.7ml пробник + 5ml not a perfume" => "Discovery edp (w) 7 x 1.7ml пробник + 5ml not a perfume"
@@ -269,6 +272,7 @@ return [
         "osmanthus 5*8ml" => "Osmanthus 5 x 8ml",
         "ta if 5*8ml" => "Ta'if parfum 5 x 8ml",
         "tolu 5*8ml" => "Tolu parfum 5 x 8ml",
+        "ormonde men edp 4х10ml travel" => "Jayne Ormonde edp 4 x 10ml man travel",
 
     ],
     "Tiziana Terenzi" => [
@@ -294,6 +298,39 @@ return [
         "tabit exdp 2 x 10 ml luxury box" => "Tabit exdp 2 x 10ml Luxury Box",
         "white fire exdp 2 x 10 ml luxury box" => "White Fire exdp 2 x 10ml Luxury Box",
         "xiх march exdp 2 x 10 ml luxury box" => "XIX March exdp 2 x 10ml Luxury Box",
+        "al contrario 2*10ml" => "Al Contrario 2 x 10ml",
+        "andromeda 2*10ml" => "Andromeda 2 x 10ml",
+        "arethusa 2*10ml" => "Arethusa 2 x 10ml",
+        "arrakis 2*10ml" => "Arrakis 2 x 10ml",
+        "borea 2*10ml" => "Borea 2 x 10ml",
+        "caput mundi 2*10ml" => "Caput Mundi 2 x 10ml",
+        "cas 2*10ml" => "Cas 2 x 10ml",
+        "cassiopea 2*10ml" => "Cassiopea 2 x 10ml",
+        "delox 2*10ml" => "Delox 2 x 10ml",
+        "draco 2*10ml" => "Draco 2 x 10ml",
+        "draconis 2*10ml" => "Draconis 2 x 10ml",
+        "eclix 2*10ml" => "Eclix 2 x 10ml",
+        "ecstasy 2*10ml" => "Ecstasy 2 x 10ml",
+        "foconero 2*10ml" => "Foconero 2 x 10ml",
+        "gold rose oudh 2*10ml" => "Gold Rose Oudh 2 x 10ml",
+        "kaff 2*10ml" => "Kaff 2 x 10ml",
+        "kirke 2*10ml" => "Kirke 2 x 10ml",
+        "laudano nero 2*10ml" => "Laudano Nero 2 x 10ml",
+        "lilllipur 2*10ml" => "Lilllipur 2 x 10ml",
+        "lince 2*10ml" => "Lince 2 x 10ml",
+        "maremma 2*10ml" => "Maremma 2 x 10ml",
+        "mirach 2*10ml" => "Mirach 2 x 10ml",
+        "moro di venezia 2*10ml" => "Moro Di Venezia 2 x 10ml",
+        "orion 2*10ml" => "Orion 2 x 10ml",
+        "porpora 2*10ml" => "Porpora 2 x 10ml",
+        "rosso pompei 2*10ml" => "Rosso Pompei 2 x 10ml",
+        "saiph 2*10ml" => "Saiph 2 x 10ml",
+        "siene 2*10ml" => "Siene 2 x 10ml",
+        "spirito fiorentino 2*10ml" => "Spirito Fiorentino 2 x 10ml",
+        "tabit 2*10ml" => "Tabit 2 x 10ml",
+        "ursa 2*10ml" => "Ursa 2 x 10ml",
+        "white fire 2*10ml" => "White Fire 2 x 10ml",
+        "xix march 2*10ml" => "XIX March 2 x 10ml",
     ],
     "27 87" => [
         "discovery kit edp 10 x 2 ml" => "Discovery Kit edp 10 x 2ml",
@@ -303,11 +340,22 @@ return [
     ],
     "Ex Nihilo" => [
         "speed legends 5*7,5ml travel" => "Speed Legends 5 x 7.5ml Travel",
-        "fleur narcotique set (5*7.5ml edp)" => "Fleur Narcotique Set 5 x 7.5ml edp",
+        "fleur narcotique set (5*7.5ml edp)" => "Fleur Narcotique edp 5 x 7.5ml",
         "trevel set signature musc 3*7,5 ml edp (fleur musc,the hedonist musc,gold immort. musc)" => "Trevel Set Signature Musc 3 x 7.5ml edp (Fleur Musc, The Hedonist Musc, Gold Immort. Musc)",
-        "fleur narcotique edp 5*7.5мл набор старый дизайн" => "Fleur Narcotique Set edp 5 x 7.5ml старый дизайн",
+        "fleur narcotique edp 5*7.5мл набор старый дизайн" => "Fleur Narcotique edp 5 x 7.5ml старый дизайн",
         "musc infini edp 5 x7.5ml" => "Musc Infini edp 5 x 7.5ml",
         "oud vendome edp 5 x7.5ml" => "Oud Vendome edp 5 x 7.5ml",
+        "amber sky 5*7,5 ml edp" => "Amber Sky edp 5 x 7.5ml",
+        "atlas fever 5*7,5 ml edp" => "Atlas Fever edp 5 x 7.5ml",
+        "cologne 352 5*7,5 ml edp" => "Cologne 352 edp 5 x 7.5ml",
+        "devil tender 5*7,5 ml edp" => "Devil Tender edp 5 x 7x5 ml",
+        "explicite 5*7,5 ml edp" => "Explicite edp 5 x 7.5ml",
+        "fleur narcotique 5x7,5 ml edp" => "Fleur Narcotique edp 5 x 7.5ml",
+        "gold immortals 5x7,5 ml edp" => "Gold Immortals edp 5 x 7.5ml",
+        "lust in paradise 5*7,5 ml edp" => "Lust In Paradise edp 5 x 7.5ml",
+        "midnight special 5*7,5 ml edp" => "Midnight Special edp 5 x 7.5ml",
+        "speed legends 5*7,5 ml edp" => "Speed Legends edp 5 x 7.5ml",
+        "the hedonist 5*7,5 ml edp" => "The Hedonist edp 5 x 7.5ml",
     ],
     "Clive Christian" => [
         "crown collection extrait de parfum 3*10ml (crab apple, matsukita, town & country)" => "Crown Collection 3 x 10ml (Crab Apple, Matsukita, Town & Country)",
@@ -588,6 +636,7 @@ return [
     ],
     "Fragonard" => [
         "lilas set soap 3*75 g" => "Lilas Set Soap 3 x 75 g",
+        "н-р 10*5 мл edt спрей женский" => "10 x 5ml edt woman",
     ],
     "M.INT" => [
         "azure haze travel set ( edp 20 ml + edp 20 ml refill )" => "Azure Haze Travel Set (edp 20ml + edp 20ml refill)",
@@ -718,5 +767,20 @@ return [
     "Laboratorio Olfattivo" => [
         "sample kit (masters collection) 5x3ml черный" => "Sample Kit (Masters Collection) 5 x 3ml черный",
         "sample kit 22x3ml" => "Sample Kit 22 x 3ml",
+    ],
+    "Rouge Bunny Rouge" => [
+        "travel-size coll trio 3x15ml(silvan+silhouette+incognito)" => "Travel-size Coll Trio 3 x 15ml (Silvan, Silhouette, Incognito)",
+    ],
+    "Brecourt" => [
+        "agaressence edp 50ml+2x5ml+2x7ml" => "Agaressence edp 50ml, 2 x 5ml, 2 x 7ml",
+        "ibiza addictions edp 50ml+2x5ml+2x7ml" => "Ibiza Addictions edp 50ml, 2 x 5ml, 2 x 7ml",
+        "mauvais garson edp 50ml+2x5ml+2x7ml" => "Mauvais Garson edp 50ml, 2 x 5ml, 2 x 7ml",
+        "solaire edp 50ml+2x5ml+2x7ml" => "Solaire edp 50ml, 2 x 5ml, 2 x 7ml",
+    ],
+    "Laurent Mazzone" => [
+        "sensual & decadent travel духи 3х15 мл" => "Sensual & Decadent travel духи 3 x 15ml",
+    ],
+    "House of Sillage" => [
+        "whispers of truth духи 4х8мл. (refill)" => "Whispers Of Truth духи 4 x 8ml refill",
     ],
 ];

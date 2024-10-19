@@ -8,6 +8,7 @@ return [
     "edc" => "edc",
     "edt" => "edt",
     "eau de toilette" => "edt",
+    "parfum de toilette" => "edt",
     "туалетная вода" => "edt",
     "essence de parfum" => "essence",
     "eau de cologne" => "edc",
