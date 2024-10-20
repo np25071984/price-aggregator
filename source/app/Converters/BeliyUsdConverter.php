@@ -23,6 +23,8 @@ readonly class BeliyUsdConverter extends AbstractConverter
             preg_quote("30ml`без", "/") => "30ml без",
             "cherry100ml" => "cherry 100ml",
             " 75 edt$" => " 75ml edt",
+            "^eau de grey flannel " => "geoffrey beene eau de grey flannel ",
+            "^hermessence vetiver tonka " => "hermes hermessence vetiver tonka ",
         ];
     }
 

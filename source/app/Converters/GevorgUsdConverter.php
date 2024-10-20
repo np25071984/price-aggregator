@@ -27,6 +27,7 @@ readonly class GevorgUsdConverter extends AbstractConverter
             preg_quote("50ml(без", "/") => "50ml (без",
             "roses on ice edp 50$" => "roses on ice edp 50ml",
             preg_quote("parfum 5ml(отливант)", "/") . "$" => "parfum 5ml (отливант)",
+            "^alexandre j.the " => "alexandre j. the ",
         ];
     }
 

@@ -797,4 +797,18 @@ return [
         "oriental dream 4*10 ml edp" => "Oriental Dream edp 4 x 10ml",
         "sunny dimond 4*10 ml edp" => "Sunny Dimond edp 4 x 10ml",
     ],
+    "Hind Al Oud" => [
+        "set (musk al molok/rose/burgundy/coral/misstake)" => "Musk Al Molok, Rose, Burgundy, Coral, Misstake",
+        "set 6*3ml parfum" => "parfum 6 x 3ml",
+    ],
+    "L'Arc" => [
+        "discovery set memoire collection edp 4x2ml" => "Discovery Set Memoire Collection edp 4 x 2ml",
+        "discovery set voyage collection edp 6x2ml" => "Discovery Set Voyage Collection edp 6 x 2ml",
+    ],
+    "Nicolai Parfumeur" => [
+        "discovery set edp 12x1,8ml" => "Discovery Set edp 12 x 1.8ml",
+        "travel set edt 3x15ml(rose pivoine+fig tea+cap neroli)" => "Travel Set edt 3 x 15ml (Rose Pivoine, Fig Tea, Cap Neroli)",
+        "travel set intense 3x15ml(patchouli intense+new york intense+musc intense)" => "Travel Set Intense 3 x 15ml (Patchouli Intense, New York Intense, Musc Intense)",
+        "travel set oud 3x15ml(rose oud+amber oud+incense oud)" => "Travel Set Oud 3 x 15ml (Rose Oud, Amber Oud, Incense Oud)",
+    ],
 ];

@@ -34,14 +34,21 @@ readonly class ZurabUsdConverter extends AbstractConverter
         $activeSheet = $spreadsheet->getActiveSheet();
         $highestRow = $activeSheet->getHighestRow();
         $rows = $activeSheet->rangeToArray(sprintf("A%d:D%d", self::FIRST_ROW, $highestRow));
+        $currentBrand = null;
         foreach ($rows as $r) {
             if (empty($r[self::INDEX_ARTICLE])) {
+                $currentBrand = $this->normolizeString($r[self::INDEX_TITLE]);
                 continue;
             }
+            $title = $this->normolizeString($r[self::INDEX_TITLE]);
+            if (mb_substr($title, 0, mb_strlen($currentBrand)) !== $currentBrand) {
+                $title = $currentBrand . " " . $title;
+            }
+
             $price = (float)trim($r[self::INDEX_PRICE]);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
-                title: $this->normolizeString($r[self::INDEX_TITLE]),
+                title: $title,
                 price: $price,
             );
         }

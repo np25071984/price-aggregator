@@ -18,6 +18,8 @@ readonly class KurzinaUsdConverter extends AbstractConverter
             "ml отливант5" => "5ml отливант",
             " edp100 ml tester$" => " edp 100ml tester",
             " parfum100 ml tester$" => " parfum 100ml tester",
+            "^bespoke " => "keiko mecheri bespoke",
+            "^edenfallsedp" => "m.micallef edenfalls edp",
         ];
     }
 
