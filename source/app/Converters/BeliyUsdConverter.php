@@ -25,6 +25,8 @@ readonly class BeliyUsdConverter extends AbstractConverter
             " 75 edt$" => " 75ml edt",
             "^eau de grey flannel " => "geoffrey beene eau de grey flannel ",
             "^hermessence vetiver tonka " => "hermes hermessence vetiver tonka ",
+            "^comme des garcons-2 " => "comme des garcons ",
+            "^cigar " => "cigar cigar ",
         ];
     }
 

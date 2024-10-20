@@ -8,7 +8,6 @@ return [
     "hair mist",
     "увл. салфетки",
     "аромат д/дома",
-    "spray",
     "spray'15",
     "антисептическое средство-гель",
     "кухонный ножи",
@@ -42,4 +41,8 @@ return [
     "solid perfume",
     "hexagone travel case (black)",
     "футляр на магните",
+    "cleansing foam",
+    "deodorant",
+    "deo",
+    "deo***",
 ];

@@ -135,6 +135,7 @@ return [
     "chabaud maison de parfum" => "Chabaud Maison De Parfum",
     "chabaud" => "Chabaud Maison De Parfum",
     "chloe" => "Chloe",
+    "cigar" => "Cigar",
     "cigno nero" => "Cigno Nero",
     "coty" => "Coty",
     "cherigan" => "Cherigan",

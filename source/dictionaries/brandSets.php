@@ -159,6 +159,7 @@ return [
         "chance eau tendre 3*20ml edt сменный блок" => "Chance Eau Tendre eau edt 3 x 20ml сменный блок",
         "coco mademoiselle 3*20ml edt сменный блок" => "Coco Mademoiselle edt 3 x 20ml сменный блок",
         "chance 3*20ml edt сменный блок" => "Chance Eau Tendre eau edt 3 x 20ml сменный блок",
+        "allure homme sport 3*20ml edt spray" => "Allure Homme Sport 3 x 20ml edt Spray",
     ],
     "Creed" => [
         "spring flower edp (w) 3*10ml" => "Spring Flower edp (w) 3 x 10ml",
@@ -187,6 +188,7 @@ return [
         "travel set body lotion for women 4*30ml travel set" => "Travel Set Body Lotion 4 x 30ml for women",
         "gift set 6*15 ml+4*7.5 ml+2*30 sh/g+2*30 b/l+3*35 g candle+key chanin" => "Gift Set 6 x 15ml + 4 x 7.5ml + 2 x 30 sh/g + 2x 30 b/l + 3 x 35 g candle + key chanin",
         "подарочный набор (6x15ml+4x7.5ml+4x30ml+3x35g) календарь" => "подарочный набор: 6 x 15ml, 4 x 7.5ml, 4 x 30ml, 3 x 35g, календарь",
+        "advent calendar 23/24 ( 6*15ml+2*7.5ml+3*30ml+2*35gr+body shimmer 20gr)" => "Advent Calendar 23/24 (6 x 15ml, 2 x 7.5ml, 3 x 30ml, 2 x 35gr, body shimmer 20gr)",
     ],
     "Parfums de Marly" => [
         "pegasus edp 3x10 ml" => "Pegasus edp 3 x 10ml",
@@ -196,6 +198,7 @@ return [
         "set 4*1,5 ml (valaya/delina/haltane/layton)" => "Set 4 x 1.5ml (Valaya, Delina, Haltane, Layton)",
         "delina exclusif w (75 ml parfum + 30 parfum)" => "Delina Exclusif parfum 75 + 30ml woman",
         "discovery collection m 4*10 ml edp spray(haltan,percival,layton,pegasus)" => "Discovery Collection edp 4 x 10ml (Layton, Percival, Pegasus, Haltane) man",
+        "delina edp 1.5 ml x 3 vials box" => "Delina edp 2 x 1.5ml vials box",
     ],
     "Puredistance" => [
         "black edp 17.5 + 60 ml" => "black edp 17.5ml + 60ml",
@@ -277,6 +280,7 @@ return [
         "ta if 5*8ml" => "Ta'if parfum 5 x 8ml",
         "tolu 5*8ml" => "Tolu parfum 5 x 8ml",
         "ormonde men edp 4х10ml travel" => "Jayne Ormonde edp 4 x 10ml man travel",
+        "jayne damask edp 4 x 10 ml" => "damask edp 4 x 10ml",
 
     ],
     "Tiziana Terenzi" => [
@@ -335,6 +339,9 @@ return [
         "ursa 2*10ml" => "Ursa 2 x 10ml",
         "white fire 2*10ml" => "White Fire 2 x 10ml",
         "xix march 2*10ml" => "XIX March 2 x 10ml",
+        "cassiopea exdp 2 x 10 ml luxury box" => "Cassiopea exdp 2 x 10ml Luxury Box",
+        "delox exdp 2 x 10 ml luxury box" => "Delox exdp 2 x 10ml Luxury Box",
+        "kaff exdp 2 x 10 ml luxury box" => "Kaff exdp 2 x 10ml Luxury Box",
     ],
     "27 87" => [
         "discovery kit edp 10 x 2 ml" => "Discovery Kit edp 10 x 2ml",
@@ -543,6 +550,8 @@ return [
         "nobil homo venetian blue set (100ml+50as/balm)" => "Nobil Homo Venetian Blue Set (100ml, 50as/balm)",
         "murano coll red potion set ( edp 100ml+100ml hair mist)" => "Murano Coll Red Potion Set edp 100ml + 100ml hair mist",
         "murano exlusive imperial emerald edpc set( 100ml+100ml h/m)" => "Murano Exlusive Imperial Emerald edpc Set 100ml + 100ml h/m",
+        "tealight egyptian linen 4*19gr" => "Tealight Egyptian Linen 4 x 19gr",
+        "tealight orange flower 4*19gr" => "Tealight Orange Flower 4 x 19gr",
     ],
     "Van Cleef & Arpels" => [
         "coll. extraordinaire set 3*15ml edp (s.bl, ner.am,moon.p)" => "Collection Extraordinaire set 3 x 15ml edp (s.bl, ner.am, moon.p)",
@@ -619,6 +628,7 @@ return [
     ],
     "M.Micallef" => [
         "osaito luxury set-edp 100ml + leather bracelet" => "Osaito Luxury Set edp 100ml + leather bracelet",
+        "coffret soleil passion edp 100ml + elixir 15ml" => "Coffret Soleil Passion edp 100ml + elixir 15ml",
     ],
     "Nasomatto" => [
         "set nas(black afgano,pardon,blamage) oil 3*4ml" => "Set Nas oil 3 x 4ml (Black afgano, Pardon, Blamage)",
@@ -724,6 +734,9 @@ return [
     "Aedes de Venustas" => [
         "oeillet bengale refills edp 3x10ml" => "Oeillet Bengale edp 3 x 10ml refills",
         "decouverte iris nazarena+oeillet bengale+copal azur 3x10ml" => "3 x 10ml (Decouverte Iris Nazarena, Oeillet Bengale, Copal Azur)",
+        "iris nazarena refills edp 3x10 spray" => "Iris Nazarena refills edp 3x10ml spray",
+        "oeillet bengale edp 3x10ml spray" => "Oeillet Bengale edp 3 x 10ml spray",
+        "palissandre d`or refills 3x10ml spray" => "Palissandre d`Or refills 3 x 10ml spray",
     ],
     "Alyson Oldoini" => [
         "ambra guaiac rechargeable edp 3x20ml" => "Ambra Guaiac rechargeable edp 3 x 20ml",
@@ -780,6 +793,20 @@ return [
         "ibiza addictions edp 50ml+2x5ml+2x7ml" => "Ibiza Addictions edp 50ml, 2 x 5ml, 2 x 7ml",
         "mauvais garson edp 50ml+2x5ml+2x7ml" => "Mauvais Garson edp 50ml, 2 x 5ml, 2 x 7ml",
         "solaire edp 50ml+2x5ml+2x7ml" => "Solaire edp 50ml, 2 x 5ml, 2 x 7ml",
+        "agaressence 100 ml + 24 ml edp" => "Agaressence edp 100 + 24ml",
+        "ambre noir 100 ml + 24 ml edp" => "Ambre Noir edp 100 + 24ml",
+        "contre pouvoir 100 ml + 24 ml edp" => "Contre Pouvoir edp 100+ 24ml",
+        "eau blanche 100 ml + 24 ml edp" => "Eau Blanche edp 100 + 24ml",
+        "eau libre 100 ml + 24 ml edp" => "Eau Libre edp 100 + 24ml",
+        "ibiza addiction 100 ml + 24 ml edp" => "Ibiza Addiction edp 100 + 24ml",
+        "mauvais garcon 100 ml + 24 ml edp" => "Mauvais Garcon edp 100 + 24ml",
+        "noces de nerola 100 ml + 24 ml edp" => "Noces de Nerola edp 100 + 24ml",
+        "solaire 100 ml + 24 ml edp new" => "Solaire edp 100 + 24ml new",
+        "subtile 100 ml + 24 ml edp" => "Subtile edp 100 + 24ml",
+        "subversif 100 ml + 24 ml edp" => "Subversif edp 100 + 24ml",
+        "contre pouvoir 100ml + 24ml edp" => "Contre Pouvoir edp 100+ 24ml",
+        "eau blanche 100ml + 24ml edp" => "Eau Blanche edp 100 + 24ml",
+        "mauvais garson 100ml + 24ml edp" => "Mauvais Garcon edp 100 + 24ml",
     ],
     "Laurent Mazzone" => [
         "sensual & decadent travel духи 3х15 мл" => "Sensual & Decadent travel духи 3 x 15ml",
@@ -810,5 +837,28 @@ return [
         "travel set edt 3x15ml(rose pivoine+fig tea+cap neroli)" => "Travel Set edt 3 x 15ml (Rose Pivoine, Fig Tea, Cap Neroli)",
         "travel set intense 3x15ml(patchouli intense+new york intense+musc intense)" => "Travel Set Intense 3 x 15ml (Patchouli Intense, New York Intense, Musc Intense)",
         "travel set oud 3x15ml(rose oud+amber oud+incense oud)" => "Travel Set Oud 3 x 15ml (Rose Oud, Amber Oud, Incense Oud)",
+    ],
+    "Syed Junaid" => [
+        "aromas blue 4 x 30 ml edp" => "Aromas Blue edp 4 x 30ml",
+        "scents (areej haya ghuroob solitaire) 4 x 30 ml edp" => "edp 4 x 30ml (Areej, Haya, Ghuroob, Solitaire)",
+    ],
+    "Dusita" => [
+        "erawan travel size+2 refills 3 x 7.5 ml" => "Erawan Travel Size + 2 refills 3 x 7.5ml",
+        "fleur de lalita travel size+2 refills 3 x 7.5 ml" => "Fleur de Lalita Travel Size + 2 refills 3 x 7.5ml",
+        "issara extrait travel size+2 refills 3 x 7.5 ml" => "Issara Extrait Travel Size + 2 refills 3 x 7.5ml",
+        "la douceur de siam travel size+2 rifills 3 x 7.5 ml" => "La Douceur de Siam Travel Size + 2 rifills 3 x 7.5ml",
+        "le sillage blanc travel size+2 refills 3 x 7.5 ml" => "Le Sillage Blanc Travel Size + 2 refills 3 x 7.5ml",
+        "montri travel size+2 rifills 3 x 7.5 ml" => "Montri Travel Size + 2 rifills 3 x 7.5ml",
+        "moonlight in chiangmai travel size+2 refills 3 x 7.5 ml" => "Moonlight In Chiangmai Travel Size + 2 refills 3 x 7.5ml",
+    ],
+    "Bogart" => [
+        "90ml edt + 3ml a/sh" => "90ml edt + 3ml a/sh",
+        "one man show 100ml + 3ml a/sh" => "One Man Show 100ml + 3ml a/sh",
+    ],
+    "Phaedon Paris" => [
+        "discovery set 23x2ml" => "Discovery Set 23 x 2ml",
+    ],
+    "Lab Fragrance" => [
+        "аромадиффузор белый виноград 500 мл + рефилл 220 мл" => "аромадиффузор белый виноград 500ml + refill 220ml",
     ],
 ];
