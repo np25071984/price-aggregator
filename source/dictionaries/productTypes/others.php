@@ -45,4 +45,6 @@ return [
     "deodorant",
     "deo",
     "deo***",
+    "room perfume",
+    "room diffuser",
 ];
