@@ -32,13 +32,13 @@ readonly class DataAnalizer
     private array $bags;
     private array $others;
     private array $brands;
+    private array $names;
     private array $brandStopPhrases;
     private array $perfumeTypes;
     private array $volumes;
     private array $testerFlags;
     private array $artisanalBottlingFlags;
     private array $markingFlags;
-    private array $brandLines;
     private array $brandSets;
     private array $sex;
     private array $damageFlags;
@@ -54,6 +54,18 @@ readonly class DataAnalizer
             return mb_strlen($b) <=> mb_strlen($a);
         });
         $this->brands = $brands;
+
+        $names = include __DIR__ . "/../dictionaries/names.php";
+        $namesSorted = [];
+        foreach($names as $brand => $brandNames) {
+            uksort($brandNames, function($a, $b) {
+                return mb_strlen($b) <=> mb_strlen($a);
+            });
+            $namesSorted[$brand] = $brandNames;
+        }
+        unset($names);
+        $this->names = $namesSorted;
+
         $this->brandStopPhrases = include __DIR__ . "/../dictionaries/brandStopPhrases.php";
         $this->perfumeTypes = include __DIR__ . "/../dictionaries/perfumeTypes.php";
         $this->volumes = include __DIR__ . "/../dictionaries/volumes.php";
@@ -62,17 +74,6 @@ readonly class DataAnalizer
         $this->markingFlags = include __DIR__ . "/../dictionaries/markingFlags.php";
         $this->damageFlags = include __DIR__ . "/../dictionaries/damageFlags.php";
         $this->sex = include __DIR__ . "/../dictionaries/sex.php";
-
-        // $brandLines = include __DIR__ . "/../dictionaries/brandLines.php";
-        // $brandLinesSorted = [];
-        // foreach($brandLines as $brand => $items) {
-        //     uksort($items, function($a, $b) {
-        //         return mb_strlen($b) <=> mb_strlen($a);
-        //     });
-        //     $brandLinesSorted[$brand] = $items;
-        // }
-        // unset($brandLines);
-        // $this->brandLines = $brandLinesSorted;
 
         $brandSets = include __DIR__ . "/../dictionaries/brandSets.php";
         $brandSetsSorted = [];
@@ -291,15 +292,6 @@ readonly class DataAnalizer
                 continue;
             }
 
-            // $data[] = new UnknownProductEntity(
-            //     article: $row->article,
-            //     originalTitle: $row->title,
-            //     price: $row->price,
-            //     provider: $dataProvider,
-            // );
-
-            // continue;
-
             // determine brand
             $brand = null;
             $brandScanResult = $this->sacnStringForDictionaryValues($title, $this->brands, $this->brandStopPhrases);
@@ -308,21 +300,37 @@ readonly class DataAnalizer
                 $brand = $brandScanResult->unifiedValue;
             }
 
-            // determine if set
-            if (!is_null($brand)) {
-                $setScanResult = $this->sacnStringForDictionaryValues($title, $this->brandSets[$brand] ?? []);
-                if (!is_null($setScanResult)) {
-                    $data[] = new SetEntity(
-                        article: $row->article,
-                        originalTitle: $row->title,
-                        price: $row->price,
-                        provider: $dataProvider,
-                        brand: $brand,
-                        line: $setScanResult->unifiedValue,
-                    );
+            if (is_null($brand)) {
+                $data[] = new UnknownProductEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                );
 
-                    continue;
-                }
+                continue;
+            }
+
+            // determine if set
+            $setScanResult = $this->sacnStringForDictionaryValues($title, $this->brandSets[$brand] ?? []);
+            if (!is_null($setScanResult)) {
+                $data[] = new SetEntity(
+                    article: $row->article,
+                    originalTitle: $row->title,
+                    price: $row->price,
+                    provider: $dataProvider,
+                    brand: $brand,
+                    line: $setScanResult->unifiedValue,
+                );
+
+                continue;
+            }
+
+            $name = null;
+            $nameScanResult = $this->sacnStringForDictionaryValues($title, $this->names[$brand] ?? []);
+            if (!is_null($nameScanResult)) {
+                $title = $this->removeResultFromString($nameScanResult, $title);
+                $name = $nameScanResult->unifiedValue;
             }
 
             // determine perfume type
@@ -410,8 +418,8 @@ readonly class DataAnalizer
                 originalTitle: $row->title,
                 price: $row->price,
                 provider: $dataProvider,
-                brand: $brand ?? "<unknown_brand>",
-                line: "",
+                brand: $brand,
+                name: $name ?? "<unknown_name>",
                 volume: $volume ?? "<unknown_volume>",
                 type: $perfumeType ?? "<unknown_type>",
                 sex: $sex ?? "<unknown_sex>",

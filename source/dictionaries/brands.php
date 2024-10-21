@@ -487,7 +487,7 @@ return [
     "olfattology" => "Olfattology",
     "orens parfums" => "Orens Parfums",
     "ortigia sicilia" => "Ortigia Sicilia",
-    "orlane" => "orlane",
+    "orlane" => "Orlane",
     "oscar de la renta" => "Oscar De La Renta",
     "oscar london" => "Oscar London",
     "ormonde jayne" => "Ormonde Jayne",

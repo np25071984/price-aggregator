@@ -61,16 +61,17 @@ readonly class FileWriter
 
         $sheet->setCellValue("F1", "Поставщик");
         $sheet->setCellValue("G1", "Бренд");
-        $sheet->setCellValue("H1", "Тип");
-        $sheet->setCellValue("I1", "Объем");
-        $sheet->setCellValue("J1", "Тестер");
-        $sheet->setCellValue("K1", "Сэмпл");
-        $sheet->setCellValue("L1", "Старый дизайн");
-        $sheet->setCellValue("M1", "Разливант");
-        $sheet->setCellValue("N1", "Маркировка");
-        $sheet->setCellValue("O1", "Рефилл");
-        $sheet->setCellValue("P1", "Повреждение");
-        $sheet->setCellValue("Q1", "Пол");
+        $sheet->setCellValue("H1", "Наименование");
+        $sheet->setCellValue("I1", "Тип");
+        $sheet->setCellValue("J1", "Объем");
+        $sheet->setCellValue("K1", "Тестер");
+        $sheet->setCellValue("L1", "Сэмпл");
+        $sheet->setCellValue("M1", "Старый дизайн");
+        $sheet->setCellValue("N1", "Разливант");
+        $sheet->setCellValue("O1", "Маркировка");
+        $sheet->setCellValue("P1", "Рефилл");
+        $sheet->setCellValue("Q1", "Повреждение");
+        $sheet->setCellValue("R1", "Пол");
 
         $currentLine = 2;
         foreach ($data as $item) {
@@ -150,16 +151,17 @@ readonly class FileWriter
                     break;
                 case $item instanceof PerfumeEntity:
                     $sheet->setCellValue("G{$currentLine}", $item->brand);
-                    $sheet->setCellValue("H{$currentLine}", $item->type);
-                    $sheet->setCellValue("I{$currentLine}", $item->volume);
-                    $sheet->setCellValue("J{$currentLine}", $item->isTester ? "tester" : "");
-                    $sheet->setCellValue("K{$currentLine}", $item->isSample ? "sample" : "");
-                    $sheet->setCellValue("L{$currentLine}", $item->isOldDesign ? "old design" : "");
-                    $sheet->setCellValue("M{$currentLine}", $item->isArtisanalBottling ? "разливант" : "");
-                    $sheet->setCellValue("N{$currentLine}", $item->hasMarking ? "маркировка" : "");
-                    $sheet->setCellValue("O{$currentLine}", $item->isRefill ? "refill" : "");
-                    $sheet->setCellValue("P{$currentLine}", $item->isDamaged ? "поврежден" : "");
-                    $sheet->setCellValue("Q{$currentLine}", $item->sex);
+                    $sheet->setCellValue("H{$currentLine}", $item->name);
+                    $sheet->setCellValue("I{$currentLine}", $item->type);
+                    $sheet->setCellValue("J{$currentLine}", $item->volume);
+                    $sheet->setCellValue("K{$currentLine}", $item->isTester ? "tester" : "");
+                    $sheet->setCellValue("L{$currentLine}", $item->isSample ? "sample" : "");
+                    $sheet->setCellValue("M{$currentLine}", $item->isOldDesign ? "old design" : "");
+                    $sheet->setCellValue("N{$currentLine}", $item->isArtisanalBottling ? "разливант" : "");
+                    $sheet->setCellValue("O{$currentLine}", $item->hasMarking ? "маркировка" : "");
+                    $sheet->setCellValue("P{$currentLine}", $item->isRefill ? "refill" : "");
+                    $sheet->setCellValue("Q{$currentLine}", $item->isDamaged ? "поврежден" : "");
+                    $sheet->setCellValue("R{$currentLine}", $item->sex);
                     break;
             }
 
