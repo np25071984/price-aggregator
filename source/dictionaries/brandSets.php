@@ -861,4 +861,23 @@ return [
     "Lab Fragrance" => [
         "аромадиффузор белый виноград 500 мл + рефилл 220 мл" => "аромадиффузор белый виноград 500ml + refill 220ml",
     ],
+    "pH Fragrances" => [
+        "neroli + bergamotte deodorant natural 50 ml" => "Neroli + Bergamotte deodorant natural 50ml",
+        "neroli + bergamotte savon liquide de denim 250 ml" => "Neroli + Bergamotte Savon Liquide De Denim 250ml",
+        "neroli + bergamotte shower gel natural 250 ml" => "Neroli + bergamotte shower gel natural 250ml",
+        "gardenia + jasmin de cachemire parfum 100 ml" => "Gardenia + Jasmin De Cachemire parfum 100ml",
+        "gardenia + jasmin de cachemire parfum 15 ml" => "Gardenia + Jasmin De Cachemire parfum 15ml",
+        "iris + musc de liberty parfum 100 ml" => "Iris + Musc De Liberty parfum 100ml",
+        "iris + musc de liberty parfum 15 ml" => "Iris + Musc De Liberty parfum 15ml",
+        "magnolia + pivoine de soie parfum 100 ml" => "Magnolia + Pivoine De Soie parfum 100ml",
+        "magnolia + pivoine de soie parfum 15 ml" => "magnolia + Pivoine De Soie parfum 15ml",
+        "mistral + fleur de vichy parfum 100 ml" => "Mistral + Fleur De Vichy parfum 100ml",
+        "neroli + bergamotte de denim parfum 100 ml" => "Neroli + Bergamotte De Denim parfum 100ml",
+        "patchouli + cedre de tweed parfum 100 ml" => "Patchouli + Cedre De Tweed parfum 100ml",
+        "patchouli + cedre de tweed parfum 15 ml" => "Patchouli + Cedre De tweed parfum 15ml",
+        "tubereuse + ylang de pashmina parfum 100 ml" => "Tubereuse + Ylang De Pashmina parfum 100ml",
+        "tubereuse + ylang de pashmina parfum 15 ml" => "Tubereuse + Ylang De Pashmina parfum 15ml",
+        "vetiver + santal de cuir parfum 100 ml" => "Vetiver + Santal De Cuir parfum 100ml",
+        "vetiver + santal de cuir parfum 15 ml" => "Vetiver + Santal De Cuir parfum 15ml",
+    ],
 ];
