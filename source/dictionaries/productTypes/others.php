@@ -47,4 +47,5 @@ return [
     "deo***",
     "room perfume",
     "room diffuser",
+    "body creme",
 ];
