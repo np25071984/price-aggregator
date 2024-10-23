@@ -16,6 +16,7 @@ readonly class AvangardUsdConverter extends AbstractConverter
     {
         return [
             "edition100ml" => "edition 100ml",
+            " edt(tester)$" => " edt (tester)",
         ];
     }
 

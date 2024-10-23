@@ -6,6 +6,7 @@ return [
     "парфюмерная вода" => "edp",
     "парф.вода" => "edp",
     "edc" => "edc",
+    "edс" => "edc",
     "edt" => "edt",
     "eau de toilette" => "edt",
     "parfum de toilette" => "edt",
