@@ -7,6 +7,7 @@ return [
     "женский" => "woman",
     "for her" => "woman",
     "for him" => "man",
+    "masculine" => "man",
     "for men" => "man",
     "for man" => "man",
     "for woman" => "woman",
@@ -15,4 +16,5 @@ return [
     "men" => "man",
     "woman" => "woman", // TODO: "(ck) women"
     "women" => "woman",
+    "feminine" => "woman",
 ];

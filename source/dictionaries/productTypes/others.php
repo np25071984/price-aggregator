@@ -48,4 +48,5 @@ return [
     "room perfume",
     "room diffuser",
     "body creme",
+    "body scrub",
 ];

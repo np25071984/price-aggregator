@@ -6,4 +6,5 @@ return [
     "пробник",
     "test",
     "(tester)",
+    "tester(пластик)",
 ];
