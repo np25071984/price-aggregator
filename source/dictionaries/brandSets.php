@@ -880,4 +880,7 @@ return [
         "vetiver + santal de cuir parfum 100 ml" => "Vetiver + Santal De Cuir parfum 100ml",
         "vetiver + santal de cuir parfum 15 ml" => "Vetiver + Santal De Cuir parfum 15ml",
     ],
+    "Maissa Parfums" => [
+        "pierre precieuse oud sultan набор (edp 100ml+edp 10ml+мыло) нарушена упаковка" => "Pierre Precieuse Oud Sultan (edp 100ml, edp 10ml,  Мыло)",
+    ],
 ];

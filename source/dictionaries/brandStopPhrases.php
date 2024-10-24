@@ -65,4 +65,7 @@ return [
     "Hugo Boss" => [
         "p&g boss",
     ],
+    "Acqua" => [
+        "homme acqua",
+    ],
 ];
