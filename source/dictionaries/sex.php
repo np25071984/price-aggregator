@@ -14,7 +14,10 @@ return [
     "for women" => "woman",
     "man" => "man",
     "men" => "man",
+    "m" => "man",
     "woman" => "woman", // TODO: "(ck) women"
     "women" => "woman",
+    "w" => "woman",
     "feminine" => "woman",
+    "unisex" => "unisex",
 ];
