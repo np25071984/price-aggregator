@@ -545,25 +545,25 @@ readonly class DataAnalizer
 
     private function removeResultFromString(ScanResultEntity $result, string $string): string
     {
+        $res = null;
         switch ($result->positionInScannedString) {
             case SubStringPositionEnum::Match:
-                $str = $result->dictionaryValue;
-                $replace = "";
-                break;
+                $res = "";
             case SubStringPositionEnum::Beginning:
                 $str = $result->dictionaryValue . " ";
-                $replace = "";
+                $res = mb_substr($string, mb_strlen($str));
                 break;
             case SubStringPositionEnum::End:
                 $str = " " . $result->dictionaryValue;
-                $replace = "";
+                $res = mb_substr($string, 0, (mb_strlen($string) - mb_strlen($str)));
                 break;
             case SubStringPositionEnum::Middle:
                 $str = " " . $result->dictionaryValue . " ";
-                $replace = " ";
+                $pattern = "/" . preg_quote($str, "/") . "/";
+                $res = preg_replace($pattern, " ", $string, 1);
                 break;
         }
-        $pattern = "/" . preg_quote($str, "/") . "/";
-        return preg_replace($pattern, $replace, $string, 1);
+
+        return $res;
     }
 }
