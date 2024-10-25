@@ -26,6 +26,7 @@ return [
     "Ispahan" => [
         "oud ispahan",
         "privee oud ispahan",
+        "yves r.",
     ],
     "Lamar" => [
         "kajal - lamar",

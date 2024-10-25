@@ -509,7 +509,7 @@ return [
         "pour elle mini edp 5ml+broche" => "Pour Elle Mini edp 5ml + broche",
     ],
     "S.T. Dupont" => [
-        "dupont signature set (woman 5ml edp + men 5ml edt)" => "Dupont Signature Set (woman 5ml edp, men 5ml edt)",
+        "signature set (woman 5ml edp + men 5ml edt)" => "Signature Set (woman 5ml edp, men 5ml edt)",
     ],
     "Sarah Jessica Parker" => [
         "lovely woman set (100ml edp+10ml edp)" => "Lovely Woman Set edp (100ml, 10ml)",

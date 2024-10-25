@@ -20,4 +20,5 @@ return [
     "perfume" => "perfume",
     "духи" => "perfume",
     "parfum" => "perfume",
+    "pafrum" => "perfume",
 ];

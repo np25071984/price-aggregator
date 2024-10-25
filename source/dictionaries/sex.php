@@ -15,7 +15,7 @@ return [
     "man" => "man",
     "men" => "man",
     "m" => "man",
-    "woman" => "woman", // TODO: "(ck) women"
+    "woman" => "woman",
     "women" => "woman",
     "w" => "woman",
     "feminine" => "woman",

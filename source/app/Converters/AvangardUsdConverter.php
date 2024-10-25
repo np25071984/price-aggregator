@@ -17,6 +17,7 @@ readonly class AvangardUsdConverter extends AbstractConverter
         return [
             "edition100ml" => "edition 100ml",
             preg_quote(" edt(tester)", "/") . "$" => " edt (tester)",
+            preg_quote(" edt(черный)", "/") . "$" => " edt (черный)",
         ];
     }
 
