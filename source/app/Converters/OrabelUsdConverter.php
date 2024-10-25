@@ -35,7 +35,8 @@ readonly class OrabelUsdConverter extends AbstractConverter
             $price = (float)trim($r[self::INDEX_PRICE]);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
-                title: $this->normolizeString($r[self::INDEX_TITLE]),
+                originalTitle: $r[self::INDEX_TITLE],
+                normalizedTitle: $this->normolizeString($r[self::INDEX_TITLE]),
                 price: $price,
             );
         }

@@ -6,7 +6,8 @@ readonly class RawPriceListItem
 {
     public function __construct(
         public string $article,
-        public string $title,
+        public string $originalTitle,
+        public string $normalizedTitle,
         public float $price,
     ) {
     }

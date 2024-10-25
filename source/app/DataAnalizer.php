@@ -95,14 +95,14 @@ readonly class DataAnalizer
         $data = [];
         /** @var RawPriceListItem $row */
         foreach ($rawPriceData as $row) {
-            $title = $row->title;
+            $title = $row->normalizedTitle;
 
             // determine if a Bag
             $isBagScanResult = $this->sacnStringForListValues($title, $this->bags);
             if (!is_null($isBagScanResult)) {
                 $data[] = new BagEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -115,7 +115,7 @@ readonly class DataAnalizer
             if (!is_null($isCandleScanResult)) {
                 $data[] = new CandleEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -128,7 +128,7 @@ readonly class DataAnalizer
             if (!is_null($isShGelScanResult)) {
                 $data[] = new ShampooAndGelEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -141,7 +141,7 @@ readonly class DataAnalizer
             if (!is_null($isBodyLotionScanResult)) {
                 $data[] = new BodyLotionEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -154,7 +154,7 @@ readonly class DataAnalizer
             if (!is_null($isBodyOilScanResult)) {
                 $data[] = new BodyOilEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -167,7 +167,7 @@ readonly class DataAnalizer
             if (!is_null($isCableScanResult)) {
                 $data[] = new CableEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -180,7 +180,7 @@ readonly class DataAnalizer
             if (!is_null($isHandCreamScanResult)) {
                 $data[] = new HandCreamEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -193,7 +193,7 @@ readonly class DataAnalizer
             if (!is_null($isBodyCreamScanResult)) {
                 $data[] = new BodyCreamEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -206,7 +206,7 @@ readonly class DataAnalizer
             if (!is_null($isBathCreamScanResult)) {
                 $data[] = new BathCreamEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -219,7 +219,7 @@ readonly class DataAnalizer
             if (!is_null($isAtomiserScanResult)) {
                 $data[] = new AtomiserEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -232,7 +232,7 @@ readonly class DataAnalizer
             if (!is_null($isHandSoapScanResult)) {
                 $data[] = new SoapEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -245,7 +245,7 @@ readonly class DataAnalizer
             if (!is_null($isLaundryDetergentScanResult)) {
                 $data[] = new LaundryDetergentEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -258,7 +258,7 @@ readonly class DataAnalizer
             if (!is_null($isDeoStockScanResult)) {
                 $data[] = new DeoStickEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -271,7 +271,7 @@ readonly class DataAnalizer
             if (!is_null($isShowerGelScanResult)) {
                 $data[] = new ShowerGelEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -284,7 +284,7 @@ readonly class DataAnalizer
             if (!is_null($isOtherCategorycanResult)) {
                 $data[] = new OtherProductEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -303,7 +303,7 @@ readonly class DataAnalizer
             if (is_null($brand)) {
                 $data[] = new UnknownProductEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                 );
@@ -316,7 +316,7 @@ readonly class DataAnalizer
             if (!is_null($setScanResult)) {
                 $data[] = new SetEntity(
                     article: $row->article,
-                    originalTitle: $row->title,
+                    originalTitle: $row->originalTitle,
                     price: $row->price,
                     provider: $dataProvider,
                     brand: $brand,
@@ -415,7 +415,7 @@ readonly class DataAnalizer
 
             $data[] = new PerfumeEntity(
                 article: $row->article,
-                originalTitle: $row->title,
+                originalTitle: $row->originalTitle,
                 price: $row->price,
                 provider: $dataProvider,
                 brand: $brand,

@@ -35,7 +35,8 @@ readonly class DePerfumesConverter extends AbstractConverter
             $title = $this->normolizeString($r[self::INDEX_TITLE]);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
-                title: $title,
+                originalTitle: $r[self::INDEX_TITLE],
+                normalizedTitle: $title,
                 price: $price,
             );
         }

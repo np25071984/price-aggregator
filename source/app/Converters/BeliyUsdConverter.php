@@ -41,7 +41,8 @@ readonly class BeliyUsdConverter extends AbstractConverter
             $price = (float)trim($r[self::INDEX_PRICE]);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
-                title: $title,
+                originalTitle: $r[self::INDEX_TITLE],
+                normalizedTitle: $title,
                 price: $price,
             );
         }
