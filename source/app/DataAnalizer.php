@@ -391,7 +391,7 @@ readonly class DataAnalizer
 
             // determine if refill
             $isRefill = false;
-            $isRefillScanResult = $this->sacnStringForListValues($title, ["refill", "рефилл"]);
+            $isRefillScanResult = $this->sacnStringForListValues($title, ["refill", "рефилл", "(refill)"]);
             if (!is_null($isRefillScanResult)) {
                 $title = $this->removeResultFromString($isRefillScanResult, $title);
                 $isRefill = true;
@@ -443,7 +443,7 @@ readonly class DataAnalizer
 
             // if the stgings are equal
             if (($listValueSize === $haystackSize) && ($haystack === $listValue)) {
-                return new ScanResultEntity($listValueSize, SubStringPositionEnum::Match);
+                return new ScanResultEntity($listValue, SubStringPositionEnum::Match);
             }
 
             // they aren't equal and the search one is longer; early exit
