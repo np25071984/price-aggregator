@@ -68,4 +68,7 @@ return [
     "Acqua" => [
         "homme acqua",
     ],
+    "Hermes" => [
+        "twilly",
+    ],
 ];

@@ -419,7 +419,7 @@ readonly class DataAnalizer
                 price: $row->price,
                 provider: $dataProvider,
                 brand: $brand,
-                name: $name ?? "<unknown_name>",
+                name: $name ?? "<unknown_name> " . $title,
                 volume: $volume ?? "<unknown_volume>",
                 type: $perfumeType ?? "<unknown_type>",
                 sex: $sex ?? "<unknown_sex>",
