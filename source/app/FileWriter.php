@@ -112,6 +112,8 @@ readonly class FileWriter
         $sheet->getColumnDimension('C')->setWidth(22.5);
         $sheet->getColumnDimension('D')->setWidth(22.5);
         $sheet->getColumnDimension('F')->setWidth(22.5);
+        $sheet->getColumnDimension('G')->setWidth(30);
+        $sheet->getColumnDimension('H')->setWidth(50);
         $sheet->getStyle("A1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         $sheet->setCellValue("A1", "Артикул");
         $sheet->getStyle("B1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
@@ -120,19 +122,8 @@ readonly class FileWriter
         $sheet->setCellValue("C1", "Цена");
 
         $sheet->setCellValue("F1", "Поставщик");
-        $sheet->setCellValue("G1", "Бренд");
-        $sheet->setCellValue("H1", "Наименование");
-        $sheet->setCellValue("I1", "fix");
-        $sheet->setCellValue("J1", "Тип");
-        $sheet->setCellValue("K1", "Объем");
-        $sheet->setCellValue("L1", "Тестер");
-        $sheet->setCellValue("M1", "Сэмпл");
-        $sheet->setCellValue("N1", "Старый дизайн");
-        $sheet->setCellValue("O1", "Разливант");
-        $sheet->setCellValue("P1", "Маркировка");
-        $sheet->setCellValue("Q1", "Рефилл");
-        $sheet->setCellValue("R1", "Повреждение");
-        $sheet->setCellValue("S1", "Пол");
+        $sheet->setCellValue("G1", "Причина");
+        $sheet->setCellValue("H1", "Комментарий");
 
         $currentLine = 2;
         foreach ($data as $item) {
@@ -209,12 +200,12 @@ readonly class FileWriter
                     if (!is_null($item->name)) {
                         continue 2;
                     }
-                    $sheet->setCellValue("G{$currentLine}", $item->brand);
-                    $sheet->mergeCells("H{$currentLine}:Q{$currentLine}");
-                    $sheet->setCellValue("H{$currentLine}", "<unknown_name>");
+                    $sheet->setCellValue("G{$currentLine}", "<unknown_name>");
+                    $titleCaseName = mb_convert_case($item->comment, MB_CASE_TITLE);
+                    $sheet->setCellValue("H{$currentLine}", "\"{$item->comment}\" => \"{$titleCaseName}\",");
                     break;
                 default:
-                    throw new RuntimeException("Unknowsn item");
+                    throw new RuntimeException("Unknown object!");
             }
             $sheet->setCellValue("A{$currentLine}", $item->article);
             $sheet->setCellValue("B{$currentLine}", $item->originalTitle);

@@ -23,6 +23,7 @@ readonly class PerfumeEntity extends AbstractProductEntity
         public bool $isOldDesign,
         public bool $isRefill,
         public bool $isDamaged,
+        public ?string $comment,
     ) {
         parent::__construct(
             $article,

@@ -21,6 +21,7 @@ readonly class BeliyUsdConverter extends AbstractConverter
             "pourpre100ml" => "pourpre 100ml",
             "stilll100ml" => "still 100ml",
             preg_quote("30ml`без", "/") => "30ml без",
+            preg_quote(" mana`22 ", "/") => " mana `22 ",
             "cherry100ml" => "cherry 100ml",
             " 75 edt$" => " 75ml edt",
             "^eau de grey flannel " => "geoffrey beene eau de grey flannel ",

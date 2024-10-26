@@ -413,6 +413,14 @@ readonly class DataAnalizer
                 $sex = $sexScanResult->unifiedValue;
             }
 
+            /**
+             * We didn't find name but in some cases there isn't name at all. When, for example,
+             * name and brand are equal. So, let's correct this case.
+             */
+            if (is_null($name) && mb_strlen($title) === 0) {
+                $name = "";
+            }
+
             $data[] = new PerfumeEntity(
                 article: $row->article,
                 originalTitle: $row->originalTitle,
@@ -430,6 +438,7 @@ readonly class DataAnalizer
                 isOldDesign: $isOldDesign,
                 isRefill: $isRefill,
                 isDamaged: $isDamaged,
+                comment: $title,
             );
         }
         return $data;
