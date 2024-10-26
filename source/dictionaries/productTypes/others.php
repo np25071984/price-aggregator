@@ -68,4 +68,8 @@ return [
     "аромат д/текстиля",
     "аромат для дома",
     "не полн.",
+    "body wash",
+    "conditioner",
+    "foam cleansing",
+    "af/sh balm",
 ];

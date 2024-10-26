@@ -3077,6 +3077,7 @@ return [
         "love by kilian (don`t be shy)" => "Love, Don't Be Shy",
         "love, don`t be shy" => "Love, Don't Be Shy",
         "love: don't be shy" => "Love, Don't Be Shy",
+        "love:don’t be shy" => "Love, Don't Be Shy",
         "love don’t be shy" => "Love, Don't Be Shy",
         "love, don't be shy travel (in box)" => "Love, Don't Be Shy Travel (in Box)",
         "love, don't be shy eau fraiche" => "Love, Don't Be Shy Eau Fraiche",
@@ -3642,6 +3643,7 @@ return [
         "wild leather" => "Wild Leather",
     ],
     "Map of the Heart" => [
+        "v.5 - purple heart" => "Purple Heart V 5",
         "v.3 passion" => "v.3 - Passion",
         "abundance v 8" => "v.8 - Abundance",
         "black heart v 2" => "v.2 - Black Heart",
@@ -5681,7 +5683,6 @@ return [
         "magic mushrooms" => "Magic Mushrooms",
     ],
     "Boucheron" => [
-        "boucheron" => "Boucheron",
         "eau legere" => "Eau Legere",
         "neroli d'ispahan" => "Neroli d'Ispahan",
         "quatre" => "Quatre",
@@ -9860,7 +9861,6 @@ return [
         "reaction connected" => "Reaction Connected",
     ],
     "Bill Blass" => [
-        "mr. blass" => "Mr. Blass",
         "red" => "Red",
     ],
     "Braccialini" => [

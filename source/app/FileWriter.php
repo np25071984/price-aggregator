@@ -232,7 +232,12 @@ readonly class FileWriter
     private function generateTitle(PerfumeEntity $item): string
     {
         $title = $item->brand;
-        if (!is_null($item->name)) {
+
+        /**
+         * sometimes name can be an empty string; for example when we
+         * have the same brand and name we don't want to douple them
+         */
+        if (!empty($item->name)) {
             $title .= " {$item->name}";
         }
         if (!is_null($item->volume)) {
