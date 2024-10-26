@@ -12,8 +12,8 @@ readonly class PerfumeEntity extends AbstractProductEntity
         float $price,
         PriceListProviderEnum $provider,
         public string $brand,
-        public string $name,
-        public string $volume, // public ?float $volume, // TODO: enum
+        public ?string $name,
+        public ?float $volume, // public ?float $volume, // TODO: enum
         public ?string $type, // TODO: enum
         public ?string $sex, // TODO: enum
         public bool $isArtisanalBottling,

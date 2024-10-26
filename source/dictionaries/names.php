@@ -3089,7 +3089,7 @@ return [
         "black phantom, memento mori" => "Black Phantom, Memento Mori",
         "can`t stop loving you" => "Can't Stop Loving You",
         "can t stop loving you" => "Can't Stop Loving You",
-        "love by don`t be shy" => "Love Don't Be Shy",
+        "love by don`t be shy" => "Love, Don't Be Shy",
         "angel's share" => "Angel's Share",
         "angels` share" => "Angel's Share",
         "angel's angels share" => "Angel's Share",

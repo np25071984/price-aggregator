@@ -26,6 +26,7 @@ use App\Entities\Products\SetEntity;
 use App\Entities\Products\ShowerGelEntity;
 use App\Entities\Products\UnknownProductEntity;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use RuntimeException;
 
 readonly class FileWriter
 {
@@ -58,6 +59,65 @@ readonly class FileWriter
         $sheet->getStyle("D1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         $sheet->setCellValue("D1", "Заказ");
 
+        $perfumesByBrand = [];
+        foreach ($data as $item) {
+            if (!($item instanceof PerfumeEntity)) {
+                continue;
+            }
+
+            if (is_null($item->name)) {
+                continue;
+            }
+
+            $title = $this->generateTitle($item);
+            $perfumesByBrand[$item->brand][$title][] = $item;
+
+        }
+
+        $currentLine = 2;
+        foreach ($perfumesByBrand as $brand => $titles) {
+            $sheet->mergeCells("A{$currentLine}:D{$currentLine}");
+            $sheet->getStyle("A{$currentLine}:D{$currentLine}")->getFont()->setBold(true);
+            $sheet->setCellValue("A{$currentLine}", $brand);
+            $currentLine++;
+            foreach ($titles as $title => $items) {
+                $sheet->setCellValue("A{$currentLine}", "XXXXX");
+                $sheet->setCellValue("B{$currentLine}", $title . " [" . count($items) . "]");
+                $sheet->setCellValue("C{$currentLine}", 0.00);
+                $currentLine++;
+
+                foreach ($items as $item) {
+                    $sheet->setCellValue("A{$currentLine}", $item->article);
+                    $sheet->setCellValue("B{$currentLine}", "({$item->provider->value}) " . $item->originalTitle);
+                    $sheet->setCellValue("C{$currentLine}", $item->price);
+                    $sheet->getRowDimension($currentLine)
+                        ->setOutlineLevel(1)
+                        ->setVisible(false)
+                        ->setCollapsed(true);
+                    $currentLine++;
+                }
+            }
+        }
+        unset($perfumesByBrand);
+
+        $spreadsheet->createSheet(1);
+        $spreadsheet->setActiveSheetIndex(1);
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setTitle(mb_substr("Не распознанное", 0, Worksheet::SHEET_TITLE_MAXIMUM_LENGTH, 'utf-8'));
+        $sheet->getStyle("A:A")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("C:C")->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_USD);
+
+        $sheet->getColumnDimension('A')->setWidth(16.5);
+        $sheet->getColumnDimension('B')->setWidth(89);
+        $sheet->getColumnDimension('C')->setWidth(22.5);
+        $sheet->getColumnDimension('D')->setWidth(22.5);
+        $sheet->getColumnDimension('F')->setWidth(22.5);
+        $sheet->getStyle("A1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->setCellValue("A1", "Артикул");
+        $sheet->getStyle("B1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->setCellValue("B1", "Наименование");
+        $sheet->getStyle("C1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->setCellValue("C1", "Цена");
 
         $sheet->setCellValue("F1", "Поставщик");
         $sheet->setCellValue("G1", "Бренд");
@@ -76,19 +136,14 @@ readonly class FileWriter
 
         $currentLine = 2;
         foreach ($data as $item) {
-            $sheet->setCellValue("A{$currentLine}", $item->article);
-            $sheet->setCellValue("B{$currentLine}", $item->originalTitle);
-            $sheet->setCellValue("C{$currentLine}", $item->price);
-            $sheet->setCellValue("F{$currentLine}", $item->provider->value);
-
             switch (true) {
                 case $item instanceof BagEntity:
                     $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
-                    $sheet->setCellValue("G{$currentLine}", "упаковка");
+                    $sheet->setCellValue("G{$currentLine}", "Упаковка");
                     break;
                 case $item instanceof CandleEntity:
                     $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
-                    $sheet->setCellValue("G{$currentLine}", "свеча");
+                    $sheet->setCellValue("G{$currentLine}", "Свеча");
                     break;
                 case $item instanceof ShampooAndGelEntity:
                     $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
@@ -151,31 +206,66 @@ readonly class FileWriter
                     $sheet->setCellValue("G{$currentLine}", "Нераспознанный продукт");
                     break;
                 case $item instanceof PerfumeEntity:
-                    $sheet->setCellValue("G{$currentLine}", $item->brand);
-                    $sheet->setCellValue("H{$currentLine}", $item->name);
-                    if (mb_strpos($item->name, "<unknown_name>", 0) === 0) {
-                        $s = mb_ereg_replace("<unknown_name> ", "", $item->name);
-                        $s = mb_ereg_replace("- ", "", $s);
-                        $sheet->setCellValue("I{$currentLine}", "\"" . mb_strtolower($s) . "\" => \"" . mb_convert_case($s, MB_CASE_TITLE) . "\",");
-                    } else {
-                        $sheet->setCellValue("I{$currentLine}", "");
+                    if (!is_null($item->name)) {
+                        continue 2;
                     }
-                    $sheet->setCellValue("J{$currentLine}", $item->type);
-                    $sheet->setCellValue("K{$currentLine}", $item->volume);
-                    $sheet->setCellValue("L{$currentLine}", $item->isTester ? "tester" : "");
-                    $sheet->setCellValue("M{$currentLine}", $item->isSample ? "sample" : "");
-                    $sheet->setCellValue("N{$currentLine}", $item->isOldDesign ? "old design" : "");
-                    $sheet->setCellValue("O{$currentLine}", $item->isArtisanalBottling ? "разливант" : "");
-                    $sheet->setCellValue("P{$currentLine}", $item->hasMarking ? "маркировка" : "");
-                    $sheet->setCellValue("Q{$currentLine}", $item->isRefill ? "refill" : "");
-                    $sheet->setCellValue("R{$currentLine}", $item->isDamaged ? "поврежден" : "");
-                    $sheet->setCellValue("S{$currentLine}", $item->sex);
+                    $sheet->setCellValue("G{$currentLine}", $item->brand);
+                    $sheet->mergeCells("H{$currentLine}:Q{$currentLine}");
+                    $sheet->setCellValue("H{$currentLine}", "<unknown_name>");
                     break;
+                default:
+                    throw new RuntimeException("Unknowsn item");
             }
+            $sheet->setCellValue("A{$currentLine}", $item->article);
+            $sheet->setCellValue("B{$currentLine}", $item->originalTitle);
+            $sheet->setCellValue("C{$currentLine}", $item->price);
+            $sheet->setCellValue("F{$currentLine}", $item->provider->value);
 
             $currentLine++;
         }
+        $spreadsheet->setActiveSheetIndex(0);
+
         $writer = new Xlsx($spreadsheet);
         $writer->save($fileName);
+    }
+
+    private function generateTitle(PerfumeEntity $item): string
+    {
+        $title = $item->brand;
+        if (!is_null($item->name)) {
+            $title .= " {$item->name}";
+        }
+        if (!is_null($item->volume)) {
+            $title .= " {$item->volume}ml";
+        }
+        if (!is_null($item->type)) {
+            $title .= " {$item->type}";
+        }
+        if (!is_null($item->sex)) {
+            $title .= " {$item->sex}";
+        }
+        if ($item->isArtisanalBottling) {
+            $title .= " отливант";
+        }
+        if ($item->hasMarking) {
+            $title .= " маркировка";
+        }
+        if ($item->isTester) {
+            $title .= " тестер";
+        }
+        if ($item->isSample) {
+            $title .= " sample";
+        }
+        if ($item->isOldDesign) {
+            $title .= " старый дезайн";
+        }
+        if ($item->isRefill) {
+            $title .= " refill";
+        }
+        if ($item->isDamaged) {
+            $title .= " поврежден";
+        }
+
+        return $title;
     }
 }
