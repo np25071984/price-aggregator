@@ -51,27 +51,35 @@ readonly class FileWriter
         $sheet->getColumnDimension('D')->setWidth(22.5);
         $sheet->getColumnDimension('F')->setWidth(22.5);
         $sheet->getStyle("A1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("A1")->getFont()->setBold(true);
         $sheet->setCellValue("A1", "Артикул");
         $sheet->getStyle("B1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("B1")->getFont()->setBold(true);
         $sheet->setCellValue("B1", "Наименование");
         $sheet->getStyle("C1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("C1")->getFont()->setBold(true);
         $sheet->setCellValue("C1", "Цена");
         $sheet->getStyle("D1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("D1")->getFont()->setBold(true);
         $sheet->setCellValue("D1", "Заказ");
 
         $perfumesByBrand = [];
+        $setsByBrand = [];
         foreach ($data as $item) {
-            if (!($item instanceof PerfumeEntity)) {
-                continue;
+            switch (true) {
+                case $item instanceof PerfumeEntity:
+                    if (is_null($item->name)) {
+                        continue;
+                    }
+
+                    $perfumeTtitle = $this->generatePerfumeTitle($item);
+                    $perfumesByBrand[$item->brand][$perfumeTtitle][] = $item;
+                    break;
+                case $item instanceof SetEntity:
+                    $setTitle = $this->generateSetTitle($item);
+                    $setsByBrand[$item->brand][$setTitle][] = $item;
+                    break;
             }
-
-            if (is_null($item->name)) {
-                continue;
-            }
-
-            $title = $this->generateTitle($item);
-            $perfumesByBrand[$item->brand][$title][] = $item;
-
         }
 
         $currentLine = 2;
@@ -97,8 +105,27 @@ readonly class FileWriter
                     $currentLine++;
                 }
             }
+
+            foreach ($setsByBrand[$brand] ?? [] as $setTitle => $items) {
+                $sheet->setCellValue("A{$currentLine}", "XXXXX");
+                $sheet->setCellValue("B{$currentLine}", $setTitle . " [" . count($items) . "]");
+                $sheet->setCellValue("C{$currentLine}", 0.00);
+                $currentLine++;
+
+                foreach ($items as $item) {
+                    $sheet->setCellValue("A{$currentLine}", $item->article);
+                    $sheet->setCellValue("B{$currentLine}", "({$item->provider->value}) " . $item->originalTitle);
+                    $sheet->setCellValue("C{$currentLine}", $item->price);
+                    $sheet->getRowDimension($currentLine)
+                        ->setOutlineLevel(1)
+                        ->setVisible(false)
+                        ->setCollapsed(true);
+                    $currentLine++;
+                }
+            }
         }
         unset($perfumesByBrand);
+        unset($setsByBrand);
 
         $spreadsheet->createSheet(1);
         $spreadsheet->setActiveSheetIndex(1);
@@ -189,8 +216,7 @@ readonly class FileWriter
                     $sheet->setCellValue("G{$currentLine}", "Разное");
                     break;
                 case $item instanceof SetEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
-                    $sheet->setCellValue("G{$currentLine}", "Набор");
+                    continue 2;
                     break;
                 case $item instanceof UnknownProductEntity:
                     $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
@@ -220,7 +246,7 @@ readonly class FileWriter
         $writer->save($fileName);
     }
 
-    private function generateTitle(PerfumeEntity $item): string
+    private function generatePerfumeTitle(PerfumeEntity $item): string
     {
         $title = $item->brand;
 
@@ -247,7 +273,7 @@ readonly class FileWriter
             $title .= " маркировка";
         }
         if ($item->isTester) {
-            $title .= " тестер";
+            $title .= " tester";
         }
         if ($item->isSample) {
             $title .= " sample";
@@ -263,5 +289,10 @@ readonly class FileWriter
         }
 
         return $title;
+    }
+
+    private function generateSetTitle(SetEntity $item): string
+    {
+        return $item->brand . " " . $item->line;
     }
 }
