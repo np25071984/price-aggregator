@@ -89,12 +89,17 @@ readonly class FileWriter
             $sheet->setCellValue("A{$currentLine}", $brand);
             $currentLine++;
             foreach ($titles as $title => $items) {
-                $sheet->setCellValue("A{$currentLine}", "XXXXX");
+                $currentGroupHeadLine = $currentLine;
+                $currentGroupHeadArticle = "XXXXX";
+                $currentGroupHeadPrice = PHP_FLOAT_MAX;
                 $sheet->setCellValue("B{$currentLine}", $title . " [" . count($items) . "]");
-                $sheet->setCellValue("C{$currentLine}", 0.00);
                 $currentLine++;
 
                 foreach ($items as $item) {
+                    if ($item->price < $currentGroupHeadPrice) {
+                        $currentGroupHeadPrice = $item->price;
+                        $currentGroupHeadArticle = $item->article;
+                    }
                     $sheet->setCellValue("A{$currentLine}", $item->article);
                     $sheet->setCellValue("B{$currentLine}", "({$item->provider->value}) " . $item->originalTitle);
                     $sheet->setCellValue("C{$currentLine}", $item->price);
@@ -104,15 +109,23 @@ readonly class FileWriter
                         ->setCollapsed(true);
                     $currentLine++;
                 }
+                $sheet->setCellValue("A{$currentGroupHeadLine}", $currentGroupHeadArticle);
+                $sheet->setCellValue("C{$currentGroupHeadLine}", $currentGroupHeadPrice);
             }
 
             foreach ($setsByBrand[$brand] ?? [] as $setTitle => $items) {
-                $sheet->setCellValue("A{$currentLine}", "XXXXX");
+                $currentGroupHeadLine = $currentLine;
+                $currentGroupHeadArticle = "XXXXX";
+                $currentGroupHeadPrice = PHP_FLOAT_MAX;
+
                 $sheet->setCellValue("B{$currentLine}", $setTitle . " [" . count($items) . "]");
-                $sheet->setCellValue("C{$currentLine}", 0.00);
                 $currentLine++;
 
                 foreach ($items as $item) {
+                    if ($item->price < $currentGroupHeadPrice) {
+                        $currentGroupHeadPrice = $item->price;
+                        $currentGroupHeadArticle = $item->article;
+                    }
                     $sheet->setCellValue("A{$currentLine}", $item->article);
                     $sheet->setCellValue("B{$currentLine}", "({$item->provider->value}) " . $item->originalTitle);
                     $sheet->setCellValue("C{$currentLine}", $item->price);
@@ -122,6 +135,9 @@ readonly class FileWriter
                         ->setCollapsed(true);
                     $currentLine++;
                 }
+
+                $sheet->setCellValue("A{$currentGroupHeadLine}", $currentGroupHeadArticle);
+                $sheet->setCellValue("C{$currentGroupHeadLine}", $currentGroupHeadPrice);
             }
         }
         unset($perfumesByBrand);
