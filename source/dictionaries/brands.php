@@ -167,6 +167,7 @@ return [
     "desigual" => "Desigual",
     "divina terra" => "DiVina Terra",
     "dior" => "Dior",
+    "christian dior" => "Dior",
     "daligramme ma" => "Daligramme Ma",
     "c.dior" => "Dior",
     "diesel" => "Diesel",

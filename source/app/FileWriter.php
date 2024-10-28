@@ -172,77 +172,61 @@ readonly class FileWriter
         foreach ($data as $item) {
             switch (true) {
                 case $item instanceof BagEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Упаковка");
                     break;
                 case $item instanceof CandleEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Свеча");
                     break;
                 case $item instanceof ShampooAndGelEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Шампунь и гель");
                     break;
                 case $item instanceof BodyLotionEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Лосьон для тела");
                     break;
                 case $item instanceof BodyOilEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Масло для тела");
                     break;
                 case $item instanceof CableEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Шнур");
                     break;
                 case $item instanceof HandCreamEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Крем для рук");
                     break;
                 case $item instanceof BodyCreamEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Крем для тела");
                     break;
                 case $item instanceof BathCreamEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Крем для ванны");
                     break;
                 case $item instanceof AtomiserEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Атомайзер");
                     break;
                 case $item instanceof SoapEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Мыло");
                     break;
                 case $item instanceof LaundryDetergentEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Жидкий порошок");
                     break;
                 case $item instanceof DeoStickEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Деодорант");
                     break;
                 case $item instanceof ShowerGelEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Гель для душа");
                     break;
                 case $item instanceof OtherProductEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Разное");
                     break;
                 case $item instanceof SetEntity:
                     continue 2;
                     break;
                 case $item instanceof UnknownProductEntity:
-                    $sheet->mergeCells("G{$currentLine}:Q{$currentLine}");
                     $sheet->setCellValue("G{$currentLine}", "Нераспознанный продукт");
                     break;
                 case $item instanceof PerfumeEntity:
                     if (!is_null($item->name)) {
                         continue 2;
                     }
-                    $sheet->setCellValue("G{$currentLine}", "<unknown_name>");
+                    $sheet->setCellValue("G{$currentLine}", "Нераспознанное название");
                     $titleCaseName = mb_convert_case($item->comment, MB_CASE_TITLE);
                     $sheet->setCellValue("H{$currentLine}", "\"{$item->comment}\" => \"{$titleCaseName}\",");
                     break;

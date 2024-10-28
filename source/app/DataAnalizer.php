@@ -228,8 +228,8 @@ readonly class DataAnalizer
             }
 
             // determine if an Hand Soap
-            $isHandSoapScanResult = $this->sacnStringForListValues($title, ["hand and body soap", "hand soap", "hand&body soap", "liquide soap", "жидкое мыло", "soap", "мыло"]);
-            if (!is_null($isHandSoapScanResult)) {
+            $isSoapScanResult = $this->sacnStringForListValues($title, ["hand and body soap", "hand soap", "hand&body soap", "liquide soap", "жидкое мыло", "soap", "мыло"]);
+            if (!is_null($isSoapScanResult)) {
                 $data[] = new SoapEntity(
                     article: $row->article,
                     originalTitle: $row->originalTitle,
