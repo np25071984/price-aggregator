@@ -12,6 +12,11 @@ readonly class GuldenRuConverter extends AbstractConverter
     private const int INDEX_PRICE = 4;
     private const int FIRST_ROW = 11;
 
+    protected function getMarginPercent(): float
+    {
+        return 7.0;
+    }
+
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
@@ -22,7 +27,7 @@ readonly class GuldenRuConverter extends AbstractConverter
             if (empty($r[self::INDEX_ARTICLE])) {
                 continue;
             }
-            $price = (float)trim($r[self::INDEX_PRICE]);
+            $price = $this->getPriceWithMargin((float)trim($r[self::INDEX_PRICE]));
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
                 originalTitle: $r[self::INDEX_TITLE],

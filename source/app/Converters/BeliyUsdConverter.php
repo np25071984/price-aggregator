@@ -12,6 +12,11 @@ readonly class BeliyUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 2;
     private const int FIRST_ROW = 15;
 
+    protected function getMarginPercent(): float
+    {
+        return 7.0;
+    }
+
     protected function getFixes(): array
     {
         return [
@@ -42,7 +47,7 @@ readonly class BeliyUsdConverter extends AbstractConverter
         $rows = $activeSheet->rangeToArray(sprintf("A%d:C%d", self::FIRST_ROW, $highestRow));
         foreach ($rows as $r) {
             $title = $this->normolizeString($r[self::INDEX_TITLE]);
-            $price = (float)trim($r[self::INDEX_PRICE]);
+            $price = $this->getPriceWithMargin((float)trim($r[self::INDEX_PRICE]));
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
                 originalTitle: $r[self::INDEX_TITLE],

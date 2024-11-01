@@ -12,6 +12,11 @@ readonly class NashaFirmaUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 3;
     private const int FIRST_ROW = 7;
 
+    protected function getMarginPercent(): float
+    {
+        return 7.0;
+    }
+
     protected function getFixes(): array
     {
         return [
@@ -46,7 +51,7 @@ readonly class NashaFirmaUsdConverter extends AbstractConverter
             if (empty($r[self::INDEX_TITLE])) {
                 continue;
             }
-            $price = (float)trim($r[self::INDEX_PRICE]);
+            $price = $this->getPriceWithMargin((float)trim($r[self::INDEX_PRICE]));
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
                 originalTitle: $r[self::INDEX_TITLE],

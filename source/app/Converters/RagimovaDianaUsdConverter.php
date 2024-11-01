@@ -12,6 +12,11 @@ readonly class RagimovaDianaUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 2;
     private const int FIRST_ROW = 5;
 
+    protected function getMarginPercent(): float
+    {
+        return 7.0;
+    }
+
     protected function getFixes(): array
     {
         return [
@@ -30,7 +35,7 @@ readonly class RagimovaDianaUsdConverter extends AbstractConverter
             if (empty($r[self::INDEX_ARTICLE])) {
                 continue;
             }
-            $price = (float)trim($r[self::INDEX_PRICE]);
+            $price = $this->getPriceWithMargin((float)trim($r[self::INDEX_PRICE]));
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
                 originalTitle: $r[self::INDEX_TITLE],

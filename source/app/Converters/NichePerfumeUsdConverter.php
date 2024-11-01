@@ -20,6 +20,11 @@ readonly class NichePerfumeUsdConverter extends AbstractConverter
         ];
     }
 
+    protected function getMarginPercent(): float
+    {
+        return 7.0;
+    }
+
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
@@ -32,7 +37,7 @@ readonly class NichePerfumeUsdConverter extends AbstractConverter
             }
             $title = $this->normolizeString($r[self::INDEX_TITLE]);
             $price = str_replace(" USD", "", $r[self::INDEX_PRICE]); // rangeToArray returns currency
-            $price = (float)trim($price);
+            $price = $this->getPriceWithMargin((float)trim($price));
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
                 originalTitle: $r[self::INDEX_TITLE],

@@ -21,6 +21,11 @@ readonly class DePerfumesConverter extends AbstractConverter
         ];
     }
 
+    protected function getMarginPercent(): float
+    {
+        return 7.0;
+    }
+
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
@@ -31,7 +36,7 @@ readonly class DePerfumesConverter extends AbstractConverter
             if (empty($r[self::INDEX_ARTICLE])) {
                 continue;
             }
-            $price = (float)trim($r[self::INDEX_PRICE]);
+            $price = $this->getPriceWithMargin((float)trim($r[self::INDEX_PRICE]));
             $title = $this->normolizeString($r[self::INDEX_TITLE]);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),

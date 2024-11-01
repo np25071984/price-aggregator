@@ -31,4 +31,14 @@ abstract readonly class AbstractConverter implements ConverterInterface
 
         return $string;
     }
+
+    protected function getMarginPercent(): float
+    {
+        return 0.0;
+    }
+
+    protected function getPriceWithMargin(float $originalValue): float
+    {
+        return ceil($originalValue + (($originalValue * $this->getMarginPercent()) / 100));
+    }
 }

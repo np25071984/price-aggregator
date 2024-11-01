@@ -12,6 +12,11 @@ readonly class AvangardUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 2;
     private const int FIRST_ROW = 7;
 
+    protected function getMarginPercent(): float
+    {
+        return 7.0;
+    }
+
     protected function getFixes(): array
     {
         return [
@@ -41,7 +46,7 @@ readonly class AvangardUsdConverter extends AbstractConverter
             if (mb_substr($title, 0, mb_strlen($currentBrand)) !== $currentBrand) {
                 $title = $currentBrand . " " . $title;
             }
-            $price = (float)trim($r[self::INDEX_PRICE]);
+            $price = $this->getPriceWithMargin((float)trim($r[self::INDEX_PRICE]));
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
                 originalTitle: $r[self::INDEX_TITLE],
