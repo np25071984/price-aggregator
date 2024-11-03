@@ -704,7 +704,7 @@ return [
         "набор 12 days bombshell adventskalender (bombshell 50 ml + 11 предметов)" => "12 Days Bombshell Adventskalender (Bombshell 50 ml + 11 предметов)",
         "bombshell набор 50 ml edp + 7.5 ml edp + 100 ml fine fragrance lotion" => "Bombshell набор 50ml edp + 7.5ml edp + 100ml Fine Fragrance lotion",
     ],
-    "Kajal" => [
+    "Lamar by Kajal" => [
         "almaz discovery kit 5ml*3 edp" => "Almaz Discovery Kit edp 3 x 5ml",
         "dahab discovery kit 5ml*3 edp" => "Dahab Discovery Kit edp 3 x 5ml",
         "homme ii discovery kit 5ml*3 edp" => "Homme II Discovery Kit edp 3 x 5ml",

@@ -28,9 +28,6 @@ return [
         "privee oud ispahan",
         "yves r.",
     ],
-    "Lamar" => [
-        "kajal - lamar",
-    ],
     "Signature" => [
         "a.dunhill signature collection",
         "dominant collections signature",

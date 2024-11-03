@@ -743,6 +743,7 @@ return [
         "urban hero gold edition" => "Urban Hero Gold Edition",
     ],
     "John Richmond" => [
+        "jr" => "Jr",
         "acid bomb" => "Acid Bomb",
         "black metal" => "Black Metal",
         "hidden amber" => "Hidden Amber",
@@ -997,7 +998,7 @@ return [
     "Marc-Antoine Barrois" => [
         "b683" => "B683",
         "tilia" => "Tilia",
-        "ganymede extrait" => "Ganymede Extrait",
+        "ganymede" => "Ganymede",
     ],
     "Mauboussin" => [
         "a la folie" => "A La Folie",
@@ -1536,7 +1537,6 @@ return [
         "стекло пластик прозрачный" => "стекло пластик прозрачный",
     ],
     "Acqua" => [
-        "alessandro dell` in rose" => "Alessandro Dell In Rose",
         "di parma ambra" => "Di Parma Ambra",
         "di parma blu mediterraneo bergamotto di calabria" => "Di Parma Blu Mediterraneo Bergamotto Di Calabria",
         "di parma blu mediterraneo fico di amalfi" => "Di Parma Blu Mediterraneo Fico Di Amalfi",
@@ -3165,6 +3165,7 @@ return [
         "voulez-vous coucher avec moi" => "Voulez-vous Coucher Avec Moi",
         "voulezvous coucher avec moi" => "Voulez-vous Coucher Avec Moi",
         "voulez-vouz coucher avec moi" => "Voulez-vous Coucher Avec Moi",
+        "voulez- vous coucher avec moi" => "Voulez-vous Coucher Avec Moi",
         "voulez vous coucher" => "Voulez-vous Coucher Avec Moi",
         "voulez-vous" => "Voulez-vous Coucher Avec Moi",
         "woman in gold" => "Woman In Gold",
@@ -3345,6 +3346,7 @@ return [
         "yara" => "Yara",
     ],
     "Le Labo" => [
+        "geranium 33" => "Geranium 33",
         "19 baie" => "Baie 19",
         "gaiac 10 tokyo" => "Gaiac 10 Tokyo",
         "another 13" => "Another 13",
@@ -3681,6 +3683,7 @@ return [
         "v.6 - ecstasy" => "v.6 - Ecstasy",
         "v.7 - love" => "v.7 - Love",
         "v.7 - white heart" => "v.7 - White Heart",
+        "white heart v.7" => "v.7 - White Heart",
         "v.8 - abundance" => "v.8 - Abundance",
     ],
     "Marc Antoine Barrois" => [
@@ -4591,6 +4594,7 @@ return [
         "madama butterfly ii" => "Madama Butterfly Ii",
     ],
     "Serge Lutens" => [
+        "vitriol d`oeillet" => "Vitriol D'oeillet",
         "louve" => "Louve",
         "ambre sultan" => "Ambre Sultan",
         "chergui" => "Chergui",
@@ -4783,6 +4787,7 @@ return [
         "blessing silence" => "Blessing Silence",
     ],
     "Tiziana Terenzi" => [
+        "sunsation" => "Sunsation",
         "akragas" => "Akragas",
         "idna" => "Idna",
         "cabiria" => "Cabiria",
@@ -5264,6 +5269,7 @@ return [
         "supreme rouge" => "Supreme Rouge",
     ],
     "Abercrombie & Fitch" => [
+        "ezra" => "Ezra",
         "naturally fierce" => "Naturally Fierce",
         "authentic moment" => "Authentic Moment",
         "authentic night" => "Authentic Night",
@@ -5283,6 +5289,7 @@ return [
         "luna dulcius" => "Luna Dulcius"
     ],
     "Acqua di Parma" => [
+        "blue mediterraneo cipresso di toscana" => "Blue Mediterraneo Cipresso Di Toscana",
         "arancia di capri" => "Arancia Di Capri",
         "arancia la spugnatura" => "Arancia La Spugnatura",
         "colonia" => "Colonia",
@@ -5305,9 +5312,9 @@ return [
         "zafferano" => "Zafferano",
         "zafferano mini" => "Zafferano Mini",
         "ambra" => "Ambra",
-        "blu mediterraneo bergamotto di calabria" => "Blu Mediterraneo Bergamotto Di Calabria",
-        "blu mediterraneo fico di amalfi" => "Blu Mediterraneo Fico Di Amalfi",
-        "blu mediterraneo mirto di panarea" => "Blu Mediterraneo Mirto Di Panarea",
+        "blu mediterraneo bergamotto di calabria" => "Blue Mediterraneo Bergamotto Di Calabria",
+        "blu mediterraneo fico di amalfi" => "Blue Mediterraneo Fico Di Amalfi",
+        "blu mediterraneo mirto di panarea" => "Blue Mediterraneo Mirto Di Panarea",
         "camelia" => "Camelia",
         "colonia club" => "Colonia Club",
         "lily of the valley" => "Lily Of The Valley",
@@ -5342,6 +5349,7 @@ return [
         "rossopompeiano" => "Rossopompeiano",
     ],
     "Agent Provocateur" => [
+        "maitresse" => "Maitresse",
         "fatale pink" => "Fatale Pink",
         "aphrodisiaque" => "Aphrodisiaque",
         "eau emotionelle" => "Eau Emotionelle",
@@ -6437,7 +6445,7 @@ return [
         "(jpg) le male" => "Le Male",
         "(jpg) so scandal!" => "So Scandal!",
     ],
-    "Kajal" => [
+    "Lamar by Kajal" => [
         "classic" => "Classic",
         "jihan" => "Jihan",
         "yasmina" => "Yasmina",
@@ -6451,6 +6459,7 @@ return [
         "almaz" => "Almaz",
         "dahab" => "Dahab",
         "lamar" => "Lamar",
+        "lamar caviar d’eau" => "Lamar Caviar D'Eau",
     ],
     "Keiko Mecheri" => [
         "wild berries" => "Wild Berries",
@@ -6832,10 +6841,11 @@ return [
         "daisy wild" => "Daisy Wild",
     ],
     "Masaki Matsushima" => [
-        "jhom" => "Jhom",
         "fluo" => "Fluo",
         "hana" => "Hana",
         "j-hom" => "J-hom",
+        "j- hom" => "J-hom",
+        "jhom" => "J-hom",
         "j-mat" => "J-mat",
         "m;0°с men" => "M;0°с Men",
         "masaki/masaki" => "Masaki/masaki",
@@ -7944,6 +7954,7 @@ return [
         "bergamote-racines" => "Bergamote-racines",
         "bergamote - racines" => "Bergamote-racines",
         "cedre-iris" => "Cedre-iris",
+        "cedre iris" => "Cedre-iris",
         "cedre - iris" => "Cedre-iris",
         "combava-cedrat" => "Combava-cedrat",
         "combava - cedrat" => "Combava-cedrat",
@@ -8378,6 +8389,7 @@ return [
         "royal eagle gold" => "Royal Eagle Gold",
     ],
     "24" => [
+        "elixir ambrosia" => "Elixir Ambrosia",
         "amboise" => "Amboise",
         "elixir gold" => "Elixir Gold",
         "gold" => "Gold",
@@ -8595,6 +8607,7 @@ return [
         "xoxo" => "Xoxo",
     ],
     "Syed Junaid" => [
+        "thulooj" => "Thulooj",
         "mint" => "Mint",
         "aghadeer" => "Aghadeer",
         "ateeq" => "Ateeq",
@@ -8616,7 +8629,7 @@ return [
         "sapphire" => "Sapphire",
         "sprint" => "Sprint",
         "tareekh black" => "Tareekh Black",
-        "thulooj \"g\"" => "Thulooj \"G\"",
+        "thulooj \"g\"" => "Thulooj G",
         "zawaya" => "Zawaya",
     ],
     "Benetton Colors" => [
@@ -9742,6 +9755,8 @@ return [
         "rivolta azur" => "Rivolta Azur",
     ],
     "My Perfumes" => [
+        "dark oud" => "Dark Oud",
+        "trip pour homme" => "Trip Pour Homme",
         "eau de deluxe" => "Eau De Deluxe",
     ],
     "Oxford" => [
@@ -9878,7 +9893,7 @@ return [
         "tracy" => "Tracy",
     ],
     "Helena Rubinstein" => [
-        "barynia parum" => "Barynia Parum",
+        "barynia" => "Barynia",
     ],
     "Horizon" => [
         "shanghai" => "Shanghai",
@@ -9897,7 +9912,7 @@ return [
     "Jacomo" => [
         "aura" => "Aura",
         "paradox green" => "Paradox Green",
-        "silences vintage" => "Silences Vintage",
+        "silences" => "Silences",
     ],
     "Kenneth Cole" => [
         "black bold" => "Black Bold",
@@ -10437,5 +10452,30 @@ return [
     "Swiss Arabian" => [
         "edge" => "Edge",
         "shaghaf oud aswad" => "Shaghaf Oud Aswad",
+    ],
+    "Teeb Al Ghawali" => [
+        "amber" => "Amber",
+        "luban" => "Luban",
+        "ward" => "Ward",
+    ],
+    "Gallivant" => [
+        "berlin" => "Berlin",
+    ],
+    "Adidas" => [
+        "uefa champions league champion edition" => "Uefa Champions League Champion Edition",
+    ],
+    "Alessandro Dell'Acqua" => [
+        "woman in rose" => "Woman In Rose",
+    ],
+    "Cathy Guetta" => [
+        "ibiza pink power" => "Ibiza Pink Power",
+        "ibiza" => "Ibiza",
+    ],
+    "Elizabeth Taylor" => [
+        "white diamonds en rouge" => "White Diamonds En Rouge",
+    ],
+    "La Prairie" => [
+        "life threads platinum" => "Life Threads Platinum",
+        "life threads ruby sheer" => "Life Threads Ruby Sheer",
     ],
 ];

@@ -228,7 +228,8 @@ readonly class FileWriter
                     }
                     $sheet->setCellValue("G{$currentLine}", "Нераспознанное название");
                     $titleCaseName = mb_convert_case($item->comment, MB_CASE_TITLE);
-                    $sheet->setCellValue("H{$currentLine}", "\"{$item->comment}\" => \"{$titleCaseName}\",");
+                    $b = $item->brand ?? "<unknown_brand";
+                    $sheet->setCellValue("H{$currentLine}", "{$b}: \"{$item->comment}\" => \"{$titleCaseName}\",");
                     break;
                 default:
                     throw new RuntimeException("Unknown object!");
