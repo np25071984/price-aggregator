@@ -270,6 +270,9 @@ readonly class FileWriter
         if ($item->isLimited) {
             $title .= " Limited edition";
         }
+        if (!is_null($item->hasCap)) {
+            $title .= $item->hasCap ? " с крышкой" : " без крышки";
+        }
         if ($item->isArtisanalBottling) {
             $title .= " отливант";
         }

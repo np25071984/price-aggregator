@@ -421,6 +421,21 @@ readonly class DataAnalizer
                 $isLimited = true;
             }
 
+            // determine hasCap
+            $hasCap = null;
+            $hasCapScanResult = $this->sacnStringForListValues($title, ["с крышкой)", "с крышкой", "с/кр",]);
+            if (!is_null($hasCapScanResult)) {
+                $title = $this->removeResultFromString($hasCapScanResult, $title);
+                $hasCap = true;
+            }
+
+            if (is_null($hasCap)) {
+                $hasNotCapScanResult = $this->sacnStringForListValues($title, ["без крышки"]);
+                if (!is_null($hasNotCapScanResult)) {
+                    $title = $this->removeResultFromString($hasNotCapScanResult, $title);
+                    $hasCap = false;
+                }
+            }
             /**
              * We didn't find name but in some cases there isn't name at all. When, for example,
              * name and brand are equal. So, let's correct this case.
@@ -440,6 +455,7 @@ readonly class DataAnalizer
                 type: $perfumeType,
                 sex: $sex,
                 isLimited: $isLimited,
+                hasCap: $hasCap,
                 isArtisanalBottling: $isArtisanalBottling,
                 hasMarking: $hasMarking,
                 isTester: $isTester,
