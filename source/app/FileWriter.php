@@ -267,6 +267,9 @@ readonly class FileWriter
         if (!is_null($item->sex)) {
             $title .= " {$item->sex}";
         }
+        if ($item->isLimited) {
+            $title .= " Limited edition";
+        }
         if ($item->isArtisanalBottling) {
             $title .= " отливант";
         }

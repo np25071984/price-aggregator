@@ -359,7 +359,7 @@ readonly class DataAnalizer
 
             // determine if sample
             $isSample = false;
-            $isSampleScanResult = $this->sacnStringForListValues($title, ["sample"]);
+            $isSampleScanResult = $this->sacnStringForListValues($title, ["sample", "пробник", "(пробник)"]);
             if (!is_null($isSampleScanResult)) {
                 $title = $this->removeResultFromString($isSampleScanResult, $title);
                 $isSample = true;
@@ -413,6 +413,14 @@ readonly class DataAnalizer
                 $sex = $sexScanResult->unifiedValue;
             }
 
+            // determine if limited
+            $isLimited = false;
+            $isLimitedScanResult = $this->sacnStringForListValues($title, ["limited"]);
+            if (!is_null($isLimitedScanResult)) {
+                $title = $this->removeResultFromString($isLimitedScanResult, $title);
+                $isLimited = true;
+            }
+
             /**
              * We didn't find name but in some cases there isn't name at all. When, for example,
              * name and brand are equal. So, let's correct this case.
@@ -431,6 +439,7 @@ readonly class DataAnalizer
                 volume: $volume,
                 type: $perfumeType,
                 sex: $sex,
+                isLimited: $isLimited,
                 isArtisanalBottling: $isArtisanalBottling,
                 hasMarking: $hasMarking,
                 isTester: $isTester,
