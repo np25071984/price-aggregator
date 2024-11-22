@@ -73,4 +73,5 @@ return [
     "foam cleansing",
     "af/sh balm",
     "не хватает",
+    "af/sh"
 ];

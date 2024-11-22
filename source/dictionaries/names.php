@@ -129,7 +129,7 @@ return [
         "her secret desire" => "Her Secret Desire",
         "her secret temptation" => "Her Secret Temptation",
         "power of seduction" => "Power Of Seduction",
-        "queen of seduction lively muse" => "Queen Of Seduction Lively Muse",
+        "queen of seduction" => "Queen Of Seduction",
         "the golden secret" => "The Golden Secret",
         "the golden secret seduction doses" => "The Golden Secret Seduction Doses",
         "the icon" => "The Icon",
@@ -308,6 +308,8 @@ return [
         "eilish №3" => "Eilish No. 3",
     ],
     "Blumarine" => [
+        "les eaux exuberantes mon bouquet blanc" => "Les Eaux Exuberantes Mon Bouquet Blanc",
+        "les eaux exuberantes cheers on the terrace" => "Les Eaux Exuberantes Cheers On The Terrace",
         "kiss me on the lips" => "Kiss Me On The Lips",
         "bellissima intence" => "Bellissima Intense",
         "bellissima intense" => "Bellissima Intense",
@@ -338,6 +340,8 @@ return [
         "essentiel" => "Essentiel",
     ],
     "Bruno Banani" => [
+        "pure" => "Pure",
+        "made for men" => "Made For Men",
         "dangerous" => "Dangerous",
         "magic" => "Magic",
         "man's best" => "Man's Best",
@@ -1618,6 +1622,7 @@ return [
         "devotion" => "Devotion",
     ],
     "Armani" => [
+        "splash" => "Splash",
         "prive cuir zerzura" => "Prive Cuir Zerzura",
         "prive rose d`arabie" => "Prive Rose D'arabie",
         "sky di gioia" => "Sky Di Gioia",
@@ -1676,7 +1681,7 @@ return [
         "armani" => "Armani",
         "emporio diamonds" => "Emporio Diamonds",
         "emporio stronger with you freeze" => "Emporio Stronger With You Freeze",
-        "light di gioia lady" => "Light Di Gioia Lady",
+        "light di gioia" => "Light Di Gioia",
         "stronger with you" => "Stronger With You",
     ],
     "Arte" => [
@@ -1913,6 +1918,8 @@ return [
         "unholy oud" => "Unholy Oud",
     ],
     "Bvlgari" => [
+        "jasmin noir l*elixir" => "Jasmin Noir L'Elixir",
+        "goldea rose" => "Goldea Rose",
         "au the vert" => "Au The Vert",
         "splendida magnolia sensuel" => "Splendida Magnolia Sensuel",
         "allegra spettacolore`22" => "Allegra Spettacolore`22",
@@ -1965,6 +1972,7 @@ return [
         "splendida tubereuse mystique" => "Splendida Tubereuse Mystique",
     ],
     "Burberry" => [
+        "the beat" => "The Beat",
         "classic" => "Classic",
         "goddess`23" => "Goddess'23",
         "london lady" => "London Lady",
@@ -1984,6 +1992,7 @@ return [
         "weekend" => "Weekend",
         "touch" => "Touch",
         "my burberry" => "My Burberry",
+        "body" => "Body",
     ],
     "Byredo" => [
         "de los santos" => "De Los Santos",
@@ -4010,6 +4019,7 @@ return [
         "angel nova" => "Angel Nova",
         "angel" => "Angel",
         "womanity" => "Womanity",
+        "thierry aura" => "Thierry Aura",
     ],
     "Naomi Goodsir" => [
         "iris cendre" => "Iris Cendre",
@@ -4341,7 +4351,7 @@ return [
         "29 itabaia" => "29 Itabaia",
         "31 tonka bodykon" => "31 Tonka Bodykon",
         "4.1 le musc" => "4.1 Le Musc",
-        "7.2 morning in tipasa" => "7.2 Morning In Tipasa",
+        "morning in tipasa" => "7.2 Morning In Tipasa",
         "8.1 lombre fauve" => "8.1 Lombre Fauve",
         "9.1 komorebi" => "9.1 Komorebi",
         "a une madone" => "A Une Madone",
@@ -4360,6 +4370,7 @@ return [
         "jardins de kerylos 16" => "Jardins De Kerylos 16",
         "intime extime" => "Intime Extime",
         "05 l'eau de circe" => "05 L'eau De Circe",
+        "05 l eau de circe" => "05 L'eau De Circe",
         "la nymphe & le poete 13.1" => "La Nymphe & Le Poete 13.1",
         "la nuit de l’orchidee new" => "La Nuit De L'orchidee New",
         "la nuit de l’orchidee" => "La Nuit De L'orchidee",
@@ -4968,6 +4979,7 @@ return [
         "fleur de portofino" => "Fleur De Portofino",
     ],
     "Viktor & Rolf" => [
+        "eau mega" => "Eau Mega",
         "bonbon" => "Bonbon",
         "bonbon couture intense" => "Bonbon Couture Intense",
         "flowerbomb dew" => "Flowerbomb Dew",
@@ -5605,6 +5617,7 @@ return [
         "kalemat" => "Kalemat",
     ],
     "Aramis" => [
+        "life" => "Life",
         "devin" => "Devin",
         "tuscany per donna" => "Tuscany Per Donna",
         "always for her" => "Always For Her",
@@ -5720,12 +5733,14 @@ return [
         "magic mushrooms" => "Magic Mushrooms",
     ],
     "Boucheron" => [
+        "oud de carthage" => "Oud De Carthage",
         "eau legere" => "Eau Legere",
         "neroli d'ispahan" => "Neroli d'Ispahan",
         "quatre" => "Quatre",
         "tubereuse de madras" => "Tubereuse De Madras",
         "iris de syracuse" => "Iris de Syracuse",
         "ambre d'alexandrie" => "Ambre D'alexandrie",
+        "ambre d`alexandrie" => "Ambre D'alexandrie",
         "feve tonka de canaime" => "Feve Tonka De Canaime",
         "feve tonka de canaima" => "Feve Tonka De Canaime",
         "patchouli d'angkor" => "Patchouli D'angkor",
@@ -7646,11 +7661,13 @@ return [
         "valentina" => "Valentina",
     ],
     "Van Cleef & Arpels" => [
+        "van cleef patchouli blanc" => "Van Cleef Patchouli Blanc",
         "first love" => "First Love",
         "van cleef murmure" => "Van Cleef Murmure",
         "rose rouge" => "Rose Rouge",
         "les saisons ete fruity notes" => "Les Saisons Ete Fruity Notes",
-        "bois d amande" => "Bois D Amande",
+        "bois d amande" => "Van Cleef Bois D Amande",
+        "bois d'amande" => "Van Cleef Bois D Amande",
         "neroli amara" => "Neroli Amara",
         "orchid leather" => "Orchid Leather",
         "bois d'iris" => "Bois d'Iris",
@@ -7709,6 +7726,9 @@ return [
         "sigismondo" => "Sigismondo",
         "stramonio" => "Stramonio",
         "temptatio" => "Temptatio",
+        "giambelino" => "Giambelino",
+        "giullare" => "Giullare",
+        "ensis" => "Ensis",
     ],
     "Vertus" => [
         "benghal" => "Benghal",
@@ -8831,6 +8851,7 @@ return [
     "Bottega Veneta" => [
         "illusione" => "Illusione",
         "parco palladiano i" => "Parco Palladiano I",
+        "parco palladiano xv" => "Parco Palladiano XV",
     ],
     "Britney Spears" => [
         "curious" => "Curious",
