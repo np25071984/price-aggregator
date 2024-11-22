@@ -38,6 +38,7 @@ readonly class NashaFirmaUsdConverter extends AbstractConverter
             " sky7,5ml edp$" => " sky 7,5ml edp",
             " m 7.5 edp$" => " m 7,5ml edp",
             " (chic|fever|venus|gate|intrigue|code|iceberg|sunmusk|power|dancer)7,5ml edp$" => " \\1 7,5ml edp",
+            " 100 (edp|perfume)$" => " 100ml \\1",
         ];
     }
 
