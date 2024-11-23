@@ -21,4 +21,5 @@ return [
     "духи" => "perfume",
     "parfum" => "perfume",
     "pafrum" => "perfume",
+    "одеколон" => "edc",
 ];

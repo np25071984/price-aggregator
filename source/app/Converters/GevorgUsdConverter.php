@@ -21,7 +21,6 @@ readonly class GevorgUsdConverter extends AbstractConverter
     {
         return [
             preg_quote("100ml(в", "/") =>"100ml (в",
-            preg_quote("50ml(без)", "/") => "50ml (без",
             preg_quote("50ml(в", "/") => "50ml (в",
             "parfum120ml" => "parfum 120ml",
             preg_quote("10m(в", "/") => "10ml (в",

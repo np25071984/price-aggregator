@@ -160,6 +160,7 @@ return [
         "coco mademoiselle 3*20ml edt сменный блок" => "Coco Mademoiselle edt 3 x 20ml сменный блок",
         "chance 3*20ml edt сменный блок" => "Chance Eau Tendre eau edt 3 x 20ml сменный блок",
         "allure homme sport 3*20ml edt spray" => "Allure Homme Sport 3 x 20ml edt Spray",
+        "chance eau tendre 3*20ml edt сменный блок" => "Chance Eau Tendre edt 3 x 20ml сменный блок"
     ],
     "Creed" => [
         "spring flower edp (w) 3*10ml" => "Spring Flower edp (w) 3 x 10ml",
@@ -459,6 +460,7 @@ return [
     ],
     "Acqua di Parma" => [
         "set 5x7ml edp (leather+oud+osmantus+quercia+sandalo)" => "set 5 x 7ml edp (Leather, Oud, Osmantus, Qquercia, Sandalo)",
+        "Blu Mediterreneo Fico Di Amalfi Туалетная вода 75 мл + 12 мл набор" => "Blu Mediterreneo Fico Di Amalfi 75ml edt + 12ml"
     ],
     "Alexander McQueen" => [
         "myqueen woman set (50ml edp+100ml b/l)" => "Woman Set (50ml edp + 100ml b/l)",
@@ -539,6 +541,8 @@ return [
         "set 5*9ml cologne collection" => "Set 5 x 9ml Cologne Collection",
         "set fragrance layering collection (epf 30ml+wss b/ws+bb b/cr)" => "Set Fragrance Layering Collection (epf 30ml, wss b/ws, bb b/cr)",
         "set(english pear&fresia 30ml + wild bluebell 30ml)" => "Set 2 x 30ml (English Pear & Fresia, Wild Bluebell)",
+        "wood sage & sea salt 100ml body&hand wash" => "Wood Sage & Sea Salt 100ml Body&Hand Wash",
+        "blackberry and bay одеколон 100 мл + 9 мл" => "Blackberry and Bay edc 100ml + 9ml",
     ],
     "Procter & Gamble" => [
         "boss baldessarini ambre set (50+200ml s/g)" => "Boss Baldessarini Ambre Set (50ml, 200ml s/g)",
@@ -882,5 +886,8 @@ return [
     ],
     "Maissa Parfums" => [
         "pierre precieuse oud sultan набор (edp 100ml+edp 10ml+мыло) нарушена упаковка" => "Pierre Precieuse Oud Sultan (edp 100ml, edp 10ml,  Мыло)",
+    ],
+    "Bvlgari" => [
+        "omnia crystalline woman 100ml edt+15ml edt" => "Omnia Crystalline woman 100ml edt + 15ml edt",
     ],
 ];

@@ -270,16 +270,16 @@ readonly class FileWriter
         if ($item->isLimited) {
             $title .= " Limited edition";
         }
-        if (!is_null($item->hasCap)) {
-            $title .= $item->hasCap ? " с крышкой" : " без крышки";
-        }
+        // if (!is_null($item->hasCap)) {
+        //     $title .= $item->hasCap ? " с крышкой" : " без крышки";
+        // }
         if ($item->isArtisanalBottling) {
             $title .= " отливант";
         }
         // if ($item->hasMarking) {
         //     $title .= " маркировка";
         // }
-        if ($item->isTester) {
+        if ($item->isTester || ($item->hasCap === false)) {
             $title .= " tester";
         }
         if ($item->isSample) {
