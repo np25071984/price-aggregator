@@ -423,7 +423,7 @@ readonly class DataAnalizer
 
             // determine hasCap
             $hasCap = null;
-            $hasCapScanResult = $this->sacnStringForListValues($title, ["с крышкой)", "с крышкой", "с/кр",]);
+            $hasCapScanResult = $this->sacnStringForListValues($title, ["(с крышкой)", "с крышкой)", "с крышкой", "с/кр", "c/кр"]);
             if (!is_null($hasCapScanResult)) {
                 $title = $this->removeResultFromString($hasCapScanResult, $title);
                 $hasCap = true;
