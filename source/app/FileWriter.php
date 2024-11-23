@@ -82,6 +82,7 @@ readonly class FileWriter
             }
         }
 
+        ksort($perfumesByBrand);
         $currentLine = 2;
         foreach ($perfumesByBrand as $brand => $titles) {
             $sheet->mergeCells("A{$currentLine}:D{$currentLine}");
