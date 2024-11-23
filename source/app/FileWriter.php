@@ -276,9 +276,9 @@ readonly class FileWriter
         if ($item->isArtisanalBottling) {
             $title .= " отливант";
         }
-        if ($item->hasMarking) {
-            $title .= " маркировка";
-        }
+        // if ($item->hasMarking) {
+        //     $title .= " маркировка";
+        // }
         if ($item->isTester) {
             $title .= " tester";
         }
