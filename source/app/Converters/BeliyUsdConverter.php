@@ -28,6 +28,7 @@ readonly class BeliyUsdConverter extends AbstractConverter
             preg_quote("30ml`без", "/") => "30ml без",
             preg_quote(" mana`22 ", "/") => " mana `22 ",
             preg_quote(" edt'15 ", "/") => " edt '15 ",
+            preg_quote(" privee`22 ", "/") => " privee '22 ",
             preg_quote(" animalique`23 ", "/") => " animalique `23 ",
             preg_quote(" scandal'20 ", "/") => " scandal '20 ",
             preg_quote(" black'19 ", "/") => " black '19 ",

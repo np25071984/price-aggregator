@@ -460,7 +460,7 @@ return [
     ],
     "Acqua di Parma" => [
         "set 5x7ml edp (leather+oud+osmantus+quercia+sandalo)" => "set 5 x 7ml edp (Leather, Oud, Osmantus, Qquercia, Sandalo)",
-        "Blu Mediterreneo Fico Di Amalfi Туалетная вода 75 мл + 12 мл набор" => "Blu Mediterreneo Fico Di Amalfi 75ml edt + 12ml"
+        "blu mediterreneo fico di amalfi туалетная вода 75 мл + 12 мл набор" => "Blu Mediterreneo Fico Di Amalfi 75ml edt + 12ml",
     ],
     "Alexander McQueen" => [
         "myqueen woman set (50ml edp+100ml b/l)" => "Woman Set (50ml edp + 100ml b/l)",

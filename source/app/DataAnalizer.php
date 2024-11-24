@@ -391,7 +391,12 @@ readonly class DataAnalizer
 
             // determine if refill
             $isRefill = false;
-            $isRefillScanResult = $this->sacnStringForListValues($title, ["refill", "рефилл", "(refill)"]);
+            $isRefillScanResult = $this->sacnStringForListValues($title, [
+                "refil",
+                "refill",
+                "рефилл",
+                "(refill)"
+            ]);
             if (!is_null($isRefillScanResult)) {
                 $title = $this->removeResultFromString($isRefillScanResult, $title);
                 $isRefill = true;
@@ -415,7 +420,7 @@ readonly class DataAnalizer
 
             // determine if limited
             $isLimited = false;
-            $isLimitedScanResult = $this->sacnStringForListValues($title, ["limited"]);
+            $isLimitedScanResult = $this->sacnStringForListValues($title, ["limited", "(limited"]);
             if (!is_null($isLimitedScanResult)) {
                 $title = $this->removeResultFromString($isLimitedScanResult, $title);
                 $isLimited = true;
@@ -426,7 +431,6 @@ readonly class DataAnalizer
             $hasCapScanResult = $this->sacnStringForListValues($title, [
                     "(с крышкой)",
                     "с крышкой)",
-                    "б/головы",
                     "с крышкой",
                     "с/кр",
                     "c/кр"
@@ -438,7 +442,10 @@ readonly class DataAnalizer
             }
 
             if (is_null($hasCap)) {
-                $hasNotCapScanResult = $this->sacnStringForListValues($title, ["без крышки"]);
+                $hasNotCapScanResult = $this->sacnStringForListValues($title, [
+                    "без крышки",
+                    "б/головы",
+                ]);
                 if (!is_null($hasNotCapScanResult)) {
                     $title = $this->removeResultFromString($hasNotCapScanResult, $title);
                     $hasCap = false;

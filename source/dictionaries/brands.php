@@ -580,6 +580,7 @@ return [
     "sap" => "SAP",
     "sandalia" => "Sandalia",
     "salvatore ferragamo" => "Salvatore Ferragamo",
+    "s.ferragamo" => "Salvatore Ferragamo",
     "salvatore" => "Salvatore Ferragamo",
     "ferragamo" => "Salvatore Ferragamo",
     "scentologia" => "Scentologia",
