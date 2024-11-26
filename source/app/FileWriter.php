@@ -39,30 +39,6 @@ readonly class FileWriter
             unlink($fileName);
         }
 
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-        $sheet->setTitle(mb_substr("Прайс", 0, Worksheet::SHEET_TITLE_MAXIMUM_LENGTH, 'utf-8'));
-        $sheet->getStyle("A:A")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("C:C")->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_USD);
-
-        $sheet->getColumnDimension('A')->setWidth(16.5);
-        $sheet->getColumnDimension('B')->setWidth(89);
-        $sheet->getColumnDimension('C')->setWidth(22.5);
-        $sheet->getColumnDimension('D')->setWidth(22.5);
-        $sheet->getColumnDimension('F')->setWidth(22.5);
-        $sheet->getStyle("A1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("A1")->getFont()->setBold(true);
-        $sheet->setCellValue("A1", "Артикул");
-        $sheet->getStyle("B1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("B1")->getFont()->setBold(true);
-        $sheet->setCellValue("B1", "Наименование");
-        $sheet->getStyle("C1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("C1")->getFont()->setBold(true);
-        $sheet->setCellValue("C1", "Цена");
-        $sheet->getStyle("D1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("D1")->getFont()->setBold(true);
-        $sheet->setCellValue("D1", "Заказ");
-
         $perfumesByBrand = [];
         $setsByBrand = [];
         foreach ($data as $item) {
@@ -81,8 +57,31 @@ readonly class FileWriter
                     break;
             }
         }
-
         ksort($perfumesByBrand);
+
+        $spreadsheet = new Spreadsheet();
+
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setTitle(mb_substr("Прайс", 0, Worksheet::SHEET_TITLE_MAXIMUM_LENGTH, 'utf-8'));
+        $sheet->getStyle("A:A")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("C:C")->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_USD);
+        $sheet->getColumnDimension('A')->setWidth(16.5);
+        $sheet->getColumnDimension('B')->setWidth(89);
+        $sheet->getColumnDimension('C')->setWidth(22.5);
+        $sheet->getColumnDimension('D')->setWidth(22.5);
+        $sheet->getStyle("A1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("A1")->getFont()->setBold(true);
+        $sheet->setCellValue("A1", "Артикул");
+        $sheet->getStyle("B1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("B1")->getFont()->setBold(true);
+        $sheet->setCellValue("B1", "Наименование");
+        $sheet->getStyle("C1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("C1")->getFont()->setBold(true);
+        $sheet->setCellValue("C1", "Цена");
+        $sheet->getStyle("D1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("D1")->getFont()->setBold(true);
+        $sheet->setCellValue("D1", "Заказ");
+
         $currentLine = 2;
         foreach ($perfumesByBrand as $brand => $titles) {
             $sheet->mergeCells("A{$currentLine}:D{$currentLine}");
@@ -90,9 +89,72 @@ readonly class FileWriter
             $sheet->setCellValue("A{$currentLine}", $brand);
             $currentLine++;
             foreach ($titles as $title => $items) {
+                $currentArticle = "XXXXX";
+                $currentPrice = PHP_FLOAT_MAX;
+                $sheet->setCellValue("B{$currentLine}", $title);
+
+                foreach ($items as $item) {
+                    if ($item->price < $currentPrice) {
+                        $currentPrice = $item->price;
+                        $currentArticle = $item->article;
+                    }
+                }
+                $sheet->setCellValue("A{$currentLine}", $currentArticle);
+                $sheet->setCellValue("C{$currentLine}", $currentPrice);
+                $currentLine++;
+            }
+
+            foreach ($setsByBrand[$brand] ?? [] as $setTitle => $items) {
+                $currentArticle = "XXXXX";
+                $currentPrice = PHP_FLOAT_MAX;
+
+                $sheet->setCellValue("B{$currentLine}", $setTitle);
+
+                foreach ($items as $item) {
+                    if ($item->price < $currentPrice) {
+                        $currentPrice = $item->price;
+                        $currentArticle = $item->article;
+                    }
+                }
+
+                $sheet->setCellValue("A{$currentLine}", $currentArticle);
+                $sheet->setCellValue("C{$currentLine}", $currentPrice);
+                $currentLine++;
+            }
+        }
+
+        $spreadsheet->createSheet(1);
+        $spreadsheet->setActiveSheetIndex(1);
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setTitle(mb_substr("Отладка", 0, Worksheet::SHEET_TITLE_MAXIMUM_LENGTH, 'utf-8'));
+        $sheet->getStyle("A:A")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("C:C")->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_USD);
+        $sheet->getColumnDimension('A')->setWidth(16.5);
+        $sheet->getColumnDimension('B')->setWidth(6);
+        $sheet->getColumnDimension('C')->setWidth(89);
+        $sheet->getColumnDimension('D')->setWidth(22.5);
+        $sheet->getStyle("A1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("A1")->getFont()->setBold(true);
+        $sheet->setCellValue("A1", "Артикул");
+        $sheet->mergeCells("B1:C1");
+        $sheet->getStyle("B1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("B1")->getFont()->setBold(true);
+        $sheet->setCellValue("B1", "Наименование");
+        $sheet->getStyle("D1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("D1")->getFont()->setBold(true);
+        $sheet->setCellValue("D1", "Цена");
+
+        $currentLine = 2;
+        foreach ($perfumesByBrand as $brand => $titles) {
+            $sheet->mergeCells("A{$currentLine}:E{$currentLine}");
+            $sheet->getStyle("A{$currentLine}:E{$currentLine}")->getFont()->setBold(true);
+            $sheet->setCellValue("A{$currentLine}", $brand);
+            $currentLine++;
+            foreach ($titles as $title => $items) {
                 $currentGroupHeadLine = $currentLine;
                 $currentGroupHeadArticle = "XXXXX";
                 $currentGroupHeadPrice = PHP_FLOAT_MAX;
+                $sheet->mergeCells("B{$currentGroupHeadLine}:C{$currentGroupHeadLine}");
                 $sheet->setCellValue("B{$currentLine}", $title . " [" . count($items) . "]");
                 $currentLine++;
 
@@ -102,8 +164,8 @@ readonly class FileWriter
                         $currentGroupHeadArticle = $item->article;
                     }
                     $sheet->setCellValue("A{$currentLine}", $item->article);
-                    $sheet->setCellValue("B{$currentLine}", "({$item->provider->value}) " . $item->originalTitle);
-                    $sheet->setCellValue("C{$currentLine}", $item->price);
+                    $sheet->setCellValue("C{$currentLine}", "({$item->provider->value}) " . $item->originalTitle);
+                    $sheet->setCellValue("D{$currentLine}", $item->price);
                     $sheet->getRowDimension($currentLine)
                         ->setOutlineLevel(1)
                         ->setVisible(false)
@@ -111,7 +173,7 @@ readonly class FileWriter
                     $currentLine++;
                 }
                 $sheet->setCellValue("A{$currentGroupHeadLine}", $currentGroupHeadArticle);
-                $sheet->setCellValue("C{$currentGroupHeadLine}", $currentGroupHeadPrice);
+                $sheet->setCellValue("D{$currentGroupHeadLine}", $currentGroupHeadPrice);
             }
 
             foreach ($setsByBrand[$brand] ?? [] as $setTitle => $items) {
@@ -119,6 +181,7 @@ readonly class FileWriter
                 $currentGroupHeadArticle = "XXXXX";
                 $currentGroupHeadPrice = PHP_FLOAT_MAX;
 
+                $sheet->mergeCells("B{$currentLine}:C{$currentLine}");
                 $sheet->setCellValue("B{$currentLine}", $setTitle . " [" . count($items) . "]");
                 $currentLine++;
 
@@ -128,8 +191,8 @@ readonly class FileWriter
                         $currentGroupHeadArticle = $item->article;
                     }
                     $sheet->setCellValue("A{$currentLine}", $item->article);
-                    $sheet->setCellValue("B{$currentLine}", "({$item->provider->value}) " . $item->originalTitle);
-                    $sheet->setCellValue("C{$currentLine}", $item->price);
+                    $sheet->setCellValue("C{$currentLine}", "({$item->provider->value}) " . $item->originalTitle);
+                    $sheet->setCellValue("D{$currentLine}", $item->price);
                     $sheet->getRowDimension($currentLine)
                         ->setOutlineLevel(1)
                         ->setVisible(false)
@@ -137,15 +200,15 @@ readonly class FileWriter
                     $currentLine++;
                 }
 
-                $sheet->setCellValue("A{$currentGroupHeadLine}", $currentGroupHeadArticle);
-                $sheet->setCellValue("C{$currentGroupHeadLine}", $currentGroupHeadPrice);
+                $sheet->setCellValue("B{$currentGroupHeadLine}", $currentGroupHeadArticle);
+                $sheet->setCellValue("D{$currentGroupHeadLine}", $currentGroupHeadPrice);
             }
         }
         unset($perfumesByBrand);
         unset($setsByBrand);
 
-        $spreadsheet->createSheet(1);
-        $spreadsheet->setActiveSheetIndex(1);
+        $spreadsheet->createSheet(2);
+        $spreadsheet->setActiveSheetIndex(2);
         $sheet = $spreadsheet->getActiveSheet();
         $sheet->setTitle(mb_substr("Не распознанное", 0, Worksheet::SHEET_TITLE_MAXIMUM_LENGTH, 'utf-8'));
         $sheet->getStyle("A:A")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
