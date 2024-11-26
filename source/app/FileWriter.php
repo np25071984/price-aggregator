@@ -200,7 +200,7 @@ readonly class FileWriter
                     $currentLine++;
                 }
 
-                $sheet->setCellValue("B{$currentGroupHeadLine}", $currentGroupHeadArticle);
+                $sheet->setCellValue("A{$currentGroupHeadLine}", $currentGroupHeadArticle);
                 $sheet->setCellValue("D{$currentGroupHeadLine}", $currentGroupHeadPrice);
             }
         }
