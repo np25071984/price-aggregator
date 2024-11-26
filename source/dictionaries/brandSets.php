@@ -522,6 +522,7 @@ return [
     "Armaf" => [
         "club de nuit woman gift set (edp 105ml + body spray 200ml)" => "Club de Nuit Woman Gift Set (edp 105ml, body spray 200ml)",
         "jenny glow series - 30ml*5 (ufo;opium;floral explosion;belle;billionaire)" => "Jenny Glow series - 30ml x 5 (Ufo, Opium, Floral Explosion, Belle, Billionaire)",
+        "club de nuit intense man gift set (edt 105ml + body spray 200ml)" => "Club De Nuit Intense Man Gift Set (edt 105ml + body spray 200ml)",
     ],
     "Bharara King" => [
         "set (100edp+150b/l+100a/sh+150sh/g)" => "(100ml edp, 150ml b/l, 100ml a/sh, 150ml sh/g)",
