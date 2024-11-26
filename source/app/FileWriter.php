@@ -128,7 +128,7 @@ readonly class FileWriter
         $sheet = $spreadsheet->getActiveSheet();
         $sheet->setTitle(mb_substr("Отладка", 0, Worksheet::SHEET_TITLE_MAXIMUM_LENGTH, 'utf-8'));
         $sheet->getStyle("A:A")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("C:C")->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_USD);
+        $sheet->getStyle("D:D")->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_USD);
         $sheet->getColumnDimension('A')->setWidth(16.5);
         $sheet->getColumnDimension('B')->setWidth(6);
         $sheet->getColumnDimension('C')->setWidth(89);
