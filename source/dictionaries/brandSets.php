@@ -891,4 +891,11 @@ return [
     "Bvlgari" => [
         "omnia crystalline woman 100ml edt+15ml edt" => "Omnia Crystalline woman 100ml edt + 15ml edt",
     ],
+    "Alghabra Parfums" => [
+        "discovery set extrait de parfum 12x1.2ml" => "Discovery edp 12 x 1.2ml",
+        "discovery set extrait de parfum 18x1.2ml" => "Discovery edp 18 x 1.2ml",
+    ],
+    "Penhaligon S" => [
+        "portraits discovery edp gift set 8 x10 ml (lord geoge,lady blanche,mister sam,duchess rose,constance,teddy,the duke,cousin flora)" => "Portraits Discovery edp 8 x 10ml (Lord Geoge, Lady Blanche, Mister Sam, Duchess Rose, Constance, Teddy, The Duke, Cousin Flora)",
+    ],
 ];

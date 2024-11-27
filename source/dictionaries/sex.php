@@ -21,5 +21,6 @@ return [
     "feminine" => "woman",
     "unisex" => "unisex",
     "pour femme" => "woman",
+    "wom" => "woman",
     "pour homme" => "man",
 ];

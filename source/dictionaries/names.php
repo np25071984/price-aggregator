@@ -105,6 +105,13 @@ return [
         "rahaba" => "Rahaba",
         "watan" => "Watan",
     ],
+    "Ajne" => [
+        "bloom de nuit" => "Bloom De Nuit",
+        "nouvel amour" => "Nouvel Amour",
+    ],
+    "Ann Gerard" => [
+        "ciel d`opale" => "Ciel D'opale",
+    ],
     "Anna Rozenmeer" => [
         "midnight forest" => "Midnight Forest",
         "mystic library" => "Mystic Library",
@@ -353,6 +360,7 @@ return [
         "woods icelandic" => "Woods Icelandic",
     ],
     "Brioni" => [
+        "brioni" => "Brioni",
         "fragrance" => "Fragrance",
         "eclat" => "Eclat",
         "essentiel" => "Essentiel",
@@ -533,6 +541,7 @@ return [
         "serenity" => "Serenity",
     ],
     "Gianfranco Ferre" => [
+        "acqua azzurra" => "Acqua Azzurra",
         "in the mood for love" => "In The Mood For Love",
         "her" => "Her",
         "rose princesse" => "Rose Princesse",
@@ -1629,6 +1638,7 @@ return [
         "sileno" => "Sileno",
     ],
     "Alexandre J" => [
+        "oscent black" => "Oscent Black",
         "black muscs" => "Black Muscs",
         "iris violet" => "Iris Violet",
         "morning muscs" => "Morning Muscs",
@@ -1833,6 +1843,7 @@ return [
         "versace encens supreme" => "Versace Encens Supreme",
     ],
     "Atkinsons" => [
+        "pirates grand reserve" => "Pirates Grand Reserve",
         "the british bouquet" => "The British Bouquet",
         "james" => "James",
         "posh on the green" => "Posh On The Green",
@@ -1873,6 +1884,7 @@ return [
         "rosa galore" => "Rosa Galore",
         "the persian gold" => "The Persian Gold",
         "floral musk" => "Floral Musk",
+        "annabella" => "Annabella",
     ],
     "BDK Parfums" => [
         "312 saint-honore" => "312 Saint-honore",
@@ -2012,6 +2024,7 @@ return [
         "splendida patchouli tentation" => "Splendida Patchouli Tentation",
         "splendida jasmin noir" => "Splendida Jasmin Noir",
         "splendida tubereuse mystique" => "Splendida Tubereuse Mystique",
+        "tygar" => "Tygar",
     ],
     "Burberry" => [
         "the beat" => "The Beat",
@@ -2038,6 +2051,7 @@ return [
         "body" => "Body",
     ],
     "Byredo" => [
+        "los santos" => "De Los Santos",
         "de los santos" => "De Los Santos",
         "m/mink" => "M/mink",
         "mister marvelous" => "Mister Marvelous",
@@ -2050,6 +2064,7 @@ return [
         "encens chembur" => "Encens Chembur",
         "sellier" => "Sellier",
         "tobacco mandarin" => "Night Veils Tobacco Mandarin",
+        "night veils vanille antiquet" => "Night Veils Vanille Antique",
         "vanille antique" => "Night Veils Vanille Antique",
         "1996" => "1996",
         "blanche" => "Blanche",
@@ -2200,6 +2215,7 @@ return [
         "paris - venise" => "Paris - Venise",
         "№5 l'eau" => "no. 5 L'eau",
         "№5" => "No. 5",
+        "pour monsieur" => "Pour Monsieur",
     ],
     "Chloe" => [
         "absolu de parfum" => "Absolu De Parfum",
@@ -2254,6 +2270,7 @@ return [
         "№1" => "No. 1",
         "original collection №1" => "Original Collection No. 1",
         "150 anniversary collection timeless" => "150 Anniversary Collection Timeless",
+        "150 anniversary collection contemporary" => "150 Anniversary Collection Contemporary",
         "20 anniversary iconic" => "20 Anniversary Iconic",
         "chasing the dragon hypnotic" => "Chasing The Dragon Hypnotic",
         "private collection e fresh fougere" => "Private Collection E Fresh Fougere",
@@ -2323,6 +2340,7 @@ return [
         "rouge" => "Rouge",
         "wonderoud" => "Wonderoud",
         "zero" => "Zero",
+        "wonderwood" => "Wonderwood",
     ],
     "Costume National" => [
         "21" => "21",
@@ -2356,6 +2374,8 @@ return [
         "virgin island water" => "Virgin Island Water",
         "himalaya" => "Himalaya",
         "wind flowers" => "Wind Flowers",
+        "centaurus" => "Centaurus",
+        "delphinus" => "Delphinus",
     ],
     "Dior" => [
         "la collection privee ambre nuit" => "La Collection Privee Ambre Nuit",
@@ -2768,6 +2788,7 @@ return [
     "Frederic Malle" => [
         "monsieur" => "Monsieur",
         "dans mon lit" => "Dans Mon Lit",
+        "dans ton lit" => "Dans Ton Lit",
         "acne studios" => "Acne Studios",
         "bigarade concentree" => "Bigarade Concentree",
         "carnal flower" => "Carnal Flower",
@@ -2776,7 +2797,8 @@ return [
         "le parfum de therese" => "Le Parfum De Therese",
         "musc ravageur" => "Musc Ravageur",
         "music for a while" => "Music For A While",
-        "outrageous!" => "Outrageous!",
+        "outrageous!" => "Outrageous",
+        "outrageous" => "Outrageous",
         "portrait of lady" => "Portrait Of Lady",
         "portrait of lady mini" => "Portrait Of Lady Mini",
         "rose tonnerre" => "Rose Tonnerre",
@@ -3015,6 +3037,9 @@ return [
         "shalimar souffle de parfum" => "Shalimar Souffle De Parfum",
         "terracotta le parfum" => "Terracotta Le Parfum",
         "vetiver" => "Vetiver",
+        "angelique noire" => "Angelique Noire",
+        "feve gourmande" => "Feve Gourmande",
+        "oud nude" => "Oud Nude",
     ],
     "IL Profvmo" => [
         "caramella d'amore" => "Caramella D'amore",
@@ -3117,6 +3142,7 @@ return [
         "artisan" => "Artisan",
     ],
     "Juliette Has A Gun" => [
+        "into the void" => "Into The Void",
         "musk invisible lady" => "Musk Invisible Lady",
         "ode to dulness" => "Ode To Dulness",
         "in the mood for oud" => "In The Mood For Oud",
@@ -3213,14 +3239,13 @@ return [
         "angels` share" => "Angel's Share",
         "angel's angels share" => "Angel's Share",
         "apple brandy on the rocks" => "Apple Brandy On The Rocks",
-        "bamboo harmony no clutch" => "Bamboo Harmony No Clutch",
         "black phantom" => "Black Phantom",
         "blue moon ginger dash" => "Blue Moon Ginger Dash",
         "good girl gone bad eau fraiche" => "Good Girl Gone Bad Eau Fraiche",
         "good girl gone bad extreme" => "Good Girl Gone Bad Extreme",
         "good girl gone bad clutch" => "Good Girl Gone Bad Clutch",
         "good girl gone bad" => "Good Girl Gone Bad",
-        "imperial tea (2024)" => "Imperial Tea",
+        "imperial tea" => "Imperial Tea",
         "in the city of sin" => "In The City Of Sin",
         "intoxicated" => "Intoxicated",
         "killing me slowly" => "Killing Me Slowly",
@@ -3234,7 +3259,9 @@ return [
         "vodka on the rocks" => "Vodka On The Rocks",
         "vodka on the rocks: moscow" => "Vodka On The Rocks",
         "back to black" => "Back To Black",
+        "bamboo harmony no clutch" => "Bamboo Harmony No Clutch",
         "bamboo harmony" => "Bamboo Harmony",
+        "harmony of bamboo" => "Bamboo Harmony",
         "black phantom" => "Black Phantom",
         "can't stop loving you" => "Can't Stop Loving You",
         "criminal of love" => "Criminal Of Love",
@@ -3427,6 +3454,7 @@ return [
         "magnolia rosae" => "Magnolia Rosae",
         "peut-etre" => "Peut-etre",
         "pivoines printemps" => "Pivoines Printemps",
+        "pivoines" => "Pivoines",
         "tresor la nuit musc diamant" => "Tresor La Nuit Musc Diamant",
         "climat" => "Climat",
         "idole" => "Idole",
@@ -3638,6 +3666,7 @@ return [
         "sur la route" => "Sur La Route",
     ],
     "Maison Francis Kurkdjian" => [
+        "coffret" => "Coffret",
         "aqua media cologne forte" => "Aqua Media Cologne Forte",
         "feminin pluriel" => "Feminin Pluriel",
         "globe trotter gold edition case" => "Globe Trotter Gold Edition Case",
@@ -5420,6 +5449,7 @@ return [
         "luna dulcius" => "Luna Dulcius"
     ],
     "Acqua di Parma" => [
+        "signature vanigla" => "Signature Vanigla",
         "blue mediterraneo cipresso di toscana" => "Blue Mediterraneo Cipresso Di Toscana",
         "arancia di capri" => "Arancia Di Capri",
         "arancia la spugnatura" => "Arancia La Spugnatura",
@@ -5471,6 +5501,11 @@ return [
         "pelargonium" => "Pelargonium",
         "cierge de lune" => "Cierge De Lune",
         "copal azur" => "Copal Azur",
+    ],
+    "Alsayad" => [
+        "desert breeze" => "Desert Breeze",
+        "dubai night" => "Dubai Night",
+        "love cherry" => "Love Cherry",
     ],
     "Agatho" => [
         "castiamanti" => "Castiamanti",
@@ -6248,8 +6283,10 @@ return [
         "francine" => "Francine",
     ],
     "Fragrance Du Bois" => [
+        "secret tryst" => "Secret Tryst",
         "heritage" => "Heritage",
         "brume du matin" => "Brume Du Matin",
+        "cannabis intense" => "Cannabis Intense",
         "cannabis blue" => "Cannabis Blue",
         "london spice" => "London Spice",
         "minuit et demi" => "Minuit Et Demi",
@@ -6271,6 +6308,7 @@ return [
         "oud violet intense" => "Oud Violet Intense",
         "parisian oud" => "Parisian Oud",
         "lovers" => "Lovers",
+        "solstis" => "Solstis",
     ],
     "Franck Boclet" => [
         "absolute shadow" => "Absolute Shadow",
@@ -6486,6 +6524,7 @@ return [
         "love at your darkest" => "Love At Your Darkest",
         "rush" => "Rush",
         "where my heart beats" => "Where My Heart Beats",
+        "oud" => "Oud",
     ],
     "Guy Laroche" => [
         "clandestine" => "Clandestine",
@@ -6596,6 +6635,7 @@ return [
         "slytherin" => "Slytherin",
         "the formal" => "The Formal",
         "whispers of time" => "Whispers Of Time",
+        "the classic" => "The Classic",
     ],
     "Jacques Zolty" => [
         "cubata" => "Cubata",
@@ -6751,6 +6791,7 @@ return [
         "l'eau par kenzo man" => "L'eau Par Kenzo Man",
         "le monde est beau" => "Le Monde Est Beau",
         "\"ca sent beau\"" => "Ca Sent Beau",
+        "aqua kenzo" => "Aqua Kenzo",
     ],
     "Lalique" => [
         "encre noir a l`extreme" => "Encre Noir A L'extreme",
@@ -7221,6 +7262,7 @@ return [
         "note vanille nectar" => "Note Vanille Nectar",
         "osaito" => "Osaito",
         "red planet" => "Red Planet",
+        "style" => "Style",
     ],
     "Mizensir" => [
         "for your love" => "For Your Love",
@@ -7473,6 +7515,7 @@ return [
         "devilish passion" => "Devilish Passion",
         "fly above the sky" => "Fly Above The Sky",
         "miss cherry" => "Miss Cherry",
+        "love game" => "Love Game",
     ],
     "Penhaligon's" => [
         "№33" => "No. 33",
@@ -7502,6 +7545,7 @@ return [
         "legacy of petra" => "Legacy Of Petra",
         "the revenge of lady blanche" => "The Revenge Of Lady Blanche",
         "the uncompromising sohan" => "The Uncompromising Sohan",
+        "constantinople" => "Constantinople",
     ],
     "Philly & Phill" => [
         "faith for fantasy" => "Faith For Fantasy",
@@ -7595,6 +7639,7 @@ return [
         "opulent № 77" => "Opulent No. 77",
         "№30" => "No. 30",
         "№33" => "No. 33",
+        "no.33" => "No. 33",
         "№70" => "No. 70",
         "№77" => "No. 77",
         "opulent classic №77" => "Opulent Classic No77",
@@ -7635,6 +7680,7 @@ return [
         "murano exclusive craquele" => "Murano Exclusive Craquele",
         "murano exclusive fenicia" => "Murano Exclusive Fenicia",
         "murano exclusive flamant rose" => "Murano Exclusive Flamant Rose",
+        "murano exlusive flamant rose" => "Murano Exclusive Flamant Rose",
         "murano exclusive imperial emerald" => "Murano Exclusive Imperial Emerald",
         "murano exclusive liberty" => "Murano Exclusive Liberty",
         "murano exclusive rococo" => "Murano Exclusive Rococo",
@@ -7982,6 +8028,7 @@ return [
         "this is love!" => "This is love!",
         "this is us!" => "This is us!",
         "this is really her!" => "This is Really Her!",
+        "tome 1 la purete" => "Tome 1 La Purete",
     ],
     "Yves Saint Laurent" => [
         "baby doll lucky game" => "Baby Doll Lucky Game",
@@ -8372,6 +8419,7 @@ return [
         "no. 12" => "No. 12",
         "12" => "No. 12",
         "№12" => "No. 12",
+        "no12" => "No. 12",
         "sheiduna" => "Sheiduna",
         "warszawa (with leather holder)" => "Warszawa (with Leather Holder)",
         "warszawa" => "Warszawa",
@@ -8443,6 +8491,7 @@ return [
         "eau de parfum" => "Eau de Parfum",
     ],
     "Franck Muller" => [
+        "double mystery" => "Double Mystery",
         "conquistador" => "Conquistador",
         "crazy hours" => "Crazy Hours",
     ],
@@ -8988,6 +9037,7 @@ return [
         "tendre pallida" => "Tendre Pallida",
     ],
     "Ermenegildo Zegna" => [
+        "essenze indonesian oud" => "Essenze Indonesian Oud",
         "forte" => "Forte",
         "xxx cyprium" => "Xxx Cyprium",
         "colognia" => "Colognia",
@@ -9211,6 +9261,7 @@ return [
         "mare pacifico" => "Mare Pacifico",
         "notte bianca" => "Notte Bianca",
         "porta del cielo" => "Porta Del Cielo",
+        "porta del ciero" => "Porta Del Cielo",
         "shades of leather" => "Shades Of Leather",
         "stella cadente" => "Stella Cadente",
         "vista sul mare" => "Vista Sul Mare",
@@ -9317,7 +9368,8 @@ return [
         "baroness" => "Baroness",
     ],
     "Penhaligon S" => [
-        "a balm of calm мл" => "A Balm Of Calm Мл",
+        "changing constance" => "Changing Constance",
+        "a balm of calm" => "A Balm Of Calm",
         "artemisia" => "Artemisia",
         "blenheim bouquet" => "Blenheim Bouquet",
         "clara" => "Clara",
@@ -9338,8 +9390,13 @@ return [
         "penhaligon`s juniper sling" => "Penhaligon's Juniper Sling",
         "juniper sling" => "Penhaligon's Juniper Sling",
         "ostara" => "Ostara",
+        "cousin flora" => "Cousin Flora",
+        "duchess rose" => "Duchess Rose",
+        "lady blanche" => "Lady Blanche",
+        "mr sam" => "Mr Sam",
     ],
     "Ralph Lauren" => [
+        "romance always yours" => "Romance Always Yours",
         "polo green" => "Polo Green",
         "polo sport" => "Polo Sport",
         "romance lady" => "Romance Lady",
@@ -9815,6 +9872,7 @@ return [
     ],
     "Collistar" => [
         "acqua wood" => "Acqua Wood",
+        "acqua vetiver" => "Acqua Vetiver",
     ],
     "Dear Diary" => [
         "deep deep in the baltic" => "Deep Deep In The Baltic",
@@ -10203,6 +10261,7 @@ return [
         "hamlet" => "Hamlet",
         "sandor 70" => "Sandor 70",
         "odette" => "Odette",
+        "aurora" => "Aurora",
     ],
     "Castelbajac" => [
         "beautiful day bonheur" => "Beautiful Day Bonheur",
