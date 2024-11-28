@@ -38,20 +38,26 @@ class MergePriceListsJob implements ShouldQueue
         $priceListConverterFactory = new PriceListConverterFactory();
         $dataAnalizer = new DataAnalizer();
         $data = [];
+        $filesStatus = [];
         foreach ($directoryReader->read(["xlsx", "xls"]) as $filePathName => $extension) {
+            $fileName = basename($filePathName);
+            $filesStatus[$fileName] = [];
             $reader = IOFactory::createReader($extension);
             $spreadsheet = $reader->load($filePathName);
             $priceId = $priceListIdentifier->identiry($spreadsheet);
+            $filesStatus[$fileName]['id'] = $priceId->value;
             if ($priceId === PriceListProviderEnum::Unknown) {
+                $filesStatus[$fileName]['items_count'] = 0;
                 // TODO: log this
                 continue;
             }
             $converter = $priceListConverterFactory->getConverter($priceId);
             $rawPriceData = $converter->convert($spreadsheet);
+            $filesStatus[$fileName]['items_count'] = count($rawPriceData);
             $data = array_merge($data, $dataAnalizer->analyze($rawPriceData, $priceId));
         }
 
         $writer = new FileWriter();
-        $writer->save("{$storagePath}/combined.xlsx", $data);
+        $writer->save("{$storagePath}/combined.xlsx", $data, $filesStatus);
     }
 }
