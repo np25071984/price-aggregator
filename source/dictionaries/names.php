@@ -23,6 +23,7 @@ return [
         "per sē" => "Per Se",
         "sónar" => "Sonar",
         "wandervogel" => "Wandervogel",
+        "wanderlust" => "Wanderlust",
     ],
     "Aerin" => [
         "aegea blossom" => "Aegea Blossom",
@@ -104,6 +105,14 @@ return [
     "Anfas" => [
         "rahaba" => "Rahaba",
         "watan" => "Watan",
+        "dhai" => "Dhai",
+        "gaya" => "Gaya",
+        "jannah" => "Jannah",
+        "sa adah" => "Sa Adah",
+        "shaghaf" => "Shaghaf",
+    ],
+    "Antonio Puig" => [
+        "quorum" => "Quorum",
     ],
     "Ajne" => [
         "bloom de nuit" => "Bloom De Nuit",
@@ -418,6 +427,7 @@ return [
         "in love" => "In Love",
     ],
     "Davidoff" => [
+        "adventure" => "Adventure",
         "echo" => "Echo",
         "silver shadow private" => "Silver Shadow Private",
         "silver shadow" => "Silver Shadow",
@@ -428,6 +438,7 @@ return [
         "cool water night dive" => "Cool Water Night Dive",
         "cool water" => "Cool Water",
         "the game" => "The Game",
+        "zino" => "Zino",
     ],
     "Detaille 1905 Paris" => [
         "aeroplane" => "Aeroplane",
@@ -490,6 +501,7 @@ return [
         "vip silver" => "Vip Silver",
     ],
     "Eutopie" => [
+        "№ 1" => "No. 1",
         "no2" => "No. 2",
         "№ 2" => "No. 2",
         "№ 3" => "No. 3",
@@ -503,6 +515,7 @@ return [
         "№ 9" => "No. 9",
     ],
     "Frapin" => [
+        "nevermore" => "Nevermore",
         "speakeasy" => "Speakeasy",
         "isle of" => "Isle Of",
         "if" => "If",
@@ -624,6 +637,8 @@ return [
         "royal power" => "Royal Power",
     ],
     "Hermes" => [
+        "h 24 herbes vives" => "H 24 Herbes Vives",
+        "hermessence iris ukiyoe" => "Hermessence Iris Ukiyoe",
         "tutti" => "Tutti",
         "jour d\"hermes" => "Jour d\"hermes",
         "belami" => "Belami",
@@ -632,6 +647,7 @@ return [
         "hiris" => "Hiris",
         "rocabar" => "Rocabar",
         "apres la mousson" => "Apres La Mousson",
+        "elixir des merveilles" => "Elixir Des Merveilles",
         "elixir des merveilles calligraphie" => "Elixir Des Merveilles Calligraphie",
         "epice marine" => "Epice Marine",
         "myrrhe eglantine" => "Myrrhe Eglantine",
@@ -641,7 +657,8 @@ return [
         "santal massoia" => "Santal Massoia",
         "vetiver tonka" => "Vetiver Tonka",
         "violette volynka" => "Violette Volynka",
-        "voyage d hermes" => "Voyage D Hermes",
+        "voyage d'hermes" => "Voyage D'hermes",
+        "voyage d hermes" => "Voyage D'hermes",
         "ambre narguile" => "Ambre Narguile",
         "galop d hermes" => "Galop D Hermes",
         "muguet porcelaine" => "Muguet Porcelaine",
@@ -683,12 +700,15 @@ return [
         "h24" => "H24",
         "rose ikebana" => "Rose Ikebana",
         "jour d'hermes" => "Jour D'hermes",
+        "jour d*hermes" => "Jour D'hermes",
         "kelly caleche" => "Kelly Caleche",
         "terre dhermes eau givree" => "Terre D'Hermes Eau Givree",
         "terre d hermes eau givree" => "Terre D'Hermes Eau Givree",
         "terre eau givree" => "Terre D'Hermes Eau Givree",
         "terre dhermes eau intense vetiver" => "Terre D'Hermes Eau Intense Vetiver",
         "terre d hermes eau intense vetiver" => "Terre D'Hermes Eau Intense Vetiver",
+        "barenia" => "Barenia",
+        "rouge" => "Rouge",
     ],
     "Hollister" => [
         "canyon escape" => "Canyon Escape",
@@ -810,7 +830,16 @@ return [
         "what about adam" => "What About Adam",
     ],
     "Jose Eisenberg" => [
+        "souffle du desir secret 8" => "Souffle Du Desir Secret 8",
+        "de lumiere et d'ombre secret 8" => "De Lumiere Et D'ombre Secret 8",
+        "velours de nuit secret 7" => "Velours De Nuit Secret 7",
+        "echo lumineux secret 7" => "Echo Lumineux Secret 7",
         "cuir d'orient secret 6" => "Cuir D'orient Secret 6",
+        "ambre d'orient secret 5" => "Ambre D'orient Secret 5",
+        "voile de chypre secret 3" => "Voile De Chypre Secret 3",
+        "patchouli noble secret 3" => "Patchouli Noble Secret 3",
+        "jardin des sens secret 2" => "Jardin Des Sens Secret 2",
+        "bois precieux secret 2" => "Bois Precieux Secret 2",
         "tentation" => "Tentation",
         "back to paris" => "Back To Paris",
         "beautiful" => "Beautiful",
@@ -864,11 +893,13 @@ return [
         "night flow" => "Night Flow",
     ],
     "Karl Lagerfeld" => [
+        "fleur de the" => "Fleur De The",
         "classic" => "Classic",
         "kapsule light" => "Kapsule Light",
         "bois de yuzu" => "Bois De Yuzu",
         "paradise bay" => "Paradise Bay",
-        "bois d`ambre" => "Bois D`ambre",
+        "bois d`ambre" => "Bois D'ambre",
+        "bois d'ambre" => "Bois D'ambre",
         "bois de cedre" => "Bois De Cedre",
         "bois de cypres" => "Bois De Cypres",
         "bois de vetiver" => "Bois De Vetiver",
@@ -877,13 +908,14 @@ return [
         "fleur de murier" => "Fleur De Murier",
         "fleur de pecher" => "Fleur De Pecher",
         "fleur de pivoine" => "Fleur De Pivoine",
-        "karl hamburg alster" => "Karl Hamburg Alster",
-        "karl new york mercer street" => "Karl New York Mercer Street",
-        "karl paris 21 rue saint guillaume" => "Karl Paris 21 Rue Saint Guillaume",
-        "karl rome divino amore" => "Karl Rome Divino Amore",
-        "karl tokyo shibuya" => "Karl Tokyo Shibuya",
+        "hamburg alster" => "Hamburg Alster",
+        "new york mercer street" => "New York Mercer Street",
+        "paris 21 rue saint guillaume" => "Paris 21 Rue Saint Guillaume",
+        "rome divino amore" => "Rome Divino Amore",
         "tokyo shibuya" => "Tokyo Shibuya",
         "vienna opera" => "Vienna Opera",
+        "lagerfeld" => "Lagerfeld",
+        "rouge" => "Rouge",
     ],
     "Kate Spade" => [
         "cherie" => "Cherie",
@@ -972,16 +1004,19 @@ return [
         "l.12.12 rose sparkling" => "L.12.12 Rose Sparkling",
         "l.12.12 pour elle sparkling" => "L.12.12 Rose Sparkling",
         "l'homme intense" => "L'Homme Intense",
+        "femme de lacoste" => "Femme De Lacoste",
         "pour femme" => "Pour Femme",
         "pour femme intense" => "Pour Femme Intense",
+        "match point" => "Match Point",
         "blanc" => "Blanc",
         "noir" => "Noir",
         "blanc'21" => "Blanc'21",
         "pour homme" => "Pour Homme",
     ],
     "Laura Biagiotti" => [
+        "aqve romane ambrosia aurea" => "Aqve Romane Ambrosia Aurea",
+        "aqve romane divinum ficus" => "Aqve Romane Divinum Ficus",
         "emotion" => "Emotion",
-        "laura rose" => "Laura Rose",
         "venezia" => "Venezia",
         "donna" => "Donna",
         "essenza di roma" => "Essenza Di Roma",
@@ -994,6 +1029,8 @@ return [
         "roma fiori bianchi" => "Roma Fiori Bianchi",
         "roma uomo" => "Roma Uomo",
         "roma uomo green swing" => "Roma Uomo Green Swing",
+        "laura rose" => "Laura Rose",
+        "laura" => "Laura",
     ],
     "Lazure Perfumes" => [
         "berries bay" => "Berries Bay",
@@ -1226,6 +1263,9 @@ return [
     "Orens Parfums" => [
         "callis subtile" => "Callis Subtile",
     ],
+    "Olivier Durbano" => [
+        "heliotrope" => "Heliotrope",
+    ],
     "Orlane" => [
         "be 21" => "Be 21",
         "bouquets d'orlane autour de la pivoine" => "Bouquets D'orlane Autour De La Pivoine",
@@ -1235,6 +1275,7 @@ return [
         "fleurs d'orlane" => "Fleurs D'orlane",
     ],
     "Oscar De La Renta" => [
+        "pour lui" => "Pour Lui",
         "oscar blue orchid" => "Oscar Blue Orchid",
         "oscar pour lui fresh" => "Oscar Pour Lui Fresh",
         "oscar" => "Oscar",
@@ -1249,6 +1290,7 @@ return [
         "bella tropicale" => "Bella Tropicale",
     ],
     "Paco Rabanne" => [
+        "ultaviolet colours of summer" => "Ultaviolet Colours Of Summer",
         "invictus pour homme" => "Invictus Pour Homme",
         "xs pour homme" => "XS Pour Homme",
         "pour homme" => "Pour Homme",
@@ -1574,6 +1616,8 @@ return [
         "white peach & coriander maurer & wirtz" => "White Peach & Coriander Maurer & Wirtz",
         "intense floral fields of ireland" => "Intense Floral Fields Of Ireland",
         "white peach & coriander" => "White Peach & Coriander",
+        "pink pepper & grapefruit" => "Pink Pepper & Grapefruit",
+        "pure breeze of himalaya" => "Pure Breeze Of Himalaya",
     ],
     "Agonist" => [
         "liquid crystal" => "Liquid Crystal",
@@ -1733,6 +1777,7 @@ return [
         "emporio stronger with you freeze" => "Emporio Stronger With You Freeze",
         "light di gioia" => "Light Di Gioia",
         "stronger with you" => "Stronger With You",
+        "sun di gioia" => "Sun Di Gioia",
     ],
     "Arte" => [
         "black hashish" => "Black Hashish",
@@ -1886,6 +1931,9 @@ return [
         "floral musk" => "Floral Musk",
         "annabella" => "Annabella",
     ],
+    "Au Pays de la Fleur d'Oranger" => [
+        "tubereuse rosee" => "Tubereuse Rosee",
+    ],
     "BDK Parfums" => [
         "312 saint-honore" => "312 Saint-honore",
         "ambre safrano" => "Ambre Safrano",
@@ -1963,6 +2011,7 @@ return [
         "sushi imperiale" => "Sushi Imperiale",
         "elite i" => "Elite I",
         "elite ii" => "Elite II",
+        "relativamente rosso" => "Relativamente Rosso",
     ],
     "BORNTOSTANDOUT" => [
         "drunk maple" => "Drunk Maple",
@@ -2106,6 +2155,7 @@ return [
         "kar-wai" => "Kar-wai",
         "lawrence" => "Lawrence",
         "vladimir" => "Vladimir",
+        "forgive me" => "Forgive Me",
     ],
     "Carolina Herrera" => [
         "bad boy le parfum" => "Bad Boy Le Parfum",
@@ -2343,10 +2393,14 @@ return [
         "wonderwood" => "Wonderwood",
     ],
     "Costume National" => [
+        "intense red edition" => "Intense Red Edition",
+        "so nude" => "So Nude",
+        "scent intense" => "Scent Intense",
         "21" => "21",
         "supergloss" => "Supergloss",
     ],
     "Creed" => [
+        "jasmin imperatrice eugenie" => "Jasmin Imperatrice Eugenie",
         "bois du portugal" => "Bois Du Portugal",
         "cedre blanc" => "Cedre Blanc",
         "tabarome millesime" => "Tabarome Millesime",
@@ -2376,6 +2430,7 @@ return [
         "wind flowers" => "Wind Flowers",
         "centaurus" => "Centaurus",
         "delphinus" => "Delphinus",
+        "for kid s" => "For Kid S",
     ],
     "Dior" => [
         "la collection privee ambre nuit" => "La Collection Privee Ambre Nuit",
@@ -2519,7 +2574,10 @@ return [
         "velvet mughetto" => "Velvet Mughetto",
         "velvet collection sublime" => "Velvet Collection Sublime",
         "velvet col. sublime" => "Velvet Collection Sublime",
+        "velvet col. cypress" => "Velvet Col. Cypress",
         "velvet sublime" => "Velvet Collection Sublime",
+        "velvet ginestra" => "Velvet Ginestra",
+        "velvet mimosa bloom" => "Velvet Mimosa Bloom",
         "dolce garden" => "Dolce Garden",
         "dolce lily" => "Dolce Lily",
         "dolce rose" => "Dolce Rose",
@@ -2532,9 +2590,8 @@ return [
         "3 l' imperatrice" => "No. 3 L'imperatrice",
         "orange" => "Orange",
         "pineapple" => "Pineapple",
-        "velvet ginestra" => "Velvet Ginestra",
-        "velvet mimosa bloom" => "Velvet Mimosa Bloom",
         "blue jasmine" => "Blue Jasmine",
+        "devotion`23" => "Devotion",
         "devotion" => "Devotion",
         "devotion travel" => "Devotion Travel",
         "intenso" => "Intenso",
@@ -2630,6 +2687,7 @@ return [
         "la fin du monde" => "La Fin Du Monde",
         "les fleurs du déchet - i am trash" => "Les Fleurs Du Dechet - I Am Trash",
         "les fleurs du dechet i am trash" => "Les Fleurs Du Dechet - I Am Trash",
+        "les fleurs du dechet - i am trash" => "Les Fleurs Du Dechet - I Am Trash",
         "like this" => "Like This",
         "marquis de sade attaquer le soleil" => "Marquis De Sade Attaquer Le Soleil",
         "attaquer le soleil marquis de sade" => "Marquis De Sade Attaquer Le Soleil",
@@ -2644,6 +2702,7 @@ return [
         "the ghost in the shell" => "The Ghost In The Shell",
         "une amourette" => "Une Amourette",
         "you or someone like you" => "You Or Someone Like You",
+        "vierges et toreros" => "Vierges Et Toreros",
     ],
     "Escentric Molecules" => [
         "the beautiful mind series volume1" => "The Beautiful Mind Series Volume 1",
@@ -2668,6 +2727,7 @@ return [
         "01 + ginger" => "Molecule 01 + Ginger",
         "01 + mandarin" => "Molecule 01 + Mandarin",
         "the beautiful mind volume 1: intelligence & fantasy" => "The Beautiful Mind Volume 1: Intelligence & Fantasy",
+        "boudicсa wode" => "Boudicca Wode",
     ],
     "Essential Parfums" => [
         "orange santal" => "Orange Santal",
@@ -3080,7 +3140,7 @@ return [
         "red roses" => "Red Roses",
         "rose blush" => "Rose Blush",
         "silver birch & lavender" => "Silver Birch & Lavender",
-        "jasmine sambac & marigold intense" => "Jasmine Sambac & Marigold Intense",
+        "jasmine sambac & marigold" => "Jasmine Sambac & Marigold",
         "bitter mandarin" => "Bitter Mandarin",
         "amber & patchouli" => "Amber & Patchouli",
         "red roses limited edition" => "Red Roses Limited Edition",
@@ -3308,7 +3368,12 @@ return [
         "princess" => "Princess",
         "straight to heaven white cristal" => "Straight To Heaven White Cristal",
     ],
+    "Kiton" => [
+        "donna" => "Donna",
+    ],
     "L'Artisan Parfumeur" => [
+        "coeur de vetiver sacre" => "Coeur De Vetiver Sacre",
+        "vanille absolument" => "Vanille Absolument",
         "fou d'absinthe" => "Fou D'absinthe",
         "iris pallida 2007" => "Iris Pallida 2007",
         "l'eau d'ambre extreme" => "L'eau D'ambre Extreme",
@@ -3422,6 +3487,7 @@ return [
         "sauvage de madagascar" => "Sauvage De Madagascar",
     ],
     "Lancome" => [
+        "cuir de lancome" => "Cuir De Lancome",
         "calypso" => "Calypso",
         "chrysalide" => "Chrysalide",
         "connexion" => "Connexion",
@@ -3617,6 +3683,7 @@ return [
         "pure sensual orchid" => "Pure Sensual Orchid",
     ],
     "Loewe" => [
+        "quizas,quizas,quiza matador" => "Quizas, Quizas, Quiza Matador",
         "agua de loewe el" => "Agua De Loewe El",
         "agua de loewe ella" => "Agua De Loewe Ella",
         "aura" => "Aura",
@@ -4244,6 +4311,7 @@ return [
         "l`imperatrice gardenia" => "L'imperatrice Gardenia",
         "cuir magnifique" => "Cuir Magnifique",
         "loi d'une femme" => "Loi D'une Femme",
+        "loi d une femme" => "Loi D'une Femme",
         "majestueux vetiver" => "Majestueux Vetiver",
         "soleil royal" => "Soleil Royal",
         "tobacco dynasty" => "Tobacco Dynasty",
@@ -4321,6 +4389,8 @@ return [
         "verano" => "Verano",
         "verano 4 x" => "Verano 4 X",
         "xandria" => "Xandria",
+        "indus" => "Indus",
+        "tanger" => "Tanger",
     ],
     "Paglieri 1876" => [
         "florentia" => "Florentia",
@@ -4604,6 +4674,8 @@ return [
         "xxv marzo" => "Xxv Marzo",
     ],
     "Ramon Monegal" => [
+        "cuirelle" => "Cuirelle",
+        "dry wood" => "Dry Wood",
         "lovely day" => "Lovely Day",
         "mon cuir" => "Mon Cuir",
         "bravo" => "Bravo",
@@ -4711,6 +4783,7 @@ return [
         "№ 7 pachouli oud vanilla" => "No. 7 Pachouli Oud Vanilla",
         "nº5 floral, amber, sensual musk" => "No. 5 Floral, Amber, Sensual Musk",
         "№5 floral, amber, sensual musk" => "No. 5 Floral, Amber, Sensual Musk",
+        "5 floral, amber, sensual musk" => "No. 5 Floral, Amber, Sensual Musk",
         "black collection" => "Black Collection",
         "black collection incense woud" => "Black Collection Incense Woud",
         "№4" => "No. 4",
@@ -4884,6 +4957,7 @@ return [
         "khol de bahrein" => "Khol De Bahrein",
         "mortal skin" => "Mortal Skin",
         "panthea" => "Panthea",
+        "pink boa" => "Pink Boa",
     ],
     "Stephanie de Bruijn" => [
         "eve" => "Eve",
@@ -5443,6 +5517,7 @@ return [
     ],
     "Absolument Parfumeur" => [
         "luxure overdose" => "Luxure Overdose",
+        "luxury overdose" => "Luxure Overdose",
         "luxure overdose pluie d`osmanthe" => "Luxure Overdose Pluie D`osmanthe",
     ],
     "Accendis" => [
@@ -5516,10 +5591,12 @@ return [
         "rossopompeiano" => "Rossopompeiano",
     ],
     "Agent Provocateur" => [
+        "petale noir" => "Petale Noir",
         "maitresse" => "Maitresse",
         "fatale pink" => "Fatale Pink",
         "aphrodisiaque" => "Aphrodisiaque",
         "eau emotionelle" => "Eau Emotionelle",
+        "strip" => "Strip",
     ],
     "Aj Arabia" => [
         "rose arabia almond" => "Rose Arabia Almond",
@@ -5559,6 +5636,7 @@ return [
         "al wasl" => "Al Wasl",
     ],
     "Ajmal" => [
+        "purely orient saffron" => "Purely Orient Saffron",
         "amaze" => "Amaze",
         "amber leather" => "Amber Leather",
         "amber zest" => "Amber Zest",
@@ -5674,6 +5752,7 @@ return [
         "fructus virginis" => "Fructus Virginis"
     ],
     "Amouage" => [
+        "library opus 5" => "Library Opus V",
         "fate" => "Fate",
         "myths" => "Myths",
         "opus iv" => "Opus IV",
@@ -5734,6 +5813,12 @@ return [
         "library opus 3" => "The Library Collection Opus VII",
     ],
     "Amouroud" => [
+        "elixir golden oud" => "Elixir Golden Oud",
+        "bois d`orient" => "Bois D'orient",
+        "white hinoki" => "White Hinoki",
+        "silver birch" => "Silver Birch",
+        "oud tabac" => "Oud Tabac",
+        "agarwood noir" => "Agarwood Noir",
         "licorice woods" => "Licorice Woods",
         "midnight rose" => "Midnight Rose",
         "miel sauvage" => "Miel Sauvage",
@@ -5755,6 +5840,9 @@ return [
         "eau de charlotte" => "Eau De Charlotte",
         "rose pompon" => "Rose Pompon",
         "eau d'hadrien" => "Eau d'Hadrien",
+        "eau du sud" => "Eau Du Sud",
+        "l'ile au the" => "L'ile Au The",
+        "petite cherie" => "Petite Cherie",
     ],
     "Arabesque" => [
         "gecko" => "Gecko",
@@ -5774,6 +5862,7 @@ return [
         "kalemat" => "Kalemat",
     ],
     "Aramis" => [
+        "havana" => "Havana",
         "life" => "Life",
         "devin" => "Devin",
         "tuscany per donna" => "Tuscany Per Donna",
@@ -5786,6 +5875,7 @@ return [
         "paris cheri" => "Paris Cheri",
     ],
     "Azzaro" => [
+        "loris azzaro" => "Loris Azzaro",
         "silver black mini" => "Silver Black Mini",
         "twin" => "Twin",
         "vizit" => "Vizit",
@@ -5813,8 +5903,10 @@ return [
         "beso de luna" => "Beso De Luna",
         "beso dorado" => "Beso Dorado",
         "beso mikado" => "Beso Mikado",
+        "beso pasion" => "Beso Pasion",
     ],
-    "Boadicea the Victorious" => [
+    "Boadicea The Victorious" => [
+        "azrak" => "Azrak",
         "gold collection,greenwich" => "Gold Collection Greenwich",
         "black collection astrea" => "Black Collection Astrea",
         "black collection lunar" => "Black Collection Lunar",
@@ -5985,6 +6077,10 @@ return [
         "one chinese new year edition" => "One Chinese New Year Edition",
         "one gold" => "One Gold",
         "one" => "One",
+        "downtown" => "Downtown",
+    ],
+    "Candies" => [
+        "women" => "Women",
     ],
     "Carner Barcelona" => [
         "revolucion" => "Revolucion",
@@ -6026,6 +6122,7 @@ return [
         "sweet william" => "Sweet William",
     ],
     "Cartier" => [
+        "panthere" => "Panthere",
         "pasha" => "Pasha",
         "pasha noire" => "Pasha Noire",
         "de lune" => "De Lune",
@@ -6187,7 +6284,10 @@ return [
         "patchouli of the underworld" => "Patchouli Of The Underworld",
     ],
     "Escada" => [
-        "joyfull moments" => "Joyfull Moments",
+        "casual friday" => "Casual Friday",
+        "celebrate life" => "Celebrate Life",
+        "joyfull moments" => "Joyful Moments",
+        "joyful moments" => "Joyful Moments",
         "acte 2" => "Acte 2",
         "blue romance" => "Blue Romance",
         "collection 1997" => "Collection 1997",
@@ -6204,12 +6304,16 @@ return [
         "celebrate now" => "Celebrate N.O.W.",
         "cherry in japan" => "Cherry In Japan",
         "fairy love" => "Fairy Love",
+        "moon sparkle" => "Moon Sparkle",
+        "ocean lounge" => "Ocean Lounge",
+        "party love" => "Party Love",
     ],
     "Esteban Parfums" => [
         "ambre" => "Ambre",
         "pivoine" => "Pivoine",
     ],
     "Etro" => [
+        "new tradition" => "New Tradition",
         "rose" => "Rose",
         "heliotrope" => "Heliotrope",
         "afrodite" => "Afrodite",
@@ -6229,6 +6333,7 @@ return [
         "vicolo fiori" => "Vicolo Fiori",
         "white magnolia" => "White Magnolia",
         "etra" => "Etra",
+        "ambra" => "Ambra",
     ],
     "Evody" => [
         "couleur fauve" => "Couleur Fauve",
@@ -6239,6 +6344,7 @@ return [
         "fleur d'oranger" => "Fleur d'Oranger",
         "note de luxe" => "Note de Luxe",
         "tuberose manifeste" => "Tuberose Manifeste",
+        "bois secret" => "Bois Secret",
     ],
     "Fragonard" => [
         "emilie" => "Emilie",
@@ -6373,6 +6479,7 @@ return [
         "freedom" => "Freedom",
         "married" => "Married",
         "woodstock" => "Woodstock",
+        "ashes" => "Ashes",
     ],
     "Giardino Benessere" => [
         "woodstock patchouli" => "Woodstock Patchouli",
@@ -6403,14 +6510,25 @@ return [
         "sandalo e mirra" => "Sandalo & Myrra",
         "teia" => "Teia",
         "themis" => "Themis",
+        "mister colonia" => "Mister Colonia",
+        "oceania" => "Oceania",
         "white musk" => "White Musk",
         "aurelia" => "Aurelia",
+        "salaria" => "Salaria",
+        "tuberose" => "Tuberose",
+        "hades" => "Hades",
+        "arge" => "Arge",
     ],
     "Givenchy" => [
+        "eclat precieux" => "Eclat Precieux",
+        "my givenchy dream" => "My Givenchy Dream",
+        "dance with givenchy" => "Dance With Givenchy",
         "accord particulier`20" => "Accord Particulier'20",
         "desinvolte`21" => "Desinvolte'21",
-        "enflamme`20" => "Enflamme'20",
-        "equivoque`22" => "Equivoque'22",
+        "enflamme`20" => "Enflamme",
+        "enflamme" => "Enflamme",
+        "equivoque`22" => "Equivoque",
+        "equivoque" => "Equivoque",
         "faux semblant`23" => "Faux Semblant'23",
         "foudrroyant`22" => "Foudrroyant'22",
         "garson manque`20" => "Garson Manque'20",
@@ -6431,6 +6549,7 @@ return [
         "insense ultramarine beach girl" => "Insense Ultramarine Beach Girl",
         "insense ultramarine indian ocean" => "Insense Ultramarine Indian Ocean",
         "insense ultramarine pacific ocean" => "Insense Ultramarine Pacific Ocean",
+        "insense ultramarine" => "Insense Ultramarine",
         "pi neo tropical paradise" => "Pi Neo Tropical Paradise",
         "ange ou etrange jasmin sambac 2008" => "Ange Ou Etrange Jasmin Sambac 2008",
         "dahlia divin le nectar collector edition" => "Dahlia Divin Le Nectar Collector Edition",
@@ -6479,12 +6598,18 @@ return [
         "irresistible fraiche" => "Irresistible Fraiche",
         "l'interdit" => "L'interdit",
         "l'interdit rouge" => "L'interdit Rouge",
+        "v.irresistible poesie d'un parfum d'hiver" => "Very Irresistible Poesie D'un Parfum D'hiver",
         "very irresistible soleil d ete summer sun" => "Very Irresistible Soleil d Ete Summer Sun",
         "very irresistible summer vibrations" => "Very Irresistible Summer Vibrations",
         "very irresistible rose centifolia" => "Very Irresistible Rose Centifolia",
         "very irresistible rose damascena" => "Very Irresistible Rose Damascena",
+        "v.irresistible fresh attitude" => "Very Irresistible Fresh Attitude",
         "very irresistible" => "Very Irresistible",
+        "lovely prism" => "Lovely Prism",
+        "into the blue" => "Into The Blue",
+        "monsieur" => "Monsieur",
         "ysatis" => "Ysatis",
+        "greenergy" => "Greenergy",
     ],
     "Goldfield & Banks" => [
         "pacific rock moss" => "Pacific Rock Moss",
@@ -6495,6 +6620,8 @@ return [
         "purple suede" => "Purple Suede",
     ],
     "Gucci" => [
+        "by flora glamorous magnolia" => "By Flora Glamorous Magnolia",
+        "by flora generous violet" => "By Flora Generous Violet",
         "guilty absolute" => "Guilty Absolute",
         "guilty homme" => "Guilty Homme",
         "1" => "1",
@@ -6527,11 +6654,13 @@ return [
         "oud" => "Oud",
     ],
     "Guy Laroche" => [
+        "drakkar" => "Drakkar",
         "clandestine" => "Clandestine",
         "drakkar intense" => "Drakkar Intense",
         "drakkar noir" => "Drakkar Noir",
         "fidji" => "Fidji",
         "j`ai ose" => "J'ai Ose",
+        "j'ai ose" => "J'ai Ose",
     ],
     "Hermetica" => [
         "ivume" => "Ivume",
@@ -6832,6 +6961,8 @@ return [
         "velvet plum" => "Velvet Plum",
     ],
     "Lanvin" => [
+        "avant garde" => "Avant Garde",
+        "me l`eau" => "Me L'eau",
         "me l`absolu" => "Me L'absolu",
         "a girl in capri" => "A Girl In Capri",
         "clair de jour" => "Clair De Jour",
@@ -6935,6 +7066,7 @@ return [
         "minuit noir" => "Minuit Noir",
         "si lolita" => "Si Lolita",
         "green lover" => "Green Lover",
+        "lolitaland" => "Lolitaland",
     ],
     "M.INT" => [
         "vibrant scent" => "Vibrant Scent",
@@ -7057,6 +7189,7 @@ return [
         "por femme" => "por femme"
     ],
     "Marc Jacobs" => [
+        "daisy eau so fresh paradise" => "Daisy Eau So Fresh Paradise",
         "decadence rouge noir edition" => "Decadence Rouge Noir Edition",
         "blush" => "Blush",
         "daisy eau so fresh sunshine" => "Daisy Eau So Fresh Sunshine",
@@ -7072,6 +7205,8 @@ return [
         "lola" => "Lola",
         "daisy dream" => "Daisy Dream",
         "daisy wild" => "Daisy Wild",
+        "perfect intense" => "Perfect Intense",
+        "tropical kumquat" => "Tropical Kumquat",
     ],
     "Masaki Matsushima" => [
         "fluo" => "Fluo",
@@ -7366,7 +7501,7 @@ return [
         "premier jour" => "Premier Jour",
         "ricci mademoiselle" => "Ricci Mademoiselle",
         "les belles de ricci amour d'amandier" => "Les Belles De Ricci Amour D'Amandier",
-        "l`extase caresse de roses legere" => "L'Extase Caresse De Roses Legere",
+        "l`extase caresse de roses" => "L'Extase Caresse De Roses",
         "nina le parfum" => "Nina Le Parfum",
         "nina la tentation" => "Nina La Tentation",
         "nina l’eau" => "Nina L'Eau",
@@ -7383,6 +7518,7 @@ return [
     "Nishane" => [
         "ambra calabria" => "Ambra Calabria",
         "afrika olifant" => "Afrika Olifant",
+        "afrika-olifant" => "Afrika Olifant",
         "nefs" => "Nefs",
         "mana" => "Mana",
         "tero" => "Tero",
@@ -7776,6 +7912,7 @@ return [
         "№6 brume radieuse" => "No6 Brume Radieuse",
         "№8 tonic vert" => "No8 Tonic Vert",
         "song in the wind" => "Song In The Wind",
+        "ornate moon" => "Ornate Moon",
     ],
     "Tous" => [
         "touch" => "Touch",
@@ -7991,7 +8128,6 @@ return [
     "Victoria's Secret" => [
         "chifon: peony freesia" => "Chifon: Peony Freesia",
         "slt ooh la la" => "Slt Ooh La La",
-        "very sexy oasis" => "Very Sexy Oasis",
         "basic instinct" => "Basic Instinct",
         "deepwater" => "Deepwater",
         "dream angels" => "Dream Angels",
@@ -8010,6 +8146,12 @@ return [
         "tease rebel" => "Tease Rebel",
         "bombshell intense" => "Bombshell Intense",
         "bombshell" => "Bombshell",
+        "very sexy oasis" => "Very Sexy Oasis",
+        "very sexy" => "Very Sexy",
+        "bare" => "Bare",
+    ],
+    "Von Eusersdorff" => [
+        "classic myrrh" => "Classic Myrrh",
     ],
     "Zadig & Voltaire" => [
         "girls can be crazy" => "Girls Can Be Crazy",
@@ -8050,7 +8192,7 @@ return [
         "rive gauche" => "Rive Gauche",
         "young sexy lovely" => "Young Sexy Lovely",
         "kouros" => "Kouros",
-        "myslf '23" => "Myslf '23",
+        "myslf" => "Myslf",
         "opium black" => "Opium Black",
         "opium black extreme" => "Opium Black Extreme",
         "opium lady" => "Opium Lady",
@@ -8103,7 +8245,8 @@ return [
         "cloud collection 2 голубой" => "Cloud Collection 2 Голубой",
         "cloud collection 3" => "Cloud Collection 3",
         "cloud collection 4" => "Cloud Collection 4",
-        "e'l" => "e'L",
+        "e'l" => "E'L",
+        "e`l" => "E'L",
         "menage a trois" => "Menage a Trois",
         "molecule 08" => "Molecule 08",
         "molecule 234.38" => "Molecule 234.38",
@@ -8440,6 +8583,7 @@ return [
         "un deux trois soleil" => "Un Deux Trois Soleil",
     ],
     "Bijan" => [
+        "with a twist" => "With A Twist",
         "nude men" => "Nude Men",
     ],
     "Brunello Cucinelli" => [
@@ -8636,6 +8780,7 @@ return [
         "fan di fendi" => "Fan Di Fendi",
         "fan di fendi extreme" => "Fan Di Fendi Extreme",
         "life essence" => "Life Essence",
+        "theorema" => "Theorema",
     ],
     "Rasasi" => [
         "arba wardat" => "Arba Wardat",
@@ -8745,6 +8890,7 @@ return [
         "l'eau" => "L'eau",
         "scent of kiss pop love" => "Scent Of Kiss Pop Love",
         "scent of kiss" => "Scent Of Kiss",
+        "in blue" => "In Blue",
     ],
     "Axis" => [
         "forever" => "Forever",
@@ -9021,6 +9167,13 @@ return [
     "Ella Mikao" => [
         "yujin" => "Yujin",
     ],
+    "Elie Saab" => [
+        "essence №1 rose" => "Essence No. 1 Rose",
+        "essence №4 oud" => "Essence No. 4 Oud",
+        "le parfum bridal" => "Le Parfum Bridal",
+        "girl of now" => "Girl Of Now",
+        "le parfum" => "Le Parfum",
+    ],
     "Emilio Pucci" => [
         "miss pucci intense" => "Miss Pucci Intense",
         "miss pucci" => "Miss Pucci",
@@ -9033,6 +9186,7 @@ return [
     "Emmanuel Levain" => [
         "just oud" => "Just Oud",
         "l'eau d'emmanuel" => "L'eau D'emmanuel",
+        "l'eau d'emmanue" => "L'eau D'emmanuel",
         "mystic datura" => "Mystic Datura",
         "tendre pallida" => "Tendre Pallida",
     ],
@@ -9200,6 +9354,7 @@ return [
         "seringa blanc" => "Seringa Blanc",
         "с est mutine" => "C Est Mutine",
         "сe n est pas un patchouly" => "Ce N Est Pas Un Patchouly",
+        "с est rebelle" => "C Est Rebelle",
     ],
     "Pinet Papillon" => [
         "no 1 alkemist pepper" => "No. 1 Alkemist Pepper",
@@ -9798,6 +9953,7 @@ return [
         "one man show" => "One Man Show",
         "de viris" => "De Viris",
         "silver scent" => "Silver Scent",
+        "vintage" => "Vintage",
     ],
     "Kesma" => [
         "iсeberg" => "Iceberg",
@@ -9827,6 +9983,7 @@ return [
         "collection privee parisian oud le" => "Collection Privee Parisian Oud Le",
         "collection privee red addict le" => "Collection Privee Red Addict Le",
         "collection privee santal velvet le" => "Collection Privee Santal Velvet Le",
+        "oud touch" => "Oud Touch",
     ],
     "Georges Rech" => [
         "romance in paris" => "Romance In Paris",
@@ -9864,6 +10021,7 @@ return [
         "pure green" => "Pure Green",
     ],
     "Christian Lacroix" => [
+        "c`est la fete patchouli" => "C'est La Fete Patchouli",
         "c'est la fete!" => "C'est La Fete!",
         "c'est la vie!" => "C'est La Vie!",
         "absynthe" => "Absynthe",
@@ -9895,6 +10053,7 @@ return [
         "green tea tropical" => "Green Tea Tropical",
         "pretty" => "Pretty",
         "red door aura" => "Red Door Aura",
+        "red door" => "Red Door",
         "sunflowers" => "Sunflowers",
         "white tea" => "White Tea",
         "e.taylor white diamonds en rouge" => "E.taylor White Diamonds En Rouge",
@@ -9981,6 +10140,7 @@ return [
     ],
     "Yves Rocher" => [
         "ispahan" => "Ispahan",
+        "magnolia" => "Magnolia",
     ],
     "pH Fragrances" => [
         "gardenia & jasmin" => "Gardenia & Jasmin",
@@ -10067,6 +10227,8 @@ return [
         "d hermes eau ginger" => "D'hermes Eau Ginger",
         "d’hermes" => "D'hermes",
         "d hermes" => "D'hermes",
+        "d*hermes" => "D'hermes",
+        "d*hermes eau poivree" => "D'hermes Eau Poivree",
     ],
     "Veyronn" => [
         "lightning speed" => "Lightning Speed",
@@ -10089,11 +10251,14 @@ return [
         "dkny be tempted" => "Dkny Be Tempted",
         "dkny love from new york" => "Dkny Love From New York",
         "gold sparkling" => "Gold Sparkling",
+        "essence jasmine" => "Essence Jasmine",
+        "gold delicious" => "Gold Delicious",
     ],
     "Faberge" => [
         "cavale" => "Cavale",
     ],
     "Jean Feraud" => [
+        "louis justine" => "Louis Justine",
         "amarante" => "Amarante",
         "homme" => "Homme",
         "matador" => "Matador",
@@ -10327,9 +10492,15 @@ return [
         "un air de comedie" => "Un Air De Comedie",
     ],
     "Molyneux" => [
+        "quartz super" => "Quartz Super",
+        "captain" => "Captain",
         "gauloise" => "Gauloise",
     ],
     "Monotheme" => [
+        "boccioli di limone" => "Boccioli Di Limone",
+        "apotheose de rose" => "Apotheose De Rose",
+        "agrumi di sicilia" => "Agrumi Di Sicilia",
+        "vanila blossom" => "Vanila Blossom",
         "bergamotto" => "Bergamotto",
         "black oud" => "Black Oud",
         "bloom" => "Bloom",
@@ -10342,10 +10513,14 @@ return [
         "rose oud" => "Rose Oud",
         "rouge" => "Rouge",
         "tuberose" => "Tuberose",
+        "white musk" => "White Musk",
         "white gardenia" => "White Gardenia",
         "zagara" => "Zagara",
+        "saffon" => "Saffon",
+        "verbena" => "Verbena",
     ],
     "Montana" => [
+        "eau d'or" => "Eau D'or",
         "collection edition 2" => "Collection Edition 2",
         "collection edition 3" => "Collection Edition 3",
         "graphite" => "Graphite",
@@ -10425,6 +10600,8 @@ return [
         "wild incense" => "Wild Incense",
     ],
     "S.T. Dupont" => [
+        "passenger" => "Passenger",
+        "intense" => "Intense",
         "essence" => "Essence",
         "58 avenue montaigne" => "58 Avenue Montaigne",
         "blanc pour femme" => "Blanc Pour Femme",
@@ -10602,13 +10779,12 @@ return [
         "velvet rouge" => "Velvet Rouge",
     ],
     "Jenny Glow" => [
+        "aromatic explosion" => "Aromatic Explosion",
         "adventure" => "Adventure",
         "berry & bay" => "Berry & Bay",
-        "by billionaire" => "By Billionaire",
-        "by coding" => "By Coding",
-        "by the shoe" => "By The Shoe",
         "coding" => "Coding",
         "convicted" => "Convicted",
+        "ferocious" => "Ferocious",
         "freesia & pear" => "Freesia & Pear",
         "k u4a" => "K U4A",
         "l belle" => "L Belle",
@@ -10627,6 +10803,37 @@ return [
         "velvet & oud" => "Velvet & Oud",
         "wood & sage" => "Wood & Sage",
         "y opium" => "Y Opium",
+        "amber & lilly" => "Amber & Lilly",
+        "billionaire" => "Billionaire",
+        "carot red 54" => "Carot Red 54",
+        "blooming" => "Blooming",
+        "chemistry1" => "Chemistry",
+        "chance it" => "Chance It",
+        "just kloё" => "Just Kloe",
+        "just noir" => "Just Noir",
+        "noir" => "Noir",
+        "belle" => "Belle",
+        "blue" => "Blue",
+        "gaby" => "Gaby",
+        "koko" => "Koko",
+        "liberte" => "Liberte",
+        "lure" => "Lure",
+        "madame" => "Madame",
+        "oak & berries" => "Oak & Berries",
+        "patchouli" => "Patchouli",
+        "posies" => "Posies",
+        "san tel tri tri" => "San Tel Tri Tri",
+        "she" => "She",
+        "the man" => "The Man",
+        "u4a" => "U4A",
+        "ufo" => "Ufo",
+        "undefeated" => "Undefeated",
+        "verve" => "Verve",
+        "vision" => "Vision",
+        "fever" => "Fever",
+        "floral" => "Floral",
+        "l'eau" => "L'eau",
+        "man intense" => "Man Intense",
     ],
     "Jessica Simpson" => [
         "fancy" => "Fancy",
@@ -10717,10 +10924,14 @@ return [
         "necker" => "Necker",
     ],
     "Carven" => [
+        "variations" => "Variations",
         "c'est paris!" => "C'est Paris!",
         "dans ma bulle de fleurs" => "Dans Ma Bulle De Fleurs",
         "dans ma bulle de musc" => "Dans Ma Bulle De Musc",
         "dans ma bulle" => "Dans Ma Bulle",
+    ],
+    "Chabrawichi" => [
+        "fairy" => "Fairy",
     ],
     "Jaguar" => [
         "classic black" => "Classic Black",
@@ -10748,6 +10959,7 @@ return [
         "amazonian gardens" => "Amazonian Gardens",
     ],
     "Balenciaga" => [
+        "portos" => "Portos",
         "cialenga" => "Cialenga",
         "eau de cristobal" => "Eau De Cristobal",
     ],
@@ -10765,6 +10977,8 @@ return [
     ],
     "Adidas" => [
         "uefa champions league champion edition" => "Uefa Champions League Champion Edition",
+        "pure lightness" => "Pure Lightness",
+        "unlock" => "Unlock",
     ],
     "Alessandro Dell'Acqua" => [
         "woman in rose" => "Woman In Rose",
@@ -10779,5 +10993,9 @@ return [
     "La Prairie" => [
         "life threads platinum" => "Life Threads Platinum",
         "life threads ruby sheer" => "Life Threads Ruby Sheer",
+        "life threads gold" => "Life Threads Gold",
+    ],
+    "Zirh Ikon" => [
+        "chrome" => "Chrome",
     ],
 ];

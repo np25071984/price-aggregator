@@ -190,6 +190,8 @@ return [
         "gift set 6*15 ml+4*7.5 ml+2*30 sh/g+2*30 b/l+3*35 g candle+key chanin" => "Gift Set 6 x 15ml + 4 x 7.5ml + 2 x 30 sh/g + 2x 30 b/l + 3 x 35 g candle + key chanin",
         "подарочный набор (6x15ml+4x7.5ml+4x30ml+3x35g) календарь" => "подарочный набор: 6 x 15ml, 4 x 7.5ml, 4 x 30ml, 3 x 35g, календарь",
         "advent calendar 23/24 ( 6*15ml+2*7.5ml+3*30ml+2*35gr+body shimmer 20gr)" => "Advent Calendar 23/24 (6 x 15ml, 2 x 7.5ml, 3 x 30ml, 2 x 35gr, body shimmer 20gr)",
+        "set new w 4*15 ml edp (dim. sky,dancing queen,party moon,wear love)" => "4 x 15ml edp (Dim. Sky, Dancing Queen, Party Moon, Wear Love)",
+        "set asia new 4*15 ml edp (devil intr,red iceb,indian ven,i wanna be loved by you)" => "Asia 4 x 15ml edp (Devil Intr, Red Iceb, Indian Ven, I Wanna Be Loved By You)",
     ],
     "Parfums de Marly" => [
         "pegasus edp 3x10 ml" => "Pegasus edp 3 x 10ml",
@@ -200,6 +202,8 @@ return [
         "delina exclusif w (75 ml parfum + 30 parfum)" => "Delina Exclusif parfum 75 + 30ml woman",
         "discovery collection m 4*10 ml edp spray(haltan,percival,layton,pegasus)" => "Discovery Collection edp 4 x 10ml (Layton, Percival, Pegasus, Haltane) man",
         "delina edp 1.5 ml x 3 vials box" => "Delina edp 2 x 1.5ml vials box",
+        "set 3*1,5 ml (delina exclusif/delina/delina la rosee)" => "3 x 1.5ml (Delina Exclusif, Delina, Delina La Rosee)",
+        "set 3*1,5 ml (meliora/delina/delina la rosee)" => "3 x 1.5ml (Meliora, Delina, Delina La Rosee)",
     ],
     "Puredistance" => [
         "black edp 17.5 + 60 ml" => "black edp 17.5ml + 60ml",
@@ -368,6 +372,8 @@ return [
         "midnight special 5*7,5 ml edp" => "Midnight Special edp 5 x 7.5ml",
         "speed legends 5*7,5 ml edp" => "Speed Legends edp 5 x 7.5ml",
         "the hedonist 5*7,5 ml edp" => "The Hedonist edp 5 x 7.5ml",
+        "trevel set temptation 5*7,5 ml edp (fleur,iris,col 352,lust,expl)" => "Trevel Set Temptation 5 x 7.5ml edp (Fleur, Iris, Cologne 352, Lust, Expl)",
+        "trevel set fascination 5*7,5 ml edp (hedonist,citiz,gold im,santal,outc)" => "Trevel Set Fascination 5 x 7.5ml edp (Hedonist, Citiz, Gold Im, Santal, Outc)",
     ],
     "Clive Christian" => [
         "crown collection extrait de parfum 3*10ml (crab apple, matsukita, town & country)" => "Crown Collection 3 x 10ml (Crab Apple, Matsukita, Town & Country)",
@@ -461,6 +467,7 @@ return [
     "Acqua di Parma" => [
         "set 5x7ml edp (leather+oud+osmantus+quercia+sandalo)" => "set 5 x 7ml edp (Leather, Oud, Osmantus, Qquercia, Sandalo)",
         "blu mediterreneo fico di amalfi туалетная вода 75 мл + 12 мл набор" => "Blu Mediterreneo Fico Di Amalfi 75ml edt + 12ml",
+        "set 3x12ml edp (yuzy+osmantus+lily of the valley)" => "3 x 12ml edp (Yuzy, Osmantus, Lily Of The Valley)",
     ],
     "Alexander McQueen" => [
         "myqueen woman set (50ml edp+100ml b/l)" => "Woman Set (50ml edp + 100ml b/l)",
@@ -560,7 +567,9 @@ return [
     ],
     "Van Cleef & Arpels" => [
         "coll. extraordinaire set 3*15ml edp (s.bl, ner.am,moon.p)" => "Collection Extraordinaire set 3 x 15ml edp (s.bl, ner.am, moon.p)",
-        "set парфюмерная вода 3 x 7.5 мл (neroli amara, california reverie, santal blanc)" => "Set парфюмерная вода 3 x 7.5ml (Neroli Amara, California Reverie, Santal Blanc)",
+        "set парфюмерная вода 3 x 7.5 мл (neroli amara, california reverie, santal blanc)" => "edp 3 x 7.5ml (Neroli Amara, California Reverie, Santal Blanc)",
+        "set парфюмерная вода 3 x 15 мл (neroli amara, moonlight patchouli, santal blanc)" => "edp 3 x 15ml (Neroli Amara, Moonlight Patchouli, Santal Blanc)",
+        "set парфюмерная вода 8 x 7.5 мл (moon patch,patch blanc,calif rev,bois d am,ner am,orch lea,gard pet,sant bla)" => "edp 8 x 7.5ml (Moon Patch, Patch Blanc Calif Rev, Bois d Am, Ner Am, Orch Lea, Gard Pet, Sant Bla)",
     ],
     "Versace" => [
         "bright crystal set (50ml edt+50b/l+50ml sh/g)" => "Bright Crystal Set (50ml edt, 50b/l, 50ml sh/g)",
@@ -598,9 +607,11 @@ return [
         "travel set edp 7*10ml" => "Travel Set edp 7 x 10ml",
     ],
     "Dorin" => [
-        "la collection (set) rose, jasmin, fullah, tubereuse edp 4x8ml" => "La Collection Set edp 4 x 8ml (Rose, Jasmin, Fullah, Tubereuse)",
+        "la collection (set) rose, jasmin, fullah, tubereuse edp 4x8ml" => "La Collection edp 4 x 8ml (Rose, Jasmin, Fullah, Tubereuse)",
+        "la collection set edp 4x8ml rose, jasmin, fullah, tubereuse" => "La Collection edp 4 x 8ml (Rose, Jasmin, Fullah, Tubereuse)",
         "coffret duo amour 2x80ml (dorin dor pour madame, pour monsieur)" => "Coffret Duo Amour 2 x 80ml (Dorin Dor Pour Madame, Pour Monsieur)",
         "coffret trio classique 3x80ml (dorin dor classique, pour madame, pour monsieur)" => "Coffret Trio Classique 3 x 80ml (Dorin Dor Classique, Pour Madame, Pour Monsieur)",
+        "coffret trio classique 3x80ml d'or classique, pour madame, pour monsieur" => "Coffret Trio Classique 3 x 80ml (Dorin Dor Classique, Pour Madame, Pour Monsieur)",
     ],
     "Etat Libre" => [
         "set 7x1.5ml dangerous complicity+fat electrician+fils de dieu du riz et des agrumes+jasmin et cigarette+like this;" => "Set 7 x 1.5ml (Dangerous Complicity, Fat Electrician, Fils de Dieu Du Riz Et Des Agrumes, Jasmin Et Cigarette, Like This)",
