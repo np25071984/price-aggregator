@@ -17,7 +17,8 @@ readonly class DePerfumesConverter extends AbstractConverter
         return [
             preg_quote("1la(парфюмированное моющее средство для стирки)", "/") => "1la (парфюмированное моющее средство для стирки)",
             preg_quote("1l(парфюмированное моющее средство для стирки)", "/") => "1l (парфюмированное моющее средство для стирки)",
-            " lys 10 edp " => " lys 10ml edp ",
+            preg_quote("dorin-un air", "/") => "dorin - un air",
+            preg_quote(" lys 10 edp ", "/") => " lys 10ml edp ",
         ];
     }
 

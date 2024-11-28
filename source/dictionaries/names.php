@@ -540,6 +540,10 @@ return [
         "romantica" => "Romantica",
         "pura" => "Pura",
     ],
+    "Gisada" => [
+        "ambassador intense" => "Ambassador Intense",
+        "ambassador" => "Ambassador",
+    ],
     "Gas Bijoux" => [
         "ensoleille moi" => "Ensoleille Moi",
         "sable d'ambre" => "Sable D'ambre",
@@ -892,6 +896,9 @@ return [
         "14 hour dream" => "14 Hour Dream",
         "night flow" => "Night Flow",
     ],
+    "Kanebo" => [
+        "erotica" => "Erotica",
+    ],
     "Karl Lagerfeld" => [
         "fleur de the" => "Fleur De The",
         "classic" => "Classic",
@@ -1126,6 +1133,9 @@ return [
         "naa" => "Naa",
         "yamana" => "Yamana",
     ],
+    "Maison Crivelli" => [
+        "oud maracuja" => "Oud Maracuja",
+    ],
     "Mexx" => [
         "lady" => "Lady",
         "energizing" => "Energizing",
@@ -1145,7 +1155,10 @@ return [
         "xx by mexx very nice" => "Xx By Mexx Very Nice",
         "xx by mexx wild" => "Xx By Mexx Wild",
         "city breeze" => "City Breeze",
+        "summer is now" => "Summer Is Now",
+        "festival summer" => "Festival Summer",
         "ice touch" => "Ice Touch",
+        "black" => "Black",
     ],
     "Molecules" => [
         "01" => "01",
@@ -1610,10 +1623,9 @@ return [
         "teresa" => "Teresa",
     ],
     "4711 Acqua Colonia" => [
-        "maurer & wirtz myrrh & kumquat" => "Maurer & Wirtz Myrrh & Kumquat",
+        "myrrh & kumquat" => "Myrrh & Kumquat",
         "lychee & white mint" => "Lychee & White Mint",
         "starfruit & white flowers" => "Starfruit & White Flowers",
-        "white peach & coriander maurer & wirtz" => "White Peach & Coriander Maurer & Wirtz",
         "intense floral fields of ireland" => "Intense Floral Fields Of Ireland",
         "white peach & coriander" => "White Peach & Coriander",
         "pink pepper & grapefruit" => "Pink Pepper & Grapefruit",
@@ -3732,6 +3744,12 @@ return [
         "rhapsody" => "Rhapsody",
         "sur la route" => "Sur La Route",
     ],
+    "Maurer & Wirtz" => [
+        "4711 original" => "4711 Original",
+        "4711 remix" => "4711 Remix",
+        "tabac original craftsman" => "Tabac Original Craftsman",
+        "tabac man gravity" => "Tabac Man Gravity",
+    ],
     "Maison Francis Kurkdjian" => [
         "coffret" => "Coffret",
         "aqua media cologne forte" => "Aqua Media Cologne Forte",
@@ -4246,6 +4264,9 @@ return [
         "musc nude" => "Musc Nude",
         "poudree" => "Poudree",
         "rose musc intense" => "Rose Musc Intense",
+    ],
+    "Nectar Olfactif" => [
+        "melipona" => "Melipona",
     ],
     "Nayassia" => [
         "swinging london" => "Swinging London",
@@ -8048,6 +8069,9 @@ return [
         "oud blanc" => "Oud Blanc",
         "precious oud" => "Precious Oud",
     ],
+    "Voyages Imaginaires" => [
+        "comme un gant" => "Comme un Gant",
+    ],
     "V Canto" => [
         "by terenzi ensis" => "By Terenzi Ensis",
         "stricnina" => "Stricnina",
@@ -8953,8 +8977,11 @@ return [
         "the private collection • n°7" => "The Private Collection No. 7",
         "lys d`or eau poudree" => "Lys D'Or Eau Poudree",
         "un air d'amour pour madame" => "Un Air D'amour Pour Madame",
+        "un air d arabie ambre" => "Un Air D'arabie Ambre",
         "un air d'arabie ambre" => "Un Air D'arabie Ambre",
+        "un air d arabie" => "Un Air d Arabie",
         "un air de damas tubereuse" => "Un Air De Damas Tubereuse",
+        "un air de damas jasmin" => "Un Air de Damas Jasmin",
         "un air de paris classique" => "Un Air De Paris Classique",
         "un air de paris fruity" => "Un Air De Paris Fruity",
         "versailles scents le boudoir turc" => "Versailles Scents Le Boudoir Turc",
