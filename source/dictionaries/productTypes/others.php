@@ -75,4 +75,7 @@ return [
     "не хватает",
     "af/sh",
     "hair parfum",
+    "af\sh",
+    "биоперчатки",
+    "bath salts",
 ];

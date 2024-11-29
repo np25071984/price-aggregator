@@ -65,8 +65,12 @@ return [
     ],
     "Acqua" => [
         "homme acqua",
+        "guess uomo",
     ],
     "Hermes" => [
         "twilly",
+    ],
+    "Horizon" => [
+        "rochas",
     ],
 ];

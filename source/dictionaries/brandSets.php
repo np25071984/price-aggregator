@@ -100,6 +100,7 @@ return [
         "mon florale woman set ( 50ml edp + 8,5ml cils d'enfer so volume)" => "Mon Florale Woman Set (50ml edp, 8.5ml Cils d'Enfer So Volume)",
         "mon guerlain set (100ml edp + 15ml edp)" => "Mon Guerlain Set (100ml edp, 15ml edp)",
         "l'instant de guerlain edp 2x20ml w подмятая" => "L'Instant de Guerlain edp 2 x 20ml woman подмятая",
+        "aqua allegoria mini set 5*7.5ml" => "Aqua Allegoria 5 x 7.5ml",
     ],
     "Hermes" => [
         "edt (w) 100ml + 7.5ml + 50g soap" => "edt (w) 100ml + 7.5ml + 50g soap",
@@ -286,7 +287,7 @@ return [
         "tolu 5*8ml" => "Tolu parfum 5 x 8ml",
         "ormonde men edp 4х10ml travel" => "Jayne Ormonde edp 4 x 10ml man travel",
         "jayne damask edp 4 x 10 ml" => "damask edp 4 x 10ml",
-
+        "woman 5*8ml edp" => "Jayne Ormonde edp 5 x 8ml woman",
     ],
     "Tiziana Terenzi" => [
         "andromeda exdp 2 x 10 ml luxury box" => "Andromeda exdp 2 x 10ml Luxury box",
@@ -530,6 +531,7 @@ return [
         "club de nuit woman gift set (edp 105ml + body spray 200ml)" => "Club de Nuit Woman Gift Set (edp 105ml, body spray 200ml)",
         "jenny glow series - 30ml*5 (ufo;opium;floral explosion;belle;billionaire)" => "Jenny Glow series - 30ml x 5 (Ufo, Opium, Floral Explosion, Belle, Billionaire)",
         "club de nuit intense man gift set (edt 105ml + body spray 200ml)" => "Club De Nuit Intense Man Gift Set (edt 105ml + body spray 200ml)",
+        "enny glow series - 30ml*5 (chance it;madame;koko;no.?;lure)" => "Enny Glow Series 5 x 30ml (Chance It, Madame, Koko, No.?, Lure)",
     ],
     "Bharara King" => [
         "set (100edp+150b/l+100a/sh+150sh/g)" => "(100ml edp, 150ml b/l, 100ml a/sh, 150ml sh/g)",
@@ -898,9 +900,11 @@ return [
     ],
     "Maissa Parfums" => [
         "pierre precieuse oud sultan набор (edp 100ml+edp 10ml+мыло) нарушена упаковка" => "Pierre Precieuse Oud Sultan (edp 100ml, edp 10ml,  Мыло)",
+        "набор 5*20 мл (Rose/Tubereuse/ Cactus/ Amyris/ Bergamote) tester" => "5 x 20ml (Rose, Tubereuse, Cactus, Amyris, Bergamote) tester",
     ],
     "Bvlgari" => [
         "omnia crystalline woman 100ml edt+15ml edt" => "Omnia Crystalline woman 100ml edt + 15ml edt",
+        "pour femme woman set (30ml edp+75ml b/l+soap 50gr)" => "Pour Femme Woman Set (30ml edp, 75ml b/l, soap 50gr)",
     ],
     "Alghabra Parfums" => [
         "discovery set extrait de parfum 12x1.2ml" => "Discovery edp 12 x 1.2ml",
@@ -908,5 +912,17 @@ return [
     ],
     "Penhaligon S" => [
         "portraits discovery edp gift set 8 x10 ml (lord geoge,lady blanche,mister sam,duchess rose,constance,teddy,the duke,cousin flora)" => "Portraits Discovery edp 8 x 10ml (Lord Geoge, Lady Blanche, Mister Sam, Duchess Rose, Constance, Teddy, The Duke, Cousin Flora)",
+    ],
+    "Hiroko Koshino" => [
+        "edp 75ml + 150ml b/lot w" => "edp 75ml + 150ml b/lot woman",
+    ],
+    "Vanderbilt" => [
+        "set (100ml edt+150ml deo)" => "edt 100ml + 150ml deo"
+    ],
+    "Maison Cataliya" => [
+        "set 6*2 ml" => "Set 6 x 2ml",
+    ],
+    "Matiere Premiere" => [
+       "набор из 10 ароматов по 1.5 мл" => "Set 10 x 1.5ml",
     ],
 ];

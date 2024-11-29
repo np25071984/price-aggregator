@@ -15,12 +15,14 @@ readonly class KurzinaUsdConverter extends AbstractConverter
     protected function getFixes(): array
     {
         return [
-            "ml отливант5" => "5ml отливант",
+            preg_quote("ml отливант5", "/") => "5ml отливант",
             " edp100 ml tester$" => " edp 100ml tester",
             " parfum100 ml tester$" => " parfum 100ml tester",
             "^bespoke " => "keiko mecheri bespoke",
             "^edenfallsedp" => "m.micallef edenfalls edp",
-            " mmmm...edp " => " mmmm... edp ",
+            preg_quote(" mmmm...edp ", "/") => " mmmm... edp ",
+            "edt100ml$" => "edt 100ml",
+            " edy 100 ml$" => " edt 100 ml",
         ];
     }
 
