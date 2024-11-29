@@ -31,6 +31,7 @@ return [
     "Signature" => [
         "a.dunhill signature collection",
         "dominant collections signature",
+        "p&g boss",
     ],
     "Casamorati" => [
         "xerjoff casamorati",
@@ -56,6 +57,7 @@ return [
     ],
     "Swarovski" => [
         "perle di bianca whit swarovski",
+        "with crystals from swarovski",
     ],
     "Daligramme Ma" => [
         "dali",
@@ -64,13 +66,14 @@ return [
         "p&g boss",
     ],
     "Acqua" => [
+        "fendi fan di",
         "homme acqua",
         "guess uomo",
     ],
-    "Hermes" => [
-        "twilly",
-    ],
     "Horizon" => [
         "rochas",
+    ],
+    "Lalique" => [
+        "worth",
     ],
 ];

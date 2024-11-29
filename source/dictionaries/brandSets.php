@@ -531,7 +531,7 @@ return [
         "club de nuit woman gift set (edp 105ml + body spray 200ml)" => "Club de Nuit Woman Gift Set (edp 105ml, body spray 200ml)",
         "jenny glow series - 30ml*5 (ufo;opium;floral explosion;belle;billionaire)" => "Jenny Glow series - 30ml x 5 (Ufo, Opium, Floral Explosion, Belle, Billionaire)",
         "club de nuit intense man gift set (edt 105ml + body spray 200ml)" => "Club De Nuit Intense Man Gift Set (edt 105ml + body spray 200ml)",
-        "enny glow series - 30ml*5 (chance it;madame;koko;no.?;lure)" => "Enny Glow Series 5 x 30ml (Chance It, Madame, Koko, No.?, Lure)",
+        "jenny glow series - 30ml*5 (chance it;madame;koko;no.?;lure)" => "Enny Glow Series 5 x 30ml (Chance It, Madame, Koko, No.?, Lure)",
     ],
     "Bharara King" => [
         "set (100edp+150b/l+100a/sh+150sh/g)" => "(100ml edp, 150ml b/l, 100ml a/sh, 150ml sh/g)",
@@ -695,6 +695,7 @@ return [
     ],
     "Initio" => [
         "set hedonist 3*1,5 ml (rehab/musk ter/paragon)" => "Hedonist Set 3 x 1.5ml (Rehab, Musk Ter, Paragon)",
+        "set carnal blends 4*1,5 ml (side ef/high fr/ps love/atomic rose)" => "Carnal Blends 4 x 1.5ml (Side, Ef/high, Fr/ps, Love/atomic, Rose)",
     ],
     "Thameen London" => [
         "blue heart set (50ml parfum+100 ml body lotion)" => "Blue Heart Set (50ml parfum + 100ml body lotion)",
@@ -900,7 +901,7 @@ return [
     ],
     "Maissa Parfums" => [
         "pierre precieuse oud sultan набор (edp 100ml+edp 10ml+мыло) нарушена упаковка" => "Pierre Precieuse Oud Sultan (edp 100ml, edp 10ml,  Мыло)",
-        "набор 5*20 мл (Rose/Tubereuse/ Cactus/ Amyris/ Bergamote) tester" => "5 x 20ml (Rose, Tubereuse, Cactus, Amyris, Bergamote) tester",
+        "набор 5*20 мл (rose/tubereuse/ cactus/ amyris/ bergamote) tester" => "5 x 20ml (Rose, Tubereuse, Cactus, Amyris, Bergamote) tester",
     ],
     "Bvlgari" => [
         "omnia crystalline woman 100ml edt+15ml edt" => "Omnia Crystalline woman 100ml edt + 15ml edt",
