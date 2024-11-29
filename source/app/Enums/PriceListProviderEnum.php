@@ -15,5 +15,6 @@ enum PriceListProviderEnum: string
     case OrabelUsd = "OrabelUsd";
     case RagimovaDianaUsd = "RagimovaDianaUsd";
     case KurzinaUsd = "KurzinaUsd";
+    case StockUsd = "StockUsd";
     case Unknown = "Unknown";
 }

@@ -33,6 +33,8 @@ class PriceListConverterFactory
                 return new RagimovaDianaUsdConverter();
             case PriceListProviderEnum::KurzinaUsd:
                 return new KurzinaUsdConverter();
+            case PriceListProviderEnum::StockUsd:
+                return new StockUsdConverter();
             case PriceListProviderEnum::Unknown:
                 throw new RuntimeException("Couldn't create config for provider " . $providerType->value);
         }

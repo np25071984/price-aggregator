@@ -32,6 +32,8 @@ class PriceListIdentifier
                 return PriceListProviderEnum::RagimovaDianaUsd;
             case $this->isKurzinaUsdPriceList($spreadsheet):
                 return PriceListProviderEnum::KurzinaUsd;
+            case $this->isStockUsdPriceList($spreadsheet):
+                return PriceListProviderEnum::StockUsd;
             default:
                 return PriceListProviderEnum::Unknown;
         }
@@ -334,6 +336,31 @@ class PriceListIdentifier
             return false;
         }
         if ($spreadsheet->getSheetNames() !== ["Лист1", "Лист2", "Лист3"]) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private function isStockUsdPriceList(Spreadsheet $spreadsheet): bool
+    {
+        $sheet = $spreadsheet->getActiveSheet();
+        if ($sheet->getCell('A1')->getValue() !== "ПАРФЮМ СТОК ") {
+            return false;
+        }
+        if ($sheet->getCell('B2')->getValue() !== "НАИМЕНОВАНИЕ") {
+            return false;
+        }
+        if ($sheet->getCell('C2')->getValue() !== "Прайс-лист") {
+            return false;
+        }
+        if ($sheet->getCell('C3')->getValue() !== "Цена") {
+            return false;
+        }
+        if ($sheet->getCell('D3')->getValue() !== "Заказ") {
+            return false;
+        }
+        if ($spreadsheet->getSheetNames() !== ["TDSheet"]) {
             return false;
         }
 
