@@ -373,13 +373,13 @@ readonly class FileWriter
         //     $title .= " маркировка";
         // }
         if ($item->isTester || ($item->hasCap === false)) {
-            $title .= " tester";
+            $title .= " тестер";
         }
         if ($item->isSample) {
             $title .= " sample";
         }
         if ($item->isOldDesign) {
-            $title .= " старый дезайн";
+            $title .= " старый дизайн";
         }
         if ($item->isRefill) {
             $title .= " refill";

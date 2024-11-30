@@ -839,7 +839,7 @@ return [
     "m.int (mint)" => "M.INT",
     "marc o`polo" => "Marc O'Polo",
     "marc o polo" => "Marc O'Polo",
-    "masque" => "Masque",
+    "masque" => "Masque Milano",
     "maison de l'asie" => "Maison de L'Asie",
     "maison de l`asie" => "Maison de L'Asie",
     "maison tahite" => "Maison Tahite",

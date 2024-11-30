@@ -45,6 +45,7 @@ return [
         "love and tears 4x7.5ml edp travel" => "Love And Tears 4 x 7.5ml edp travel",
         "straight to heaven,white crystal edp travel 4x7.5ml" => "Straight To Heaven White Crystal edp 4 x 7.5ml travel",
         "in the city of sin парфюмерная вода 4*7,5" => "In The City Of Sin edp 4x 7.5ml",
+        "bakhoor prestige set 3*28gr" => "Bakhoor Prestige 3 x 28gr",
     ],
     "La Maison De La Vanille" => [
         "5 x30 ml деревянная шкатулка (blue oia + arty positano + belle rencontre + nuit a + noir toscane)" => "5 x 30ml (Blue Oia + Arty Positano + Belle Rencontre + Nuit A + Noir Toscane) шкатулка",
@@ -446,7 +447,8 @@ return [
 
     ],
     "Essential Parfums" => [
-        "discovery set 8*2 ml" => "Discovery Set 8 x 2ml",
+        "discovery set 8*2 ml" => "Discovery Set 8 x 2ml edp",
+        "disovery set edp 8*2ml" => "Discovery Set 8 x 2ml edp",
         "discovery set 9*2ml" => "Discovery Set 9 x 2ml",
         "set 8*2ml" => "set 8 x 2ml",
         "set 9*2ml" => "set 9 x 2ml",
