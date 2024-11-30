@@ -869,6 +869,7 @@ return [
         "le sillage blanc travel size+2 refills 3 x 7.5 ml" => "Le Sillage Blanc Travel Size + 2 refills 3 x 7.5ml",
         "montri travel size+2 rifills 3 x 7.5 ml" => "Montri Travel Size + 2 rifills 3 x 7.5ml",
         "moonlight in chiangmai travel size+2 refills 3 x 7.5 ml" => "Moonlight In Chiangmai Travel Size + 2 refills 3 x 7.5ml",
+        "moonlight in chiangmai edp 3*7.5ml travel" => "Moonlight In Chiangmai Travel 3 x 7.5ml",
     ],
     "Bogart" => [
         "90ml edt + 3ml a/sh" => "90ml edt + 3ml a/sh",
@@ -925,5 +926,10 @@ return [
     ],
     "Matiere Premiere" => [
        "набор из 10 ароматов по 1.5 мл" => "Set 10 x 1.5ml",
+    ],
+    "Dr. Vranjes" => [
+        "oud nobile 250ml + 150ml refill set" => "Oud Nobile 250ml + 150ml refill",
+        "rosso nobile 250ml + 150ml refill set" => "Rosso Nobile 250ml + 150ml refill",
+        "rosso nobile 500ml + 500ml refill set" => "Rosso Nobile 500ml + 500ml refill",
     ],
 ];

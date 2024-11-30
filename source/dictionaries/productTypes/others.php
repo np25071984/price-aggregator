@@ -78,4 +78,6 @@ return [
     "af\sh",
     "биоперчатки",
     "bath salts",
+    "carparfum",
+    "dispenser",
 ];
