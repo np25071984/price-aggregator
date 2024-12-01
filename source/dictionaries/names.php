@@ -103,6 +103,10 @@ return [
         "smart" => "Smart",
         "soft tension" => "Soft Tension",
     ],
+    "Antonio Maretti" => [
+        "almost a virgin" => "Almost A Virgin",
+        "seduttore" => "Seduttore",
+    ],
     "American Eagle" => [
         "aeo surf" => "Aeo Surf",
     ],
@@ -421,6 +425,12 @@ return [
         "loyal" => "Loyal",
         "no limits" => "No Limits",
     ],
+    "Chambor" => [
+        "pouder n 1" => "Pouder No. 1",
+        "pouder n 2" => "Pouder No. 2",
+        "pouder n 3" => "Pouder No. 3",
+        "pouder n 4" => "Pouder No. 4",
+    ],
     "Cherigan" => [
         "edo park" => "Edo Park",
     ],
@@ -495,18 +505,18 @@ return [
         "yachting" => "Yachting",
     ],
     "Dunhill" => [
-        "dunhill pure" => "Dunhill Pure",
-        "dunhill x-centric" => "Dunhill X-Centric",
+        "x-centric" => "X-Centric",
         "dunhill" => "Dunhill",
-        "icon" => "Icon",
-        "d" => "D",
         "desire" => "Desire",
         "desire black" => "Desire Black",
-        "mini" => "Mini",
-        "51.3 n" => "51.3 N",
         "indian sandalwood" => "Indian Sandalwood",
         "nordic fougere" => "Nordic Fougere",
         "valensole lavender" => "Valensole Lavender",
+        "51.3 n" => "51.3 N",
+        "mini" => "Mini",
+        "icon" => "Icon",
+        "pure" => "Pure",
+        "d" => "D",
     ],
     "Elementals" => [
         "earth" => "Earth",
@@ -643,6 +653,7 @@ return [
         "night" => "Night",
     ],
     "Hackett London" => [
+        "english oud" => "English Oud",
         "bespoke" => "Bespoke",
         "essential" => "Essential",
     ],
@@ -1162,6 +1173,9 @@ return [
         "piege pink" => "Piege Pink",
         "piege purple" => "Piege Purple",
     ],
+    "Maison Crivelli" => [
+        "oud maracuja" => "Oud Maracuja",
+    ],
     "Maison Alhambra" => [
         "kismet magic" => "Kismet Magic",
     ],
@@ -1409,12 +1423,13 @@ return [
     ],
     "Paco Rabanne" => [
         "ultaviolet colours of summer" => "Ultaviolet Colours Of Summer",
+        "ultraviolet metal beach" => "Ultraviolet Metal Beach",
+        "ultraviolet lady" => "Ultraviolet Lady",
         "invictus pour homme" => "Invictus Pour Homme",
         "xs pour homme" => "XS Pour Homme",
         "pour homme" => "Pour Homme",
         "sport" => "Sport",
         "ultrared" => "Ultrared",
-        "ultraviolet metal beach" => "Ultraviolet Metal Beach",
         "paco" => "Paco",
         "calandre" => "Calandre",
         "pour elle" => "Pour Elle",
@@ -1648,6 +1663,9 @@ return [
         "le baiser de l`ange" => "Le Baiser De L'ange",
         "mademoiselle dumonten" => "Mademoiselle Dumonten",
     ],
+    "Shakira" => [
+        "wild elixir lady" => "Wild Elixir Lady",
+    ],
     "Shiseido" => [
         "euthrixine concentrate extract" => "Euthrixine Concentrate Extract",
         "energizing fragrance" => "Energizing Fragrance",
@@ -1679,6 +1697,16 @@ return [
         "diamond" => "Diamond",
         "gold" => "Gold",
         "gold rose" => "Gold Rose",
+    ],
+    "Spada" => [
+        "green epic" => "Green Epic",
+        "madeleine" => "Madeleine",
+        "mallick" => "Mallick",
+        "rabiha" => "Rabiha",
+        "defy" => "Defy",
+        "hush" => "Hush",
+        "rouge" => "Rouge",
+        "noir" => "Noir",
     ],
     "Sisley" => [
         "eau de campagne" => "Eau De Campagne",
@@ -7552,6 +7580,8 @@ return [
         "shiro" => "Shiro",
         "suu" => "Suu",
         "t-mat" => "T-mat",
+        "mat shiro" => "Mat Shiro",
+        "mat suu" => "Mat Suu",
         "mat" => "Mat",
     ],
     "Memo" => [
@@ -10550,6 +10580,9 @@ return [
     "Yves Rocher" => [
         "ispahan" => "Ispahan",
         "magnolia" => "Magnolia",
+    ],
+    "Pharrell Williams" => [
+        "girl" => "Girl",
     ],
     "pH Fragrances" => [
         "gardenia & jasmine de cashmere" => "Gardenia & Jasmine De Cashmere",
