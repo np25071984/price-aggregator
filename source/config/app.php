@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Price Aggregator'),
 
-    'version' => env('APP_VERSION', '0.18.0'),
+    'version' => env('APP_VERSION', '0.19.0'),
 
     /*
     |--------------------------------------------------------------------------

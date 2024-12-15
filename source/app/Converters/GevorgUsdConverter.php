@@ -4,6 +4,7 @@ namespace App\Converters;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Entities\RawPriceListItem;
+use App\Enums\PriceListProviderEnum;
 
 readonly class GevorgUsdConverter extends AbstractConverter
 {
@@ -11,6 +12,11 @@ readonly class GevorgUsdConverter extends AbstractConverter
     private const int INDEX_TITLE = 5;
     private const int INDEX_PRICE = 13;
     private const int FIRST_ROW = 3;
+
+    public function getPriceId(): PriceListProviderEnum
+    {
+        return PriceListProviderEnum::GevorgUsd;
+    }
 
     protected function getMarginPercent(): float
     {

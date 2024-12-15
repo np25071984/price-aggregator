@@ -4,6 +4,7 @@ namespace App\Converters;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Entities\RawPriceListItem;
+use App\Enums\PriceListProviderEnum;
 
 readonly class RagimovaDianaUsdConverter extends AbstractConverter
 {
@@ -11,6 +12,11 @@ readonly class RagimovaDianaUsdConverter extends AbstractConverter
     private const int INDEX_TITLE = 1;
     private const int INDEX_PRICE = 2;
     private const int FIRST_ROW = 5;
+
+    public function getPriceId(): PriceListProviderEnum
+    {
+        return PriceListProviderEnum::RagimovaDianaUsd;
+    }
 
     protected function getMarginPercent(): float
     {

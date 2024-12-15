@@ -2,8 +2,12 @@
 
 namespace App\Converters;
 
+use App\Enums\PriceListProviderEnum;
+
 abstract readonly class AbstractConverter implements ConverterInterface
 {
+    abstract public function getPriceId(): PriceListProviderEnum;
+
     protected function normolizeString(string $string): string
     {
         $string = mb_strtolower($string);

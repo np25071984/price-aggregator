@@ -4,6 +4,7 @@ namespace App\Converters;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Entities\RawPriceListItem;
+use App\Enums\PriceListProviderEnum;
 
 readonly class GuldenRuConverter extends AbstractConverter
 {
@@ -11,6 +12,11 @@ readonly class GuldenRuConverter extends AbstractConverter
     private const int INDEX_TITLE = 3;
     private const int INDEX_PRICE = 4;
     private const int FIRST_ROW = 11;
+
+    public function getPriceId(): PriceListProviderEnum
+    {
+        return PriceListProviderEnum::GuldenRu;
+    }
 
     protected function getMarginPercent(): float
     {

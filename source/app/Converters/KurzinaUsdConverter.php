@@ -4,6 +4,7 @@ namespace App\Converters;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Entities\RawPriceListItem;
+use App\Enums\PriceListProviderEnum;
 
 readonly class KurzinaUsdConverter extends AbstractConverter
 {
@@ -11,6 +12,11 @@ readonly class KurzinaUsdConverter extends AbstractConverter
     private const int INDEX_TITLE = 1;
     private const int INDEX_PRICE = 2;
     private const int FIRST_ROW = 3;
+
+    public function getPriceId(): PriceListProviderEnum
+    {
+        return PriceListProviderEnum::KurzinaUsd;
+    }
 
     protected function getFixes(): array
     {

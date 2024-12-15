@@ -98,7 +98,7 @@ readonly class DataAnalizer
             $title = $row->normalizedTitle;
 
             // determine if a Bag
-            $isBagScanResult = $this->sacnStringForListValues($title, $this->bags);
+            $isBagScanResult = $this->scanStringForListValues($title, $this->bags);
             if (!is_null($isBagScanResult)) {
                 $data[] = new BagEntity(
                     article: $row->article,
@@ -111,7 +111,7 @@ readonly class DataAnalizer
             }
 
             // determine if a Candle
-            $isCandleScanResult = $this->sacnStringForListValues($title, ["свеча", "candle", "сandle"], ["свеча" => ["+35g. свеча"]]);
+            $isCandleScanResult = $this->scanStringForListValues($title, ["свеча", "candle", "сandle"], ["свеча" => ["+35g. свеча"]]);
             if (!is_null($isCandleScanResult)) {
                 $data[] = new CandleEntity(
                     article: $row->article,
@@ -124,7 +124,7 @@ readonly class DataAnalizer
             }
 
             // determine if a Shampoo & Gel
-            $isShGelScanResult = $this->sacnStringForListValues($title, ["sh/gel", "sh/g"]);
+            $isShGelScanResult = $this->scanStringForListValues($title, ["sh/gel", "sh/g"]);
             if (!is_null($isShGelScanResult)) {
                 $data[] = new ShampooAndGelEntity(
                     article: $row->article,
@@ -137,7 +137,7 @@ readonly class DataAnalizer
             }
 
             // determine if a Body Lotion
-            $isBodyLotionScanResult = $this->sacnStringForListValues($title, ["body lotion", "b/lotion"]);
+            $isBodyLotionScanResult = $this->scanStringForListValues($title, ["body lotion", "b/lotion"]);
             if (!is_null($isBodyLotionScanResult)) {
                 $data[] = new BodyLotionEntity(
                     article: $row->article,
@@ -150,7 +150,7 @@ readonly class DataAnalizer
             }
 
             // determine if a Body Oil
-            $isBodyOilScanResult = $this->sacnStringForListValues($title, ["body oil"]);
+            $isBodyOilScanResult = $this->scanStringForListValues($title, ["body oil"]);
             if (!is_null($isBodyOilScanResult)) {
                 $data[] = new BodyOilEntity(
                     article: $row->article,
@@ -163,7 +163,7 @@ readonly class DataAnalizer
             }
 
             // determine if a Cable
-            $isCableScanResult = $this->sacnStringForListValues($title, ["шнур"]);
+            $isCableScanResult = $this->scanStringForListValues($title, ["шнур"]);
             if (!is_null($isCableScanResult)) {
                 $data[] = new CableEntity(
                     article: $row->article,
@@ -176,7 +176,7 @@ readonly class DataAnalizer
             }
 
             // determine if a Hand Cream
-            $isHandCreamScanResult = $this->sacnStringForListValues($title, ["hand cream", "крем для рук"]);
+            $isHandCreamScanResult = $this->scanStringForListValues($title, ["hand cream", "крем для рук"]);
             if (!is_null($isHandCreamScanResult)) {
                 $data[] = new HandCreamEntity(
                     article: $row->article,
@@ -189,7 +189,7 @@ readonly class DataAnalizer
             }
 
             // determine if a Body Cream
-            $isBodyCreamScanResult = $this->sacnStringForListValues($title, ["body cream", "крем для тела"]);
+            $isBodyCreamScanResult = $this->scanStringForListValues($title, ["body cream", "крем для тела"]);
             if (!is_null($isBodyCreamScanResult)) {
                 $data[] = new BodyCreamEntity(
                     article: $row->article,
@@ -202,7 +202,7 @@ readonly class DataAnalizer
             }
 
             // determine if a Bath Cream
-            $isBathCreamScanResult = $this->sacnStringForListValues($title, ["bath cream"]);
+            $isBathCreamScanResult = $this->scanStringForListValues($title, ["bath cream"]);
             if (!is_null($isBathCreamScanResult)) {
                 $data[] = new BathCreamEntity(
                     article: $row->article,
@@ -215,7 +215,7 @@ readonly class DataAnalizer
             }
 
             // determine if an Atomiser
-            $isAtomiserScanResult = $this->sacnStringForListValues($title, ["atomiser", "atomiseur", "атомайзер"], ["atomiser" => ["with atomiser"]]);
+            $isAtomiserScanResult = $this->scanStringForListValues($title, ["atomiser", "atomiseur", "атомайзер"], ["atomiser" => ["with atomiser"]]);
             if (!is_null($isAtomiserScanResult)) {
                 $data[] = new AtomiserEntity(
                     article: $row->article,
@@ -228,7 +228,7 @@ readonly class DataAnalizer
             }
 
             // determine if an Hand Soap
-            $isSoapScanResult = $this->sacnStringForListValues($title, ["hand and body soap", "hand soap", "hand&body soap", "liquide soap", "жидкое мыло", "soap", "мыло"]);
+            $isSoapScanResult = $this->scanStringForListValues($title, ["hand and body soap", "hand soap", "hand&body soap", "liquide soap", "жидкое мыло", "soap", "мыло"]);
             if (!is_null($isSoapScanResult)) {
                 $data[] = new SoapEntity(
                     article: $row->article,
@@ -241,7 +241,7 @@ readonly class DataAnalizer
             }
 
             // determine if an Laundry Detergent
-            $isLaundryDetergentScanResult = $this->sacnStringForListValues($title, ["(парфюмированное моющее средство для стирки)", "парфюмированное моющее средство для стирки", "жидкий порошок", "laundry"]);
+            $isLaundryDetergentScanResult = $this->scanStringForListValues($title, ["(парфюмированное моющее средство для стирки)", "парфюмированное моющее средство для стирки", "жидкий порошок", "laundry"]);
             if (!is_null($isLaundryDetergentScanResult)) {
                 $data[] = new LaundryDetergentEntity(
                     article: $row->article,
@@ -254,7 +254,7 @@ readonly class DataAnalizer
             }
 
             // determine if a Deo Stick
-            $isDeoStockScanResult = $this->sacnStringForListValues($title, ["deo stick"]);
+            $isDeoStockScanResult = $this->scanStringForListValues($title, ["deo stick"]);
             if (!is_null($isDeoStockScanResult)) {
                 $data[] = new DeoStickEntity(
                     article: $row->article,
@@ -267,7 +267,7 @@ readonly class DataAnalizer
             }
 
             // determine if a Shower Gel
-            $isShowerGelScanResult = $this->sacnStringForListValues($title, ["shower gel"]);
+            $isShowerGelScanResult = $this->scanStringForListValues($title, ["shower gel"]);
             if (!is_null($isShowerGelScanResult)) {
                 $data[] = new ShowerGelEntity(
                     article: $row->article,
@@ -280,7 +280,7 @@ readonly class DataAnalizer
             }
 
             // determine if Other category
-            $isOtherCategorycanResult = $this->sacnStringForListValues($title, $this->others);
+            $isOtherCategorycanResult = $this->scanStringForListValues($title, $this->others);
             if (!is_null($isOtherCategorycanResult)) {
                 $data[] = new OtherProductEntity(
                     article: $row->article,
@@ -351,7 +351,7 @@ readonly class DataAnalizer
 
             // determine if tester
             $isTester = false;
-            $isTesterScanResult = $this->sacnStringForListValues($title, $this->testerFlags);
+            $isTesterScanResult = $this->scanStringForListValues($title, $this->testerFlags);
             if (!is_null($isTesterScanResult)) {
                 $title = $this->removeResultFromString($isTesterScanResult, $title);
                 $isTester = true;
@@ -359,7 +359,7 @@ readonly class DataAnalizer
 
             // determine if sample
             $isSample = false;
-            $isSampleScanResult = $this->sacnStringForListValues($title, ["sample", "пробник", "(пробник)"]);
+            $isSampleScanResult = $this->scanStringForListValues($title, ["sample", "пробник", "(пробник)"]);
             if (!is_null($isSampleScanResult)) {
                 $title = $this->removeResultFromString($isSampleScanResult, $title);
                 $isSample = true;
@@ -367,7 +367,7 @@ readonly class DataAnalizer
 
             // determine if old design
             $isOldDesign = false;
-            $isOldDesignScanResult = $this->sacnStringForListValues($title, ["старый дизайн", "old design"]);
+            $isOldDesignScanResult = $this->scanStringForListValues($title, ["старый дизайн", "old design"]);
             if (!is_null($isOldDesignScanResult)) {
                 $title = $this->removeResultFromString($isOldDesignScanResult, $title);
                 $isOldDesign = true;
@@ -375,7 +375,7 @@ readonly class DataAnalizer
 
             // determine if artisanal bottling
             $isArtisanalBottling = false;
-            $isArtisanalBottlingScanResult = $this->sacnStringForListValues($title, $this->artisanalBottlingFlags);
+            $isArtisanalBottlingScanResult = $this->scanStringForListValues($title, $this->artisanalBottlingFlags);
             if (!is_null($isArtisanalBottlingScanResult)) {
                 $title = $this->removeResultFromString($isArtisanalBottlingScanResult, $title);
                 $isArtisanalBottling = true;
@@ -383,7 +383,7 @@ readonly class DataAnalizer
 
             // determine if marking
             $hasMarking = false;
-            $hasMarkingScanResult = $this->sacnStringForListValues($title, $this->markingFlags);
+            $hasMarkingScanResult = $this->scanStringForListValues($title, $this->markingFlags);
             if (!is_null($hasMarkingScanResult)) {
                 $title = $this->removeResultFromString($hasMarkingScanResult, $title);
                 $hasMarking = true;
@@ -391,7 +391,7 @@ readonly class DataAnalizer
 
             // determine if refill
             $isRefill = false;
-            $isRefillScanResult = $this->sacnStringForListValues($title, [
+            $isRefillScanResult = $this->scanStringForListValues($title, [
                 "refil",
                 "refill",
                 "рефилл",
@@ -404,7 +404,7 @@ readonly class DataAnalizer
 
             // determine if damaged
             $isDamaged = false;
-            $isDamagedScanResult = $this->sacnStringForListValues($title, $this->damageFlags);
+            $isDamagedScanResult = $this->scanStringForListValues($title, $this->damageFlags);
             if (!is_null($isDamagedScanResult)) {
                 $title = $this->removeResultFromString($isDamagedScanResult, $title);
                 $isDamaged = true;
@@ -420,7 +420,7 @@ readonly class DataAnalizer
 
             // determine if limited
             $isLimited = false;
-            $isLimitedScanResult = $this->sacnStringForListValues($title, ["limited", "(limited"]);
+            $isLimitedScanResult = $this->scanStringForListValues($title, ["limited", "(limited"]);
             if (!is_null($isLimitedScanResult)) {
                 $title = $this->removeResultFromString($isLimitedScanResult, $title);
                 $isLimited = true;
@@ -428,7 +428,7 @@ readonly class DataAnalizer
 
             // determine hasCap
             $hasCap = null;
-            $hasCapScanResult = $this->sacnStringForListValues($title, [
+            $hasCapScanResult = $this->scanStringForListValues($title, [
                     "(с крышкой)",
                     "с крышкой)",
                     "с крышкой",
@@ -442,7 +442,7 @@ readonly class DataAnalizer
             }
 
             if (is_null($hasCap)) {
-                $hasNotCapScanResult = $this->sacnStringForListValues($title, [
+                $hasNotCapScanResult = $this->scanStringForListValues($title, [
                     "без крышки",
                     "б/головы",
                 ]);
@@ -484,7 +484,7 @@ readonly class DataAnalizer
         return $data;
     }
 
-    private function sacnStringForListValues(string $haystack, array $list, array $stopList = []): ?ScanResultEntity
+    private function scanStringForListValues(string $haystack, array $list, array $stopList = []): ?ScanResultEntity
     {
         $haystackSize = mb_strlen($haystack);
         foreach ($list as $listValue) {
@@ -503,7 +503,7 @@ readonly class DataAnalizer
             $position = $this->findSubStringPosition($haystack, $listValue);
             if (!is_null($position)) {
                 if (isset($stopList[$listValue]) && !empty($stopList[$listValue])) {
-                    $stopListScanResult = $this->sacnStringForListValues($haystack, $stopList[$listValue]);
+                    $stopListScanResult = $this->scanStringForListValues($haystack, $stopList[$listValue]);
                     if (!is_null($stopListScanResult)) {
                         continue;
                     }

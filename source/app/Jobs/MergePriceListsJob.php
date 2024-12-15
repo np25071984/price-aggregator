@@ -2,15 +2,14 @@
 
 namespace App\Jobs;
 
+use App\Converters\ConverterFactory;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\DirectoryReader;
-use App\PriceListIdentifier;
-use App\Converters\PriceListConverterFactory;
 use App\FileWriter;
-use App\Enums\PriceListProviderEnum;
 use App\DataAnalizer;
+use App\Exceptions\UnknownFileException;
 
 class MergePriceListsJob implements ShouldQueue
 {
@@ -34,8 +33,7 @@ class MergePriceListsJob implements ShouldQueue
         $storagePath = storage_path("app/public/{$this->mergeId}");
 
         $directoryReader = new DirectoryReader($storagePath);
-        $priceListIdentifier = new PriceListIdentifier();
-        $priceListConverterFactory = new PriceListConverterFactory();
+        $converterFactory = new ConverterFactory();
         $dataAnalizer = new DataAnalizer();
         $data = [];
         $filesStatus = [];
@@ -44,17 +42,20 @@ class MergePriceListsJob implements ShouldQueue
             $filesStatus[$fileName] = [];
             $reader = IOFactory::createReader($extension);
             $spreadsheet = $reader->load($filePathName);
-            $priceId = $priceListIdentifier->identiry($spreadsheet);
-            $filesStatus[$fileName]['id'] = $priceId->value;
-            if ($priceId === PriceListProviderEnum::Unknown) {
+            try {
+                $converter = $converterFactory->determineConverter($spreadsheet);
+            } catch (UnknownFileException $e) {
                 $filesStatus[$fileName]['items_count'] = 0;
                 // TODO: log this
                 continue;
             }
-            $converter = $priceListConverterFactory->getConverter($priceId);
             $rawPriceData = $converter->convert($spreadsheet);
+            $filesStatus[$fileName]['id'] = $converter->getPriceId()->value;
             $filesStatus[$fileName]['items_count'] = count($rawPriceData);
-            $data = array_merge($data, $dataAnalizer->analyze($rawPriceData, $priceId));
+            $data = array_merge(
+                $data,
+                $dataAnalizer->analyze($rawPriceData, $converter->getPriceId())
+            );
         }
 
         $writer = new FileWriter();

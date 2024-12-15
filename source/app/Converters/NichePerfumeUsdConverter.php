@@ -4,6 +4,7 @@ namespace App\Converters;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Entities\RawPriceListItem;
+use App\Enums\PriceListProviderEnum;
 
 readonly class NichePerfumeUsdConverter extends AbstractConverter
 {
@@ -11,6 +12,11 @@ readonly class NichePerfumeUsdConverter extends AbstractConverter
     private const int INDEX_TITLE = 2;
     private const int INDEX_PRICE = 3;
     private const int FIRST_ROW = 14;
+
+    public function getPriceId(): PriceListProviderEnum
+    {
+        return PriceListProviderEnum::NichePerfumeUsd;
+    }
 
     protected function getFixes(): array
     {

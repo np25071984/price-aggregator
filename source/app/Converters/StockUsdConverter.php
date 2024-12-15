@@ -4,6 +4,7 @@ namespace App\Converters;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Entities\RawPriceListItem;
+use App\Enums\PriceListProviderEnum;
 
 readonly class StockUsdConverter extends AbstractConverter
 {
@@ -12,10 +13,14 @@ readonly class StockUsdConverter extends AbstractConverter
     private const int INDEX_PRICE = 2;
     private const int FIRST_ROW = 4;
 
+    public function getPriceId(): PriceListProviderEnum
+    {
+        return PriceListProviderEnum::StockUsd;
+    }
+
     protected function getFixes(): array
     {
-        return [
-        ];
+        return [];
     }
 
     public function convert(Spreadsheet $spreadsheet): array
