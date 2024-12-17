@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\RequestStatusEnum;
 use App\Http\Requests\UploadFilesRequest;
 use \Illuminate\Http\UploadedFile;
 use App\Jobs\MergePriceListsJob;
@@ -17,7 +18,7 @@ class FilesUploadController extends Controller
 
         $requestModel = RequestModel::create([
             'result' => '',
-            'status' => 'uploading',
+            'status' => RequestStatusEnum::Uploading->value,
         ]);
 
         // delete previous requests
@@ -40,7 +41,7 @@ class FilesUploadController extends Controller
         }
 
         $requestModel->stats = json_encode($stats);
-        $requestModel->status = 'pending';
+        $requestModel->status = RequestStatusEnum::Pending->value;
         $requestModel->save();
 
         MergePriceListsJob::dispatchSync($requestModel->uuid);

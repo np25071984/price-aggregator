@@ -19,14 +19,14 @@
                     <div class="alert alert-danger" role="alert">{{ $error }}</div>
                 @endforeach
             @endif
-            <form class="clearfix" enctype="multipart/form-data" method="POST" action="/upload">
+            <form class="clearfix" enctype="multipart/form-data" method="POST" action="/upload" onsubmit="submitButton.disabled = true; return true;">
                 @csrf
                 <div class="mb-3">
                     <label for="files" class="form-label">Выбиерите прайс-листы для аггрегации:</label>
                     <input class="form-control" type="file" id="files" name="files[]" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" multiple>
                 </div>
 
-                <button type="submit" class="btn btn-primary float-end">Отправить на аггрегацию</button>
+                <button name="submitButton" type="submit" class="btn btn-primary float-end">Отправить на аггрегацию</button>
             </form>
 
 

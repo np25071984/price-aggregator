@@ -15,7 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Price Aggregator'),
 
-    'version' => env('APP_VERSION', '0.21.0'),
+    'version' => env('APP_VERSION', '0.21.1'),
 
     /*
     |--------------------------------------------------------------------------

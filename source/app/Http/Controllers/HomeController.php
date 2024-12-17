@@ -13,9 +13,13 @@ class HomeController extends Controller
             $completedRequests[] = [
                 'uuid' => $request->uuid,
                 'result' => $request->result,
-                'status' => $request->status,
+                'status' => $request->status->value,
                 'stats' => json_decode($request->stats, true),
-                'created_at' => $request->created_at->setTimezone('US/Eastern')->format("Y-m-d H:m:s"),
+                'created_at' => $request->
+                    created_at->
+                    locale(config('app.locale'))->
+                    setTimezone('Europe/Moscow')->
+                    translatedFormat("j F Y, H:i:s"),
             ];
         }
 
