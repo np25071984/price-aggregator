@@ -33,7 +33,7 @@ readonly class FileWriter
     /**
      * @param AbstractProductEntity[] $data
      */
-    public function save(string $fileName, array $data, array $fileStatus): void
+    public function save(string $fileName, array $data): void
     {
         if (file_exists($fileName)) {
             unlink($fileName);
@@ -303,34 +303,6 @@ readonly class FileWriter
             $sheet->setCellValue("C{$currentLine}", $item->price);
             $sheet->setCellValue("F{$currentLine}", $item->provider->value);
 
-            $currentLine++;
-        }
-
-        $spreadsheet->createSheet(3);
-        $spreadsheet->setActiveSheetIndex(3);
-        $sheet = $spreadsheet->getActiveSheet();
-        $sheet->setTitle(mb_substr("Статистика", 0, Worksheet::SHEET_TITLE_MAXIMUM_LENGTH, 'utf-8'));
-        $sheet->getStyle("C:C")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-
-        $sheet->getColumnDimension('A')->setWidth(25);
-        $sheet->getColumnDimension('B')->setWidth(25);
-        $sheet->getColumnDimension('C')->setWidth(17);
-
-        $sheet->getStyle("A1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("A1")->getFont()->setBold(true);
-        $sheet->setCellValue("A1", "Файл");
-        $sheet->getStyle("B1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("B1")->getFont()->setBold(true);
-        $sheet->setCellValue("B1", "Код поставщика");
-        $sheet->getStyle("C1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("C1")->getFont()->setBold(true);
-        $sheet->setCellValue("C1", "Кол-во товаров");
-
-        $currentLine = 2;
-        foreach ($fileStatus as $file => $stat) {
-            $sheet->setCellValue("A{$currentLine}", $file);
-            $sheet->setCellValue("B{$currentLine}", $stat["id"]);
-            $sheet->setCellValue("C{$currentLine}", $stat["items_count"]);
             $currentLine++;
         }
 
