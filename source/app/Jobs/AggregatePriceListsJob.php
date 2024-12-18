@@ -2,21 +2,22 @@
 
 namespace App\Jobs;
 
-use App\Converters\Merge\ConverterFactory;
+use App\Converters\Aggregate\ConverterFactory;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\DirectoryReader;
+use App\DataAnalizer;
 use App\Enums\RequestStatusEnum;
 use App\Exceptions\UnknownFileException;
-use App\FileMergeWriter;
+use App\FileAggregateWriter;
 use App\Models\RequestModel;
 
-class MergePriceListsJob implements ShouldQueue
+class AggregatePriceListsJob implements ShouldQueue
 {
     use Queueable;
 
-    private const OUTPUT_FILE_NAME = 'merged.xlsx';
+    private const OUTPUT_FILE_NAME = 'combined.xlsx';
 
     /**
      * Create a new job instance.
@@ -35,6 +36,7 @@ class MergePriceListsJob implements ShouldQueue
 
         $directoryReader = new DirectoryReader($storagePath);
         $converterFactory = new ConverterFactory();
+        $dataAnalizer = new DataAnalizer();
         $data = [];
         $requestModel = RequestModel::findOrFail($this->requestId);
         $requestModel->status = RequestStatusEnum::Processing->value;
@@ -48,8 +50,9 @@ class MergePriceListsJob implements ShouldQueue
                 $converter = $converterFactory->determineConverter($spreadsheet);
             } catch (UnknownFileException $e) {
                 // TODO: log this
+
                 $stats[$fileName]['id'] = 'Не распознан';
-                $stats[$fileName]['count'] = 0; // TODO: count items
+                $stats[$fileName]['count'] = 0;
                 $requestModel->stats = json_encode($stats);
                 $requestModel->save();
 
@@ -59,21 +62,16 @@ class MergePriceListsJob implements ShouldQueue
 
             $stats = json_decode($requestModel->stats, true);
             $stats[$fileName]['id'] = $converter->getPriceId();
-            $stats[$fileName]['count'] = array_sum(
-                array_map(
-                    fn ($itemsArray) => count($itemsArray),
-                    $rawPriceData
-                )
-            );
+            $stats[$fileName]['count'] = count($rawPriceData);
             $requestModel->stats = json_encode($stats);
             $requestModel->save();
 
-            $data = $data + $rawPriceData;
+            $data = array_merge(
+                $data,
+                $dataAnalizer->analyze($rawPriceData, $converter->getPriceId())
+            );
         }
-
-        ksort($data);
-
-        $writer = new FileMergeWriter();
+        $writer = new FileAggregateWriter();
         $writer->save(sprintf("{$storagePath}/%s", self::OUTPUT_FILE_NAME), $data);
 
         $requestModel->status = RequestStatusEnum::Finished->value;

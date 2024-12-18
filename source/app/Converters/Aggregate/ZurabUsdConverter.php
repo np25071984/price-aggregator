@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Converters;
+namespace App\Converters\Aggregate;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Entities\RawPriceListItem;
 use App\Enums\PriceListProviderEnum;
 
-readonly class GevorgUsdConverter extends AbstractConverter
+readonly class ZurabUsdConverter extends AbstractConverter
 {
     private const int INDEX_ARTICLE = 0;
-    private const int INDEX_TITLE = 5;
-    private const int INDEX_PRICE = 13;
-    private const int FIRST_ROW = 3;
+    private const int INDEX_TITLE = 1;
+    private const int INDEX_PRICE = 3;
+    private const int FIRST_ROW = 4;
 
     public function getPriceId(): PriceListProviderEnum
     {
-        return PriceListProviderEnum::GevorgUsd;
+        return PriceListProviderEnum::ZurabUsd;
     }
 
     protected function getMarginPercent(): float
@@ -26,18 +26,16 @@ readonly class GevorgUsdConverter extends AbstractConverter
     protected function getFixes(): array
     {
         return [
-            preg_quote("100ml(в", "/") =>"100ml (в",
-            preg_quote("50ml(в", "/") => "50ml (в",
-            "parfum120ml" => "parfum 120ml",
-            preg_quote("10m(в", "/") => "10ml (в",
-            preg_quote("10mll(в", "/") => "10ml (в",
-            preg_quote("10ml(в", "/") => "10ml (в",
-            preg_quote("10ml(оригинал", "/") => "10ml (оригинал",
-            preg_quote("10ml(отливант)", "/") => "10ml (отливант)",
-            preg_quote("50ml(без", "/") => "50ml (без",
-            "roses on ice edp 50$" => "roses on ice edp 50ml",
-            preg_quote("parfum 5ml(отливант)", "/") . "$" => "parfum 5ml (отливант)",
-            "^alexandre j.the " => "alexandre j. the ",
+            " edt 100m w tester$" => " edt 100ml w tester",
+            " 50mll w tester$" => " 50ml w tester",
+            "edp100ml" => "edp 100ml",
+            preg_quote(" parfum1.5ml ", "/") => " parfum 1.5ml ",
+            " parfum100ml$" => " parfum 100ml",
+            " edt50ml$" => " edt 50ml",
+            " 100mlt tester$" => " 100ml tester",
+            "edt 50m б/спр$" => "edt 50ml б/спр",
+            " edp15ml$" => " edp 15ml",
+            " edp 1m$" => " edp 1ml",
         ];
     }
 
@@ -46,12 +44,18 @@ readonly class GevorgUsdConverter extends AbstractConverter
         $data = [];
         $activeSheet = $spreadsheet->getActiveSheet();
         $highestRow = $activeSheet->getHighestRow();
-        $rows = $activeSheet->rangeToArray(sprintf("A%d:N%d", self::FIRST_ROW, $highestRow));
+        $rows = $activeSheet->rangeToArray(sprintf("A%d:D%d", self::FIRST_ROW, $highestRow));
+        $currentBrand = null;
         foreach ($rows as $r) {
             if (empty($r[self::INDEX_ARTICLE])) {
+                $currentBrand = $this->normolizeString($r[self::INDEX_TITLE]);
                 continue;
             }
             $title = $this->normolizeString($r[self::INDEX_TITLE]);
+            if (mb_substr($title, 0, mb_strlen($currentBrand)) !== $currentBrand) {
+                $title = $currentBrand . " " . $title;
+            }
+
             $price = $this->getPriceWithMargin((float)trim($r[self::INDEX_PRICE]));
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),

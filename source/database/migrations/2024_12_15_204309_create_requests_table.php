@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('requests', function (Blueprint $table) {
             $table->uuid()->primary();
             $table->string('result', 255);
+            $table->enum('type', ['aggregation', 'merge']);
             $table->enum('status', ['uploading', 'pending', 'processing', 'finished']);
             $table->json('stats')->default(new Expression("'{}'::json"));
             $table->timestamps();

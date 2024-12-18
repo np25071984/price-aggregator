@@ -1,21 +1,31 @@
 <?php
 
-namespace App\Converters;
+namespace App\Converters\Aggregate;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Entities\RawPriceListItem;
 use App\Enums\PriceListProviderEnum;
 
-readonly class RagimovaDianaUsdConverter extends AbstractConverter
+readonly class DePerfumesConverter extends AbstractConverter
 {
     private const int INDEX_ARTICLE = 0;
     private const int INDEX_TITLE = 1;
     private const int INDEX_PRICE = 2;
-    private const int FIRST_ROW = 5;
+    private const int FIRST_ROW = 4;
 
     public function getPriceId(): PriceListProviderEnum
     {
-        return PriceListProviderEnum::RagimovaDianaUsd;
+        return PriceListProviderEnum::DePerfumesUsd;
+    }
+
+    protected function getFixes(): array
+    {
+        return [
+            preg_quote("1la(парфюмированное моющее средство для стирки)", "/") => "1la (парфюмированное моющее средство для стирки)",
+            preg_quote("1l(парфюмированное моющее средство для стирки)", "/") => "1l (парфюмированное моющее средство для стирки)",
+            preg_quote("dorin-un air", "/") => "dorin - un air",
+            preg_quote(" lys 10 edp ", "/") => " lys 10ml edp ",
+        ];
     }
 
     protected function getMarginPercent(): float
@@ -23,30 +33,22 @@ readonly class RagimovaDianaUsdConverter extends AbstractConverter
         return 7.0;
     }
 
-    protected function getFixes(): array
-    {
-        return [
-            " parfum100ml " => " parfum 100ml ",
-            " 20m пр. франция$" => " 20ml пр. франция",
-            preg_quote(" edp100ml", "/") => " edp 100ml",
-        ];
-    }
-
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
         $activeSheet = $spreadsheet->getActiveSheet();
         $highestRow = $activeSheet->getHighestRow();
-        $rows = $activeSheet->rangeToArray(sprintf("A%d:C%d", self::FIRST_ROW, $highestRow));
+        $rows = $activeSheet->rangeToArray(sprintf("B%d:D%d", self::FIRST_ROW, $highestRow));
         foreach ($rows as $r) {
             if (empty($r[self::INDEX_ARTICLE])) {
                 continue;
             }
             $price = $this->getPriceWithMargin((float)trim($r[self::INDEX_PRICE]));
+            $title = $this->normolizeString($r[self::INDEX_TITLE]);
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
                 originalTitle: $r[self::INDEX_TITLE],
-                normalizedTitle: $this->normolizeString($r[self::INDEX_TITLE]),
+                normalizedTitle: $title,
                 price: $price,
             );
         }

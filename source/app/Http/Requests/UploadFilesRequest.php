@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\RequestTypeEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
 
 class UploadFilesRequest extends FormRequest
 {
@@ -14,6 +16,15 @@ class UploadFilesRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+        $this->requestType = match($this->requestType) {
+            RequestTypeEnum::Aggregation->value => RequestTypeEnum::Aggregation,
+            RequestTypeEnum::Merge->value => RequestTypeEnum::Merge,
+            default => $this->requestType,
+        };
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,8 +33,12 @@ class UploadFilesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "files" => "required",
-            'files.*' => "mimes:xls,xlsx|max:20000"
+            'files' => 'required',
+            'files.*' => 'mimes:xls,xlsx|max:20000',
+            'requestType' => [
+                'required',
+                new Enum(RequestTypeEnum::class),
+            ]
         ];
     }
 }

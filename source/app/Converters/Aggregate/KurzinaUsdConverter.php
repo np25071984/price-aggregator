@@ -1,26 +1,35 @@
 <?php
 
-namespace App\Converters;
+namespace App\Converters\Aggregate;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Entities\RawPriceListItem;
 use App\Enums\PriceListProviderEnum;
 
-readonly class StockUsdConverter extends AbstractConverter
+readonly class KurzinaUsdConverter extends AbstractConverter
 {
     private const int INDEX_ARTICLE = 0;
     private const int INDEX_TITLE = 1;
     private const int INDEX_PRICE = 2;
-    private const int FIRST_ROW = 4;
+    private const int FIRST_ROW = 3;
 
     public function getPriceId(): PriceListProviderEnum
     {
-        return PriceListProviderEnum::StockUsd;
+        return PriceListProviderEnum::KurzinaUsd;
     }
 
     protected function getFixes(): array
     {
-        return [];
+        return [
+            preg_quote("ml отливант5", "/") => "5ml отливант",
+            " edp100 ml tester$" => " edp 100ml tester",
+            " parfum100 ml tester$" => " parfum 100ml tester",
+            "^bespoke " => "keiko mecheri bespoke",
+            "^edenfallsedp" => "m.micallef edenfalls edp",
+            preg_quote(" mmmm...edp ", "/") => " mmmm... edp ",
+            "edt100ml$" => "edt 100ml",
+            " edy 100 ml$" => " edt 100 ml",
+        ];
     }
 
     public function convert(Spreadsheet $spreadsheet): array

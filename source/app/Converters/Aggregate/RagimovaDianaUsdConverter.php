@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Converters;
+namespace App\Converters\Aggregate;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Entities\RawPriceListItem;
 use App\Enums\PriceListProviderEnum;
 
-readonly class GuldenRuConverter extends AbstractConverter
+readonly class RagimovaDianaUsdConverter extends AbstractConverter
 {
-    private const int INDEX_ARTICLE = 1;
-    private const int INDEX_TITLE = 3;
-    private const int INDEX_PRICE = 4;
-    private const int FIRST_ROW = 11;
+    private const int INDEX_ARTICLE = 0;
+    private const int INDEX_TITLE = 1;
+    private const int INDEX_PRICE = 2;
+    private const int FIRST_ROW = 5;
 
     public function getPriceId(): PriceListProviderEnum
     {
-        return PriceListProviderEnum::GuldenRu;
+        return PriceListProviderEnum::RagimovaDianaUsd;
     }
 
     protected function getMarginPercent(): float
@@ -23,12 +23,21 @@ readonly class GuldenRuConverter extends AbstractConverter
         return 7.0;
     }
 
+    protected function getFixes(): array
+    {
+        return [
+            " parfum100ml " => " parfum 100ml ",
+            " 20m пр. франция$" => " 20ml пр. франция",
+            preg_quote(" edp100ml", "/") => " edp 100ml",
+        ];
+    }
+
     public function convert(Spreadsheet $spreadsheet): array
     {
         $data = [];
         $activeSheet = $spreadsheet->getActiveSheet();
         $highestRow = $activeSheet->getHighestRow();
-        $rows = $activeSheet->rangeToArray(sprintf("D%d:I%d", self::FIRST_ROW, $highestRow));
+        $rows = $activeSheet->rangeToArray(sprintf("A%d:C%d", self::FIRST_ROW, $highestRow));
         foreach ($rows as $r) {
             if (empty($r[self::INDEX_ARTICLE])) {
                 continue;

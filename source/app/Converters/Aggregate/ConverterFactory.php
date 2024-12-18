@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Converters;
+namespace App\Converters\Aggregate;
 
 use App\Exceptions\UnknownFileException;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;

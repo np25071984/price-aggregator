@@ -28,17 +28,13 @@ use App\Entities\Products\UnknownProductEntity;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use RuntimeException;
 
-readonly class FileWriter
+readonly class FileAggregateWriter
 {
     /**
      * @param AbstractProductEntity[] $data
      */
     public function save(string $fileName, array $data): void
     {
-        if (file_exists($fileName)) {
-            unlink($fileName);
-        }
-
         $perfumesByBrand = [];
         $setsByBrand = [];
         foreach ($data as $item) {

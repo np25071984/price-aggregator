@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Converters;
+namespace App\Converters\Aggregate;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Entities\RawPriceListItem;
 use App\Enums\PriceListProviderEnum;
 
-readonly class OrabelUsdConverter extends AbstractConverter
+readonly class AvangardUsdConverter extends AbstractConverter
 {
     private const int INDEX_ARTICLE = 0;
     private const int INDEX_TITLE = 1;
     private const int INDEX_PRICE = 2;
-    private const int FIRST_ROW = 4;
+    private const int FIRST_ROW = 7;
 
     public function getPriceId(): PriceListProviderEnum
     {
-        return PriceListProviderEnum::OrabelUsd;
+        return PriceListProviderEnum::AvangardUsd;
     }
 
     protected function getMarginPercent(): float
@@ -26,11 +26,9 @@ readonly class OrabelUsdConverter extends AbstractConverter
     protected function getFixes(): array
     {
         return [
-            " духи15 мл " => " духи 15ml ",
-            preg_quote(" (тестер) 50 vintage", "/") => " (тестер) 50ml vintage",
-            preg_quote(" 50 (refill)", "/") => " 50ml (refill)",
-            " 50 vintage$" => " 50ml vintage",
-            preg_quote(" revolucion‎ парфюмерная ", "/") => " revolucion парфюмерная ",
+            "edition100ml" => "edition 100ml",
+            " (edt|edp)\(tester\)$" => " \\1 (tester)",
+            preg_quote(" edt(черный)", "/") . "$" => " edt (черный)",
         ];
     }
 
@@ -39,16 +37,26 @@ readonly class OrabelUsdConverter extends AbstractConverter
         $data = [];
         $activeSheet = $spreadsheet->getActiveSheet();
         $highestRow = $activeSheet->getHighestRow();
-        $rows = $activeSheet->rangeToArray(sprintf("A%d:C%d", self::FIRST_ROW, $highestRow));
-        foreach ($rows as $r) {
+        $rows = $activeSheet->rangeToArray(sprintf("B%d:D%d", self::FIRST_ROW, $highestRow));
+        $currentBrand = null;
+        foreach ($rows as $i => $r) {
             if (empty($r[self::INDEX_ARTICLE])) {
+                if (empty($r[self::INDEX_TITLE])) {
+                    // the last row is empty row
+                    continue;
+                }
+                $currentBrand = $this->normolizeString($r[self::INDEX_TITLE]);
                 continue;
+            }
+            $title = $this->normolizeString($r[self::INDEX_TITLE]);
+            if (mb_substr($title, 0, mb_strlen($currentBrand)) !== $currentBrand) {
+                $title = $currentBrand . " " . $title;
             }
             $price = $this->getPriceWithMargin((float)trim($r[self::INDEX_PRICE]));
             $data[] = new RawPriceListItem(
                 article: trim($r[self::INDEX_ARTICLE]),
                 originalTitle: $r[self::INDEX_TITLE],
-                normalizedTitle: $this->normolizeString($r[self::INDEX_TITLE]),
+                normalizedTitle: $title,
                 price: $price,
             );
         }

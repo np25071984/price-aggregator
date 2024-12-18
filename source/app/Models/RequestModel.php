@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\RequestStatusEnum;
+use App\Enums\RequestTypeEnum;
 
 class RequestModel extends Model
 {
@@ -15,10 +16,11 @@ class RequestModel extends Model
     protected $primaryKey = 'uuid';
     protected $keyType = 'string';
     public $incrementing = false;
-    protected $fillable = ['result', 'status', 'stats'];
+    protected $fillable = ['result', 'type', 'status', 'stats'];
     protected $connection = 'pgsql';
 
     protected $casts = [
         'status' => RequestStatusEnum::class,
+        'type' => RequestTypeEnum::class,
     ];
 }
