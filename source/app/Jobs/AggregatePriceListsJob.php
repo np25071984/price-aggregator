@@ -3,11 +3,13 @@
 namespace App\Jobs;
 
 use App\Converters\Aggregate\ConverterFactory;
+use App\Converters\PriceIdConverter;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\DirectoryReader;
 use App\DataAnalizer;
+use App\Enums\PriceListProviderEnum;
 use App\Enums\RequestStatusEnum;
 use App\Exceptions\UnknownFileException;
 use App\FileAggregateWriter;
@@ -35,6 +37,7 @@ class AggregatePriceListsJob implements ShouldQueue
         $storagePath = storage_path("app/public/{$this->requestId}");
 
         $directoryReader = new DirectoryReader($storagePath);
+        $priceIdConverter = new PriceIdConverter();
         $converterFactory = new ConverterFactory();
         $dataAnalizer = new DataAnalizer();
         $data = [];
@@ -61,7 +64,7 @@ class AggregatePriceListsJob implements ShouldQueue
             $rawPriceData = $converter->convert($spreadsheet);
 
             $stats = json_decode($requestModel->stats, true);
-            $stats[$fileName]['id'] = $converter->getPriceId();
+            $stats[$fileName]['id'] = $priceIdConverter->convert($converter->getPriceId());
             $stats[$fileName]['count'] = count($rawPriceData);
             $requestModel->stats = json_encode($stats);
             $requestModel->save();

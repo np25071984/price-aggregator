@@ -8,7 +8,7 @@ use App\Validators\AvangardUsdValidator;
 use App\Validators\BeliyUsdValidator;
 use App\Validators\DePerfumesUsdValidator;
 use App\Validators\GevorgUsdValidator;
-use App\Validators\GuldenRuValidator;
+use App\Validators\GuldenRubValidator;
 use App\Validators\KurzinaUsdValidator;
 use App\Validators\NashaFirmaUsdValidator;
 use App\Validators\NichePerfumeUsdValidator;
@@ -27,7 +27,7 @@ class ConverterFactory
             (new AvangardUsdValidator)($spreadsheet) => new AvangardUsdConverter,
             (new BeliyUsdValidator)($spreadsheet) => new BeliyUsdConverter,
             (new GevorgUsdValidator)($spreadsheet) => new GevorgUsdConverter,
-            (new GuldenRuValidator)($spreadsheet) => new GuldenRuConverter,
+            (new GuldenRubValidator)($spreadsheet) => new GuldenRubConverter,
             (new ZurabUsdValidator)($spreadsheet) => new ZurabUsdConverter,
             (new NashaFirmaUsdValidator)($spreadsheet) => new NashaFirmaUsdConverter,
             (new OrabelUsdValidator)($spreadsheet) => new OrabelUsdConverter,

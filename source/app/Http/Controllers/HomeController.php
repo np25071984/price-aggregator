@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\RequestStatusEnum;
 use App\Enums\RequestTypeEnum;
 use App\Models\RequestModel;
 
@@ -18,7 +19,7 @@ class HomeController extends Controller
             $completedRequests[] = [
                 'uuid' => $request->uuid,
                 'result' => $request->result,
-                'status' => $request->status->value,
+                'status' => $this->mapStatusToText($request->status),
                 'stats' => json_decode($request->stats, true),
                 'created_at' => $request->
                     created_at->
@@ -41,7 +42,7 @@ class HomeController extends Controller
             $completedRequests[] = [
                 'uuid' => $request->uuid,
                 'result' => $request->result,
-                'status' => $request->status->value,
+                'status' => $this->mapStatusToText($request->status),
                 'stats' => json_decode($request->stats, true),
                 'created_at' => $request->
                     created_at->
@@ -52,5 +53,15 @@ class HomeController extends Controller
         }
 
         return view('merge', ['completedRequests' => $completedRequests]);
+    }
+
+    private function mapStatusToText(RequestStatusEnum $status): string
+    {
+        return match($status) {
+            RequestStatusEnum::Uploading => 'Загрузка',
+            RequestStatusEnum::Pending => 'Ожидание обработки',
+            RequestStatusEnum::Processing => 'Идет обработка',
+            RequestStatusEnum::Finished => 'Обработан',
+        };
     }
 }

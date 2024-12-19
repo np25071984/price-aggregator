@@ -18,7 +18,7 @@
         @csrf
         <input type="hidden" name="requestType" value="merge">
         <div class="mb-3">
-            <label for="files" class="form-label">Выбиерите прайс-листы для аггрегации:</label>
+            <label for="files" class="form-label">Выбиерите прайс-листы для слияния:</label>
             <input class="form-control" type="file" id="files" name="files[]" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" multiple>
         </div>
 
@@ -29,58 +29,8 @@
     <div class="row">
         <h1 class="mt-5 text-center">Обработанные запросы</h1>
     </div>
-    <div class="row">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th class="text-center" rowspan="2" scope="col">#</th>
-                    <th class="text-center" rowspan="2" scope="col">Итоговый файл</th>
-                    <th class="text-center" rowspan="2" scope="col">Дата</th>
-                    <th class="text-center" rowspan="2" scope="col">Статус</th>
-                    <th class="text-center" scope="col" colspan="3">Статистика</th>
-                </tr>
-                <tr>
-                    <th class="text-center">Загруженный файл</th>
-                    <th class="text-center">Код поставщика</th>
-                    <th class="text-center">Кол-во загруженных товаров</th>
-                </tr>
-            </thead>
-                <tbody>
-                @foreach ($completedRequests as $key => $request)
-                    <?php $statRowCnt = count($request['stats']) ?>
-                    <tr>
-                        <td <?php echo ($statRowCnt > 0) ? "rowspan='{$statRowCnt}'" : '' ?> scope="row" class="text-center">{{ $key + 1 }}</th>
-                        <td <?php echo ($statRowCnt > 0) ? "rowspan='{$statRowCnt}'" : '' ?>>
-                            @if (!empty($request['result']))
-                            <a href="<?php echo "/storage/{$request['uuid']}/{$request['result']}"; ?>">{{ $request['result'] }}</a>
-                            @endif
-                        </td>
-                        <td <?php echo ($statRowCnt > 0) ? "rowspan='{$statRowCnt}'" : '' ?> class="text-center">{{ $request['created_at'] }}</td>
-                        <td <?php echo ($statRowCnt > 0) ? "rowspan='{$statRowCnt}'" : '' ?> class="text-center">{{ $request['status'] }}</td>
-                        @if ($statRowCnt > 0)
-                            <?php $i = 0 ?>
-                            @foreach ($request['stats'] as $file => $stat)
-                                @if ($i !== 0)
-                                    </tr><tr>
-                                @endif
-                                <td>
-                                @if (!empty($file))
-                                    <a href="<?php echo "/storage/{$request['uuid']}/{$file}"; ?>">{{ $file }}</a>
-                                @endif
-                                </td>
-                                <td class="text-center">{{ $stat['id'] }}</td>
-                                <td class="text-center">{{ $stat['count'] }}</td>
-                                <?php $i++ ?>
-                            @endforeach
-                        @else
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        @endif
-                    </tr>
-                @endforeach
-                </tbody>
-        </table>
-    </div>
+
+    @include('accordion', ['completedRequests' => $completedRequests])
+
 </div>
 @endsection

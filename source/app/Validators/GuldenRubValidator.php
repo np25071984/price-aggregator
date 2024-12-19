@@ -4,7 +4,7 @@ namespace App\Validators;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-final class GuldenRuValidator
+final class GuldenRubValidator
 {
     public function __invoke(Spreadsheet $spreadsheet): bool
     {

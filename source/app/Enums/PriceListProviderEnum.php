@@ -9,14 +9,14 @@ enum PriceListProviderEnum: string
     case AvangardUsd = "AvangardUsd";
     case BeliyUsd = "BeliyUsd";
     case GevorgUsd = "GevorgUsd";
-    case GuldenRu = "GuldenRu";
+    case GuldenRub = "GuldenRub";
     case ZurabUsd = "ZurabUsd";
     case NashaFirmaUsd = "NashaFirmaUsd";
     case OrabelUsd = "OrabelUsd";
     case RagimovaDianaUsd = "RagimovaDianaUsd";
     case KurzinaUsd = "KurzinaUsd";
-    case KurzinaRus = "KurzinaRus";
+    case KurzinaRub = "KurzinaRub";
     case StockUsd = "StockUsd";
-    case FestivalRus = "FestivalRus";
+    case FestivalRub = "FestivalRub";
     case Unknown = "Unknown";
 }

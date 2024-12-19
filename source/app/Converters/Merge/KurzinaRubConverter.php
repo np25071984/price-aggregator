@@ -5,7 +5,7 @@ namespace App\Converters\Merge;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Enums\PriceListProviderEnum;
 
-readonly class KurzinaRusConverter
+readonly class KurzinaRubConverter
 {
     private const int INDEX_ARTICLE = 0;
     private const int INDEX_TITLE = 1;
@@ -13,7 +13,7 @@ readonly class KurzinaRusConverter
 
     public function getPriceId(): PriceListProviderEnum
     {
-        return PriceListProviderEnum::KurzinaUsd;
+        return PriceListProviderEnum::KurzinaRub;
     }
 
     public function convert(Spreadsheet $spreadsheet): array

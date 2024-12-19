@@ -2,11 +2,13 @@
 
 namespace App\Jobs;
 
+use App\Converters\PriceIdConverter;
 use App\Converters\Merge\ConverterFactory;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\DirectoryReader;
+use App\Enums\PriceListProviderEnum;
 use App\Enums\RequestStatusEnum;
 use App\Exceptions\UnknownFileException;
 use App\FileMergeWriter;
@@ -34,6 +36,7 @@ class MergePriceListsJob implements ShouldQueue
         $storagePath = storage_path("app/public/{$this->requestId}");
 
         $directoryReader = new DirectoryReader($storagePath);
+        $priceIdConverter = new PriceIdConverter();
         $converterFactory = new ConverterFactory();
         $data = [];
         $requestModel = RequestModel::findOrFail($this->requestId);
@@ -58,7 +61,7 @@ class MergePriceListsJob implements ShouldQueue
             $rawPriceData = $converter->convert($spreadsheet);
 
             $stats = json_decode($requestModel->stats, true);
-            $stats[$fileName]['id'] = $converter->getPriceId();
+            $stats[$fileName]['id'] = $priceIdConverter->convert($converter->getPriceId());
             $stats[$fileName]['count'] = array_sum(
                 array_map(
                     fn ($itemsArray) => count($itemsArray),

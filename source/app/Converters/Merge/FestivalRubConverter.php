@@ -5,7 +5,7 @@ namespace App\Converters\Merge;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Enums\PriceListProviderEnum;
 
-readonly class FestivalRusConverter
+readonly class FestivalRubConverter
 {
     private const int INDEX_BRAND = 0;
     private const int INDEX_ARTICLE = 1;
@@ -14,7 +14,7 @@ readonly class FestivalRusConverter
 
     public function getPriceId(): PriceListProviderEnum
     {
-        return PriceListProviderEnum::FestivalRus;
+        return PriceListProviderEnum::FestivalRub;
     }
 
     public function convert(Spreadsheet $spreadsheet): array

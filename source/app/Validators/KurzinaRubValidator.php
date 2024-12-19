@@ -4,7 +4,7 @@ namespace App\Validators;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-final class KurzinaRusValidator
+final class KurzinaRubValidator
 {
     public function __invoke(Spreadsheet $spreadsheet): bool
     {

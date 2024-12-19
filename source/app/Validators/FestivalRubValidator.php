@@ -4,7 +4,7 @@ namespace App\Validators;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-final class FestivalRusValidator
+final class FestivalRubValidator
 {
     public function __invoke(Spreadsheet $spreadsheet): bool
     {
