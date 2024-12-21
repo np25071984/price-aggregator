@@ -27,9 +27,9 @@ readonly class FestivalRubConverter
             if (empty($r[self::INDEX_TITLE])) {
                 continue;
             }
-            $brand = str_replace([";"], [""], $r[self::INDEX_BRAND]);
-            $articl = str_replace([";"], [""], $r[self::INDEX_ARTICLE]);
-            $name = str_replace([";"], [""], $r[self::INDEX_TITLE]);
+            $brand = $r[self::INDEX_BRAND];
+            $articl = $r[self::INDEX_ARTICLE];
+            $name = $r[self::INDEX_TITLE];
             $price = str_replace([",", ' '], "", $r[self::INDEX_PRICE]);
             $price = ceil($price * 1.07);
             $data[$brand][] = [$articl, $name, $price];

@@ -25,9 +25,9 @@ readonly class KurzinaRubConverter
                 $currentBrand = $r[self::INDEX_TITLE];
                 continue;
             }
-            $articl = str_replace([";"], [""], $r[self::INDEX_ARTICLE]);
-            $name = str_replace([";"], [""], $r[self::INDEX_TITLE]);
-            $price = str_replace([","], [""], $r[self::INDEX_PRICE]);
+            $articl = $r[self::INDEX_ARTICLE];
+            $name = $r[self::INDEX_TITLE];
+            $price = str_replace([","], "", $r[self::INDEX_PRICE]);
             $data[$currentBrand][] = [$articl, $name, $price];
         }
 

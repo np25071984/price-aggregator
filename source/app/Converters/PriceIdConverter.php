@@ -14,7 +14,7 @@ final readonly class PriceIdConverter
             PriceListProviderEnum::AvangardUsd => "Авангард доллар США",
             PriceListProviderEnum::BeliyUsd => "Белый доллар США",
             PriceListProviderEnum::GevorgUsd => "Геворг доллар США",
-            PriceListProviderEnum::GuldenRu => "Гульден Руб",
+            PriceListProviderEnum::GuldenRub => "Гульден Руб",
             PriceListProviderEnum::ZurabUsd => "Зураб доллар США",
             PriceListProviderEnum::NashaFirmaUsd => "НашаФирма доллар США",
             PriceListProviderEnum::OrabelUsd => "Орабел доллар США",
