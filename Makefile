@@ -33,6 +33,9 @@ down:
 logs:
 	docker-compose -f ./.docker/docker-compose.yaml logs
 
+bash:
+	docker exec -it php-fpm bash
+
 ##
 ## Composer
 ##

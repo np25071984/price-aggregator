@@ -15,7 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Price Manager'),
 
-    'version' => env('APP_VERSION', '0.23.1'),
+    'version' => env('APP_VERSION', '0.24.0'),
 
     /*
     |--------------------------------------------------------------------------
