@@ -301,33 +301,6 @@ readonly class DataAnalizer
             if (!is_null($brandScanResult)) {
                 $title = $this->removeResultFromString($brandScanResult, $title);
                 $brand = $brandScanResult->unifiedValue;
-
-                /*
-                $brandModel = BrandModel::firstOrCreate([
-                    'name' => $brandScanResult->unifiedValue,
-                ]);
-                if ($brandModel->wasRecentlyCreated) {
-                    // $brandModel->refresh(); // TODO: this doesn't work somehow; figure out what is going on there
-                    $brandModel = BrandModel::where(['name' => $brandScanResult->unifiedValue])->first();
-                }
-
-                if (isset($this->brandStopPhrases[$brandScanResult->unifiedValue])) {
-                    $quotedBrandStopPhrases = array_map(
-                        fn($s) => "'{$s}'",
-                        $this->brandStopPhrases[$brandScanResult->unifiedValue]
-                    );
-                    $stopWords = DB::raw('ARRAY[' . implode(',', $quotedBrandStopPhrases) . ']');
-                } else {
-                    $stopWords = null;
-                }
-                BrandAliasModel::firstOrCreate([
-                    'brand_id' => $brandModel->id,
-                    'alias' => $brandScanResult->dictionaryValue,
-                ], [
-                    'size' => mb_strlen($brandScanResult->dictionaryValue),
-                    'stop-words' => $stopWords,
-                ]);
-                */
             }
 
             if (is_null($brand)) {
