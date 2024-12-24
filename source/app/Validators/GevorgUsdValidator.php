@@ -12,9 +12,6 @@ final class GevorgUsdValidator
         if (mb_strpos($sheet->getCell('A1')->getValue(), "Прайс-лист на") === false) {
             return false;
         }
-        if (!is_null($sheet->getCell('A2')->getValue())) {
-            return false;
-        }
         if (!is_null($sheet->getCell('D2')->getValue())) {
             return false;
         }
