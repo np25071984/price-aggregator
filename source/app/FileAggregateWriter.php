@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Converters\PriceIdConverter;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
@@ -30,6 +31,11 @@ use RuntimeException;
 
 readonly class FileAggregateWriter
 {
+    function __construct(
+        private PriceIdConverter $priceIdConverter
+    ) {
+    }
+
     /**
      * @param AbstractProductEntity[] $data
      */
@@ -155,12 +161,14 @@ readonly class FileAggregateWriter
                 $currentLine++;
 
                 foreach ($items as $item) {
+                    $providerName = $this->priceIdConverter->convert($item->provider);
+
                     if ($item->price < $currentGroupHeadPrice) {
                         $currentGroupHeadPrice = $item->price;
                         $currentGroupHeadArticle = $item->article;
                     }
                     $sheet->setCellValue("A{$currentLine}", $item->article);
-                    $sheet->setCellValue("C{$currentLine}", "({$item->provider->value}) " . $item->originalTitle);
+                    $sheet->setCellValue("C{$currentLine}", "({$providerName}) " . $item->originalTitle);
                     $sheet->setCellValue("D{$currentLine}", $item->price);
                     $sheet->getRowDimension($currentLine)
                         ->setOutlineLevel(1)
@@ -182,12 +190,14 @@ readonly class FileAggregateWriter
                 $currentLine++;
 
                 foreach ($items as $item) {
+                    $providerName = $this->priceIdConverter->convert($item->provider);
+
                     if ($item->price < $currentGroupHeadPrice) {
                         $currentGroupHeadPrice = $item->price;
                         $currentGroupHeadArticle = $item->article;
                     }
                     $sheet->setCellValue("A{$currentLine}", $item->article);
-                    $sheet->setCellValue("C{$currentLine}", "({$item->provider->value}) " . $item->originalTitle);
+                    $sheet->setCellValue("C{$currentLine}", "({$providerName}) " . $item->originalTitle);
                     $sheet->setCellValue("D{$currentLine}", $item->price);
                     $sheet->getRowDimension($currentLine)
                         ->setOutlineLevel(1)
@@ -230,6 +240,7 @@ readonly class FileAggregateWriter
 
         $currentLine = 2;
         foreach ($data as $item) {
+            $providerName = $this->priceIdConverter->convert($item->provider);
             switch (true) {
                 case $item instanceof BagEntity:
                     $sheet->setCellValue("G{$currentLine}", "Упаковка");
@@ -297,7 +308,7 @@ readonly class FileAggregateWriter
             $sheet->setCellValue("A{$currentLine}", $item->article);
             $sheet->setCellValue("B{$currentLine}", $item->originalTitle);
             $sheet->setCellValue("C{$currentLine}", $item->price);
-            $sheet->setCellValue("F{$currentLine}", $item->provider->value);
+            $sheet->setCellValue("F{$currentLine}", $providerName);
 
             $currentLine++;
         }

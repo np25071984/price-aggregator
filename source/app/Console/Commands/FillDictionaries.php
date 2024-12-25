@@ -37,23 +37,9 @@ class FillDictionaries extends Command
     {
         foreach ($this->brands as $alias => $brandName) {
             $msg = "Looking for brand '{$brandName}'";
-            // $brandModel = BrandModel::where(['name' => $brandName])->first();
-            // if (is_null($brandModel)) {
-            //     $brandModel = BrandModel::create(['name' => $brandName]);
-            //     $this->printScreenWide($msg, "[created]");
-            // } else {
-            //     $this->printScreenWide($msg, "[found]");
-            // }
             $brandModel = BrandModel::firstOrCreate([
                 'name' => $brandName,
             ]);
-            if ($brandModel->wasRecentlyCreated) {
-                $brandModel->refresh(); // TODO: this doesn't work somehow; figure out what is going on there
-                // $brandModel = BrandModel::where(['name' => $brandName])->first();
-                $this->printScreenWide($msg, "[created]");
-            } else {
-                $this->printScreenWide($msg, "[found]");
-            }
 
             $msg = "Looking for stop-phrases";
             if (isset($this->brandStopPhrases[$brandName])) {

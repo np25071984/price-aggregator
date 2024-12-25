@@ -74,7 +74,7 @@ class AggregatePriceListsJob implements ShouldQueue
                 $dataAnalizer->analyze($rawPriceData, $converter->getPriceId())
             );
         }
-        $writer = new FileAggregateWriter();
+        $writer = new FileAggregateWriter($priceIdConverter);
         $writer->save(sprintf("{$storagePath}/%s", self::OUTPUT_FILE_NAME), $data);
 
         $requestModel->status = RequestStatusEnum::Finished->value;
