@@ -31,7 +31,7 @@ readonly class FestivalRubConverter
             $articl = $r[self::INDEX_ARTICLE];
             $name = $r[self::INDEX_TITLE];
             $price = str_replace([",", ' '], "", $r[self::INDEX_PRICE]);
-            $price = ceil($price * 1.07);
+            $price = ceil($price * 1.1);
             $data[$brand][] = [$articl, $name, $price];
         }
 
