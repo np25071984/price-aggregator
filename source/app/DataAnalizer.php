@@ -26,9 +26,6 @@ use App\Entities\RawPriceListItem;
 use App\Entities\ScanResultEntity;
 use App\Entities\ScanResultFullEntity;
 use App\Enums\SubStringPositionEnum;
-use App\Models\BrandAliasModel;
-use App\Models\BrandModel;
-use Illuminate\Support\Facades\DB;
 
 readonly class DataAnalizer
 {

@@ -10,7 +10,6 @@ class BrandModel extends Model
     use HasFactory;
 
     protected $table = 'brands';
-    // public $incrementing = false;
     protected $fillable = ['name'];
     protected $connection = 'pgsql';
     public $timestamps = false;

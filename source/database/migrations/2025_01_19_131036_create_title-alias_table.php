@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('brands', function (Blueprint $table) {
+        Schema::create('title-alias', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255)->unique();
+            $table->foreignId('title_id')->constrained();
+            $table->string('alias', 255);
+            $table->unsignedSmallInteger('size');
+            $table->timestamp('last_used_at')->nullable();
+            $table->unique(['title_id', 'alias']);
         });
+
+
     }
 
     /**
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('brands');
+        Schema::dropIfExists('title-alias');
     }
 };
