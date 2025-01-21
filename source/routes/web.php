@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\PasswordUpdateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilesUploadController;
 use App\Http\Controllers\HomeController;
@@ -18,12 +19,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', LogoutController::class)->name('logout');
 });
 
-Route::get('/login', fn () => view('auth.login') )->name('login');
-Route::post('/login', LoginController::class)->name('post-login');
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', fn () => view('auth.login') )->name('login');
+    Route::post('/login', LoginController::class)->name('post-login');
 
-Route::get('/register', fn () => view('auth.register') )->name('get-register');
-Route::post('/register', RegisterController::class)->name('post-register');
+    Route::get('/register', fn () => view('auth.register') )->name('get-register');
+    Route::post('/register', RegisterController::class)->name('post-register');
 
-Route::get('/reset-password', fn () => view('auth.reset-password') )->name('password.reset');
-Route::post('/reset-password', ResetPasswordController::class)->name('post-reset-password');
+    Route::get('/forgot-password', fn () => view('auth.password-request') )->name('password.request');
+    Route::post('/forgot-password', ResetPasswordController::class)->name('password.email');
+    Route::get('/reset-password', fn () => view('auth.password-reset') )->name('password.reset');
 
+    Route::post('/reset-password', PasswordUpdateController::class)->name('password.update');
+});

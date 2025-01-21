@@ -15,7 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Price Manager'),
 
-    'version' => env('APP_VERSION', '0.25.0'),
+    'version' => env('APP_VERSION', '0.25.1'),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => env('APP_LOCALE', 'ru'),
 
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 

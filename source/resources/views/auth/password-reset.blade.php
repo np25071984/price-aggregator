@@ -14,33 +14,20 @@
                 <div class="col-md-10">
                     <div class="card">
                         <div class="card-header">
-                            <ul class="nav nav-tabs card-header-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="true" href="{{ route('login') }}">Вход в систему</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('get-register') }}">Регистрация нового пользователя</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('password.request') }}">Сброс пароля</a>
-                                </li>
-                            </ul>
+                            <a class="nav-link" href="{{ route('password.request') }}">Укажите новый пароль</a>
                         </div>
-                        <div class="card-body">
-                            @if (session()->has('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
 
-                            <form method="POST" action="{{ route('post-login') }}">
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('password.update') }}">
                                 @csrf
+                                <input type="hidden" name="token" value="{{ app('request')->input('token') }}" />
 
                                 <div class="form-group row mb-4">
                                     <label for="email" class="col-md-4 col-form-label text-md-right">Адресс электронной почты</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="" required>
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ app('request')->input('email') }}" readonly>
+
                                         @if ($errors->has('email'))
                                             <span class="invalid-feedback">
                                                 <strong>{{ $errors->first('email') }}</strong>
@@ -53,23 +40,28 @@
                                     <label for="password" class="col-md-4 col-form-label text-md-right">Пароль</label>
 
                                     <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="password" required>
+                                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                                        @if ($errors->has('password'))
+                                            <span class="invalid-feedback">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
-                                    <label for="remember" class="col-md-4 col-form-label text-md-right">Запомнить</label>
+                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Подтверждение пароля</label>
 
                                     <div class="col-md-6">
-                                        <input id="remember" type="checkbox" name="remember"{{ old('remember', false) ? ' checked' : '' }}>
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                     </div>
                                 </div>
-
 
                                 <div class="form-group row mb-4">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
-                                            Войти
+                                            Сменить пароль
                                         </button>
                                     </div>
                                 </div>

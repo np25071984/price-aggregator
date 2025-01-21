@@ -17,7 +17,7 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:8',
         ], [
-            'photos.required' => 'Имя пользователя обязательно для заполнения',
+            'name.required' => 'Имя пользователя обязательно для заполнения',
             'email.required' => 'Адрес электронной почты обязателен для заполнения',
             'email.email' => 'Введенный адрес элктронной почты не валиден',
             'email.unique' => 'Адрес электронной почты уже занят. Введите новый или воспользуйтесь функцией восстановления пароля',

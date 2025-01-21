@@ -22,7 +22,7 @@
                                     <a class="nav-link" href="{{ route('get-register') }}">Регистрация нового пользователя</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="true" href="{{ route('password.reset') }}">Сброс пароля</a>
+                                    <a class="nav-link active" aria-current="true" href="{{ route('password.request') }}">Сброс пароля</a>
                                 </li>
                             </ul>
                         </div>
@@ -33,7 +33,7 @@
                             </div>
                             @endif
 
-                            <form method="POST" action="{{ route('post-reset-password') }}">
+                            <form method="POST" action="{{ route('password.email') }}">
                                 @csrf
 
                                 <div class="form-group row mb-4">

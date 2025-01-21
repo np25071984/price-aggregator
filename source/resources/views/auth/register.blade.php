@@ -22,7 +22,7 @@
                                     <a class="nav-link active" aria-current="true" href="{{ route('get-register') }}">Регистрация нового пользователя</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('password.reset') }}">Сброс пароля</a>
+                                    <a class="nav-link" href="{{ route('password.request') }}">Сброс пароля</a>
                                 </li>
                             </ul>
                         </div>
