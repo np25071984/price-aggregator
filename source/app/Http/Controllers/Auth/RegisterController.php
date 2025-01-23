@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -34,6 +35,8 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('get-aggregation');
+        event(new Registered($user));
+
+        return back()->with('message', 'Мы отправили электронное письмо на ваш адрес электронной почты с дальнейшими инструкциями');
     }
 }

@@ -8,16 +8,35 @@ use App\Http\Controllers\FilesUploadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use Illuminate\Http\Request;
 
-Route::middleware(['auth'])->group(function () {
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', fn () => redirect()->route('get-aggregation') );
     Route::get('/aggregation', [HomeController::class, 'aggregation'])->name('get-aggregation');
     Route::get('/merge', [HomeController::class, 'merge'])->name('get-merge');
 
     Route::post('/upload', [FilesUploadController::class, 'upload']);
-
-    Route::get('/logout', LogoutController::class)->name('logout');
 });
+
+Route::get('/logout', LogoutController::class)->name('logout');
+
+Route::get('/email/verify', fn() => view('auth.verify-email') )->
+    middleware(['auth'])->
+    name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect()->route('get-aggregation');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::get('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Сcылка для подтверждения электронного адреса была выслана повторно.');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', fn () => view('auth.login') )->name('login');
