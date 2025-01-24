@@ -10,11 +10,19 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Http\Request;
 
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Requests\EmailVerificationRequest;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', fn () => redirect()->route('get-aggregation') );
+
+    Route::get('/register', fn () => view('auth.register') )->
+        middleware('auth.basic')->
+        name('get-register');
+
+    Route::post('/register', RegisterController::class)->name('post-register');
+
     Route::get('/aggregation', [HomeController::class, 'aggregation'])->name('get-aggregation');
+
     Route::get('/merge', [HomeController::class, 'merge'])->name('get-merge');
 
     Route::post('/upload', [FilesUploadController::class, 'upload']);
@@ -30,7 +38,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $request->fulfill();
 
     return redirect()->route('get-aggregation');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+})->name('verification.verify');
 
 Route::get('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
@@ -40,13 +48,13 @@ Route::get('/email/verification-notification', function (Request $request) {
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', fn () => view('auth.login') )->name('login');
+
     Route::post('/login', LoginController::class)->name('post-login');
 
-    Route::get('/register', fn () => view('auth.register') )->name('get-register');
-    Route::post('/register', RegisterController::class)->name('post-register');
-
     Route::get('/forgot-password', fn () => view('auth.password-request') )->name('password.request');
+
     Route::post('/forgot-password', ResetPasswordController::class)->name('password.email');
+
     Route::get('/reset-password', fn () => view('auth.password-reset') )->name('password.reset');
 
     Route::post('/reset-password', PasswordUpdateController::class)->name('password.update');

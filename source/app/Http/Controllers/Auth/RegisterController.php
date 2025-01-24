@@ -27,13 +27,15 @@ class RegisterController extends Controller
             'password.min' => 'Пароль не должен быть меньше 8 символов',
         ]);
 
+        if (Auth::user()->email !== env('ADMIN_EMAIL')) {
+            return back()->with('message', 'Только администратор может регистрировать новых пользователей');
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
-        Auth::login($user);
 
         event(new Registered($user));
 

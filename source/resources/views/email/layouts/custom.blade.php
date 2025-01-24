@@ -46,7 +46,7 @@
 
             {{-- Footer --}}
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; text-align: center; color: #6b7280;">
-                © {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
+                © {{ date('Y') }} {{ config('app.name') }}. Все права защищены.
             </div>
         </div>
     </div>
