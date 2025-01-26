@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->uuid()->primary();
+            $table->foreignId('user_id')->constrained();
             $table->string('result', 255);
             $table->enum('type', ['aggregation', 'merge']);
             $table->enum('status', ['uploading', 'pending', 'processing', 'finished']);
@@ -29,6 +30,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('requests', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
+
         Schema::dropIfExists('requests');
     }
 };

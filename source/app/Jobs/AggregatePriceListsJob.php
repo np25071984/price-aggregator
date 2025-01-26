@@ -25,6 +25,7 @@ class AggregatePriceListsJob implements ShouldQueue
      * Create a new job instance.
      */
     public function __construct(
+        private int $userId,
         private string $requestId
     ) {
     }

@@ -16,7 +16,7 @@ class RegisterController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed|min:8',
+            'password' => 'required|confirmed|min:6',
         ], [
             'name.required' => 'Имя пользователя обязательно для заполнения',
             'email.required' => 'Адрес электронной почты обязателен для заполнения',
@@ -24,7 +24,7 @@ class RegisterController extends Controller
             'email.unique' => 'Адрес электронной почты уже занят. Введите новый или воспользуйтесь функцией восстановления пароля',
             'password.required' => 'Пароль обязателен для заполнения',
             'password.confirmed' => 'Пароль и подтверждение пароля не совпадают',
-            'password.min' => 'Пароль не должен быть меньше 8 символов',
+            'password.min' => 'Пароль не должен быть меньше 6 символов',
         ]);
 
         if (Auth::user()->email !== env('ADMIN_EMAIL')) {

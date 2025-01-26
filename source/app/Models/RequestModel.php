@@ -16,7 +16,7 @@ class RequestModel extends Model
     protected $primaryKey = 'uuid';
     protected $keyType = 'string';
     public $incrementing = false;
-    protected $fillable = ['result', 'type', 'status', 'stats'];
+    protected $fillable = ['user_id', 'result', 'type', 'status', 'stats'];
     protected $connection = 'pgsql';
 
     protected $casts = [

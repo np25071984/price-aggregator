@@ -8,7 +8,7 @@
     </p>
 
     <div style="text-align: center; margin: 30px 0;">
-        <a href="{{ $url }}" class="button">
+        <a href="{{ $url }}" class="button" style="color:#ffffff;">
             Сбросить пароль
         </a>
     </div>

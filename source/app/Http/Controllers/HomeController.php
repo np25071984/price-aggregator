@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use App\Enums\RequestStatusEnum;
 use App\Enums\RequestTypeEnum;
 use App\Models\RequestModel;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function aggregation()
     {
         $completedRequests = [];
-        $existingRequests = RequestModel::where(['type' => RequestTypeEnum::Aggregation->value])->
+        $existingRequests = RequestModel::where([
+                'user_id' => Auth::user()->id,
+                'type' => RequestTypeEnum::Aggregation->value,
+            ])->
             orderByDesc('created_at')->
             get();
 
@@ -35,7 +39,10 @@ class HomeController extends Controller
     public function merge()
     {
         $completedRequests = [];
-        $existingRequests = RequestModel::where(['type' => RequestTypeEnum::Merge->value])->
+        $existingRequests = RequestModel::where([
+                'user_id' => Auth::user()->id,
+                'type' => RequestTypeEnum::Merge->value
+            ])->
             orderByDesc('created_at')->
             get();
         foreach ($existingRequests as $request) {

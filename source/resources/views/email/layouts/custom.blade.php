@@ -26,7 +26,6 @@
             display: inline-block;
             padding: 12px 24px;
             background-color: #4f46e5;
-            color: white;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;

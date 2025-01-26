@@ -9,6 +9,7 @@ use App\Jobs\AggregatePriceListsJob;
 use \Illuminate\Http\UploadedFile;
 use App\Jobs\MergePriceListsJob;
 use App\Models\RequestModel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 class FilesUploadController extends Controller
 {
@@ -16,8 +17,10 @@ class FilesUploadController extends Controller
     {
         $uploadedFiles = [];
         $stats = [];
+        $userId = Auth::user()->id;
 
         $requestModel = RequestModel::create([
+            'user_id' => $userId,
             'result' => '',
             'type' => $request->requestType->value,
             'status' => RequestStatusEnum::Uploading->value,
@@ -52,11 +55,11 @@ class FilesUploadController extends Controller
         $redirectRoute = null;
         switch ($request->requestType) {
             case RequestTypeEnum::Aggregation:
-                AggregatePriceListsJob::dispatchSync($requestModel->uuid);
+                AggregatePriceListsJob::dispatchSync($userId, $requestModel->uuid);
                 $redirectRoute = 'get-aggregation';
                 break;
             case RequestTypeEnum::Merge:
-                MergePriceListsJob::dispatchSync($requestModel->uuid);
+                MergePriceListsJob::dispatchSync($userId, $requestModel->uuid);
                 $redirectRoute = 'get-merge';
                 break;
         };

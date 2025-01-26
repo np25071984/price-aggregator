@@ -5,7 +5,7 @@ FROM php:8.3-fpm
 
 RUN apt update
 RUN apt install -y --no-install-recommends libssl-dev zlib1g-dev curl \
-    git unzip libxml2-dev libpq-dev libzip-dev libpng-dev
+    git unzip libxml2-dev libpq-dev libzip-dev libpng-dev sendmail
 RUN pecl install apcu
 
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
